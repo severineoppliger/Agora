@@ -1,0 +1,15 @@
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\bin\Debug\net9.0\Agora.Infrastructure.deps.json
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\bin\Debug\net9.0\Agora.Infrastructure.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\bin\Debug\net9.0\Agora.Infrastructure.pdb
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\bin\Debug\net9.0\Agora.Core.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\bin\Debug\net9.0\Agora.Core.pdb
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.AssemblyInfo.cs
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.In.B98B83C3.Up2Date
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\refint\Agora.Infrastructure.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\Agora.Infrastructure.pdb
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Infrastructure\obj\Debug\net9.0\ref\Agora.Infrastructure.dll

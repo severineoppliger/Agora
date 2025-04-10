@@ -1,0 +1,11 @@
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\bin\Debug\net9.0\Agora.Core.deps.json
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\bin\Debug\net9.0\Agora.Core.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\bin\Debug\net9.0\Agora.Core.pdb
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.AssemblyInfoInputs.cache
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.AssemblyInfo.cs
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.csproj.CoreCompileInputs.cache
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\refint\Agora.Core.dll
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\Agora.Core.pdb
+C:\Users\Séverine Oppliger\OneDrive - Université de Fribourg\Bachelor d'informatique\Travail de Bachelor\Agora\Agora.Core\obj\Debug\net9.0\ref\Agora.Core.dll

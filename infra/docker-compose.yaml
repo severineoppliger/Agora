@@ -1,0 +1,36 @@
+﻿services:
+  backend:
+    build:
+      context: ../Agora.API
+      dockerfile: ../infra/backend.Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mariadb;Database=agora;User=local;Password=password;
+    depends_on:
+      - mariadb
+    networks:
+      - agora-network
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: agora
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - agora-network
+
+volumes:
+  mariadb_data:
+
+networks:
+  agora-network:
+    driver: bridge
