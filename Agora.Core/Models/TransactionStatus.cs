@@ -1,0 +1,8 @@
+﻿namespace Agora.Core.Models;
+
+public class TransactionStatus : BaseEntity
+{
+    public required string Name { get; set; }
+    public required bool IsFinal { get; set; }
+    public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+}
