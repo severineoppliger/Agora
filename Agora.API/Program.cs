@@ -1,4 +1,6 @@
+using Agora.Core.Interfaces;
 using Agora.Infrastructure.Data;
+using Agora.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -14,6 +16,7 @@ builder.Services.AddDbContext<AgoraDbContext>(opt =>
         new MySqlServerVersion(new Version(10, 11))
     );
 });
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 var app = builder.Build();
 
