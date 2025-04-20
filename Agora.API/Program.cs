@@ -17,6 +17,8 @@ builder.Services.AddDbContext<AgoraDbContext>(opt =>
     );
 });
 builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
+builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
 
 var app = builder.Build();
 
