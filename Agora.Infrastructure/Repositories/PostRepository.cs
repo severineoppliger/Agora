@@ -7,9 +7,8 @@ namespace Agora.Infrastructure.Repositories;
 
 public class PostRepository(AgoraDbContext context) : IPostRepository
 {
-    public async Task<IReadOnlyList<Post>> GetPostsAsync()
+    public async Task<IReadOnlyList<Post>> GetAllPostsAsync()
     {
-        Console.WriteLine("Reached GetPosts endpoint");
         return await context.Posts.ToListAsync();
     }
 
