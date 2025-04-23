@@ -16,8 +16,10 @@ builder.Services.AddDbContext<AgoraDbContext>(opt =>
         new MySqlServerVersion(new Version(10, 11))
     );
 });
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
 
 var app = builder.Build();
