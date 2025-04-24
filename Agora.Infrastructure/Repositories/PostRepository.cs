@@ -22,21 +22,11 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         context.Posts.Add(post);
     }
 
-    public void UpdatePost(Post post)
-    {
-        context.Entry(post).State = EntityState.Modified;
-    }
-
     public void DeletePost(Post post)
     {
         context.Posts.Remove(post);
     }
-
-    public bool PostExists(long id)
-    {
-        return context.Posts.Any(p => p.Id == id);
-    }
-
+    
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;

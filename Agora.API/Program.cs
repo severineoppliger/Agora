@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AgoraDbContext>(opt =>
         new MySqlServerVersion(new Version(10, 11))
     );
 });
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();

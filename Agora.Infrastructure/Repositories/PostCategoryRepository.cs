@@ -22,19 +22,9 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
         context.PostCategories.Add(postCategory);
     }
 
-    public void UpdatePostCategory(PostCategory postCategory)
-    {
-        context.Entry(postCategory).State = EntityState.Modified;
-    }
-
     public void DeletePostCategory(PostCategory postCategory)
     {
         context.PostCategories.Remove(postCategory);
-    }
-
-    public bool PostCategoryExists(long id)
-    {
-        return context.PostCategories.Any(pc => pc.Id == id);
     }
 
     public async Task<bool> SaveChangesAsync()

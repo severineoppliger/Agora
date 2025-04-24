@@ -22,19 +22,9 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         context.TransactionStatus.Add(transactionStatus);
     }
 
-    public void UpdateTransactionStatus(TransactionStatus transactionStatus)
-    {
-        context.Entry(transactionStatus).State = EntityState.Modified;
-    }
-
     public void DeleteTransactionStatus(TransactionStatus transactionStatus)
     {
         context.TransactionStatus.Remove(transactionStatus);
-    }
-
-    public bool TransactionStatusExists(long id)
-    {
-        return context.TransactionStatus.Any(ts => ts.Id == id);
     }
 
     public async Task<bool> SaveChangesAsync()
