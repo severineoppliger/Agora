@@ -14,7 +14,11 @@ public class UserRepository(AgoraDbContext context): IUserRepository
 
     public async Task<User?> GetUserByIdAsync(long id)
     {
-        return await context.Users.FindAsync(id);
+        return await context.Users
+            .Include(u => u.Posts)
+            .Include(u=> u.TransactionsAsBuyer)
+            .Include(u=> u.TransactionsAsSeller)
+            .FirstOrDefaultAsync(u=> u.Id == id);
     }
 
     public void AddUser(User user)

@@ -14,7 +14,9 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
 
     public async Task<PostCategory?> GetPostCategoryByIdAsync(long id)
     {
-        return await context.PostCategories.FindAsync(id);
+        return await context.PostCategories
+            .Include(pc => pc.Posts)
+            .FirstOrDefaultAsync(pc => pc.Id == id);
     }
 
     public void AddPostCategory(PostCategory postCategory)
