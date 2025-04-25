@@ -14,7 +14,9 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
 
     public async Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id)
     {
-        return await context.TransactionStatus.FindAsync(id);
+        return await context.TransactionStatus
+            .Include(ts => ts.Transactions)
+            .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 
     public void AddTransactionStatus(TransactionStatus transactionStatus)
