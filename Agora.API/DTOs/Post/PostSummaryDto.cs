@@ -7,6 +7,6 @@ public class PostSummaryDto
     public int Price { get; set; }
     public string TypeName { get; set; } = string.Empty;
     public string StatusName { get; set; } = string.Empty;
-    public string CategoryName { get; set; } = string.Empty;
+    public string PostCategoryName { get; set; } = string.Empty;
     public string Username { get; set; } = string.Empty;
 }

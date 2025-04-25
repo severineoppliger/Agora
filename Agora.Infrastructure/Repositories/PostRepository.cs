@@ -9,12 +9,18 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
 {
     public async Task<IReadOnlyList<Post>> GetAllPostsAsync()
     {
-        return await context.Posts.ToListAsync();
+        return await context.Posts
+            .Include(p => p.User)
+            .Include(p => p.PostCategory)
+            .ToListAsync();
     }
 
     public async Task<Post?> GetPostByIdAsync(long id)
     {
-        return await context.Posts.FindAsync(id);
+        return await context.Posts
+            .Include(p => p.User)
+            .Include(p => p.PostCategory)
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public void AddPost(Post post)
