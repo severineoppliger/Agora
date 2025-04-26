@@ -14,7 +14,10 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
 
     public async Task<PostCategory?> GetPostCategoryByIdAsync(long id)
     {
-        return await context.PostCategories.FindAsync(id);
+        return await context.PostCategories
+            .Include(pc => pc.Posts)
+                .ThenInclude(p => p.User)
+            .FirstOrDefaultAsync(pc => pc.Id == id);
     }
 
     public void AddPostCategory(PostCategory postCategory)
@@ -22,19 +25,9 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
         context.PostCategories.Add(postCategory);
     }
 
-    public void UpdatePostCategory(PostCategory postCategory)
-    {
-        context.Entry(postCategory).State = EntityState.Modified;
-    }
-
     public void DeletePostCategory(PostCategory postCategory)
     {
         context.PostCategories.Remove(postCategory);
-    }
-
-    public bool PostCategoryExists(long id)
-    {
-        return context.PostCategories.Any(pc => pc.Id == id);
     }
 
     public async Task<bool> SaveChangesAsync()

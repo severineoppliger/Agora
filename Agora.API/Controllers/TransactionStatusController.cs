@@ -1,57 +1,67 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.API.DTOs.TransactionStatus;
+using Agora.Core.Interfaces;
 using Agora.Core.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TransactionStatusController(ITransactionStatusRepository repo) : ControllerBase
+public class TransactionStatusController(ITransactionStatusRepository repo, IMapper mapper) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatus()
+    public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus()
     {
-        return Ok(await repo.GetAllTransactionStatusAsync());
+        IReadOnlyList <TransactionStatus> transactionStatusList = await repo.GetAllTransactionStatusAsync();
+        return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactionStatusList));
     }
 
     [HttpGet("{id:long}")]
-    public async Task<ActionResult<TransactionStatus>> GetTransactionStatus([FromRoute] long id)
+    public async Task<ActionResult<TransactionStatusDetailsDto>> GetTransactionStatus([FromRoute] long id)
     {
         TransactionStatus? transactionStatus = await repo.GetTransactionStatusByIdAsync(id);
         
         if (transactionStatus == null) return NotFound();
         
-        return Ok(transactionStatus);
+        return Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
     }
 
     [HttpPost]
-    async Task<ActionResult<TransactionStatus>> CreateTransactionStatus([FromBody] TransactionStatus transactionStatus)
+    public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
+        TransactionStatus transactionStatus = mapper.Map<TransactionStatus>(transactionStatusDto);
         repo.AddTransactionStatus(transactionStatus);
 
         if (await repo.SaveChangesAsync())
         {
-            return CreatedAtAction("GetTransactionStatus", new { id = transactionStatus.Id }, transactionStatus);
+            TransactionStatus? createdTransactionStatus = await repo.GetTransactionStatusByIdAsync(transactionStatus.Id);
+
+            if (createdTransactionStatus == null)
+            {
+                return StatusCode(500, "Transaction status was saved but could not be retrieved.");
+            }
+
+            TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
+            
+            return CreatedAtAction("GetTransactionStatus", new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
         }
 
         return BadRequest("Problem creating the transaction status.");
     } 
     
     [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] TransactionStatus transactionStatus)
+    public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
     {
-        if (transactionStatus.Id != id || !TransactionStatusExists(id))
-        {
-            return BadRequest("Transaction status doesn't exist or there is an incoherence between route and body ids.");
-        }
+        TransactionStatus? existingTransactionStatus = await repo.GetTransactionStatusByIdAsync(id);
+
+        if (existingTransactionStatus == null) return NotFound();
         
-        repo.UpdateTransactionStatus(transactionStatus);
-
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
-
+        // Apply the updated fields exposed in the DTO to the existing transaction status
+        mapper.Map(transactionStatusDto, existingTransactionStatus);
+        
+        if (await repo.SaveChangesAsync()) return NoContent();
+        
         return BadRequest("Problem updating the transaction status.");
     }
 
@@ -73,10 +83,5 @@ public class TransactionStatusController(ITransactionStatusRepository repo) : Co
         }
 
         return BadRequest("Problem deleting the transaction status.");
-    }
-
-    private bool TransactionStatusExists(long id)
-    {
-        return repo.TransactionStatusExists(id);
     }
 }

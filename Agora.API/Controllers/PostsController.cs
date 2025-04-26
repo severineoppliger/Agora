@@ -1,56 +1,66 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.API.DTOs.Post;
+using Agora.Core.Interfaces;
 using Agora.Core.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PostsController(IPostRepository repo) : ControllerBase
+public class PostsController(IPostRepository repo, IMapper mapper) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<Post>>> GetAllPosts()
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts()
     {
-        return Ok(await repo.GetAllPostsAsync());
+        IReadOnlyList<Post> posts = await repo.GetAllPostsAsync();
+        return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
 
     [HttpGet("{id:long}")]
-    public async Task<ActionResult<Post>> GetPost([FromRoute] long id)
+    public async Task<ActionResult<PostDetailsDto>> GetPost([FromRoute] long id)
     {
         Post? post = await repo.GetPostByIdAsync(id);
         
         if (post == null) return NotFound();
         
-        return Ok(post);
+        return Ok(mapper.Map<PostDetailsDto>(post));
     }
 
     [HttpPost]
-    public async Task<ActionResult<Post>> CreatePost([FromBody] Post post)
+    public async Task<ActionResult<PostDetailsDto>> CreatePost([FromBody] CreatePostDto postDto)
     {
+        Post post = mapper.Map<Post>(postDto);
         repo.AddPost(post);
         
         if (await repo.SaveChangesAsync())
         {
-            return CreatedAtAction("GetPost", new { id = post.Id }, post);
+            Post? createdPost = await repo.GetPostByIdAsync(post.Id);
+            
+            if (createdPost == null)
+            {
+                return StatusCode(500, "Post was saved but could not be retrieved.");
+            }
+            
+            PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
+            
+            return CreatedAtAction("GetPost", new { id = createdPost.Id }, createdPostDetailsDto);
         }
         
         return BadRequest("Problem creating the post.");
     }
 
     [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdatePost([FromRoute] long id, [FromBody] Post post)
+    public async Task<ActionResult> UpdatePost([FromRoute] long id, [FromBody] UpdatePostDto postDto)
     {
-        if (post.Id != id || !PostExists(id))
-        {
-            return BadRequest("Post doesn't exist or there is an incoherence between route and body ids.");
-        }
-        
-        repo.UpdatePost(post);
+        Post? existingPost = await repo.GetPostByIdAsync(id);
 
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
+        if (existingPost == null) return NotFound();
+        
+        // Apply the updated fields exposed in the DTO to the existing post
+        mapper.Map(postDto, existingPost); 
+
+        if (await repo.SaveChangesAsync()) return NoContent();
 
         return BadRequest("Problem updating the post.");
     }
@@ -73,10 +83,5 @@ public class PostsController(IPostRepository repo) : ControllerBase
         }
 
         return BadRequest("Problem deleting the post.");
-    }
-
-    private bool PostExists(long id)
-    {
-        return repo.PostExists(id);
     }
 }

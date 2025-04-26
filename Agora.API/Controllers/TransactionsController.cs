@@ -1,56 +1,66 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.API.DTOs.Transaction;
+using Agora.Core.Interfaces;
 using Agora.Core.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TransactionsController(ITransactionRepository repo) : ControllerBase
+public class TransactionsController(ITransactionRepository repo, IMapper mapper) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<Transaction>>> GetAllTransactions()
+    public async Task<ActionResult<IReadOnlyList<TransactionSummaryDto>>> GetAllTransactions()
     {
-        return Ok(await repo.GetAllTransactionsAsync());
+        IReadOnlyList<Transaction> transactions = await repo.GetAllTransactionsAsync();
+        return Ok(mapper.Map<IReadOnlyList<TransactionSummaryDto>>(transactions));
     }
 
     [HttpGet("{id:long}")]
-    public async Task<ActionResult<Transaction>> GetTransaction([FromRoute] long id)
+    public async Task<ActionResult<TransactionDetailsDto>> GetTransaction([FromRoute] long id)
     {
         Transaction? transaction = await repo.GetTransactionByIdAsync(id);
 
         if (transaction == null) return NotFound();
 
-        return Ok(transaction);
+        return Ok(mapper.Map<TransactionDetailsDto>(transaction));
     }
     
     [HttpPost]
-    public async Task<ActionResult<Transaction>> CreateTransaction([FromBody] Transaction transaction)
+    public async Task<ActionResult<TransactionDetailsDto>> CreateTransaction([FromBody] CreateTransactionDto transactionDto)
     {
+        Transaction transaction = mapper.Map<Transaction>(transactionDto);
         repo.AddTransaction(transaction);
         
         if (await repo.SaveChangesAsync())
         {
-            return CreatedAtAction("GetTransaction", new { id = transaction.Id }, transaction);
+            Transaction? createdTransaction = await repo.GetTransactionByIdAsync(transaction.Id);
+            
+            if (createdTransaction == null)
+            {
+                return StatusCode(500, "Transaction was saved but could not be retrieved.");
+            }
+            
+            TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransaction);
+            
+            return CreatedAtAction("GetTransaction", new { id = createdTransaction.Id }, createdTransactionDetailsDto);
         }
         
         return BadRequest("Problem creating the transaction.");
     }
 
     [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdateTransaction([FromRoute] long id, [FromBody] Transaction transaction)
+    public async Task<ActionResult> UpdateTransaction([FromRoute] long id, [FromBody] UpdateTransactionDto transactionDto)
     {
-        if (transaction.Id != id || !TransactionExists(id))
-        {
-            return BadRequest("Transaction doesn't exist or there is an incoherence between route and body ids.");
-        }
-        
-        repo.UpdateTransaction(transaction);
+        Transaction? existingTransaction = await repo.GetTransactionByIdAsync(id);
 
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
+        if (existingTransaction == null) return NotFound();
+        
+        // Apply the updated fields exposed in the DTO to the existing transaction
+        mapper.Map(transactionDto, existingTransaction);
+
+        if (await repo.SaveChangesAsync()) return NoContent();
 
         return BadRequest("Problem updating the transaction.");
     }
@@ -73,10 +83,5 @@ public class TransactionsController(ITransactionRepository repo) : ControllerBas
         }
 
         return BadRequest("Problem deleting the transaction.");
-    }
-
-    private bool TransactionExists(long id)
-    {
-        return repo.TransactionExists(id);
     }
 }

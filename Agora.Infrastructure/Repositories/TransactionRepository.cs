@@ -9,12 +9,23 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
 {
     public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync()
     {
-        return await context.Transactions.ToListAsync();
+        return await context.Transactions
+            .Include(t => t.Post)
+            .Include(t => t.TransactionStatus)
+            .Include(t => t.Buyer)
+            .Include(t => t.Seller)
+            .ToListAsync();
     }
 
     public async Task<Transaction?> GetTransactionByIdAsync(long id)
     {
-        return await context.Transactions.FindAsync(id);
+        return await context.Transactions
+            .Include(t => t.Post)
+                .ThenInclude(post => post.PostCategory)
+            .Include(t => t.TransactionStatus)
+            .Include(t => t.Buyer)
+            .Include(t => t.Seller)
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public void AddTransaction(Transaction transaction)
@@ -22,19 +33,9 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         context.Transactions.Add(transaction);
     }
 
-    public void UpdateTransaction(Transaction transaction)
-    {
-        context.Entry(transaction).State = EntityState.Modified;
-    }
-
     public void DeleteTransaction(Transaction transaction)
     {
         context.Transactions.Remove(transaction);
-    }
-
-    public bool TransactionExists(long id)
-    {
-        return context.Transactions.Any(t => t.Id == id);
     }
 
     public async Task<bool> SaveChangesAsync()

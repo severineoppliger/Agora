@@ -14,7 +14,9 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
 
     public async Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id)
     {
-        return await context.TransactionStatus.FindAsync(id);
+        return await context.TransactionStatus
+            .Include(ts => ts.Transactions)
+            .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 
     public void AddTransactionStatus(TransactionStatus transactionStatus)
@@ -22,19 +24,9 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         context.TransactionStatus.Add(transactionStatus);
     }
 
-    public void UpdateTransactionStatus(TransactionStatus transactionStatus)
-    {
-        context.Entry(transactionStatus).State = EntityState.Modified;
-    }
-
     public void DeleteTransactionStatus(TransactionStatus transactionStatus)
     {
         context.TransactionStatus.Remove(transactionStatus);
-    }
-
-    public bool TransactionStatusExists(long id)
-    {
-        return context.TransactionStatus.Any(ts => ts.Id == id);
     }
 
     public async Task<bool> SaveChangesAsync()

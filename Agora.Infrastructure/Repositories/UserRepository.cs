@@ -14,31 +14,37 @@ public class UserRepository(AgoraDbContext context): IUserRepository
 
     public async Task<User?> GetUserByIdAsync(long id)
     {
-        return await context.Users.FindAsync(id);
+        return await context.Users
+            .Include(u => u.Posts)
+            .Include(u=> u.TransactionsAsBuyer)
+            .Include(u=> u.TransactionsAsSeller)
+            .FirstOrDefaultAsync(u=> u.Id == id);
     }
 
     public void AddUser(User user)
     {
         context.Users.Add(user);
     }
-
-    public void UpdateUser(User user)
-    {
-        context.Entry(user).State = EntityState.Modified;
-    }
-
+    
     public void DeleteUser(User user)
     {
         context.Users.Remove(user);
     }
 
-    public bool UserExists(long id)
-    {
-        return context.Users.Any(u => u.Id == id);
-    }
-
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> UsernameExistsAsync(string username)
+    {
+        string normalizedInputUsername = username.Trim().ToLower();
+        return await context.Users.AnyAsync(u => u.Username.ToLower().Equals(normalizedInputUsername));
+    }
+
+    public async Task<bool> EmailExistsAsync(string email)
+    {
+        string normalizedInputEmail = email.Trim().ToLower();
+        return await context.Users.AnyAsync(u => u.Username.ToLower().Equals(normalizedInputEmail));
     }
 }
