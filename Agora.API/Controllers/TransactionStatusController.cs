@@ -28,7 +28,7 @@ public class TransactionStatusController(ITransactionStatusRepository repo, IMap
     }
 
     [HttpPost]
-    async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
+    public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
         TransactionStatus transactionStatus = mapper.Map<TransactionStatus>(transactionStatusDto);
         repo.AddTransactionStatus(transactionStatus);
