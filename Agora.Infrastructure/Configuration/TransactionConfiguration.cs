@@ -17,7 +17,8 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 
         builder.HasOne(t => t.Post)
             .WithMany(p=>p.Transactions)
-            .HasForeignKey(t => t.PostId);
+            .HasForeignKey(t => t.PostId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(t => t.TransactionStatus)
             .WithMany(t => t.Transactions)
