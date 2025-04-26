@@ -16,6 +16,7 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
     {
         return await context.PostCategories
             .Include(pc => pc.Posts)
+                .ThenInclude(p => p.User)
             .FirstOrDefaultAsync(pc => pc.Id == id);
     }
 
