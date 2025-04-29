@@ -36,6 +36,11 @@ public class UserRepository(AgoraDbContext context): IUserRepository
         return await context.SaveChangesAsync() > 0;
     }
 
+    public async Task<bool> UserExistsAsync(long id)
+    {
+        return await context.Users.AnyAsync(u => u.Id == id);
+    }
+
     public async Task<bool> UsernameExistsAsync(string username)
     {
         string normalizedInputUsername = username.Trim().ToLower();

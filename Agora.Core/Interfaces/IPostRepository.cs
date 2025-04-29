@@ -9,4 +9,5 @@ public interface IPostRepository
     void AddPost(Post post);
     void DeletePost(Post post);
     Task<bool> SaveChangesAsync();
+    Task<bool> PostExistsAsync(long id);
 }

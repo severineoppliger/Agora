@@ -33,4 +33,9 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
     {
         return await context.SaveChangesAsync() > 0;
     }
+
+    public async Task<bool> TransactionStatusExistsAsync(long id)
+    {
+        return await context.TransactionStatus.AnyAsync(ts => ts.Id == id);
+    }
 }
