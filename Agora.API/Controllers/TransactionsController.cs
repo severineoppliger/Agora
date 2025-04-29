@@ -40,7 +40,7 @@ public class TransactionsController(
     public async Task<ActionResult<TransactionDetailsDto>> CreateTransaction([FromBody] CreateTransactionDto transactionDto)
     {
         // Input validation
-        List<string> inputErrors = await inputValidator.ValidateCreateTransactionDtoAsync(transactionDto);
+        List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
         
@@ -73,11 +73,20 @@ public class TransactionsController(
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransaction([FromRoute] long id, [FromBody] UpdateTransactionDto transactionDto)
     {
-        Transaction? existingTransactionEntity = await repo.GetTransactionByIdAsync(id);
-
-        if (existingTransactionEntity == null) return NotFound(TransactionNotFoundMessage);
+        // Input validation
+        List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
+        if (inputErrors.Count != 0)
+            return BadRequest(new { Errors = inputErrors });
         
+        // Transform to the full entity and validate with business rules
+        Transaction transactionEntity = mapper.Map<Transaction>(transactionDto);
+        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessTransactionAsync(transactionEntity);
+        if (businessRulesErrors.Count != 0)
+            return BadRequest(new { Errors = businessRulesErrors });
+
         // Apply the updated fields exposed in the DTO to the existing transaction
+        Transaction? existingTransactionEntity = await repo.GetTransactionByIdAsync(id);
+        if (existingTransactionEntity == null) return NotFound(TransactionNotFoundMessage);
         mapper.Map(transactionDto, existingTransactionEntity);
 
         return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem updating the transaction.");

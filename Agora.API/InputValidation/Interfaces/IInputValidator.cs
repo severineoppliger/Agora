@@ -8,9 +8,9 @@ namespace Agora.API.InputValidation.Interfaces;
 
 public interface IInputValidator
 {
-    public Task<List<string>> ValidateCreateUserDtoAsync(CreateUserDto dto);
-    public Task<List<string>> ValidateCreatePostCategoryDtoAsync(CreatePostCategoryDto dto);
-    public Task<List<string>> ValidateCreatePostDtoAsync(CreatePostDto dto);
-    public Task<List<string>> ValidateCreateTransactionStatusDtoAsync(CreateTransactionStatusDto dto);
-    public Task<List<string>> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto);
+    public Task<List<string>> ValidateInputUserDtoAsync(CreateUserDto dto);
+    public Task<List<string>> ValidateInputPostCategoryDtoAsync(CreatePostCategoryDto dto);
+    public Task<List<string>> ValidateInputPostDtoAsync(CreatePostDto dto);
+    public Task<List<string>> ValidateInputTransactionStatusDtoAsync(CreateTransactionStatusDto dto);
+    public Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto);
 }

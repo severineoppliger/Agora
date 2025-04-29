@@ -10,31 +10,31 @@ namespace Agora.API.InputValidation;
 
 public class InputValidator(IPostRepository postRepo, ITransactionStatusRepository transactionStatusRepo, IUserRepository userRepo): IInputValidator
 {
-    public Task<List<string>> ValidateCreateUserDtoAsync(CreateUserDto dto)
+    public Task<List<string>> ValidateInputUserDtoAsync(CreateUserDto dto)
     {
         throw new NotImplementedException();
         // TODO
     }
 
-    public Task<List<string>> ValidateCreatePostCategoryDtoAsync(CreatePostCategoryDto dto)
+    public Task<List<string>> ValidateInputPostCategoryDtoAsync(CreatePostCategoryDto dto)
     {
         throw new NotImplementedException();
         // TODO
     }
 
-    public Task<List<string>> ValidateCreatePostDtoAsync(CreatePostDto dto)
+    public Task<List<string>> ValidateInputPostDtoAsync(CreatePostDto dto)
     {
         throw new NotImplementedException();
         // TODO
     }
 
-    public Task<List<string>> ValidateCreateTransactionStatusDtoAsync(CreateTransactionStatusDto dto)
+    public Task<List<string>> ValidateInputTransactionStatusDtoAsync(CreateTransactionStatusDto dto)
     {
         throw new NotImplementedException();
         // TODO
     }
 
-    public async Task<List<string>> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto)
+    public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
     {
         (int price, long? postId, long transactionStatusId, long buyerId, long sellerId) = dto;
         
