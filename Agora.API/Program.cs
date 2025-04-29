@@ -1,3 +1,9 @@
+using Agora.API.InputValidation;
+using Agora.API.InputValidation.Interfaces;
+using Agora.API.Orchestrators;
+using Agora.API.Orchestrators.Interfaces;
+using Agora.Core.BusinessRules;
+using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
@@ -17,11 +23,18 @@ builder.Services.AddDbContext<AgoraDbContext>(opt =>
     );
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
+
+// Validation
+builder.Services.AddScoped<IInputValidator, InputValidator>();
+builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
+builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
 
 var app = builder.Build();
 
