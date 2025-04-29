@@ -44,7 +44,7 @@ public class TransactionStatusController(ITransactionStatusRepository repo, IMap
 
             TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
             
-            return CreatedAtAction("GetTransactionStatus", new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
+            return CreatedAtAction(nameof(GetTransactionStatus), new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
         }
 
         return BadRequest("Problem creating the transaction status.");

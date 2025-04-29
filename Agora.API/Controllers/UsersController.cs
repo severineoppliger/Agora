@@ -55,7 +55,7 @@ public class UsersController(IUserRepository repo, IMapper mapper) : ControllerB
             
             UserDetailsDto createdUserDto = mapper.Map<UserDetailsDto>(createdUser);
             
-            return CreatedAtAction("GetUser", new { id = createdUser.Id }, createdUserDto);
+            return CreatedAtAction(nameof(GetUser), new { id = createdUser.Id }, createdUserDto);
         }
         
         return BadRequest("Problem creating the user.");

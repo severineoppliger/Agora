@@ -44,7 +44,7 @@ public class PostsController(IPostRepository repo, IMapper mapper) : ControllerB
             
             PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
             
-            return CreatedAtAction("GetPost", new { id = createdPost.Id }, createdPostDetailsDto);
+            return CreatedAtAction(nameof(GetPost), new { id = createdPost.Id }, createdPostDetailsDto);
         }
         
         return BadRequest("Problem creating the post.");

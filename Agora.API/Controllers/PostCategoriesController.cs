@@ -45,7 +45,7 @@ public class PostCategoriesController(IPostCategoryRepository repo, IMapper mapp
             PostCategoryDetailsDto createdPostCategoryDetailsDto =
                 mapper.Map<PostCategoryDetailsDto>(createdPostCategory);
             
-            return CreatedAtAction("GetPostCategory", new { id = createdPostCategory.Id }, createdPostCategoryDetailsDto);
+            return CreatedAtAction(nameof(GetPostCategory), new { id = createdPostCategory.Id }, createdPostCategoryDetailsDto);
         }
 
         return BadRequest("Problem creating the post category.");

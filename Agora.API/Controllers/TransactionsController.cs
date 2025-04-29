@@ -44,7 +44,7 @@ public class TransactionsController(ITransactionRepository repo, IMapper mapper)
             
             TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransaction);
             
-            return CreatedAtAction("GetTransaction", new { id = createdTransaction.Id }, createdTransactionDetailsDto);
+            return CreatedAtAction(nameof(GetTransaction), new { id = createdTransactionEntity.Id }, createdTransactionDetailsDto);
         }
         
         return BadRequest("Problem creating the transaction.");
