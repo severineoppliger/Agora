@@ -1,4 +1,6 @@
 ﻿using Agora.API.DTOs.Transaction;
+using Agora.API.InputValidation.Interfaces;
+using Agora.API.Orchestrators.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -8,8 +10,15 @@ namespace Agora.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TransactionsController(ITransactionRepository repo, IMapper mapper) : ControllerBase
+public class TransactionsController(
+    ITransactionRepository repo,
+    IMapper mapper,
+    IInputValidator inputValidator,
+    IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
+    : ControllerBase
 {
+    private const string TransactionNotFoundMessage = "Transaction not found.";
+    
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TransactionSummaryDto>>> GetAllTransactions()
     {
@@ -20,29 +29,40 @@ public class TransactionsController(ITransactionRepository repo, IMapper mapper)
     [HttpGet("{id:long}")]
     public async Task<ActionResult<TransactionDetailsDto>> GetTransaction([FromRoute] long id)
     {
-        Transaction? transaction = await repo.GetTransactionByIdAsync(id);
+        Transaction? transactionEntity = await repo.GetTransactionByIdAsync(id);
 
-        if (transaction == null) return NotFound();
+        if (transactionEntity == null) return NotFound(TransactionNotFoundMessage);
 
-        return Ok(mapper.Map<TransactionDetailsDto>(transaction));
+        return Ok(mapper.Map<TransactionDetailsDto>(transactionEntity));
     }
     
     [HttpPost]
     public async Task<ActionResult<TransactionDetailsDto>> CreateTransaction([FromBody] CreateTransactionDto transactionDto)
     {
-        Transaction transaction = mapper.Map<Transaction>(transactionDto);
-        repo.AddTransaction(transaction);
+        // Input validation
+        List<string> inputErrors = await inputValidator.ValidateCreateTransactionDtoAsync(transactionDto);
+        if (inputErrors.Count != 0)
+            return BadRequest(new { Errors = inputErrors });
+        
+        // Transform to the full entity and validate with business rules
+        Transaction transactionEntity = mapper.Map<Transaction>(transactionDto);
+        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessTransactionAsync(transactionEntity);
+        if (businessRulesErrors.Count != 0)
+            return BadRequest(new { Errors = businessRulesErrors });
+        
+        // Add to database
+        repo.AddTransaction(transactionEntity);
         
         if (await repo.SaveChangesAsync())
         {
-            Transaction? createdTransaction = await repo.GetTransactionByIdAsync(transaction.Id);
+            Transaction? createdTransactionEntity = await repo.GetTransactionByIdAsync(transactionEntity.Id);
             
-            if (createdTransaction == null)
+            if (createdTransactionEntity == null)
             {
                 return StatusCode(500, "Transaction was saved but could not be retrieved.");
             }
             
-            TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransaction);
+            TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransactionEntity);
             
             return CreatedAtAction(nameof(GetTransaction), new { id = createdTransactionEntity.Id }, createdTransactionDetailsDto);
         }
@@ -53,16 +73,14 @@ public class TransactionsController(ITransactionRepository repo, IMapper mapper)
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransaction([FromRoute] long id, [FromBody] UpdateTransactionDto transactionDto)
     {
-        Transaction? existingTransaction = await repo.GetTransactionByIdAsync(id);
+        Transaction? existingTransactionEntity = await repo.GetTransactionByIdAsync(id);
 
-        if (existingTransaction == null) return NotFound();
+        if (existingTransactionEntity == null) return NotFound(TransactionNotFoundMessage);
         
         // Apply the updated fields exposed in the DTO to the existing transaction
-        mapper.Map(transactionDto, existingTransaction);
+        mapper.Map(transactionDto, existingTransactionEntity);
 
-        if (await repo.SaveChangesAsync()) return NoContent();
-
-        return BadRequest("Problem updating the transaction.");
+        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem updating the transaction.");
     }
 
     [HttpDelete("{id:long}")]
@@ -72,16 +90,11 @@ public class TransactionsController(ITransactionRepository repo, IMapper mapper)
 
         if (transaction == null)
         {
-            return NotFound();
+            return NotFound(TransactionNotFoundMessage);
         }
 
         repo.DeleteTransaction(transaction);
 
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
-
-        return BadRequest("Problem deleting the transaction.");
+        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem deleting the transaction.");
     }
 }

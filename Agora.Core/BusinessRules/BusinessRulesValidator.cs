@@ -33,17 +33,17 @@ public class BusinessRulesValidator : IBusinessRulesValidator
     {
         (int price, Post? post, long buyerId, User? buyer, long sellerId) = transaction;
         
-        List<string> businessRulesViolations = new();
+        List<string> businessRulesErrors = new();
         if (post != null && post.UserId != buyerId && post.UserId != sellerId)
-            businessRulesViolations.Add("Buyer or seller must be the owner of the post.");
+            businessRulesErrors.Add("Buyer or seller must be the owner of the post.");
         if (buyerId == sellerId)
-            businessRulesViolations.Add("Buyer and seller cannot be the same user.");
+            businessRulesErrors.Add("Buyer and seller cannot be the same user.");
         if (price <= 0)
-            businessRulesViolations.Add("Price must be positive.");
+            businessRulesErrors.Add("Price must be positive.");
         if (buyer != null && price > buyer.Credit)
-            businessRulesViolations.Add("Buyer does not have enough credit.");
+            businessRulesErrors.Add("Buyer does not have enough credit.");
         // TODO implement a maximum that the seller can obtain
         // TODO implement a maximum for a transaction price
-        return businessRulesViolations;
+        return businessRulesErrors;
     }
 }
