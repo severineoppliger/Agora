@@ -18,8 +18,10 @@ public class TransactionProfile : Profile
             .ForMember(dest => dest.TransactionStatusName, opt => opt.MapFrom(src => src.TransactionStatus.Name))
             .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer.Username))
             .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller.Username));
+        
         CreateMap<CreateTransactionDto, Transaction>()
             .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
+        
         CreateMap<UpdateTransactionDto, Transaction>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
     }
