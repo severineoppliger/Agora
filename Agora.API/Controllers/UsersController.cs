@@ -1,4 +1,5 @@
 ﻿using Agora.API.DTOs.User;
+using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -8,7 +9,10 @@ namespace Agora.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UsersController(IUserRepository repo, IMapper mapper) : ControllerBase
+public class UsersController(
+    IUserRepository repo,
+    IMapper mapper,
+    IInputValidator inputValidator) : ControllerBase
 {
     private const string UserNotFoundMessage = "User not found.";
 
@@ -32,17 +36,22 @@ public class UsersController(IUserRepository repo, IMapper mapper) : ControllerB
     [HttpPost]
     public async Task<ActionResult<UserDetailsDto>> CreateUser([FromBody] CreateUserDto userDto)
     {
-        if (await repo.UsernameExistsAsync(userDto.Username))
-            return BadRequest("Username is already taken.");
-
-        if (await repo.EmailExistsAsync(userDto.Email))
-            return BadRequest("Email is already in use.");
+        // Cleaning
+        userDto.Username = userDto.Username.Trim();
+        userDto.Email = userDto.Email.Trim();
+        userDto.Password = userDto.Password.Trim();
         
+        // Input validation
+        List<string> inputErrors = await inputValidator.ValidateInputUserDtoAsync(userDto);
+        if (inputErrors.Count != 0)
+            return BadRequest(new { Errors = inputErrors });
+        
+        // Transform to the full entity (no business rule associated with user)
         User user = mapper.Map<User>(userDto);
 
         user.PasswordHash = userDto.Password; // TODO _authService.HashPassword(userDto.Password);
         user.CreatedAt = DateTime.UtcNow;
-        user.Credit = 0;
+        user.Credit = 0; // TODO initialize the credit to some configurable amount.
         
         repo.AddUser(user);
         

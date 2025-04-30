@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.InputValidation.Interfaces;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -47,6 +48,7 @@ public class PostsController(
         
         // Transform to the full entity (no business rule associated with post)
         Post post = mapper.Map<Post>(postDto);
+        post.Status = PostStatus.Draft;
         
         // Add to database
         repo.AddPost(post);

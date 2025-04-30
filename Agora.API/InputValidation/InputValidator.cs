@@ -15,10 +15,27 @@ public class InputValidator(
     IPostRepository postRepo,
     ITransactionStatusRepository transactionStatusRepo): IInputValidator
 {
-    public Task<List<string>> ValidateInputUserDtoAsync(CreateUserDto dto)
+    public async Task<List<string>> ValidateInputUserDtoAsync(CreateUserDto dto)
     {
-        throw new NotImplementedException();
-        // TODO
+        List<string> inputErrors = new();
+
+        if (string.IsNullOrWhiteSpace(dto.Username))
+            inputErrors.Add("Username is required.");
+        
+        if (await userRepo.UsernameExistsAsync(dto.Username))
+            inputErrors.Add($"The username '{dto.Username}' is already taken. Username must be unique.");
+        
+        if (string.IsNullOrWhiteSpace(dto.Email))
+            inputErrors.Add("Email is required.");
+        
+        if (await userRepo.EmailExistsAsync(dto.Email))
+            inputErrors.Add($"An account with the email '{dto.Email}' already exists. Email must be unique.");
+        
+        if (string.IsNullOrWhiteSpace(dto.Password))
+            inputErrors.Add("Password is required.");
+        
+        return inputErrors;
+        // TODO Implement verification that the password is complex enough
     }
     
     public async Task<List<string>> ValidateInputPostCategoryDtoAsync(BaseInputPostCategoryDto dto, string? currentName = null)
