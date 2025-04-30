@@ -23,7 +23,6 @@ public class PostProfile : Profile
         
         CreateMap<CreatePostDto, Post>()
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.Parse<PostStatus>(src.Status)))
             .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
         
         CreateMap<UpdatePostDto, Post>()
