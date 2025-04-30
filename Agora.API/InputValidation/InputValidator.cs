@@ -45,10 +45,23 @@ public class InputValidator(
         // TODO
     }
 
-    public Task<List<string>> ValidateInputTransactionStatusDtoAsync(CreateTransactionStatusDto dto, string? currentName = null)
+    public async Task<List<string>> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null)
     {
-        throw new NotImplementedException();
-        // TODO
+        List<string> inputErrors = new();
+
+        if (string.IsNullOrWhiteSpace(dto.Name))
+            inputErrors.Add("Transaction status name is required.");
+
+        if (currentName != null && dto.Name.Equals(currentName))
+        {
+            inputErrors.Add("Transaction status name must be different from the current name.");
+            return inputErrors;
+        }
+        
+        if (await transactionStatusRepo.NameExistsAsync(dto.Name))
+            inputErrors.Add($"The transaction status name '{dto.Name}' already exists. Name must be unique.");
+
+        return inputErrors;
     }
 
     public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
