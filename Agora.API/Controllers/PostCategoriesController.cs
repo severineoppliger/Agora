@@ -36,6 +36,7 @@ public class PostCategoriesController(
     [HttpPost]
     public async Task<ActionResult<PostCategoryDetailsDto>> CreatePostCategory([FromBody] CreatePostCategoryDto postCategoryDto)
     {
+        // Cleaning
         postCategoryDto.Name = postCategoryDto.Name.Trim();
         
         // Input validation
@@ -43,7 +44,7 @@ public class PostCategoriesController(
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
 
-        // Transform to the full entity (no business rules associated with post category)
+        // Transform to the full entity (no business rule associated with post category)
         PostCategory postCategory = mapper.Map<PostCategory>(postCategoryDto);
         
         // Add to database
@@ -70,9 +71,10 @@ public class PostCategoriesController(
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdatePostCategory([FromRoute] long id, [FromBody] UpdatePostCategoryDto postCategoryDto)
     {
+        // Cleaning
         postCategoryDto.Name = postCategoryDto.Name.Trim();
         
-        // Retrieve the existing Post category
+        // Retrieve the existing post category
         PostCategory? existingPostCategory = await repo.GetPostCategoryByIdAsync(id);
         if (existingPostCategory == null) return NotFound(PostCategoryNotFoundMessage);
 

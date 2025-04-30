@@ -20,7 +20,7 @@ public class BusinessRulesValidator : IBusinessRulesValidator
     public List<string> ValidatePost(Post post)
     {
         throw new NotImplementedException();
-        // TODO
+        // TODO Add UserId should be the user calling the method itself
     }
 
     public List<string> ValidateTransactionStatus(TransactionStatus transactionStatus)
@@ -38,8 +38,6 @@ public class BusinessRulesValidator : IBusinessRulesValidator
             businessRulesErrors.Add("Buyer or seller must be the owner of the post.");
         if (buyerId == sellerId)
             businessRulesErrors.Add("Buyer and seller cannot be the same user.");
-        if (price <= 0)
-            businessRulesErrors.Add("Price must be positive.");
         if (buyer != null && price > buyer.Credit)
             businessRulesErrors.Add("Buyer does not have enough credit.");
         // TODO implement a maximum that the seller can obtain

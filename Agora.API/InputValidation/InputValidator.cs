@@ -4,6 +4,7 @@ using Agora.API.DTOs.Transaction;
 using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 
 namespace Agora.API.InputValidation;
@@ -39,10 +40,31 @@ public class InputValidator(
         return inputErrors;
     }
 
-    public Task<List<string>> ValidateInputPostDtoAsync(CreatePostDto dto)
+    public async Task<List<string>> ValidateInputPostDtoAsync(BaseInputPostDto dto)
     {
-        throw new NotImplementedException();
-        // TODO
+        (string title, string description, int price, string type, long postCategoryId) = dto;
+        
+        List<string> inputErrors = new();
+
+        if (string.IsNullOrWhiteSpace(title))
+            inputErrors.Add("Post title is required.");
+        
+        if (string.IsNullOrWhiteSpace(description))
+            inputErrors.Add("Post description is required.");
+        
+        if (price <= 0)
+            inputErrors.Add($"Price must be positive, but {price} was given.");
+        
+        if (!Enum.TryParse<PostType>(type, true, out _))
+            inputErrors.Add($"Post type '{type}' is invalid.");
+        
+        if (dto is UpdatePostDto updatePostDto && !Enum.TryParse<PostStatus>(updatePostDto.Status, true, out _))
+            inputErrors.Add($"Post status '{type}' is invalid.");
+            
+        if (!await postCategoryRepo.PostCategoryExistsAsync(postCategoryId))
+            inputErrors.Add($"Related post category {postCategoryId} doesn't exist.");
+
+        return inputErrors;
     }
 
     public async Task<List<string>> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null)
@@ -68,17 +90,23 @@ public class InputValidator(
     {
         (int price, long? postId, long transactionStatusId, long buyerId, long sellerId) = dto;
         
-        var inputErrors = new List<string>();
+        List<string> inputErrors = new();
+        
         if (price <= 0)
             inputErrors.Add($"Price must be positive, but {price} was given.");
+        
         if (postId != null && !await postRepo.PostExistsAsync(postId.Value))
             inputErrors.Add($"Related post {postId} doesn't exist.");
+        
         if (!await transactionStatusRepo.TransactionStatusExistsAsync(transactionStatusId))
             inputErrors.Add($"Related transaction status {transactionStatusId} doesn't exist.");
+        
         if (!await userRepo.UserExistsAsync(buyerId))
             inputErrors.Add($"Buyer (user with id {buyerId}) doesn't exist.");
+        
         if (!await userRepo.UserExistsAsync(sellerId))
             inputErrors.Add($"Seller (user with id {sellerId}) doesn't exist.");
+        
         return inputErrors;
     }
 }
