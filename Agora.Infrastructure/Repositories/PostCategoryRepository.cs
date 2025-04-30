@@ -34,4 +34,14 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
     {
         return await context.SaveChangesAsync() > 0;
     }
+    
+    public async Task<bool> PostCategoryExistsAsync(long id)
+    {
+        return await context.PostCategories.AnyAsync(pc => pc.Id == id);
+    }
+
+    public async Task<bool> NameExistsAsync(string name)
+    {
+        return await context.PostCategories.AnyAsync(pc => pc.Name == name);
+    }
 }

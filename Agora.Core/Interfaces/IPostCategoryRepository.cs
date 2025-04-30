@@ -9,4 +9,6 @@ public interface IPostCategoryRepository
     void AddPostCategory(PostCategory postCategory);
     void DeletePostCategory(PostCategory postCategory);
     Task<bool> SaveChangesAsync();
+    Task<bool> PostCategoryExistsAsync(long id);
+    Task<bool> NameExistsAsync(string name);
 }

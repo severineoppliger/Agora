@@ -9,4 +9,6 @@ public interface ITransactionStatusRepository
     void AddTransactionStatus(TransactionStatus transactionStatus);
     void DeleteTransactionStatus(TransactionStatus transactionStatus);
     Task<bool> SaveChangesAsync();
+    Task<bool> TransactionStatusExistsAsync(long id);
+    Task<bool> NameExistsAsync(string name);
 }

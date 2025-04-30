@@ -21,7 +21,7 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
     {
         return await context.Transactions
             .Include(t => t.Post)
-                .ThenInclude(post => post.PostCategory)
+                .ThenInclude(post => post!.PostCategory)
             .Include(t => t.TransactionStatus)
             .Include(t => t.Buyer)
             .Include(t => t.Seller)

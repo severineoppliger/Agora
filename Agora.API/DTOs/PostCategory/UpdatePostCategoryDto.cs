@@ -1,6 +1,5 @@
 ﻿namespace Agora.API.DTOs.PostCategory;
 
-public class UpdatePostCategoryDto
+public class UpdatePostCategoryDto : BaseInputPostCategoryDto
 {
-    public required string Name { get; set; }
 }

@@ -9,6 +9,7 @@ public interface IUserRepository
     void AddUser(User user);
     void DeleteUser(User user);
     Task<bool> SaveChangesAsync();
+    Task<bool> UserExistsAsync(long id);
     Task<bool> UsernameExistsAsync(string username);
     Task<bool> EmailExistsAsync(string email);
 }

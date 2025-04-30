@@ -37,4 +37,9 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
     {
         return await context.SaveChangesAsync() > 0;
     }
+
+    public async Task<bool> PostExistsAsync(long id)
+    {
+        return await context.Posts.AnyAsync(p => p.Id == id);
+    }
 }

@@ -1,0 +1,12 @@
+﻿using Agora.Core.Models;
+
+namespace Agora.Core.BusinessRules.Interfaces;
+
+public interface IBusinessRulesValidator
+{
+    public List<string> ValidateUser(User user);
+    public List<string> ValidatePostCategory(PostCategory postCategory);
+    public List<string> ValidatePost(Post post);
+    public List<string> ValidateTransactionStatus(TransactionStatus transactionStatus);
+    public List<string> ValidateTransaction(Transaction transaction);
+}

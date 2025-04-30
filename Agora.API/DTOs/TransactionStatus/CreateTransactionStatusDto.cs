@@ -1,7 +1,5 @@
 ﻿namespace Agora.API.DTOs.TransactionStatus;
 
-public class CreateTransactionStatusDto
+public class CreateTransactionStatusDto : BaseInputTransactionStatusDto
 {
-    public string Name { get; set; } = String.Empty;
-    public bool IsFinal { get; set; }
 }
