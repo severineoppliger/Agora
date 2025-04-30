@@ -41,7 +41,6 @@ public class TransactionsController(
     {
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
-
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
         

@@ -43,7 +43,7 @@ public class TransactionStatusController(
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
         
-        // Transform to the full entity (no business rules associated with transaction status)
+        // Transform to the full entity (no business rule associated with transaction status)
         TransactionStatus transactionStatus = mapper.Map<TransactionStatus>(transactionStatusDto);
         
         // Add to database
