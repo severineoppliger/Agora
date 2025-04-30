@@ -10,6 +10,8 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class PostsController(IPostRepository repo, IMapper mapper) : ControllerBase
 {
+    private const string PostNotFoundMessage = "Post not found.";
+
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts()
     {
@@ -22,9 +24,9 @@ public class PostsController(IPostRepository repo, IMapper mapper) : ControllerB
     {
         Post? post = await repo.GetPostByIdAsync(id);
         
-        if (post == null) return NotFound();
-        
-        return Ok(mapper.Map<PostDetailsDto>(post));
+        return post == null
+            ? NotFound(PostNotFoundMessage)
+            : Ok(mapper.Map<PostDetailsDto>(post));
     }
 
     [HttpPost]
@@ -55,14 +57,12 @@ public class PostsController(IPostRepository repo, IMapper mapper) : ControllerB
     {
         Post? existingPost = await repo.GetPostByIdAsync(id);
 
-        if (existingPost == null) return NotFound();
+        if (existingPost == null) return NotFound(PostNotFoundMessage);
         
         // Apply the updated fields exposed in the DTO to the existing post
         mapper.Map(postDto, existingPost); 
 
-        if (await repo.SaveChangesAsync()) return NoContent();
-
-        return BadRequest("Problem updating the post.");
+        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem updating the post.");
     }
 
     [HttpDelete("{id:long}")]
@@ -72,16 +72,11 @@ public class PostsController(IPostRepository repo, IMapper mapper) : ControllerB
 
         if (post == null)
         {
-            return NotFound();
+            return NotFound(PostNotFoundMessage);
         }
 
         repo.DeletePost(post);
 
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
-
-        return BadRequest("Problem deleting the post.");
+        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem deleting the post.");
     }
 }

@@ -15,7 +15,6 @@ public class PostCategoriesController(
     IInputValidator inputValidator) : ControllerBase
 {
     private const string PostCategoryNotFoundMessage = "Post category not found.";
-
     
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories()
@@ -29,8 +28,9 @@ public class PostCategoriesController(
     {
         PostCategory? postCategory = await repo.GetPostCategoryByIdAsync(id);
 
-        if (postCategory == null) return NotFound(PostCategoryNotFoundMessage);
-        return Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
+        return postCategory == null 
+            ? NotFound(PostCategoryNotFoundMessage) 
+            : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
     [HttpPost]
@@ -84,7 +84,9 @@ public class PostCategoriesController(
         // Apply the updated fields exposed in the DTO to the existing post category
         mapper.Map(postCategoryDto, existingPostCategory);
 
-        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem updating the post category.");
+        return await repo.SaveChangesAsync()
+            ? NoContent()
+            : BadRequest("Problem updating the post category.");
     }
 
     [HttpDelete("{id:long}")]
@@ -99,6 +101,8 @@ public class PostCategoriesController(
 
         repo.DeletePostCategory(postCategory);
 
-        return await repo.SaveChangesAsync() ? NoContent() : BadRequest("Problem deleting the post category");
+        return await repo.SaveChangesAsync()
+            ? NoContent()
+            : BadRequest("Problem deleting the post category");
     }
 }

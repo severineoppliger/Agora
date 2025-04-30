@@ -10,6 +10,8 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class UsersController(IUserRepository repo, IMapper mapper) : ControllerBase
 {
+    private const string UserNotFoundMessage = "User not found.";
+
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
     {
@@ -22,9 +24,9 @@ public class UsersController(IUserRepository repo, IMapper mapper) : ControllerB
     {
         User? user = await repo.GetUserByIdAsync(id);
 
-        if (user == null) return NotFound();
-
-        return Ok(mapper.Map<UserDetailsDto>(user));
+        return user == null
+            ? NotFound(UserNotFoundMessage)
+            : Ok(mapper.Map<UserDetailsDto>(user));
     }
     
     [HttpPost]
@@ -68,16 +70,13 @@ public class UsersController(IUserRepository repo, IMapper mapper) : ControllerB
 
         if (user == null)
         {
-            return NotFound();
+            return NotFound(UserNotFoundMessage);
         }
 
         repo.DeleteUser(user);
 
-        if (await repo.SaveChangesAsync())
-        {
-            return NoContent();
-        }
-
-        return BadRequest("Problem deleting the user.");
+        return await repo.SaveChangesAsync()
+            ? NoContent()
+            : BadRequest("Problem deleting the user.");
     }
 }
