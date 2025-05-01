@@ -13,8 +13,13 @@ public class TransactionStatusConfiguration : IEntityTypeConfiguration<Transacti
         builder.HasKey(t => t.Id);
         
         builder.Property(t => t.Name).IsRequired().HasMaxLength(50);
+        builder.HasIndex(t => t.Name).IsUnique();
+        
+        builder.Property(t => t.Description).IsRequired().HasMaxLength(500);
         
         builder.Property(t => t.IsFinal).IsRequired();
+        
+        builder.Property(t => t.IsSuccess).IsRequired();
         
         builder.HasMany(t => t.Transactions)
             .WithOne(t => t.TransactionStatus)
