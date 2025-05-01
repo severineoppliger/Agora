@@ -5,6 +5,5 @@ public enum PostStatus
     Draft,
     Active,
     InTransaction,
-    Closed,
-    Deleted
+    Closed
 }
