@@ -20,6 +20,9 @@ public class AgoraDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new PostCategoryConfiguration());
         modelBuilder.ApplyConfiguration(new TransactionConfiguration());
         modelBuilder.ApplyConfiguration(new TransactionStatusConfiguration());
+        
+        AgoraDbContextSeed.SeedPostCategories(modelBuilder);
+        AgoraDbContextSeed.SeedTransactionStatus(modelBuilder);
     }
     
 };
