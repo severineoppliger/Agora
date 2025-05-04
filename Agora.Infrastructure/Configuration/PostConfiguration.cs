@@ -26,7 +26,7 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.ToTable( t =>
         {
             t.HasCheckConstraint("CK_Post_Price_Range",
-                "Price >= {ValidationRules.Post.PriceMin} AND Price <= {ValidationRules.Post.PriceMax}");
+                $"Price >= {ValidationRules.Post.PriceMin} AND Price <= {ValidationRules.Post.PriceMax}");
         });
         
         builder.Property(p => p.Type)

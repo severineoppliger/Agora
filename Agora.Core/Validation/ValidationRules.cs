@@ -24,7 +24,7 @@ public class ValidationRules
         public const int TitleMaxLength = 100;
         public const int DescriptionMinLength = 5;
         public const int DescriptionMaxLength = 2000;
-        public const int PriceMin = 1;
+        public const int PriceMin = 0;
         public const int PriceMax = 100000;
     }
 
