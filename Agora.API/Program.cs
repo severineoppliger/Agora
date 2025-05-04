@@ -48,6 +48,22 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json","OpenAPI v1");
     });
     app.MapScalarApiReference();
+    
+    // Populate the database
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+
+    try
+    {
+        var context = services.GetRequiredService<AgoraDbContext>();
+        await context.Database.MigrateAsync();
+        await AgoraDbContextSeed.SeedDevelopmentDataAsync(context);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Error while populating the database in development environment.");
+    }
 }
 
 app.UseHttpsRedirection();

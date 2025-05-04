@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,9 +13,21 @@ public class TransactionStatusConfiguration : IEntityTypeConfiguration<Transacti
 
         builder.HasKey(t => t.Id);
         
-        builder.Property(t => t.Name).IsRequired().HasMaxLength(50);
+        builder.Property(t => t.Name)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.TransactionStatus.NameMaxLength);
+        builder.HasIndex(t => t.Name)
+            .IsUnique();
         
-        builder.Property(t => t.IsFinal).IsRequired();
+        builder.Property(t => t.Description)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.TransactionStatus.DescriptionMaxLength);
+        
+        builder.Property(t => t.IsFinal)
+            .IsRequired();
+        
+        builder.Property(t => t.IsSuccess)
+            .IsRequired();
         
         builder.HasMany(t => t.Transactions)
             .WithOne(t => t.TransactionStatus)

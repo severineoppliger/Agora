@@ -17,10 +17,13 @@ public class BusinessRulesValidator : IBusinessRulesValidator
         // TODO
     }
 
-    public List<string> ValidatePost(Post post)
+    public List<string> ValidatePost(Post post, IList<string> postTitlesOfUser)
     {
-        throw new NotImplementedException();
-        // TODO Add UserId should be the user calling the method itself
+        List<string> businessRulesErrors = new();
+        if (postTitlesOfUser.Contains(post.Title))
+            businessRulesErrors.Add( "User has already posted a post with same title.");
+        // TODO AUTHENTICATION - Add UserId should be the user calling the method itself
+        return businessRulesErrors;
     }
 
     public List<string> ValidateTransactionStatus(TransactionStatus transactionStatus)

@@ -25,10 +25,12 @@ public class BusinessRulesValidationOrchestrator(
         // TODO
     }
 
-    public Task<IList<string>> ValidateAndProcessPostAsync(Post post)
+    public async Task<IList<string>> ValidateAndProcessPostAsync(Post post)
     {
-        throw new NotImplementedException();
-        // TODO
+        IReadOnlyList<Post> postsOfUser = await postRepository.GetAllPostsOfUserAsync(post.UserId);
+        List<string> postTitlesOfUser = postsOfUser.Select(p => p.Title).ToList();
+        
+        return businessRulesValidator.ValidatePost(post, postTitlesOfUser);
     }
 
     public Task<IList<string>> ValidateAndProcessTransactionStatusAsync(TransactionStatus transactionStatus)

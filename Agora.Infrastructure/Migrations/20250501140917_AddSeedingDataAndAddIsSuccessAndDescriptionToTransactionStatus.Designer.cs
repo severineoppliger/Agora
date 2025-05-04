@@ -4,6 +4,7 @@ using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agora.Infrastructure.Migrations
 {
     [DbContext(typeof(AgoraDbContext))]
-    partial class AgoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250501140917_AddSeedingDataAndAddIsSuccessAndDescriptionToTransactionStatus")]
+    partial class AddSeedingDataAndAddIsSuccessAndDescriptionToTransactionStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,18 +49,16 @@ namespace Agora.Infrastructure.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAdd()
@@ -73,10 +74,7 @@ namespace Agora.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_Post_Price_Range", "Price >= 0 AND Price <= 100000");
-                        });
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Agora.Core.Models.PostCategory", b =>
@@ -89,8 +87,8 @@ namespace Agora.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -183,10 +181,7 @@ namespace Agora.Infrastructure.Migrations
 
                     b.HasIndex("TransactionStatusId");
 
-                    b.ToTable("Transactions", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_Transaction_Price_Range", "Price >= 0 AND Price <= 100000");
-                        });
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>

@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,6 +15,11 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 
         builder.Property(t => t.Price)
             .IsRequired();
+        builder.ToTable( t =>
+        {
+            t.HasCheckConstraint("CK_Transaction_Price_Range",
+                $"Price >= {ValidationRules.Transaction.PriceMin} AND Price <= {ValidationRules.Transaction.PriceMax}");
+        });
 
         builder.HasOne(t => t.Post)
             .WithMany(p=>p.Transactions)

@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,15 +13,29 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
 
         builder.HasKey(p => p.Id);
         
-        builder.Property(p => p.Title).IsRequired().HasMaxLength(100);
+        builder.Property(p => p.Title)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.Post.TitleMaxLength);
         
-        builder.Property(p => p.Description).IsRequired().HasMaxLength(2000);
+        builder.Property(p => p.Description)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.Post.DescriptionMaxLength);
         
-        builder.Property(p => p.Price).IsRequired();
+        builder.Property(p => p.Price)
+            .IsRequired();
+        builder.ToTable( t =>
+        {
+            t.HasCheckConstraint("CK_Post_Price_Range",
+                $"Price >= {ValidationRules.Post.PriceMin} AND Price <= {ValidationRules.Post.PriceMax}");
+        });
         
-        builder.Property(p => p.Type).IsRequired();
+        builder.Property(p => p.Type)
+            .HasConversion<string>() // The enum is stored as a string in DB
+            .IsRequired();
         
-        builder.Property(p => p.Status).IsRequired();
+        builder.Property(p => p.Status)
+            .HasConversion<string>()
+            .IsRequired();
 
         builder.HasOne(p => p.PostCategory)
             .WithMany(p => p.Posts)
