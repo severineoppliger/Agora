@@ -76,6 +76,9 @@ public class InputValidator(
         
         if (await transactionStatusRepo.NameExistsAsync(dto.Name))
             inputErrors.Add($"The transaction status name '{dto.Name}' already exists. Name must be unique.");
+        
+        if (dto.IsSuccess & !dto.IsFinal)
+            inputErrors.Add("Transaction status must be final if it's a success.");
 
         return inputErrors;
     }
