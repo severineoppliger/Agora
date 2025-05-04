@@ -72,15 +72,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-try
-{
-    using var scope = app.Services.CreateScope();
-    //TODO complete ! 
-}
-catch (Exception e)
-{
-    Console.WriteLine(e);
-    throw;
-}
-
 app.Run();
