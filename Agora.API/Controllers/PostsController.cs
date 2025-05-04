@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.Orchestrators.Interfaces;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
@@ -13,7 +14,9 @@ namespace Agora.API.Controllers;
 public class PostsController(
     IPostRepository repo,
     IMapper mapper,
-    IInputValidator inputValidator) : ControllerBase
+    IInputValidator inputValidator,
+    IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
+    : ControllerBase
 {
     private const string PostNotFoundMessage = "Post not found.";
 
@@ -46,9 +49,13 @@ public class PostsController(
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
         
-        // Transform to the full entity (no business rule associated with post)
+        // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         post.Status = PostStatus.Draft;
+        
+        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
+        if (businessRulesErrors.Count != 0)
+            return BadRequest(new { Errors = businessRulesErrors });
         
         // Add to database
         repo.AddPost(post);
@@ -85,6 +92,12 @@ public class PostsController(
         List<string> inputErrors = await inputValidator.ValidateInputPostDtoAsync(postDto);
         if (inputErrors.Count != 0)
             return BadRequest(new { Errors = inputErrors });
+        
+        // Transform to the full entity and validate with business rules
+        Post post = mapper.Map<Post>(postDto);
+        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
+        if (businessRulesErrors.Count != 0)
+            return BadRequest(new { Errors = businessRulesErrors });
         
         // Apply the updated fields exposed in the DTO to the existing post
         mapper.Map(postDto, existingPost); 
