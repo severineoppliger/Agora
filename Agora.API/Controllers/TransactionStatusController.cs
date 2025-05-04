@@ -36,7 +36,9 @@ public class TransactionStatusController(
     [HttpPost]
     public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
+        // Cleaning
         transactionStatusDto.Name = transactionStatusDto.Name.Trim();
+        transactionStatusDto.Description = transactionStatusDto.Description.Trim();
         
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionStatusDtoAsync(transactionStatusDto);
@@ -69,8 +71,10 @@ public class TransactionStatusController(
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
     {
+        // Cleaning
         transactionStatusDto.Name = transactionStatusDto.Name.Trim();
-
+        transactionStatusDto.Description = transactionStatusDto.Description.Trim();
+        
         // Retrieve the existing transaction status
         TransactionStatus? existingTransactionStatus = await repo.GetTransactionStatusByIdAsync(id);
         if (existingTransactionStatus == null) return NotFound(TransactionStatusNotFoundMessage);
