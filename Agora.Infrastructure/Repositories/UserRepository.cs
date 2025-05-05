@@ -7,9 +7,20 @@ namespace Agora.Infrastructure.Repositories;
 
 public class UserRepository(AgoraDbContext context): IUserRepository
 {
-    public async Task<IReadOnlyList<User>> GetAllUsersAsync()
+    public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter)
     {
-        return await context.Users.ToListAsync();
+        IQueryable<User> users = context.Users.AsQueryable();
+        
+        if (!string.IsNullOrWhiteSpace(filter.Username))
+        {
+            users = users.Where(u => u.Username.Contains(filter.Username));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.Email))
+        {
+            users = users.Where(u => u.Email.Contains(filter.Email));
+        }
+        return await users.ToListAsync();
     }
 
     public async Task<User?> GetUserByIdAsync(long id)

@@ -7,9 +7,36 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
-    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync()
+    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter)
     {
-        return await context.Transactions
+        IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
+
+        if (filter.MinPrice.HasValue)
+        {
+            transactions = transactions.Where(t => t.Price >= filter.MinPrice);
+        }
+
+        if (filter.MaxPrice.HasValue)
+        {
+            transactions = transactions.Where(t => t.Price <= filter.MaxPrice);
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.PostTitle))
+        {
+            transactions = transactions.Where(t => t.Post != null && t.Post.Title.Contains(filter.PostTitle));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.TransactionStatusName))
+        {
+            transactions = transactions.Where(t => t.TransactionStatus != null && t.TransactionStatus.Name.Contains(filter.TransactionStatusName));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.UsersInvolvedUsername))
+        {
+            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.Username.Contains(filter.UsersInvolvedUsername) || t.Seller != null && t.Seller.Username.Contains(filter.UsersInvolvedUsername));
+        }
+        
+        return await transactions
             .Include(t => t.Post)
             .Include(t => t.TransactionStatus)
             .Include(t => t.Buyer)

@@ -7,9 +7,16 @@ namespace Agora.Infrastructure.Repositories;
 
 public class PostCategoryRepository(AgoraDbContext context): IPostCategoryRepository
 {
-    public async Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync()
+    public async Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryFilter filter)
     {
-        return await context.PostCategories.ToListAsync();
+        IQueryable<PostCategory> postCategories = context.PostCategories.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(filter.Name))
+        {
+            postCategories = postCategories.Where(pc => pc.Name.Contains(filter.Name));
+        }
+        
+        return await postCategories.ToListAsync();
     }
 
     public async Task<PostCategory?> GetPostCategoryByIdAsync(long id)

@@ -1,6 +1,7 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
@@ -21,9 +22,9 @@ public class PostsController(
     private const string PostNotFoundMessage = "Post not found.";
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts()
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
     {
-        IReadOnlyList<Post> posts = await repo.GetAllPostsAsync();
+        IReadOnlyList<Post> posts = await repo.GetAllPostsAsync(queryParameters);
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
 

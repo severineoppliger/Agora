@@ -4,7 +4,7 @@ namespace Agora.Core.Interfaces;
 
 public interface IPostCategoryRepository
 {
-    Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync();
+    Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryFilter filter);
     Task<PostCategory?> GetPostCategoryByIdAsync(long id);
     void AddPostCategory(PostCategory postCategory);
     void DeletePostCategory(PostCategory postCategory);

@@ -7,9 +7,26 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionStatusRepository(AgoraDbContext context): ITransactionStatusRepository
 {
-    public async Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync()
+    public async Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusFilter filter)
     {
-        return await context.TransactionStatus.ToListAsync();
+        IQueryable<TransactionStatus> transactionStatus = context.TransactionStatus;
+
+        if (!string.IsNullOrWhiteSpace(filter.NameOrDescription))
+        {
+            transactionStatus = transactionStatus.Where(ts => ts.Name.Contains(filter.NameOrDescription) || ts.Description.Contains(filter.NameOrDescription));
+        }
+
+        if (filter.IsFinal.HasValue)
+        {
+            transactionStatus = transactionStatus.Where(ts => ts.IsFinal == filter.IsFinal);
+        }
+
+        if (filter.IsSuccess.HasValue)
+        {
+            transactionStatus = transactionStatus.Where(ts => ts.IsSuccess == filter.IsSuccess);
+        }
+        
+        return await transactionStatus.ToListAsync();
     }
 
     public async Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id)
