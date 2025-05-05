@@ -1,3 +1,4 @@
+using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators;
@@ -7,69 +8,108 @@ using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-builder.Services.AddDbContext<AgoraDbContext>(opt =>
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+try
 {
-    opt.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(10, 11))
-    );
-});
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+// Configure Serilog
+    Log.Logger = new LoggerConfiguration()
+        .ReadFrom.Configuration(builder.Configuration)
+        .Enrich.FromLogContext()
+        .CreateLogger();
 
-// Repositories
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
-builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
-builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
+    builder.Host.UseSerilog();
 
-// Validation
-builder.Services.AddScoped<IInputValidator, InputValidator>();
-builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
-builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
+// Add services to the container.
+    builder.Services.AddTransient<LogActionFilter>();
+    builder.Services.AddControllers(options =>
+    {
+        options.Filters.Add<LogActionFilter>();
+    });
+    builder.Services.AddOpenApi();
+    builder.Services.AddDbContext<AgoraDbContext>((serviceProvider,opt) =>
+    {
+        opt.UseMySql(
+            builder.Configuration.GetConnectionString("DefaultConnection"),
+            new MySqlServerVersion(new Version(10, 11)));
+        IHostEnvironment env = serviceProvider.GetRequiredService<IHostEnvironment>();
+        if (env.IsDevelopment())
+        {
+            opt.EnableSensitiveDataLogging();
+        }
+    });
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    
+    // Inactivate automatic model validation when entering an action method of a controller
+    // This will be taken in charge by LogActionFilter.
+    builder.Services.Configure<ApiBehaviorOptions>(options =>
+    {
+        options.SuppressModelStateInvalidFilter = true;
+    });
 
-var app = builder.Build();
+    // Repositories
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IPostRepository, PostRepository>();
+    builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
+    builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+    builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
+
+    // Validation
+    builder.Services.AddScoped<IInputValidator, InputValidator>();
+    builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
+    builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
+
+    var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.MapOpenApi();
-    app.UseSwaggerUI(options => 
+    if (app.Environment.IsDevelopment())
     {
-        options.SwaggerEndpoint("/openapi/v1.json","OpenAPI v1");
-    });
-    app.MapScalarApiReference();
+        app.UseDeveloperExceptionPage();
+        app.MapOpenApi();
+        app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "OpenAPI v1"); });
+        app.MapScalarApiReference();
+
+        // Populate the database
+        using var scope = app.Services.CreateScope();
+        var services = scope.ServiceProvider;
+
+        try
+        {
+            var context = services.GetRequiredService<AgoraDbContext>();
+            await context.Database.MigrateAsync();
+            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context);
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "Error while populating the database in development environment.");
+        }
+    }
+
+    app.UseSerilogRequestLogging(); 
     
-    // Populate the database
-    using var scope = app.Services.CreateScope();
-    var services = scope.ServiceProvider;
+    app.UseHttpsRedirection();
 
-    try
-    {
-        var context = services.GetRequiredService<AgoraDbContext>();
-        await context.Database.MigrateAsync();
-        await AgoraDbContextSeed.SeedDevelopmentDataAsync(context);
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Error while populating the database in development environment.");
-    }
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application start-up failed");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

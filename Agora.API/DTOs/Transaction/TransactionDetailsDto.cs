@@ -12,4 +12,16 @@ public class TransactionDetailsDto
     public string SellerUsername { get; set; } = String.Empty;
     public DateTime CreatedAt { get; set; }
     public DateTime? CompletedAt { get; set; }
+    
+    public override string ToString()
+    {
+        return $"Id: {Id}, " +
+               $"Price: {Price}, " +
+               $"Related post id: {Post.Id}, " +
+               $"Transaction status: {TransactionStatusName}, " +
+               $"Buyer username: {BuyerUsername}, " +
+               $"Seller username: {SellerUsername}, " +
+               $"CreatedAt: {CreatedAt:yyyy-MM-dd HH:mm:ss}, " +
+               $"CompletedAt: {CompletedAt:yyyy-MM-dd HH:mm:ss}";
+    }
 }

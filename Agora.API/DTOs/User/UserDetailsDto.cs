@@ -15,4 +15,12 @@ public class UserDetailsDto
     public List<PostSummaryDto> Posts { get; set; } = new();
     public List<TransactionSummaryDto> TransactionsAsBuyer { get; set; } = new();
     public List<TransactionSummaryDto> TransactionsAsSeller { get; set; } = new();
+    
+    public override string ToString()
+    {
+        return $"Id: {Id}, Username: {Username}, Email: {Email}, Credit: {Credit}, " +
+               $"CreatedAt: {CreatedAt:yyyy-MM-dd HH:mm:ss}, LastLoginAt: {LastLoginAt:yyyy-MM-dd HH:mm:ss}, " +
+               $"Nb of posts: {Posts.Count}, Nb of transactions as buyer: {TransactionsAsBuyer.Count}, " +
+               $"Nb of transactions as seller: {TransactionsAsSeller.Count}";
+    }
 }
