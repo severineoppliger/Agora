@@ -7,4 +7,9 @@ public class PostCategoryDetailsDto
     public long Id { get; set; }
     public string Name { get; set; } = String.Empty;
     public List<PostSummaryDto> Posts { get; set; } = new();
+    
+    public override string ToString()
+    {
+        return $"Id: {Id}, Name: {Name}, Nb of Posts: {Posts.Count}";
+    }
 }

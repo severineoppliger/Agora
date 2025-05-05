@@ -16,4 +16,9 @@ public class PostDetailsDto
     public DateTime? UpdatedAt { get; set; }
     
     public List<TransactionSummaryDto> Transactions { get; set; } = new();
+    
+    public override string ToString()
+    {
+        return $"Id: {Id}, Title: {Title}, Description: {Description}, CreatedAt: {CreatedAt:yyyy-MM-dd HH:mm:ss}";
+    }
 }
