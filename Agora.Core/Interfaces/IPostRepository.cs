@@ -11,4 +11,6 @@ public interface IPostRepository
     void DeletePost(Post post);
     Task<bool> SaveChangesAsync();
     Task<bool> PostExistsAsync(long id);
+    IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostFilter queryParams);
+
 }

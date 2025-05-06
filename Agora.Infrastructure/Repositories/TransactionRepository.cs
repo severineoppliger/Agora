@@ -36,6 +36,8 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             transactions = transactions.Where(t => t.Buyer != null && t.Buyer.Username.Contains(filter.UsersInvolvedUsername) || t.Seller != null && t.Seller.Username.Contains(filter.UsersInvolvedUsername));
         }
         
+        transactions = ApplySorting(transactions, filter);
+        
         return await transactions
             .Include(t => t.Post)
             .Include(t => t.TransactionStatus)
@@ -68,5 +70,19 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
+    }
+
+    public IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionFilter queryParams)
+    {
+        query = queryParams.SortBy?.ToLower() switch
+        {
+            "id" => queryParams.SortDesc ? query.OrderByDescending(t => t.Id) : query.OrderBy(t => t.Id),
+            "price" => queryParams.SortDesc ? query.OrderByDescending(t => t.Price) : query.OrderBy(t => t.Price),
+            "transactionstatus" => queryParams.SortDesc ? query.OrderByDescending(t => t.TransactionStatusId) : query.OrderBy(t => t.TransactionStatusId),
+            "buyer" => queryParams.SortDesc ? query.OrderByDescending(t => t.Buyer!.Username) : query.OrderBy(t => t.Buyer!.Username),
+            "seller" => queryParams.SortDesc ? query.OrderByDescending(t => t.Seller!.Username) : query.OrderBy(t => t.Seller!.Username),
+            _ => query.OrderBy(t => t.Id)
+        };
+        return query;
     }
 }

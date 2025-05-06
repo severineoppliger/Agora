@@ -11,4 +11,5 @@ public interface IPostCategoryRepository
     Task<bool> SaveChangesAsync();
     Task<bool> PostCategoryExistsAsync(long id);
     Task<bool> NameExistsAsync(string name);
+    IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryFilter queryParams);
 }

@@ -11,4 +11,5 @@ public interface ITransactionStatusRepository
     Task<bool> SaveChangesAsync();
     Task<bool> TransactionStatusExistsAsync(long id);
     Task<bool> NameExistsAsync(string name);
+    IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusFilter queryParams);
 }

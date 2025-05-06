@@ -26,6 +26,8 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
             transactionStatus = transactionStatus.Where(ts => ts.IsSuccess == filter.IsSuccess);
         }
         
+        transactionStatus = ApplySorting(transactionStatus, filter);
+        
         return await transactionStatus.ToListAsync();
     }
 
@@ -59,5 +61,17 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
     public Task<bool> NameExistsAsync(string name)
     {
         return context.TransactionStatus.AnyAsync(ts => ts.Name == name);
+    }
+
+    public IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusFilter queryParams)
+    {
+        query = queryParams.SortBy?.ToLower() switch
+        {
+            "id" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.Id) : query.OrderBy(ts => ts.Id),
+            "name" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.Name) : query.OrderBy(ts => ts.Name),
+            "isfinal" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.IsFinal) : query.OrderBy(ts => ts.IsFinal),
+            _ => query.OrderBy(u => u.Id)
+        };
+        return query;
     }
 }

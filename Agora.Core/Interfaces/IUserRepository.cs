@@ -12,4 +12,5 @@ public interface IUserRepository
     Task<bool> UserExistsAsync(long id);
     Task<bool> UsernameExistsAsync(string username);
     Task<bool> EmailExistsAsync(string email);
+    IQueryable<User> ApplySorting(IQueryable<User> query, IUserFilter queryParams);
 }

@@ -16,6 +16,8 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
             postCategories = postCategories.Where(pc => pc.Name.Contains(filter.Name));
         }
         
+        postCategories = ApplySorting(postCategories, filter);
+        
         return await postCategories.ToListAsync();
     }
 
@@ -50,5 +52,16 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
     public async Task<bool> NameExistsAsync(string name)
     {
         return await context.PostCategories.AnyAsync(pc => pc.Name == name);
+    }
+
+    public IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryFilter queryParams)
+    {
+        query = queryParams.SortBy?.ToLower() switch
+        {
+            "id" => queryParams.SortDesc ? query.OrderByDescending(pc => pc.Id) : query.OrderBy(pc => pc.Id),
+            "name" => queryParams.SortDesc ? query.OrderByDescending(pc => pc.Name) : query.OrderBy(pc => pc.Name), 
+            _ => query.OrderBy(p => p.Id)
+        };
+        return query;
     }
 }

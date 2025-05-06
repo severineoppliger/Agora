@@ -9,4 +9,5 @@ public interface ITransactionRepository
     void AddTransaction(Transaction transaction);
     void DeleteTransaction(Transaction transaction);
     Task<bool> SaveChangesAsync();
+    IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionFilter queryParams);
 }
