@@ -4,9 +4,10 @@ namespace Agora.Core.Interfaces;
 
 public interface ITransactionRepository
 {
-    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync();
+    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter);
     Task<Transaction?> GetTransactionByIdAsync(long id);
     void AddTransaction(Transaction transaction);
     void DeleteTransaction(Transaction transaction);
     Task<bool> SaveChangesAsync();
+    IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionFilter queryParams);
 }

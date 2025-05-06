@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.TransactionStatus;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -17,9 +18,9 @@ public class TransactionStatusController(
     private const string TransactionStatusNotFoundMessage = "Transaction status not found.";
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus()
+    public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus([FromQuery] TransactionStatusQueryParameters queryParameters)
     {
-        IReadOnlyList <TransactionStatus> transactionStatusList = await repo.GetAllTransactionStatusAsync();
+        IReadOnlyList <TransactionStatus> transactionStatusList = await repo.GetAllTransactionStatusAsync(queryParameters);
         return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactionStatusList));
     }
 

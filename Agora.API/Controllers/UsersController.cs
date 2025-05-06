@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -17,9 +18,9 @@ public class UsersController(
     private const string UserNotFoundMessage = "User not found.";
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
+    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers([FromQuery] UserQueryParameters queryParameters)
     {
-        IReadOnlyList<User> users = await repo.GetAllUsersAsync();
+        IReadOnlyList<User> users = await repo.GetAllUsersAsync(queryParameters);
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));
     }
 

@@ -4,7 +4,7 @@ namespace Agora.Core.Interfaces;
 
 public interface IUserRepository
 {
-    Task<IReadOnlyList<User>> GetAllUsersAsync();
+    Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter);
     Task<User?> GetUserByIdAsync(long id);
     void AddUser(User user);
     void DeleteUser(User user);
@@ -12,4 +12,5 @@ public interface IUserRepository
     Task<bool> UserExistsAsync(long id);
     Task<bool> UsernameExistsAsync(string username);
     Task<bool> EmailExistsAsync(string email);
+    IQueryable<User> ApplySorting(IQueryable<User> query, IUserFilter queryParams);
 }

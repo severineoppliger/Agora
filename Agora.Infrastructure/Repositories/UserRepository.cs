@@ -7,9 +7,23 @@ namespace Agora.Infrastructure.Repositories;
 
 public class UserRepository(AgoraDbContext context): IUserRepository
 {
-    public async Task<IReadOnlyList<User>> GetAllUsersAsync()
+    public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter)
     {
-        return await context.Users.ToListAsync();
+        IQueryable<User> users = context.Users.AsQueryable();
+        
+        if (!string.IsNullOrWhiteSpace(filter.Username))
+        {
+            users = users.Where(u => u.Username.Contains(filter.Username));
+        }
+
+        if (!string.IsNullOrWhiteSpace(filter.Email))
+        {
+            users = users.Where(u => u.Email.Contains(filter.Email));
+        }
+        
+        users = ApplySorting(users, filter);
+        
+        return await users.ToListAsync();
     }
 
     public async Task<User?> GetUserByIdAsync(long id)
@@ -51,5 +65,18 @@ public class UserRepository(AgoraDbContext context): IUserRepository
     {
         string normalizedInputEmail = email.Trim().ToLower();
         return await context.Users.AnyAsync(u => u.Username.ToLower().Equals(normalizedInputEmail));
+    }
+
+    public IQueryable<User> ApplySorting(IQueryable<User> query, IUserFilter queryParams)
+    {
+        query = queryParams.SortBy?.ToLower() switch
+        {
+            "id" => queryParams.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
+            "username" => queryParams.SortDesc ? query.OrderByDescending(u => u.Username) : query.OrderBy(u => u.Username),
+            "email" => queryParams.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
+            "credit" => queryParams.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
+            _ => query.OrderBy(u => u.Username)
+        };
+        return query;
     }
 }

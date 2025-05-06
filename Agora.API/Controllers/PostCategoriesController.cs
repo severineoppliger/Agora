@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.PostCategory;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -17,9 +18,9 @@ public class PostCategoriesController(
     private const string PostCategoryNotFoundMessage = "Post category not found.";
     
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories()
+    public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories([FromQuery] PostCategoryQueryParameters queryParameters)
     {
-        IReadOnlyList<PostCategory> postsCategories = await repo.GetAllPostCategoriesAsync();
+        IReadOnlyList<PostCategory> postsCategories = await repo.GetAllPostCategoriesAsync(queryParameters);
         return Ok(mapper.Map<IReadOnlyList<PostCategorySummaryDto>>(postsCategories));
     }
 
