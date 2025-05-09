@@ -43,13 +43,17 @@ public class TransactionsController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
         
         // Transform to the full entity and validate with business rules
         Transaction transaction = mapper.Map<Transaction>(transactionDto);
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessTransactionAsync(transaction);
         if (businessRulesErrors.Count != 0)
+        {
             return BadRequest(new { Errors = businessRulesErrors });
+        }
         
         // Add to database
         repo.AddTransaction(transaction);
@@ -76,18 +80,25 @@ public class TransactionsController(
     {
         // Retrieve the existing transaction
         Transaction? existingTransaction = await repo.GetTransactionByIdAsync(id);
-        if (existingTransaction == null) return NotFound(TransactionNotFoundMessage);
+        if (existingTransaction == null)
+        {
+            return NotFound(TransactionNotFoundMessage);
+        }
         
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
         
         // Transform to the full entity and validate with business rules
         Transaction transaction = mapper.Map<Transaction>(transactionDto);
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessTransactionAsync(transaction);
         if (businessRulesErrors.Count != 0)
+        {
             return BadRequest(new { Errors = businessRulesErrors });
+        }
         
         // Apply the updated fields exposed in the DTO to the existing transaction
         mapper.Map(transactionDto, existingTransaction);

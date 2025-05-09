@@ -48,16 +48,20 @@ public class PostsController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostDtoAsync(postDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
-        
+        }
+
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         post.Status = PostStatus.Draft;
         
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
         if (businessRulesErrors.Count != 0)
+        {
             return BadRequest(new { Errors = businessRulesErrors });
-        
+        }
+
         // Add to database
         repo.AddPost(post);
         
@@ -87,19 +91,26 @@ public class PostsController(
         
         // Retrieve the existing post
         Post? existingPost = await repo.GetPostByIdAsync(id);
-        if (existingPost == null) return NotFound(PostNotFoundMessage);
+        if (existingPost == null)
+        {
+            return NotFound(PostNotFoundMessage);
+        }
         
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostDtoAsync(postDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
-        
+        }
+
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
         if (businessRulesErrors.Count != 0)
+        {
             return BadRequest(new { Errors = businessRulesErrors });
-        
+        }
+
         // Apply the updated fields exposed in the DTO to the existing post
         mapper.Map(postDto, existingPost); 
 
@@ -114,8 +125,10 @@ public class PostsController(
         Post? post = await repo.GetPostByIdAsync(id);
 
         if (post == null)
+        {
             return NotFound(PostNotFoundMessage);
-        
+        }
+
         repo.DeletePost(post);
 
         return await repo.SaveChangesAsync() 

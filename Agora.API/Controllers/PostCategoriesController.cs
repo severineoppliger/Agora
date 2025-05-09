@@ -43,7 +43,9 @@ public class PostCategoriesController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
 
         // Transform to the full entity (no business rule associated with post category)
         PostCategory postCategory = mapper.Map<PostCategory>(postCategoryDto);
@@ -77,13 +79,18 @@ public class PostCategoriesController(
         
         // Retrieve the existing post category
         PostCategory? existingPostCategory = await repo.GetPostCategoryByIdAsync(id);
-        if (existingPostCategory == null) return NotFound(PostCategoryNotFoundMessage);
+        if (existingPostCategory == null)
+        {
+            return NotFound(PostCategoryNotFoundMessage);
+        }
 
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto, existingPostCategory.Name);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
-        
+        }
+
         // Apply the updated fields exposed in the DTO to the existing post category
         mapper.Map(postCategoryDto, existingPostCategory);
 

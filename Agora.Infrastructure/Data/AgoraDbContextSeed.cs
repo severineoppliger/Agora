@@ -99,9 +99,18 @@ public class AgoraDbContextSeed
 
     public static async Task SeedDevelopmentDataAsync(AgoraDbContext context)
     {
-        if (!context.Users.Any()) await SeedUsers(context);
-        if (!context.Posts.Any()) await SeedPosts(context);
-        if (!context.Transactions.Any()) await SeedTransactions(context);
+        if (!context.Users.Any())
+        {
+            await SeedUsers(context);
+        }
+        if (!context.Posts.Any())
+        {
+            await SeedPosts(context);
+        }
+        if (!context.Transactions.Any())
+        {
+            await SeedTransactions(context);
+        }
     }
 
 

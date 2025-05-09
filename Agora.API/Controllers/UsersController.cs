@@ -45,7 +45,9 @@ public class UsersController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputUserDtoAsync(userDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
         
         // Transform to the full entity (no business rule associated with user)
         User user = mapper.Map<User>(userDto);

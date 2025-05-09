@@ -20,10 +20,14 @@ public class InputValidator(
         List<string> inputErrors = new();
 
         if (await userRepo.UsernameExistsAsync(dto.Username))
+        {
             inputErrors.Add($"The username '{dto.Username}' is already taken. Username must be unique.");
+        }
         
         if (await userRepo.EmailExistsAsync(dto.Email))
+        {
             inputErrors.Add($"An account with the email '{dto.Email}' already exists. Email must be unique.");
+        }
         
         return inputErrors;
         // TODO Implement verification that the password is complex enough
@@ -40,7 +44,9 @@ public class InputValidator(
         }
         
         if (await postCategoryRepo.NameExistsAsync(dto.Name))
+        {
             inputErrors.Add($"The post category name '{dto.Name}' already exists. Name must be unique.");
+        }
 
         return inputErrors;
     }
@@ -53,13 +59,19 @@ public class InputValidator(
         List<string> inputErrors = new();
         
         if (!Enum.TryParse<PostType>(type, true, out _))
+        {
             inputErrors.Add($"Post type '{type}' is invalid.");
+        }
         
         if (dto is UpdatePostDto updatePostDto && !Enum.TryParse<PostStatus>(updatePostDto.Status, true, out _))
+        {
             inputErrors.Add($"Post status '{type}' is invalid.");
+        }
             
         if (!await postCategoryRepo.PostCategoryExistsAsync(postCategoryId))
+        {
             inputErrors.Add($"Related post category {postCategoryId} doesn't exist.");
+        }
 
         return inputErrors;
     }
@@ -75,10 +87,14 @@ public class InputValidator(
         }
         
         if (await transactionStatusRepo.NameExistsAsync(dto.Name))
+        {
             inputErrors.Add($"The transaction status name '{dto.Name}' already exists. Name must be unique.");
+        }
         
         if (dto.IsSuccess & !dto.IsFinal)
+        {
             inputErrors.Add("Transaction status must be final if it's a success.");
+        }
 
         return inputErrors;
     }
@@ -90,16 +106,24 @@ public class InputValidator(
         List<string> inputErrors = new();
         
         if (postId != null && !await postRepo.PostExistsAsync(postId.Value))
+        {
             inputErrors.Add($"Related post {postId} doesn't exist.");
+        }
         
         if (!await transactionStatusRepo.TransactionStatusExistsAsync(transactionStatusId))
+        {
             inputErrors.Add($"Related transaction status {transactionStatusId} doesn't exist.");
+        }
         
         if (!await userRepo.UserExistsAsync(buyerId))
+        {
             inputErrors.Add($"Buyer (user with id {buyerId}) doesn't exist.");
+        }
         
         if (!await userRepo.UserExistsAsync(sellerId))
+        {
             inputErrors.Add($"Seller (user with id {sellerId}) doesn't exist.");
+        }
         
         return inputErrors;
     }
