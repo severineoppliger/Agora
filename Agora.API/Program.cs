@@ -74,6 +74,9 @@ try
     builder.Services.AddIdentityApiEndpoints<AppUser>()
         .AddEntityFrameworkStores<AgoraDbContext>();
     
+    // Cross-Origin Resource Sharing
+    builder.Services.AddCors();
+    
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -105,10 +108,13 @@ try
     
     app.UseHttpsRedirection();
 
+    app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+        .WithOrigins("http://localhost:4200", "https://localhost:4200"));
+    
     app.UseAuthorization();
 
     app.MapControllers();
-    app.MapIdentityApi<AppUser>();
+    app.MapGroup("api").MapIdentityApi<AppUser>();
 
     app.Run();
 }
