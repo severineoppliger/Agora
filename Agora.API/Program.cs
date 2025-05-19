@@ -6,6 +6,7 @@ using Agora.API.Orchestrators.Interfaces;
 using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
+using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -63,11 +64,16 @@ try
     builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
     builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
 
-    // Validation
+    // Data validation
     builder.Services.AddScoped<IInputValidator, InputValidator>();
     builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
 
+    // Authentication and authorization
+    builder.Services.AddAuthorization();
+    builder.Services.AddIdentityApiEndpoints<AppUser>()
+        .AddEntityFrameworkStores<AgoraDbContext>();
+    
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -102,12 +108,13 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
+    app.MapIdentityApi<AppUser>();
 
     app.Run();
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Application start-up failed");
+    Log.Fatal(ex, "Application start-up failed: {message}", ex.Message);
 }
 finally
 {
