@@ -5,18 +5,25 @@ namespace Agora.API.DTOs.Post;
 
 public abstract class BaseInputPostDto
 {
+    [Required]
     [NotEmptyOrWhitespace]
     [MinLength(ValidationRules.Post.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
     [MaxLength(ValidationRules.Post.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
-    public required string Title { get; set; }
+    public string Title { get; set; } = String.Empty;
     
+    [Required]
     [NotEmptyOrWhitespace]
     [MinLength(ValidationRules.Post.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
     [MaxLength(ValidationRules.Post.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
-    public required string Description { get; set; }
+    public string Description { get; set; } = String.Empty;
     
+    [Required]
     [Range(ValidationRules.Post.PriceMin, ValidationRules.Post.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
-    public required int Price { get; set; }
-    public required string Type { get; set; }
-    public required long PostCategoryId { get; set; }
+    public int Price { get; set; }
+    
+    [Required]
+    public string Type { get; set; } = String.Empty;
+    
+    [Required]
+    public long PostCategoryId { get; set; }
 }

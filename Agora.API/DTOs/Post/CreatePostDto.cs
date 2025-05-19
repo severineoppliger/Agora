@@ -1,6 +1,9 @@
-﻿namespace Agora.API.DTOs.Post;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Agora.API.DTOs.Post;
 
 public class CreatePostDto : BaseInputPostDto
 {
-    public required long UserId { get; set; }
+    [Required]
+    public long UserId { get; set; }
 }
