@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Agora.API.DTOs.AppUser;
+namespace Agora.API.DTOs.Account;
 
 public class RegisterDto
 {
     [Required]
-    public string Username { get; set; } = String.Empty;
+    public string UserName { get; set; } = String.Empty;
     
     [Required]
     [EmailAddress]
