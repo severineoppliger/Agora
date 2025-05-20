@@ -5,5 +5,5 @@ namespace Agora.API.DTOs.Post;
 public class CreatePostDto : BaseInputPostDto
 {
     [Required]
-    public long UserId { get; set; }
+    public string UserId { get; set; } = String.Empty;
 }

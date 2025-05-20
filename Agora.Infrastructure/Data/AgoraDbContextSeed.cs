@@ -1,10 +1,11 @@
 ﻿using Agora.Core.Enums;
 using Agora.Core.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Data;
 
-public class AgoraDbContextSeed
+public class AgoraDbContextSeed()
 {
     internal static void SeedPostCategories(ModelBuilder modelBuilder)
     {
@@ -97,11 +98,11 @@ public class AgoraDbContextSeed
         );
     }
 
-    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context)
+    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         if (!context.Users.Any())
         {
-            await SeedUsers(context);
+            await SeedUsers(context, userManager, roleManager);
         }
         if (!context.Posts.Any())
         {
@@ -114,45 +115,41 @@ public class AgoraDbContextSeed
     }
 
 
-    private static async Task SeedUsers(AgoraDbContext context)
+    private static async Task SeedUsers(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-        if (!context.Users.Any())
+        var users = new List<(string Id, string UserName, string Email, string Password, int Credit)>
         {
-            List<User> users =
-            [
-                new User
-                {
-                    Id = 1,
-                    Username = "admin",
-                    Email = "admin@test.ch",
-                    PasswordHash = "Admin1234$", // TODO Hash le mot de passe
-                    CreatedAt = DateTime.Now,
-                    Credit = 100
-                },
+            ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100),
+            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200),
+            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300),
+        };
 
-                new User
-                {
-                    Id = 2,
-                    Username = "test1",
-                    Email = "test1@test.ch",
-                    PasswordHash = "Test1", // TODO Hash le mot de passe
-                    CreatedAt = DateTime.Now,
-                    Credit = 200
-                },
+        foreach (var (id, userName, email, password, credit) in users)
+        {
+            if (!Guid.TryParse(id, out _))
+            {
+                throw new FormatException($"Invalid user ID format: {id}. Must be a valid GUID.");
+            }
+            
+            // Check if user already exists
+            if (await userManager.FindByIdAsync(id) != null)
+                continue;
 
-                new User
-                {
-                    Id = 3,
-                    Username = "test2",
-                    Email = "test2@test.ch",
-                    PasswordHash = "Test2", // TODO Hash le mot de passe
-                    CreatedAt = DateTime.Now,
-                    Credit = 300
-                }
-            ];
+            var user = new AppUser
+            {
+                Id = id,
+                UserName = userName,
+                Email = email,
+                CreatedAt = DateTime.UtcNow,
+                Credit = credit
+            };
 
-            await context.Users.AddRangeAsync(users);
-            await context.SaveChangesAsync();
+            var result = await userManager.CreateAsync(user, password);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception($"Failed to create user {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            }
         }
     }
 
@@ -171,10 +168,9 @@ public class AgoraDbContextSeed
                     Type = PostType.Offer,
                     Status = PostStatus.InTransaction,
                     PostCategoryId = 1,
-                    UserId = 1,
+                    UserId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
                 },
-
                 new Post
                 {
                     Title = "Annonce 2 de l'utilisateur 2 - Covoiturage",
@@ -183,7 +179,7 @@ public class AgoraDbContextSeed
                     Type = PostType.Request,
                     Status = PostStatus.Draft,
                     PostCategoryId = 2,
-                    UserId = 2,
+                    UserId = "00000000-0000-0000-0000-000000000002",
                     CreatedAt = DateTime.Now
                 },
                 new Post
@@ -194,7 +190,7 @@ public class AgoraDbContextSeed
                     Type = PostType.Offer,
                     Status = PostStatus.Active,
                     PostCategoryId = 3,
-                    UserId = 3,
+                    UserId = "00000000-0000-0000-0000-000000000003",
                     CreatedAt = DateTime.Now
                 }
 
@@ -216,8 +212,8 @@ public class AgoraDbContextSeed
                     Price = 10,
                     PostId = 1,
                     TransactionStatusId = 1,
-                    BuyerId = 2,
-                    SellerId = 1,
+                    BuyerId = "00000000-0000-0000-0000-000000000002",
+                    SellerId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
                 }
             ];

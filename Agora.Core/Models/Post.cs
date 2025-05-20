@@ -13,8 +13,8 @@ public class Post : BaseEntity
     public required long PostCategoryId { get; set; }
     public PostCategory PostCategory { get; set; }
 
-    public required long UserId { get; set; }
-    public User User { get; set; }
+    public required string UserId { get; set; }
+    public AppUser User { get; set; }
 
     public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 

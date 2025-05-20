@@ -10,16 +10,16 @@ public class Transaction : BaseEntity
     public required long TransactionStatusId { get; set; }
     public TransactionStatus? TransactionStatus { get; set; }
     
-    public required long BuyerId { get; set; }
-    public User? Buyer { get; set; }
+    public required string BuyerId { get; set; }
+    public AppUser? Buyer { get; set; }
     
-    public required long SellerId { get; set; }
-    public User? Seller { get; set; }
+    public required string SellerId { get; set; }
+    public AppUser? Seller { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? CompletedAt { get; set; }
     
-    public void Deconstruct(out int price, out Post? post, out long buyerId, out User? buyer, out long sellerId)
+    public void Deconstruct(out int price, out Post? post, out string buyerId, out AppUser? buyer, out string sellerId)
     {
         price = Price;
         post = Post;

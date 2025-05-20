@@ -5,7 +5,7 @@ namespace Agora.Core.BusinessRules;
 
 public class BusinessRulesValidator : IBusinessRulesValidator
 {
-    public List<string> ValidateUser(User user)
+    public List<string> ValidateUser(AppUser user)
     {
         throw new NotImplementedException();
         // TODO
@@ -37,7 +37,7 @@ public class BusinessRulesValidator : IBusinessRulesValidator
 
     public List<string> ValidateTransaction(Transaction transaction)
     {
-        (int price, Post? post, long buyerId, User? buyer, long sellerId) = transaction;
+        (int price, Post? post, string buyerId, AppUser? buyer, string sellerId) = transaction;
         
         List<string> businessRulesErrors = new();
         if (post != null && post.UserId != buyerId && post.UserId != sellerId)

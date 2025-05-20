@@ -44,9 +44,9 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             posts = posts.Where(p => p.PostCategory.Name.Contains(filter.PostCategoryName));
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.Username))
+        if (!string.IsNullOrWhiteSpace(filter.UserName))
         {
-            posts = posts.Where(p => p.User.Username.Contains(filter.Username));
+            posts = posts.Where(p => p.User.UserName!.Contains(filter.UserName));
         }
         
         posts = ApplySorting(posts, filter);
@@ -57,7 +57,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             .ToListAsync();
     }
 
-    public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(long userId)
+    public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string userId)
     {
         IQueryable<Post> posts = context.Posts;
         posts = posts.Where(p => p.UserId == userId);
@@ -104,7 +104,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             "type" => queryParams.SortDesc ? query.OrderByDescending(p => p.Type) : query.OrderBy(p => p.Type),
             "status" => queryParams.SortDesc ? query.OrderByDescending(p => p.Status) : query.OrderBy(p => p.Status),
             "postcategory" => queryParams.SortDesc ? query.OrderByDescending(p => p.PostCategoryId) : query.OrderBy(p => p.PostCategoryId),
-            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.User.Username) : query.OrderBy(p => p.User.Username),
+            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.User.UserName) : query.OrderBy(p => p.User.UserName),
             _ => query.OrderBy(p => p.Id)
         };
         return query;

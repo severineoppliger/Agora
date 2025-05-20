@@ -15,7 +15,6 @@ public class AgoraDbContext(DbContextOptions options) : IdentityDbContext<AppUse
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        // modelBuilder.ApplyConfiguration(new UserConfiguration()); TODO Remove
         modelBuilder.ApplyConfiguration(new PostConfiguration());
         modelBuilder.ApplyConfiguration(new PostCategoryConfiguration());
         modelBuilder.ApplyConfiguration(new TransactionConfiguration());

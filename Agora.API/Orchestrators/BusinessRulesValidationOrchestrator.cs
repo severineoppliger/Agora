@@ -3,6 +3,7 @@ using Agora.API.Orchestrators.Interfaces;
 using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Agora.API.Orchestrators;
 
@@ -10,10 +11,10 @@ namespace Agora.API.Orchestrators;
 public class BusinessRulesValidationOrchestrator(
     IBusinessRulesValidator businessRulesValidator,
     IPostRepository postRepository,
-    IUserRepository userRepository)
+    UserManager<AppUser> userManager)
     : IBusinessRulesValidationOrchestrator
 {
-    public Task<IList<string>> ValidateAndProcessUserAsync(User user)
+    public Task<IList<string>> ValidateAndProcessUserAsync(AppUser user)
     {
         throw new NotImplementedException();
         // TODO
@@ -41,7 +42,7 @@ public class BusinessRulesValidationOrchestrator(
 
     public async Task<IList<string>> ValidateAndProcessTransactionAsync(Transaction transaction)
     {
-        transaction.Buyer ??= await userRepository.GetUserByIdAsync(transaction.BuyerId)
+        transaction.Buyer ??= await userManager.FindByIdAsync(transaction.BuyerId)
             ?? throw new InvalidOperationException($"Buyer (user with id {transaction.BuyerId}) doesn't exist.");
         
         long? postId = transaction.PostId;

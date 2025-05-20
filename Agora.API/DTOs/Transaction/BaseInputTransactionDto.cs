@@ -16,12 +16,12 @@ public abstract class BaseInputTransactionDto
     public long TransactionStatusId { get; set; }
     
     [Required]
-    public long BuyerId { get; set; }
+    public string BuyerId { get; set; }
     
     [Required]
-    public long SellerId { get; set; }
+    public string SellerId { get; set; }
     
-    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out long buyerId, out long sellerId)
+    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out string buyerId, out string sellerId)
     {
         price = Price;
         postId = PostId;

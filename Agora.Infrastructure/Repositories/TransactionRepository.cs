@@ -33,7 +33,7 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
 
         if (!string.IsNullOrWhiteSpace(filter.UsersInvolvedUsername))
         {
-            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.Username.Contains(filter.UsersInvolvedUsername) || t.Seller != null && t.Seller.Username.Contains(filter.UsersInvolvedUsername));
+            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.UserName!.Contains(filter.UsersInvolvedUsername) || t.Seller != null && t.Seller.UserName!.Contains(filter.UsersInvolvedUsername));
         }
         
         transactions = ApplySorting(transactions, filter);
@@ -79,8 +79,8 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             "id" => queryParams.SortDesc ? query.OrderByDescending(t => t.Id) : query.OrderBy(t => t.Id),
             "price" => queryParams.SortDesc ? query.OrderByDescending(t => t.Price) : query.OrderBy(t => t.Price),
             "transactionstatus" => queryParams.SortDesc ? query.OrderByDescending(t => t.TransactionStatusId) : query.OrderBy(t => t.TransactionStatusId),
-            "buyer" => queryParams.SortDesc ? query.OrderByDescending(t => t.Buyer!.Username) : query.OrderBy(t => t.Buyer!.Username),
-            "seller" => queryParams.SortDesc ? query.OrderByDescending(t => t.Seller!.Username) : query.OrderBy(t => t.Seller!.Username),
+            "buyer" => queryParams.SortDesc ? query.OrderByDescending(t => t.Buyer!.UserName) : query.OrderBy(t => t.Buyer!.UserName),
+            "seller" => queryParams.SortDesc ? query.OrderByDescending(t => t.Seller!.UserName) : query.OrderBy(t => t.Seller!.UserName),
             _ => query.OrderBy(t => t.Id)
         };
         return query;
