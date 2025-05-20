@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Agora.API.DTOs.Account;
+namespace Agora.API.DTOs.User;
 
-public class RegisterDto
+public class SignInDto
 {
-    [Required]
-    public string UserName { get; set; } = String.Empty;
-    
     [Required]
     [EmailAddress]
     public string Email { get; set; } = String.Empty;

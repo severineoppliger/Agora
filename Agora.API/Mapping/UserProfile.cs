@@ -1,13 +1,12 @@
-﻿using Agora.API.DTOs.Account;
-using Agora.API.DTOs.AppUser;
+﻿using Agora.API.DTOs.User;
 using Agora.Core.Models;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
 
-public class AccountProfile : Profile
+public class UserProfile : Profile
 {
-    public AccountProfile()
+    public UserProfile()
     {
         CreateMap<RegisterDto, AppUser>()
             .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())  // Hashing is handled in controller
@@ -17,11 +16,11 @@ public class AccountProfile : Profile
 
         CreateMap<SignInDto, AppUser>();
 
-        CreateMap<AppUser, AccountDetailsDto>()
+        CreateMap<AppUser, UserDetailsDto>()
             .ForMember(dest => dest.Posts, opt => opt.MapFrom(src => src.Posts))
             .ForMember(dest => dest.TransactionsAsBuyer, opt => opt.MapFrom(src => src.TransactionsAsBuyer))
             .ForMember(dest => dest.TransactionsAsSeller, opt => opt.MapFrom(src => src.TransactionsAsSeller));
 
-        CreateMap<AppUser, AccountSummaryDto>();
+        CreateMap<AppUser, UserSummaryDto>();
     }
 }

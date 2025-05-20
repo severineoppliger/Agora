@@ -1,12 +1,12 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.DTOs.Transaction;
 
-namespace Agora.API.DTOs.AppUser;
+namespace Agora.API.DTOs.User;
 
-public class AccountDetailsDto
+public class UserDetailsDto
 {
-    public long Id { get; set; }
-    public string Username { get; set; } = String.Empty;
+    public string Id { get; set; } = String.Empty;
+    public string UserName { get; set; } = String.Empty;
     public string Email { get; set; } = String.Empty;
     public int Credit { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -18,7 +18,7 @@ public class AccountDetailsDto
     
     public override string ToString()
     {
-        return $"Id: {Id}, Username: {Username}, Email: {Email}, Credit: {Credit}, " +
+        return $"Id: {Id}, Username: {UserName}, Email: {Email}, Credit: {Credit}, " +
                $"CreatedAt: {CreatedAt:yyyy-MM-dd HH:mm:ss}, LastLoginAt: {LastLoginAt:yyyy-MM-dd HH:mm:ss}, " +
                $"Nb of posts: {Posts.Count}, Nb of transactions as buyer: {TransactionsAsBuyer.Count}, " +
                $"Nb of transactions as seller: {TransactionsAsSeller.Count}";
