@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Enums;
+using Agora.Core.Extensions;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -126,7 +127,7 @@ public class AgoraDbContextSeed()
 
         foreach (var (id, userName, email, password, credit) in users)
         {
-            if (!Guid.TryParse(id, out _))
+            if (!id.IsGuid())
             {
                 throw new FormatException($"Invalid user ID format: {id}. Must be a valid GUID.");
             }

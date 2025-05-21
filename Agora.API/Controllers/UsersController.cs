@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.Core.Extensions;
 using Agora.Core.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +21,6 @@ public class UsersController(
 {
     private const string UserNotFoundMessage = "User not found.";
 
-    [Authorize(Roles = "Admin")]
     [HttpGet("admin")]
     public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
     {
@@ -32,9 +32,9 @@ public class UsersController(
     [HttpGet("admin/{id}", Name = "GetUserById")]
     public async Task<ActionResult<UserDetailsDto>> GetUserByIdAsync([FromRoute] string id)
     {
-        if (!Guid.TryParse(id, out _))
+        if (!id.IsGuid())
         {
-            return BadRequest("Invalid user ID format. Must be a valid GUID.");
+            return BadRequest($"Invalid user ID format: {id}. Must be a valid GUID.");
         }
         
         AppUser? user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
