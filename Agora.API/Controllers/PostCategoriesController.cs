@@ -4,6 +4,7 @@ using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
@@ -34,6 +35,7 @@ public class PostCategoriesController(
             : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<PostCategoryDetailsDto>> CreatePostCategory([FromBody] CreatePostCategoryDto postCategoryDto)
     {
@@ -71,6 +73,7 @@ public class PostCategoriesController(
         return BadRequest("Problem creating the post category.");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdatePostCategory([FromRoute] long id, [FromBody] UpdatePostCategoryDto postCategoryDto)
     {
@@ -99,6 +102,7 @@ public class PostCategoriesController(
             : BadRequest("Problem updating the post category.");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeletePost([FromRoute] long id)
     {

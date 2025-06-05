@@ -43,7 +43,7 @@ public class BusinessRulesValidationOrchestrator(
     public async Task<IList<string>> ValidateAndProcessTransactionAsync(Transaction transaction)
     {
         transaction.Buyer ??= await userManager.FindByIdAsync(transaction.BuyerId)
-            ?? throw new InvalidOperationException($"Buyer (user with id {transaction.BuyerId}) doesn't exist.");
+            ?? throw new ValidationException($"Buyer (user with id {transaction.BuyerId}) doesn't exist.");
         
         long? postId = transaction.PostId;
         if (postId != null)

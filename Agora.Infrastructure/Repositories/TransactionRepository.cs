@@ -7,9 +7,15 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
-    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter)
+    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter, string? userId = null)
     {
         IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
+
+        // A not null userId means the user is not an admin and can only access its own transactions
+        if (!string.IsNullOrEmpty(userId))
+        {
+            transactions = transactions.Where(t => t.BuyerId == userId || t.SellerId == userId);
+        }
 
         if (filter.MinPrice.HasValue)
         {
