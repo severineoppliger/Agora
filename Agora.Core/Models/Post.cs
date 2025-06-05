@@ -8,7 +8,7 @@ public class Post : BaseEntity
     public required string Description { get; set; }
     public required int Price { get; set; }
     public required PostType Type { get; set; }
-    public required PostStatus Status { get; set; } = PostStatus.Draft;
+    public required PostStatus Status { get; set; } = PostStatus.Inactive;
         
     public required long PostCategoryId { get; set; }
     public PostCategory PostCategory { get; set; }

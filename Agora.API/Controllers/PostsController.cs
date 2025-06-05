@@ -65,7 +65,7 @@ public class PostsController(
 
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
-        post.Status = PostStatus.Draft;
+        post.Status = PostStatus.Active;
         post.UserId = currentUserId!;
         
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
