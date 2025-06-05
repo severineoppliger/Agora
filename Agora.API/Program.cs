@@ -9,6 +9,7 @@ using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -58,7 +59,6 @@ try
     });
 
     // Repositories
-    builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IPostRepository, PostRepository>();
     builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
     builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
@@ -84,7 +84,7 @@ try
     {
         app.UseDeveloperExceptionPage();
         app.MapOpenApi();
-        app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "OpenAPI v1"); });
+        app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "Agora API v1"); });
         app.MapScalarApiReference();
 
         // Populate the database
@@ -95,7 +95,9 @@ try
         {
             var context = services.GetRequiredService<AgoraDbContext>();
             await context.Database.MigrateAsync();
-            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context);
+            var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager, roleManager);
         }
         catch (Exception ex)
         {
