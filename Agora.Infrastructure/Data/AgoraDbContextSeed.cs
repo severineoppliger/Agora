@@ -29,7 +29,7 @@ public class AgoraDbContextSeed()
             {
                 Id = 1, Name = "En attente",
                 Description =
-                    "La demande d'échange a été initiée par un des deux utilisateurs mais pas encore acceptée par l'autre utilisateur.",
+                    "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
                 IsFinal = false, IsSuccess = false
             },
             new TransactionStatus
@@ -49,7 +49,8 @@ public class AgoraDbContextSeed()
             new TransactionStatus
             {
                 Id = 4, Name = "Annulée",
-                Description = "La demande d'échange a été annulée par l’un des deux utilisateurs.", IsFinal = false,
+                Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.", 
+                IsFinal = true,
                 IsSuccess = false
             },
             new TransactionStatus
@@ -60,39 +61,33 @@ public class AgoraDbContextSeed()
             },
             new TransactionStatus
             {
-                Id = 6, Name = "En cours", Description = "Le service est en train d’être réalisé.", IsFinal = false,
-                IsSuccess = false
-            },
-            new TransactionStatus
-            {
-                Id = 7, Name = "Partiellement validée",
+                Id = 6, Name = "Partiellement validée",
                 Description =
                     "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
                 IsFinal = false, IsSuccess = false
             },
             new TransactionStatus
             {
-                Id = 8, Name = "Terminée",
+                Id = 7, Name = "Terminée",
                 Description =
-                    "Le service a été effectué et validé par les deux parties. Les points sont transférés de l'acheteur au vendeur.",
+                    "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
                 IsFinal = true, IsSuccess = true
             },
             new TransactionStatus
             {
-                Id = 9, Name = "En litige",
-                Description = "Le service a été effectué mais un désaccord a été signalé sur la transaction.",
+                Id = 8, Name = "En litige",
+                Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
                 IsFinal = false, IsSuccess = false
             },
             new TransactionStatus
             {
-                Id = 10, Name = "Résolue et acceptée",
-                Description =
-                    "Le litige a été résolu et les valeurs actuelles de la transaction ont été acceptées par les deux partis.",
+                Id = 9, Name = "Résolue et acceptée",
+                Description = "La résolution du litige s'est soldé par la validation de la transaction.",
                 IsFinal = true, IsSuccess = true
             },
             new TransactionStatus
             {
-                Id = 11, Name = "Résolue et annulée",
+                Id = 10, Name = "Résolue et annulée",
                 Description = "La résolution du litige s'est soldé par l'annulation de la transaction.", IsFinal = true,
                 IsSuccess = false
             }
@@ -167,7 +162,7 @@ public class AgoraDbContextSeed()
                     Description = "Offre pour un cours d'appui - Annonce avec transaction en cours",
                     Price = 10,
                     Type = PostType.Offer,
-                    Status = PostStatus.InTransaction,
+                    Status = PostStatus.InTransactionActive,
                     PostCategoryId = 1,
                     UserId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
@@ -178,7 +173,7 @@ public class AgoraDbContextSeed()
                     Description = "Demande de covoiturage",
                     Price = 20,
                     Type = PostType.Request,
-                    Status = PostStatus.Draft,
+                    Status = PostStatus.Inactive,
                     PostCategoryId = 2,
                     UserId = "00000000-0000-0000-0000-000000000002",
                     CreatedAt = DateTime.Now
