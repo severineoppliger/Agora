@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.Settings;
 using Agora.Core.Extensions;
 using Agora.Core.Models;
 using AutoMapper;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Agora.API.Controllers;
 
@@ -15,6 +17,7 @@ namespace Agora.API.Controllers;
 public class UsersController(
     SignInManager<AppUser> signInManager,
     UserManager<AppUser> userManager,
+    IOptions<UserSettings> userSettings,
     IMapper mapper,
     IInputValidator inputValidator) : ControllerBase
 
@@ -72,7 +75,7 @@ public class UsersController(
         AppUser user = mapper.Map<AppUser>(registerDto);
 
         user.CreatedAt = DateTime.UtcNow;
-        user.Credit = 0; // TODO initialize the credit to some configurable amount.
+        user.Credit = userSettings.Value.InitialCredit;
         var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
 
         if (!result.Succeeded)
@@ -94,7 +97,7 @@ public class UsersController(
 
         UserDetailsDto createdUserDetailsDto = mapper.Map<UserDetailsDto>(createdUser);
 
-        return CreatedAtRoute(nameof(GetUserByIdAsync), new { id = createdUserDetailsDto.Id }, createdUserDetailsDto);
+        return Ok(createdUserDetailsDto);
     }
 
     [HttpPost("login")]
