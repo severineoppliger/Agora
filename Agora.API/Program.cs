@@ -78,6 +78,7 @@ try
     /*  --------------
        | Repositories |
         -------------- */
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IPostRepository, PostRepository>();
     builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
     builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();

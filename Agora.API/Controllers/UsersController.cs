@@ -3,6 +3,7 @@ using Agora.API.InputValidation.Interfaces;
 using Agora.API.Settings;
 using Agora.Core.Constants;
 using Agora.Core.Extensions;
+using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -17,7 +18,7 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class UsersController(
     SignInManager<AppUser> signInManager,
-    UserManager<AppUser> userManager,
+    IUserRepository repo,
     IOptions<UserSettings> userSettings,
     IMapper mapper,
     IInputValidator inputValidator) : ControllerBase
@@ -28,7 +29,7 @@ public class UsersController(
     [HttpGet("admin")]
     public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
     {
-        IReadOnlyList<AppUser> users = await userManager.Users.ToListAsync();
+        IReadOnlyList<AppUser> users = await repo.GetAllUsersAsync();
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));
     }
     
@@ -40,8 +41,8 @@ public class UsersController(
         {
             return BadRequest($"Invalid user ID format: {id}. Must be a valid GUID.");
         }
-        
-        AppUser? user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        AppUser? user = await repo.GetUserByIdAsync(id);
 
         return user == null
             ? NotFound(UserNotFoundMessage)
@@ -52,9 +53,17 @@ public class UsersController(
     [HttpGet("me")]
     public async Task<ActionResult<UserDetailsDto>> GetCurrentUserAsync()
     {
-        AppUser? user = await userManager.GetUserAsync(User);
+        string? userId = repo.GetUserId(User);
+        if (userId is null)
+        {
+            return BadRequest($"Invalid user ID");
+        }
+
+        AppUser? user = await repo.GetUserByIdAsync(userId);
         
-        return Ok(mapper.Map<UserDetailsDto>(user));
+        return user == null
+            ? NotFound(UserNotFoundMessage)
+            : Ok(mapper.Map<UserDetailsDto>(user));
     }
 
     [HttpPost("register")]
@@ -77,7 +86,7 @@ public class UsersController(
 
         user.CreatedAt = DateTime.UtcNow;
         user.Credit = userSettings.Value.InitialCredit;
-        var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
+        var result = await repo.AddUserAsync(user, registerDto.Password);
 
         if (!result.Succeeded)
         {
@@ -89,7 +98,7 @@ public class UsersController(
             return ValidationProblem();
         }
 
-        AppUser? createdUser = await userManager.FindByEmailAsync(registerDto.Email);
+        AppUser? createdUser = await repo.GetUserByEmailAsync(registerDto.Email);
 
         if (createdUser == null)
         {
@@ -104,7 +113,7 @@ public class UsersController(
     [HttpPost("login")]
     public async Task<ActionResult> Login([FromBody] SignInDto signInDto)
     {
-        AppUser? user = await userManager.FindByEmailAsync(signInDto.Email);
+        AppUser? user = await repo.GetUserByEmailAsync(signInDto.Email);
         if (user == null)
         {
             return Unauthorized("Invalid email or password.");
