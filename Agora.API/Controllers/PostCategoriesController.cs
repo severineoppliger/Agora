@@ -4,6 +4,7 @@ using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
@@ -34,6 +35,7 @@ public class PostCategoriesController(
             : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<PostCategoryDetailsDto>> CreatePostCategory([FromBody] CreatePostCategoryDto postCategoryDto)
     {
@@ -43,7 +45,9 @@ public class PostCategoriesController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
 
         // Transform to the full entity (no business rule associated with post category)
         PostCategory postCategory = mapper.Map<PostCategory>(postCategoryDto);
@@ -69,6 +73,7 @@ public class PostCategoriesController(
         return BadRequest("Problem creating the post category.");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdatePostCategory([FromRoute] long id, [FromBody] UpdatePostCategoryDto postCategoryDto)
     {
@@ -77,13 +82,18 @@ public class PostCategoriesController(
         
         // Retrieve the existing post category
         PostCategory? existingPostCategory = await repo.GetPostCategoryByIdAsync(id);
-        if (existingPostCategory == null) return NotFound(PostCategoryNotFoundMessage);
+        if (existingPostCategory == null)
+        {
+            return NotFound(PostCategoryNotFoundMessage);
+        }
 
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto, existingPostCategory.Name);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
-        
+        }
+
         // Apply the updated fields exposed in the DTO to the existing post category
         mapper.Map(postCategoryDto, existingPostCategory);
 
@@ -92,6 +102,7 @@ public class PostCategoriesController(
             : BadRequest("Problem updating the post category.");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeletePost([FromRoute] long id)
     {

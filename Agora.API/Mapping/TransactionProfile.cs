@@ -11,13 +11,13 @@ public class TransactionProfile : Profile
         CreateMap<Transaction, TransactionSummaryDto>()
             .ForMember(dest => dest.PostTitle, opt => opt.MapFrom(src => src.Post!.Title))
             .ForMember(dest => dest.TransactionStatusName, opt => opt.MapFrom(src => src.TransactionStatus!.Name))
-            .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.Username))
-            .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.Username));
+            .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.UserName))
+            .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.UserName));
         
         CreateMap<Transaction, TransactionDetailsDto>()
             .ForMember(dest => dest.TransactionStatusName, opt => opt.MapFrom(src => src.TransactionStatus!.Name))
-            .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.Username))
-            .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.Username));
+            .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.UserName))
+            .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.UserName));
         
         CreateMap<CreateTransactionDto, Transaction>()
             .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));

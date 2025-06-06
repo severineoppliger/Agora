@@ -2,8 +2,8 @@
 
 public class UserSummaryDto
 {
-    public long Id { get; set; }
-    public string Username { get; set; } = String.Empty;
+    public string Id { get; set; } = String.Empty;
+    public string UserName { get; set; } = String.Empty;
     public string Email { get; set; } = String.Empty;
     public int Credit { get; set; }
 }

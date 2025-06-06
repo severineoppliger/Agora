@@ -8,5 +8,5 @@ public class PostSummaryDto
     public string TypeName { get; set; } = string.Empty;
     public string StatusName { get; set; } = string.Empty;
     public string PostCategoryName { get; set; } = string.Empty;
-    public string Username { get; set; } = string.Empty;
+    public string UserName { get; set; } = string.Empty;
 }

@@ -8,13 +8,13 @@ public class Post : BaseEntity
     public required string Description { get; set; }
     public required int Price { get; set; }
     public required PostType Type { get; set; }
-    public required PostStatus Status { get; set; } = PostStatus.Draft;
+    public required PostStatus Status { get; set; } = PostStatus.Inactive;
         
     public required long PostCategoryId { get; set; }
     public PostCategory PostCategory { get; set; }
 
-    public required long UserId { get; set; }
-    public User User { get; set; }
+    public required string UserId { get; set; }
+    public AppUser User { get; set; }
 
     public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 

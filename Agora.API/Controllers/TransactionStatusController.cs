@@ -4,6 +4,7 @@ using Agora.API.QueryParams;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
@@ -34,6 +35,7 @@ public class TransactionStatusController(
             : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
@@ -44,8 +46,10 @@ public class TransactionStatusController(
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionStatusDtoAsync(transactionStatusDto);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
-        
+        }
+
         // Transform to the full entity (no business rule associated with transaction status)
         TransactionStatus transactionStatus = mapper.Map<TransactionStatus>(transactionStatusDto);
         
@@ -69,6 +73,7 @@ public class TransactionStatusController(
         return BadRequest("Problem creating the transaction status.");
     } 
     
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
     {
@@ -78,12 +83,17 @@ public class TransactionStatusController(
         
         // Retrieve the existing transaction status
         TransactionStatus? existingTransactionStatus = await repo.GetTransactionStatusByIdAsync(id);
-        if (existingTransactionStatus == null) return NotFound(TransactionStatusNotFoundMessage);
+        if (existingTransactionStatus == null)
+        {
+            return NotFound(TransactionStatusNotFoundMessage);
+        }
         
         // Input validation
         List<string> inputErrors = await inputValidator.ValidateInputTransactionStatusDtoAsync(transactionStatusDto, existingTransactionStatus.Name);
         if (inputErrors.Count != 0)
+        {
             return BadRequest(new { Errors = inputErrors });
+        }
         
         // Apply the updated fields exposed in the DTO to the existing transaction status
         mapper.Map(transactionStatusDto, existingTransactionStatus);
@@ -93,6 +103,7 @@ public class TransactionStatusController(
             : BadRequest("Problem updating the transaction status.");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeleteTransactionStatus([FromRoute] long id)
     {

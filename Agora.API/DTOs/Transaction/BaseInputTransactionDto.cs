@@ -5,14 +5,23 @@ namespace Agora.API.DTOs.Transaction;
 
 public abstract class BaseInputTransactionDto
 {
+    [Required]
     [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
-    public required int Price { get; set; }
-    public required long? PostId { get; set; }
-    public required long TransactionStatusId { get; set; }
-    public required long BuyerId { get; set; }
-    public required long SellerId { get; set; }
+    public int Price { get; set; }
     
-    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out long buyerId, out long sellerId)
+    [Required]
+    public long? PostId { get; set; }
+    
+    [Required]
+    public long TransactionStatusId { get; set; }
+    
+    [Required]
+    public string BuyerId { get; set; }
+    
+    [Required]
+    public string SellerId { get; set; }
+    
+    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out string buyerId, out string sellerId)
     {
         price = Price;
         postId = PostId;

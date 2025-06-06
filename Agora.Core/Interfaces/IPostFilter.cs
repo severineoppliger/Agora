@@ -8,7 +8,7 @@ public interface IPostFilter
     public string? TypeName { get; set; }
     public string? StatusName { get; set; }
     public string? PostCategoryName { get; set; }
-    public string? Username { get; set; }
+    public string? UserName { get; set; }
     public string? SortBy { get; set; }
     public bool SortDesc { get; set; }
 }

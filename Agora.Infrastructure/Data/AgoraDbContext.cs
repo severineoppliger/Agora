@@ -1,12 +1,12 @@
 ﻿using Agora.Core.Models;
 using Agora.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Data;
 
-public class AgoraDbContext(DbContextOptions options) : DbContext(options)
+public class AgoraDbContext(DbContextOptions options) : IdentityDbContext<AppUser>(options)
 {
-    public DbSet<User> Users { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<PostCategory> PostCategories { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
@@ -15,7 +15,6 @@ public class AgoraDbContext(DbContextOptions options) : DbContext(options)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new PostConfiguration());
         modelBuilder.ApplyConfiguration(new PostCategoryConfiguration());
         modelBuilder.ApplyConfiguration(new TransactionConfiguration());

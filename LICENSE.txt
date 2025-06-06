@@ -1,0 +1,8 @@
+﻿Copyright (c) 2025 Séverine Oppliger
+
+This software is licensed under a Source Available license:
+
+You are free to use, study, modify, and distribute this software for personal, educational, or non-commercial purposes only.  
+Commercial use, distribution, or sublicensing is strictly prohibited without prior written permission from the author.
+
+For commercial licensing inquiries, please contact: oppliger.severine@gmail.com
