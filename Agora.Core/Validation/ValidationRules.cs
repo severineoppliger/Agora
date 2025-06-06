@@ -2,7 +2,7 @@
 
 public class ValidationRules
 {
-    public static class User
+    public static class AppUser
     {
         public const int UsernameMinLength = 5;
         public const int UsernameMaxLength = 50;

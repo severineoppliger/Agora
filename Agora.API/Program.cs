@@ -8,6 +8,7 @@ using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
+using Agora.Core.Validation;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -99,7 +100,16 @@ try
     builder.Services.AddAuthorization();
     
     // Identity system with roles and store
-    builder.Services.AddIdentityCore<AppUser>()
+    builder.Services.AddIdentityCore<AppUser>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = ValidationRules.AppUser.PasswordMinLength;
+                options.Password.RequiredUniqueChars = 1;
+            }
+        )
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AgoraDbContext>();
     
