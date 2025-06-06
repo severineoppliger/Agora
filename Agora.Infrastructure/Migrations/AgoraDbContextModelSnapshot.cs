@@ -34,6 +34,9 @@ namespace Agora.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("Credit")
                         .HasColumnType("int");
 
@@ -43,6 +46,9 @@ namespace Agora.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastLoginAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -131,8 +137,9 @@ namespace Agora.Infrastructure.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -217,8 +224,9 @@ namespace Agora.Infrastructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("BuyerId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("BuyerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime?>("CompletedAt")
                         .HasColumnType("datetime(6)");
@@ -234,8 +242,9 @@ namespace Agora.Infrastructure.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<long>("SellerId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("SellerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<long>("TransactionStatusId")
                         .HasColumnType("bigint");
@@ -291,7 +300,7 @@ namespace Agora.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            Description = "La demande d'échange a été initiée par un des deux utilisateurs mais pas encore acceptée par l'autre utilisateur.",
+                            Description = "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "En attente"
@@ -315,8 +324,8 @@ namespace Agora.Infrastructure.Migrations
                         new
                         {
                             Id = 4L,
-                            Description = "La demande d'échange a été annulée par l’un des deux utilisateurs.",
-                            IsFinal = false,
+                            Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.",
+                            IsFinal = true,
                             IsSuccess = false,
                             Name = "Annulée"
                         },
@@ -331,14 +340,6 @@ namespace Agora.Infrastructure.Migrations
                         new
                         {
                             Id = 6L,
-                            Description = "Le service est en train d’être réalisé.",
-                            IsFinal = false,
-                            IsSuccess = false,
-                            Name = "En cours"
-                        },
-                        new
-                        {
-                            Id = 7L,
                             Description = "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
                             IsFinal = false,
                             IsSuccess = false,
@@ -346,83 +347,36 @@ namespace Agora.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = 8L,
-                            Description = "Le service a été effectué et validé par les deux parties. Les points sont transférés de l'acheteur au vendeur.",
+                            Id = 7L,
+                            Description = "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Terminée"
                         },
                         new
                         {
-                            Id = 9L,
-                            Description = "Le service a été effectué mais un désaccord a été signalé sur la transaction.",
+                            Id = 8L,
+                            Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "En litige"
                         },
                         new
                         {
-                            Id = 10L,
-                            Description = "Le litige a été résolu et les valeurs actuelles de la transaction ont été acceptées par les deux partis.",
+                            Id = 9L,
+                            Description = "La résolution du litige s'est soldé par la validation de la transaction.",
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Résolue et acceptée"
                         },
                         new
                         {
-                            Id = 11L,
+                            Id = 10L,
                             Description = "La résolution du litige s'est soldé par l'annulation de la transaction.",
                             IsFinal = true,
                             IsSuccess = false,
                             Name = "Résolue et annulée"
                         });
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.User", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<int>("Credit")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("LastLoginAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.HasIndex("Username")
-                        .IsUnique();
-
-                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -565,7 +519,7 @@ namespace Agora.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.User", "User")
+                    b.HasOne("Agora.Core.Models.AppUser", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -578,7 +532,7 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Agora.Core.Models.Transaction", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", "Buyer")
+                    b.HasOne("Agora.Core.Models.AppUser", "Buyer")
                         .WithMany("TransactionsAsBuyer")
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -589,7 +543,7 @@ namespace Agora.Infrastructure.Migrations
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Agora.Core.Models.User", "Seller")
+                    b.HasOne("Agora.Core.Models.AppUser", "Seller")
                         .WithMany("TransactionsAsSeller")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -661,6 +615,15 @@ namespace Agora.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Agora.Core.Models.AppUser", b =>
+                {
+                    b.Navigation("Posts");
+
+                    b.Navigation("TransactionsAsBuyer");
+
+                    b.Navigation("TransactionsAsSeller");
+                });
+
             modelBuilder.Entity("Agora.Core.Models.Post", b =>
                 {
                     b.Navigation("Transactions");
@@ -674,15 +637,6 @@ namespace Agora.Infrastructure.Migrations
             modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>
                 {
                     b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.User", b =>
-                {
-                    b.Navigation("Posts");
-
-                    b.Navigation("TransactionsAsBuyer");
-
-                    b.Navigation("TransactionsAsSeller");
                 });
 #pragma warning restore 612, 618
         }
