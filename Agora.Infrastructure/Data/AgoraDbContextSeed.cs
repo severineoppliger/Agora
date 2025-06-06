@@ -98,7 +98,7 @@ public class AgoraDbContextSeed()
     {
         if (!context.Users.Any())
         {
-            await SeedUsers(context, userManager, roleManager);
+            await SeedUsers(userManager, roleManager);
         }
         if (!context.Posts.Any())
         {
@@ -111,7 +111,7 @@ public class AgoraDbContextSeed()
     }
 
 
-    private static async Task SeedUsers(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+    private static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit)>
         {

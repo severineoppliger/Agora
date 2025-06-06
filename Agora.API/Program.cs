@@ -3,6 +3,7 @@ using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators;
 using Agora.API.Orchestrators.Interfaces;
+using Agora.API.Settings;
 using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces;
@@ -10,6 +11,7 @@ using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -23,7 +25,7 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
-// Configure Serilog
+    // Configure Serilog
     Log.Logger = new LoggerConfiguration()
         .ReadFrom.Configuration(builder.Configuration)
         .Enrich.FromLogContext()
@@ -31,7 +33,7 @@ try
 
     builder.Host.UseSerilog();
 
-// Add services to the container.
+    // Add services to the container.
     builder.Services.AddTransient<LogActionFilter>();
     builder.Services.AddControllers(options =>
     {
@@ -49,7 +51,13 @@ try
             opt.EnableSensitiveDataLogging();
         }
     });
+    
+    builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<AgoraDbContext>());
+    
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    
+    // Configuration settings
+    builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
     
     // Inactivate automatic model validation when entering an action method of a controller
     // This will be taken in charge by LogActionFilter.
@@ -57,7 +65,7 @@ try
     {
         options.SuppressModelStateInvalidFilter = true;
     });
-
+    
     // Repositories
     builder.Services.AddScoped<IPostRepository, PostRepository>();
     builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
@@ -71,15 +79,25 @@ try
 
     // Authentication and authorization
     builder.Services.AddAuthorization();
-    builder.Services.AddIdentityApiEndpoints<AppUser>()
+    
+    builder.Services.AddIdentityCore<AppUser>()
+        .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AgoraDbContext>();
+    
+    builder.Services.AddIdentityApiEndpoints<AppUser>(); // Expose Identity API endpoints
+    
+    builder.Services.AddScoped<RoleManager<IdentityRole>>();
+    builder.Services.AddScoped<UserManager<AppUser>>();
+    builder.Services.AddScoped<SignInManager<AppUser>>(); // For manual logins
+    builder.Services.AddScoped<IUserStore<AppUser>, UserStore<AppUser>>();
+    builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
     
     // Cross-Origin Resource Sharing
     builder.Services.AddCors();
     
     var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+    // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
         app.UseDeveloperExceptionPage();
