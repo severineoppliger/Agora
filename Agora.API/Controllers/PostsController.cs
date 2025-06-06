@@ -66,7 +66,7 @@ public class PostsController(
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         post.Status = PostStatus.Active;
-        post.UserId = currentUserId!;
+        post.OwnerUserId = currentUserId!;
         
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
         if (businessRulesErrors.Count != 0)
@@ -111,7 +111,7 @@ public class PostsController(
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (existingPost.UserId != currentUserId)
+        if (existingPost.OwnerUserId != currentUserId)
         {
             return Unauthorized(NotOwnerMessage);
         }
@@ -152,7 +152,7 @@ public class PostsController(
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (post.UserId != currentUserId)
+        if (post.OwnerUserId != currentUserId)
         {
             return Unauthorized(NotOwnerMessage);
         }

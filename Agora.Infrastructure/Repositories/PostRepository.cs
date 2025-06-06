@@ -46,13 +46,13 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
 
         if (!string.IsNullOrWhiteSpace(filter.UserName))
         {
-            posts = posts.Where(p => p.User.UserName!.Contains(filter.UserName));
+            posts = posts.Where(p => p.Owner.UserName!.Contains(filter.UserName));
         }
         
         posts = ApplySorting(posts, filter);
         
         return await posts
-            .Include(p => p.User)
+            .Include(p => p.Owner)
             .Include(p => p.PostCategory)
             .ToListAsync();
     }
@@ -60,7 +60,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
     public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string userId)
     {
         IQueryable<Post> posts = context.Posts;
-        posts = posts.Where(p => p.UserId == userId);
+        posts = posts.Where(p => p.OwnerUserId == userId);
         return await posts
             .Include(p => p.PostCategory)
             .ToListAsync();
@@ -69,7 +69,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
     public async Task<Post?> GetPostByIdAsync(long id)
     {
         return await context.Posts
-            .Include(p => p.User)
+            .Include(p => p.Owner)
             .Include(p => p.PostCategory)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
@@ -104,7 +104,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             "type" => queryParams.SortDesc ? query.OrderByDescending(p => p.Type) : query.OrderBy(p => p.Type),
             "status" => queryParams.SortDesc ? query.OrderByDescending(p => p.Status) : query.OrderBy(p => p.Status),
             "postcategory" => queryParams.SortDesc ? query.OrderByDescending(p => p.PostCategoryId) : query.OrderBy(p => p.PostCategoryId),
-            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.User.UserName) : query.OrderBy(p => p.User.UserName),
+            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.Owner.UserName) : query.OrderBy(p => p.Owner.UserName),
             _ => query.OrderBy(p => p.Id)
         };
         return query;

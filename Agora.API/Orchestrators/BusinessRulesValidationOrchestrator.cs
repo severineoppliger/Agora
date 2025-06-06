@@ -28,7 +28,7 @@ public class BusinessRulesValidationOrchestrator(
 
     public async Task<IList<string>> ValidateAndProcessPostAsync(Post post)
     {
-        IReadOnlyList<Post> postsOfUser = await postRepository.GetAllPostsOfUserAsync(post.UserId);
+        IReadOnlyList<Post> postsOfUser = await postRepository.GetAllPostsOfUserAsync(post.OwnerUserId);
         List<string> postTitlesOfUser = postsOfUser.Select(p => p.Title).ToList();
         
         return businessRulesValidator.ValidatePost(post, postTitlesOfUser);

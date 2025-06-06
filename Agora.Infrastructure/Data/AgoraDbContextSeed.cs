@@ -188,7 +188,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Offer,
                     Status = PostStatus.InTransactionActive,
                     PostCategoryId = 1,
-                    UserId = "00000000-0000-0000-0000-000000000001",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
                 },
                 new Post
@@ -199,7 +199,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Request,
                     Status = PostStatus.Inactive,
                     PostCategoryId = 2,
-                    UserId = "00000000-0000-0000-0000-000000000002",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000002",
                     CreatedAt = DateTime.Now
                 },
                 new Post
@@ -210,7 +210,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Offer,
                     Status = PostStatus.Active,
                     PostCategoryId = 3,
-                    UserId = "00000000-0000-0000-0000-000000000003",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000003",
                     CreatedAt = DateTime.Now
                 }
 

@@ -13,13 +13,13 @@ public class PostProfile : Profile
             .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.ToString()))
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.PostCategoryName, opt => opt.MapFrom(src => src.PostCategory.Name))
-            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
+            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Owner.UserName));
         
         CreateMap<Post, PostDetailsDto>()
             .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.Type.ToString()))
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.PostCategoryName, opt => opt.MapFrom(src => src.PostCategory.Name))
-            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
+            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Owner.UserName));
         
         CreateMap<CreatePostDto, Post>()
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
