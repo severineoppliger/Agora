@@ -17,6 +17,8 @@ public class Transaction : BaseEntity
     public AppUser? Seller { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateOnly? TransactionDate { get; set; }
     public DateTime? CompletedAt { get; set; }
     
     public void Deconstruct(out int price, out Post? post, out string buyerId, out AppUser? buyer, out string sellerId)

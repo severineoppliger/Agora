@@ -42,6 +42,9 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
             .IsRequired()
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
         
+        builder.Property(t => t.TransactionDate)
+            .HasColumnType("date");
+        
         builder.Property(t => t.CompletedAt)
             .IsRequired(false)
             .HasDefaultValue(null);

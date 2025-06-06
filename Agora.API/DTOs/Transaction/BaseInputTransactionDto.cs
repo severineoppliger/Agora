@@ -20,13 +20,18 @@ public abstract class BaseInputTransactionDto
     
     [Required]
     public string SellerId { get; set; }
+
+    // DateOnly is not supported so we need a Date like "2025-06-06"
+    [DataType(DataType.Date)]
+    public DateTime? TransactionDate { get; set; }
     
-    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out string buyerId, out string sellerId)
+    public void Deconstruct(out int price, out long? postId, out long transactionStatusId, out string buyerId, out string sellerId, out DateTime? transactionDate)
     {
         price = Price;
         postId = PostId;
         transactionStatusId = TransactionStatusId;
         buyerId = BuyerId;
         sellerId = SellerId;
+        transactionDate = TransactionDate;
     }
 }

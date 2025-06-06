@@ -102,7 +102,7 @@ public class InputValidator(
 
     public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
     {
-        (_, long? postId, long transactionStatusId, string buyerId, string sellerId) = dto;
+        (_, long? postId, long transactionStatusId, string buyerId, string sellerId, DateTime? transactionDate) = dto;
         
         List<string> inputErrors = new();
         
