@@ -1,6 +1,7 @@
 ﻿using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Settings;
+using Agora.Core.Constants;
 using Agora.Core.Extensions;
 using Agora.Core.Models;
 using AutoMapper;
@@ -31,7 +32,7 @@ public class UsersController(
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));
     }
     
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("admin/{id}", Name = "GetUserById")]
     public async Task<ActionResult<UserDetailsDto>> GetUserByIdAsync([FromRoute] string id)
     {

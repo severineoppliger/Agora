@@ -3,6 +3,7 @@ using Agora.API.DTOs.Transaction;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
+using Agora.Core.Constants;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -35,7 +36,7 @@ public class TransactionsController(
             return Unauthorized("User ID not found in claims.");
         }
         
-        bool isAdmin = User.IsInRole("Admin");
+        bool isAdmin = User.IsInRole(Roles.Admin);
         
         IReadOnlyList<Transaction> transactions = await repo.GetAllTransactionsAsync(queryParameters, isAdmin ? null : currentUserId);
         return Ok(mapper.Map<IReadOnlyList<TransactionSummaryDto>>(transactions));

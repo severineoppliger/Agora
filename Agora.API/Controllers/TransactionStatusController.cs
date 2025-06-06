@@ -1,6 +1,7 @@
 ﻿using Agora.API.DTOs.TransactionStatus;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.QueryParams;
+using Agora.Core.Constants;
 using Agora.Core.Interfaces;
 using Agora.Core.Models;
 using AutoMapper;
@@ -35,7 +36,7 @@ public class TransactionStatusController(
             : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpPost]
     public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
@@ -73,7 +74,7 @@ public class TransactionStatusController(
         return BadRequest("Problem creating the transaction status.");
     } 
     
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
     {
@@ -103,7 +104,7 @@ public class TransactionStatusController(
             : BadRequest("Problem updating the transaction status.");
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeleteTransactionStatus([FromRoute] long id)
     {

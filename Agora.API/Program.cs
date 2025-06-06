@@ -19,27 +19,43 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Initialize Serilog for early logging before the app is fully built
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
 
 try
 {
-    // Configure Serilog
+    // Configure Serilog with full settings
     Log.Logger = new LoggerConfiguration()
         .ReadFrom.Configuration(builder.Configuration)
         .Enrich.FromLogContext()
         .CreateLogger();
 
     builder.Host.UseSerilog();
+    
+    /*  ====================== 
+       | Service registration |
+        ====================== */
 
-    // Add services to the container.
+    // Custom action filter for logging, for controllers methods
     builder.Services.AddTransient<LogActionFilter>();
     builder.Services.AddControllers(options =>
     {
         options.Filters.Add<LogActionFilter>();
     });
+    
+    // Inactivate automatic model validation when entering an action method of a controller
+    // This will be taken in charge by LogActionFilter.
+    builder.Services.Configure<ApiBehaviorOptions>(options =>
+    {
+        options.SuppressModelStateInvalidFilter = true;
+    });
+    
+    // OpenAPI/Swagger generation using Scalar
     builder.Services.AddOpenApi();
+    
+    // DbContext for DB connection, using MySQL provider (MariaDB is MySQL-compatible)
     builder.Services.AddDbContext<AgoraDbContext>((serviceProvider,opt) =>
     {
         opt.UseMySql(
@@ -51,61 +67,80 @@ try
             opt.EnableSensitiveDataLogging();
         }
     });
-    
     builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<AgoraDbContext>());
     
+    // AutoMapper for DTO-model mapping
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     
     // Configuration settings
     builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
     
-    // Inactivate automatic model validation when entering an action method of a controller
-    // This will be taken in charge by LogActionFilter.
-    builder.Services.Configure<ApiBehaviorOptions>(options =>
-    {
-        options.SuppressModelStateInvalidFilter = true;
-    });
-    
-    // Repositories
+    /*  --------------
+       | Repositories |
+        -------------- */
     builder.Services.AddScoped<IPostRepository, PostRepository>();
     builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
     builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
     builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
 
-    // Data validation
+    
+    /*  -----------------
+       | Data validation |
+        ----------------- */
     builder.Services.AddScoped<IInputValidator, InputValidator>();
     builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
 
-    // Authentication and authorization
+    /*  ---------------------------------
+      | Authentication and authorization |
+        --------------------------------- */
+    // Add ASP.NET Core authorization
     builder.Services.AddAuthorization();
     
+    // Identity system with roles and store
     builder.Services.AddIdentityCore<AppUser>()
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AgoraDbContext>();
     
-    builder.Services.AddIdentityApiEndpoints<AppUser>(); // Expose Identity API endpoints
+    // Expose Identity API endpoints (e.g. /login, /register, etc.)
+    builder.Services.AddIdentityApiEndpoints<AppUser>(); 
     
+    // Identity management services
     builder.Services.AddScoped<RoleManager<IdentityRole>>();
     builder.Services.AddScoped<UserManager<AppUser>>();
     builder.Services.AddScoped<SignInManager<AppUser>>(); // For manual logins
     builder.Services.AddScoped<IUserStore<AppUser>, UserStore<AppUser>>();
     builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
     
-    // Cross-Origin Resource Sharing
+    /* --------------------------------------
+     | Cross-origin ressource sharing (CORS) |
+       -------------------------------------- */
     builder.Services.AddCors();
     
+    /* ============================================================================================================ */
     var app = builder.Build();
 
-    // Configure the HTTP request pipeline.
+    /*  ======================
+       | Middleware pipeline  |
+        ====================== */
+    
+    // Seed the user roles
+    using (var scope = app.Services.CreateScope())
+    {
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        await AgoraDbContextSeed.SeedRolesAsync(roleManager);
+    }
+    
     if (app.Environment.IsDevelopment())
     {
         app.UseDeveloperExceptionPage();
+        
+        // Enable Swagger UI and Scalar API for DEV inspection
         app.MapOpenApi();
         app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "Agora API v1"); });
         app.MapScalarApiReference();
 
-        // Populate the database
+        // Seed the development database
         using var scope = app.Services.CreateScope();
         var services = scope.ServiceProvider;
 
@@ -113,8 +148,10 @@ try
         {
             var context = services.GetRequiredService<AgoraDbContext>();
             await context.Database.MigrateAsync();
+            
             var userManager = services.GetRequiredService<UserManager<AppUser>>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            
             await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager, roleManager);
         }
         catch (Exception ex)
@@ -124,16 +161,19 @@ try
         }
     }
 
+    // Log each HTTP request
     app.UseSerilogRequestLogging(); 
     
     app.UseHttpsRedirection();
 
+    // CORS config: Allows the Angular DEV front-end 
     app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
         .WithOrigins("http://localhost:4200", "https://localhost:4200"));
     
     app.UseAuthorization();
 
     app.MapControllers();
+    
     app.MapGroup("api").MapIdentityApi<AppUser>();
 
     app.Run();
@@ -144,5 +184,6 @@ catch (Exception ex)
 }
 finally
 {
+    // Ensure logs are written before exit
     Log.CloseAndFlush();
 }

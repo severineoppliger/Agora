@@ -1,4 +1,5 @@
-﻿using Agora.Core.Enums;
+﻿using Agora.Core.Constants;
+using Agora.Core.Enums;
 using Agora.Core.Extensions;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,8 @@ namespace Agora.Infrastructure.Data;
 
 public class AgoraDbContextSeed()
 {
+    // Static seeding, inserted at migration
+    #region staticSeeding
     internal static void SeedPostCategories(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<PostCategory>().HasData(
@@ -93,6 +96,23 @@ public class AgoraDbContextSeed()
             }
         );
     }
+    #endregion
+
+    // Dynamic seeding - Done at program execution
+    //      For Roles: in any environnement
+    //      For Users, Posts and Transactions: only in development environment
+    #region DynamicSeeding
+    public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+    {
+        if (!await roleManager.RoleExistsAsync(Roles.Admin))
+        {
+            IdentityResult roleResult = await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
+            if (!roleResult.Succeeded)
+            {
+                throw new Exception("Creation of the Admin role has failed.");
+            }
+        }
+    }
 
     public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
@@ -110,17 +130,16 @@ public class AgoraDbContextSeed()
         }
     }
 
-
     private static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-        var users = new List<(string Id, string UserName, string Email, string Password, int Credit)>
+        var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
-            ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100),
-            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200),
-            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300),
+            ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100, true),
+            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200, false),
+            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300, false),
         };
 
-        foreach (var (id, userName, email, password, credit) in users)
+        foreach (var (id, userName, email, password, credit, isAdmin) in users)
         {
             if (!id.IsGuid())
             {
@@ -145,6 +164,11 @@ public class AgoraDbContextSeed()
             if (!result.Succeeded)
             {
                 throw new Exception($"Failed to create user {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            }
+
+            if (isAdmin)
+            {
+                await userManager.AddToRoleAsync(user, Roles.Admin);
             }
         }
     }
@@ -218,4 +242,6 @@ public class AgoraDbContextSeed()
             await context.SaveChangesAsync();
         }
     }
+    
+    #endregion
 }
