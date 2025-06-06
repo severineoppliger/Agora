@@ -23,7 +23,7 @@ public class InputValidator(
         
         if (await userManager.FindByNameAsync(dto.UserName) is not null)
         {
-            inputErrors.Add($"The username '{dto.UserName}' is already taken exists. Username must be unique.");
+            inputErrors.Add($"The username '{dto.UserName}' is already taken. Username must be unique.");
         }
         
         if (await userManager.FindByEmailAsync(dto.Email) is not null)
