@@ -2,6 +2,7 @@
 
 public class Transaction : BaseEntity
 {
+    public required string Title { get; set; }
     public required int Price { get; set; }
         
     public required long? PostId { get; set; }

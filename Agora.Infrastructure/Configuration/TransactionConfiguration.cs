@@ -12,6 +12,10 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.ToTable("Transactions");
 
         builder.HasKey(t => t.Id);
+        
+        builder.Property(p => p.Title)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.Transaction.TitleMaxLength);
 
         builder.Property(t => t.Price)
             .IsRequired();

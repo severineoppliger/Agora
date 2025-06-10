@@ -6,6 +6,12 @@ namespace Agora.API.DTOs.Transaction;
 public abstract class BaseInputTransactionDto
 {
     [Required]
+    [NotEmptyOrWhitespace]
+    [MinLength(ValidationRules.Transaction.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationRules.Transaction.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    public string Title { get; set; } = String.Empty;
+    
+    [Required]
     [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int Price { get; set; }
     

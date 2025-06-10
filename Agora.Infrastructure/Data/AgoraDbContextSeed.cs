@@ -116,11 +116,11 @@ public class AgoraDbContextSeed()
         }
     }
 
-    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager)
     {
         if (!context.Users.Any())
         {
-            await SeedUsers(userManager, roleManager);
+            await SeedUsers(userManager);
         }
         if (!context.Posts.Any())
         {
@@ -132,7 +132,7 @@ public class AgoraDbContextSeed()
         }
     }
 
-    private static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+    private static async Task SeedUsers(UserManager<AppUser> userManager)
     {
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
@@ -231,6 +231,7 @@ public class AgoraDbContextSeed()
             [
                 new Transaction
                 {
+                    Title = "Test transaction between Member 1 and Admin",
                     Price = 10,
                     PostId = 1,
                     TransactionStatusId = 1,

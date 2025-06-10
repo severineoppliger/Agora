@@ -40,6 +40,8 @@ public class ValidationRules
     
     public static class Transaction
     {
+        public const int TitleMinLength = 10;
+        public const int TitleMaxLength = 200;
         public const int PriceMin = Post.PriceMin;
         public const int PriceMax = Post.PriceMax;
     }

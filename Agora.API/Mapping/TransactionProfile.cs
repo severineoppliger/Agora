@@ -19,7 +19,7 @@ public class TransactionProfile : Profile
             .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.UserName))
             .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.UserName))
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src =>
-                src.TransactionDate.HasValue ? src.TransactionDate.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null));;
+                src.TransactionDate.HasValue ? src.TransactionDate.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null));
         
         CreateMap<CreateTransactionDto, Transaction>()
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src => 

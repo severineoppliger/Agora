@@ -163,7 +163,7 @@ try
             var userManager = services.GetRequiredService<UserManager<AppUser>>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
             
-            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager, roleManager);
+            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
         }
         catch (Exception ex)
         {

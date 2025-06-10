@@ -5,6 +5,8 @@ namespace Agora.API.DTOs.Transaction;
 public class TransactionDetailsDto
 {
     public long Id { get; set; }
+
+    public string Title { get; set; } = String.Empty;
     public int Price { get; set; }
     public PostSummaryDto Post { get; set; } = new();
     public string TransactionStatusName { get; set; } = String.Empty;
