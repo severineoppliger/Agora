@@ -185,8 +185,6 @@ try
 
     app.MapControllers();
     
-    app.MapGroup("api").MapIdentityApi<AppUser>();
-
     app.Run();
 }
 catch (Exception ex)
