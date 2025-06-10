@@ -73,7 +73,9 @@ public class AgoraDbContextSeed()
             {
                 Id = 7, Name = "Terminée",
                 Description =
-                    "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
+                    "Le service a été réalisé et la transaction a été validée soit par les deux parties," +
+                    "soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé" +
+                    "(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
                 IsFinal = true, IsSuccess = true
             },
             new TransactionStatus
