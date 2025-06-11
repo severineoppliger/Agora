@@ -484,3 +484,6 @@ wwwroot/
 
 # Dotnet tools / NuGet
 packages/
+
+
+client/ssl/*
