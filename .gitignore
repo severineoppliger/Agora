@@ -486,4 +486,4 @@ wwwroot/
 packages/
 
 
-client/ssl/*
+client/ssl/
