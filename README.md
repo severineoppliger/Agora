@@ -18,3 +18,12 @@ If you want to learn more about creating good readme files then refer the follow
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+
+# Frontend
+Angular version 20.0.x
+1. Install Node.js version 22.16.0 using NVM or from http://nodejs.org/
+2. Install Angular CLI using npm (Node.js package manager): `npm install -g @angular/cli`
+3. Run the client: From Agora solution
+   * `cd client`
+   * `ng serve`
