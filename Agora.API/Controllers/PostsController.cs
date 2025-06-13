@@ -3,8 +3,8 @@ using Agora.API.DTOs.Post;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
@@ -17,6 +17,7 @@ namespace Agora.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class PostsController(
+    IPostService postService,
     IPostRepository repo,
     ITransactionRepository transactionRepo,
     IMapper mapper,
@@ -24,6 +25,7 @@ public class PostsController(
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
     : ControllerBase
 {
+    private const string UserNotFoundInClaimsMessage = "User ID not found in claims.";
     private const string PostNotFoundMessage = "Post not found.";
     private const string NotOwnerMessage = "Current user is not the owner of the post.";
     private const string PostSavedButNotRetrievedMessage = "Post was saved but could not be retrieved.";
@@ -34,14 +36,33 @@ public class PostsController(
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
     {
-        IReadOnlyList<Post> posts = await repo.GetAllPostsAsync(queryParameters);
+        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
+            queryParameters,
+            User.IsInRole(Roles.Admin));
+        return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
+    }
+    
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetCurrentUserPosts([FromQuery] PostQueryParameters queryParameters)
+    {
+        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized(UserNotFoundInClaimsMessage);
+        }
+        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
+            queryParameters,
+            User.IsInRole(Roles.Admin),
+            currentUserId,
+            currentUserId);
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
 
     [HttpGet("{id:long}")]
     public async Task<ActionResult<PostDetailsDto>> GetPost([FromRoute] long id)
     {
-        Post? post = await repo.GetPostByIdAsync(id);
+        Post? post = await postService.GetVisiblePostByIdAsync(id, User.IsInRole(Roles.Admin), User.FindFirstValue(ClaimTypes.NameIdentifier));
         
         return post == null
             ? NotFound(PostNotFoundMessage)

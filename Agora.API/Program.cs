@@ -9,6 +9,7 @@ using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
+using Agora.Core.Services;
 using Agora.Core.Validation;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
@@ -86,7 +87,6 @@ try
     builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
     builder.Services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
 
-    
     /*  -----------------
        | Data validation |
         ----------------- */
@@ -129,7 +129,14 @@ try
        -------------------------------------- */
     builder.Services.AddCors();
     
-    /* ============================================================================================================ */
+    /*  ---------------
+    | Other services  |
+      --------------- */
+    builder.Services.AddScoped<IPostService, PostService>();
+    builder.Services.AddScoped<IVisibilityBusinessRules, VisibilityBusinessRules>();
+    
+
+/* ============================================================================================================ */
     var app = builder.Build();
 
     /*  ======================
@@ -162,7 +169,6 @@ try
             await context.Database.MigrateAsync();
             
             var userManager = services.GetRequiredService<UserManager<AppUser>>();
-            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
             
             await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
         }

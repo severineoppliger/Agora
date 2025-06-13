@@ -6,7 +6,6 @@ namespace Agora.Core.Interfaces.Repositories;
 public interface IPostRepository
 {
     Task<IReadOnlyList<Post>> GetAllPostsAsync(IPostFilter filter);
-    Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string userId);
     Task<Post?> GetPostByIdAsync(long id);
     void AddPost(Post post);
     void DeletePost(Post post);

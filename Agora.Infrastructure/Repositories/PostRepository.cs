@@ -58,17 +58,6 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             .ToListAsync();
     }
 
-    public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string targetUserId)
-    {
-        IQueryable<Post> posts = context.Posts;
-        
-        posts = posts.Where(p => p.OwnerUserId == targetUserId);
-        
-        return await posts
-            .Include(p => p.PostCategory)
-            .ToListAsync();
-    }
-
     public async Task<Post?> GetPostByIdAsync(long id)
     {
         return await context.Posts
