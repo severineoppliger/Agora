@@ -31,7 +31,7 @@ public class TransactionsController(
         [FromQuery] TransactionQueryParameters queryParameters)
     {
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (currentUserId != null)
+        if (currentUserId is null)
         {
             return Unauthorized("User ID not found in claims.");
         }

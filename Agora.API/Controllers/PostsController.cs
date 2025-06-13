@@ -58,7 +58,7 @@ public class PostsController(
         
         // Assign userId of current user to the post
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (currentUserId != null)
+        if (currentUserId is null)
         {
             return Unauthorized("User ID not found in claims.");
         }
