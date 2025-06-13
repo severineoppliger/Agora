@@ -4,6 +4,7 @@ using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agora.Infrastructure.Migrations
 {
     [DbContext(typeof(AgoraDbContext))]
-    partial class AgoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250606132933_AddTransactionDate")]
+    partial class AddTransactionDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,10 +116,6 @@ namespace Agora.Infrastructure.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("varchar(2000)");
 
-                    b.Property<string>("OwnerUserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.Property<long>("PostCategoryId")
                         .HasColumnType("bigint");
 
@@ -141,11 +140,15 @@ namespace Agora.Infrastructure.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerUserId");
-
                     b.HasIndex("PostCategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts", null, t =>
                         {
@@ -245,11 +248,6 @@ namespace Agora.Infrastructure.Migrations
                     b.Property<string>("SellerId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
 
                     b.Property<DateOnly?>("TransactionDate")
                         .HasColumnType("date");
@@ -356,7 +354,7 @@ namespace Agora.Infrastructure.Migrations
                         new
                         {
                             Id = 7L,
-                            Description = "Le service a été réalisé et la transaction a été validée soit par les deux parties,soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
+                            Description = "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Terminée"
@@ -521,21 +519,21 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Agora.Core.Models.Post", b =>
                 {
-                    b.HasOne("Agora.Core.Models.AppUser", "Owner")
-                        .WithMany("Posts")
-                        .HasForeignKey("OwnerUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Agora.Core.Models.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Owner");
+                    b.HasOne("Agora.Core.Models.AppUser", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("PostCategory");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Agora.Core.Models.Transaction", b =>

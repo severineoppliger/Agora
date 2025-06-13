@@ -1,4 +1,5 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -90,5 +91,10 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             _ => query.OrderBy(t => t.Id)
         };
         return query;
+    }
+
+    public async Task<bool> IsPostInTransactionAsync(long postId)
+    {
+        return await context.Transactions.AnyAsync(t => t.PostId == postId);
     }
 }

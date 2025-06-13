@@ -40,7 +40,7 @@ public class BusinessRulesValidator : IBusinessRulesValidator
         (int price, Post? post, string buyerId, AppUser? buyer, string sellerId) = transaction;
         
         List<string> businessRulesErrors = new();
-        if (post != null && post.UserId != buyerId && post.UserId != sellerId)
+        if (post != null && post.OwnerUserId != buyerId && post.OwnerUserId != sellerId)
         {
             businessRulesErrors.Add("Buyer or seller must be the owner of the post.");
         }

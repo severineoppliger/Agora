@@ -3,8 +3,10 @@ using Agora.API.DTOs.Post;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
+using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -15,26 +17,52 @@ namespace Agora.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class PostsController(
+    IPostService postService,
     IPostRepository repo,
+    ITransactionRepository transactionRepo,
     IMapper mapper,
     IInputValidator inputValidator,
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
     : ControllerBase
 {
+    private const string UserNotFoundInClaimsMessage = "User ID not found in claims.";
     private const string PostNotFoundMessage = "Post not found.";
     private const string NotOwnerMessage = "Current user is not the owner of the post.";
+    private const string PostSavedButNotRetrievedMessage = "Post was saved but could not be retrieved.";
+    private const string PostCreationFailedMessage = "Unknown problem creating the post.";
+    private const string PostUpdateFailedMessage = "Unknown problem updating the post.";
+    private const string PostDeletionFailedMessage = "Unknown problem deleting the post.";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
     {
-        IReadOnlyList<Post> posts = await repo.GetAllPostsAsync(queryParameters);
+        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
+            queryParameters,
+            User.IsInRole(Roles.Admin));
+        return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
+    }
+    
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetCurrentUserPosts([FromQuery] PostQueryParameters queryParameters)
+    {
+        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized(UserNotFoundInClaimsMessage);
+        }
+        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
+            queryParameters,
+            User.IsInRole(Roles.Admin),
+            currentUserId,
+            currentUserId);
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
 
     [HttpGet("{id:long}")]
     public async Task<ActionResult<PostDetailsDto>> GetPost([FromRoute] long id)
     {
-        Post? post = await repo.GetPostByIdAsync(id);
+        Post? post = await postService.GetVisiblePostByIdAsync(id, User.IsInRole(Roles.Admin), User.FindFirstValue(ClaimTypes.NameIdentifier));
         
         return post == null
             ? NotFound(PostNotFoundMessage)
@@ -58,7 +86,7 @@ public class PostsController(
         
         // Assign userId of current user to the post
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (currentUserId != null)
+        if (currentUserId is null)
         {
             return Unauthorized("User ID not found in claims.");
         }
@@ -66,7 +94,7 @@ public class PostsController(
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         post.Status = PostStatus.Active;
-        post.UserId = currentUserId!;
+        post.OwnerUserId = currentUserId;
         
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
         if (businessRulesErrors.Count != 0)
@@ -83,7 +111,7 @@ public class PostsController(
             
             if (createdPost == null)
             {
-                return StatusCode(500, "Post was saved but could not be retrieved.");
+                return StatusCode(500, PostSavedButNotRetrievedMessage);
             }
             
             PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
@@ -91,7 +119,7 @@ public class PostsController(
             return CreatedAtAction(nameof(GetPost), new { id = createdPost.Id }, createdPostDetailsDto);
         }
         
-        return BadRequest("Problem creating the post.");
+        return BadRequest(PostCreationFailedMessage);
     }
 
     [Authorize]
@@ -111,7 +139,7 @@ public class PostsController(
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (existingPost.UserId != currentUserId)
+        if (existingPost.OwnerUserId != currentUserId)
         {
             return Unauthorized(NotOwnerMessage);
         }
@@ -136,7 +164,7 @@ public class PostsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the post.");
+            : BadRequest(PostUpdateFailedMessage);
     }
 
     [Authorize]
@@ -152,15 +180,24 @@ public class PostsController(
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (post.UserId != currentUserId)
+        if (post.OwnerUserId != currentUserId)
         {
             return Unauthorized(NotOwnerMessage);
         }
-
-        repo.DeletePost(post);
-
+        
+        // Check if related transactions exist: if no, remove from DB, if yes change status
+        bool isRelatedToTransaction = await transactionRepo.IsPostInTransactionAsync(id);
+        if (isRelatedToTransaction)
+        {
+            post.Status = PostStatus.Deleted;
+        }
+        else
+        {
+            repo.DeletePost(post);
+        }
+        
         return await repo.SaveChangesAsync() 
             ? NoContent()
-            : BadRequest("Problem deleting the post.");
+            : BadRequest(PostDeletionFailedMessage);
     }
 }

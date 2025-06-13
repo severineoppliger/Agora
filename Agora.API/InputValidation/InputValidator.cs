@@ -5,7 +5,7 @@ using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -23,7 +23,7 @@ public class InputValidator(
         
         if (await userManager.FindByNameAsync(dto.UserName) is not null)
         {
-            inputErrors.Add($"The username '{dto.UserName}' is already taken exists. Username must be unique.");
+            inputErrors.Add($"The username '{dto.UserName}' is already taken. Username must be unique.");
         }
         
         if (await userManager.FindByEmailAsync(dto.Email) is not null)
@@ -102,7 +102,7 @@ public class InputValidator(
 
     public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
     {
-        (_, long? postId, long transactionStatusId, string buyerId, string sellerId) = dto;
+        (_, long? postId, long transactionStatusId, string buyerId, string sellerId, DateTime? transactionDate) = dto;
         
         List<string> inputErrors = new();
         

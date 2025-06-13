@@ -1,4 +1,5 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;

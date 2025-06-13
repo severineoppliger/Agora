@@ -1,4 +1,5 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
     {
         return await context.PostCategories
             .Include(pc => pc.Posts)
-                .ThenInclude(p => p.User)
+                .ThenInclude(p => p.Owner)
             .FirstOrDefaultAsync(pc => pc.Id == id);
     }
 

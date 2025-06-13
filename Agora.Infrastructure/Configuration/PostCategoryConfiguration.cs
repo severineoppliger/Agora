@@ -21,6 +21,7 @@ public class PostCategoryConfiguration : IEntityTypeConfiguration<PostCategory>
         
         builder.HasMany(p => p.Posts)
             .WithOne(p => p.PostCategory)
-            .HasForeignKey(p => p.PostCategoryId);
+            .HasForeignKey(p => p.PostCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);;
     }
 }

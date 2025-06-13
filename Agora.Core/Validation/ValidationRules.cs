@@ -2,7 +2,7 @@
 
 public class ValidationRules
 {
-    public static class User
+    public static class AppUser
     {
         public const int UsernameMinLength = 5;
         public const int UsernameMaxLength = 50;
@@ -40,6 +40,8 @@ public class ValidationRules
     
     public static class Transaction
     {
+        public const int TitleMinLength = 10;
+        public const int TitleMaxLength = 200;
         public const int PriceMin = Post.PriceMin;
         public const int PriceMax = Post.PriceMax;
     }

@@ -1,4 +1,5 @@
-﻿using Agora.Core.Enums;
+﻿using Agora.Core.Constants;
+using Agora.Core.Enums;
 using Agora.Core.Extensions;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,8 @@ namespace Agora.Infrastructure.Data;
 
 public class AgoraDbContextSeed()
 {
+    // Static seeding, inserted at migration
+    #region staticSeeding
     internal static void SeedPostCategories(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<PostCategory>().HasData(
@@ -70,7 +73,9 @@ public class AgoraDbContextSeed()
             {
                 Id = 7, Name = "Terminée",
                 Description =
-                    "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
+                    "Le service a été réalisé et la transaction a été validée soit par les deux parties," +
+                    "soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé" +
+                    "(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
                 IsFinal = true, IsSuccess = true
             },
             new TransactionStatus
@@ -93,12 +98,29 @@ public class AgoraDbContextSeed()
             }
         );
     }
+    #endregion
 
-    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+    // Dynamic seeding - Done at program execution
+    //      For Roles: in any environnement
+    //      For Users, Posts and Transactions: only in development environment
+    #region DynamicSeeding
+    public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+    {
+        if (!await roleManager.RoleExistsAsync(Roles.Admin))
+        {
+            IdentityResult roleResult = await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
+            if (!roleResult.Succeeded)
+            {
+                throw new Exception("Creation of the Admin role has failed.");
+            }
+        }
+    }
+
+    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager)
     {
         if (!context.Users.Any())
         {
-            await SeedUsers(userManager, roleManager);
+            await SeedUsers(userManager);
         }
         if (!context.Posts.Any())
         {
@@ -110,17 +132,16 @@ public class AgoraDbContextSeed()
         }
     }
 
-
-    private static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+    private static async Task SeedUsers(UserManager<AppUser> userManager)
     {
-        var users = new List<(string Id, string UserName, string Email, string Password, int Credit)>
+        var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
-            ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100),
-            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200),
-            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300),
+            ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100, true),
+            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200, false),
+            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300, false),
         };
 
-        foreach (var (id, userName, email, password, credit) in users)
+        foreach (var (id, userName, email, password, credit, isAdmin) in users)
         {
             if (!id.IsGuid())
             {
@@ -146,6 +167,11 @@ public class AgoraDbContextSeed()
             {
                 throw new Exception($"Failed to create user {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
             }
+
+            if (isAdmin)
+            {
+                await userManager.AddToRoleAsync(user, Roles.Admin);
+            }
         }
     }
 
@@ -164,7 +190,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Offer,
                     Status = PostStatus.InTransactionActive,
                     PostCategoryId = 1,
-                    UserId = "00000000-0000-0000-0000-000000000001",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
                 },
                 new Post
@@ -175,7 +201,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Request,
                     Status = PostStatus.Inactive,
                     PostCategoryId = 2,
-                    UserId = "00000000-0000-0000-0000-000000000002",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000002",
                     CreatedAt = DateTime.Now
                 },
                 new Post
@@ -186,7 +212,7 @@ public class AgoraDbContextSeed()
                     Type = PostType.Offer,
                     Status = PostStatus.Active,
                     PostCategoryId = 3,
-                    UserId = "00000000-0000-0000-0000-000000000003",
+                    OwnerUserId = "00000000-0000-0000-0000-000000000003",
                     CreatedAt = DateTime.Now
                 }
 
@@ -205,6 +231,7 @@ public class AgoraDbContextSeed()
             [
                 new Transaction
                 {
+                    Title = "Test transaction between Member 1 and Admin",
                     Price = 10,
                     PostId = 1,
                     TransactionStatusId = 1,
@@ -218,4 +245,6 @@ public class AgoraDbContextSeed()
             await context.SaveChangesAsync();
         }
     }
+    
+    #endregion
 }

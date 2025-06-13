@@ -1,4 +1,4 @@
-﻿using Agora.Core.Interfaces;
+﻿using Agora.Core.Interfaces.Filters;
 
 namespace Agora.API.QueryParams;
 

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Agora.API.Orchestrators.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
+using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -11,6 +13,7 @@ namespace Agora.API.Orchestrators;
 public class BusinessRulesValidationOrchestrator(
     IBusinessRulesValidator businessRulesValidator,
     IPostRepository postRepository,
+    IPostService postService,
     UserManager<AppUser> userManager)
     : IBusinessRulesValidationOrchestrator
 {
@@ -28,7 +31,7 @@ public class BusinessRulesValidationOrchestrator(
 
     public async Task<IList<string>> ValidateAndProcessPostAsync(Post post)
     {
-        IReadOnlyList<Post> postsOfUser = await postRepository.GetAllPostsOfUserAsync(post.UserId);
+        IReadOnlyList<Post> postsOfUser = await postService.GetAllVisiblePostsAsync(new PostQueryParameters(), false, post.OwnerUserId, post.OwnerUserId);
         List<string> postTitlesOfUser = postsOfUser.Select(p => p.Title).ToList();
         
         return businessRulesValidator.ValidatePost(post, postTitlesOfUser);

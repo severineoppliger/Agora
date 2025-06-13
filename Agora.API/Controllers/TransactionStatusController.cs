@@ -1,7 +1,8 @@
 ﻿using Agora.API.DTOs.TransactionStatus;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.QueryParams;
-using Agora.Core.Interfaces;
+using Agora.Core.Constants;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,10 @@ public class TransactionStatusController(
     IInputValidator inputValidator) : ControllerBase
 {
     private const string TransactionStatusNotFoundMessage = "Transaction status not found.";
+    private const string TransactionStatusSavedButNotRetrievedMessage = "Transaction status was saved but could not be retrieved.";
+    private const string TransactionStatusCreationFailedMessage = "Unknown problem creating the transaction status.";
+    private const string TransactionStatusUpdateFailedMessage = "Unknown problem updating the transaction status.";
+    private const string TransactionStatusDeletionFailedMessage = "Unknown problem deleting the transaction status.";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus([FromQuery] TransactionStatusQueryParameters queryParameters)
@@ -35,7 +40,7 @@ public class TransactionStatusController(
             : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpPost]
     public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
     {
@@ -62,7 +67,7 @@ public class TransactionStatusController(
 
             if (createdTransactionStatus == null)
             {
-                return StatusCode(500, "Transaction status was saved but could not be retrieved.");
+                return StatusCode(500, TransactionStatusSavedButNotRetrievedMessage);
             }
 
             TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
@@ -70,10 +75,10 @@ public class TransactionStatusController(
             return CreatedAtAction(nameof(GetTransactionStatus), new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
         }
 
-        return BadRequest("Problem creating the transaction status.");
+        return BadRequest(TransactionStatusCreationFailedMessage);
     } 
     
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
     {
@@ -100,10 +105,10 @@ public class TransactionStatusController(
         
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the transaction status.");
+            : BadRequest(TransactionStatusUpdateFailedMessage);
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeleteTransactionStatus([FromRoute] long id)
     {
@@ -118,6 +123,6 @@ public class TransactionStatusController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem deleting the transaction status.");
+            : BadRequest(TransactionStatusDeletionFailedMessage);
     }
 }

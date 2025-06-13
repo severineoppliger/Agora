@@ -4,6 +4,7 @@ using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agora.Infrastructure.Migrations
 {
     [DbContext(typeof(AgoraDbContext))]
-    partial class AgoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250606142239_RenameUserToOwnerInPost")]
+    partial class RenameUserToOwnerInPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,11 +249,6 @@ namespace Agora.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
-
                     b.Property<DateOnly?>("TransactionDate")
                         .HasColumnType("date");
 
@@ -356,7 +354,7 @@ namespace Agora.Infrastructure.Migrations
                         new
                         {
                             Id = 7L,
-                            Description = "Le service a été réalisé et la transaction a été validée soit par les deux parties,soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
+                            Description = "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Terminée"
@@ -530,7 +528,7 @@ namespace Agora.Infrastructure.Migrations
                     b.HasOne("Agora.Core.Models.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Owner");

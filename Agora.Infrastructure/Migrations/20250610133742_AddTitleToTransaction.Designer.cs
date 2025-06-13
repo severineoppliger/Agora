@@ -4,6 +4,7 @@ using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agora.Infrastructure.Migrations
 {
     [DbContext(typeof(AgoraDbContext))]
-    partial class AgoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250610133742_AddTitleToTransaction")]
+    partial class AddTitleToTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -530,7 +533,7 @@ namespace Agora.Infrastructure.Migrations
                     b.HasOne("Agora.Core.Models.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Owner");

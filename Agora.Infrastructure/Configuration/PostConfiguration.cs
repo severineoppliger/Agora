@@ -41,9 +41,9 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .WithMany(p => p.Posts)
             .HasForeignKey(p => p.PostCategoryId);
         
-        builder.HasOne(p => p.User)
+        builder.HasOne(p => p.Owner)
             .WithMany(u => u.Posts)
-            .HasForeignKey(p=> p.UserId);
+            .HasForeignKey(p=> p.OwnerUserId);
 
         builder.HasMany(p => p.Transactions)
             .WithOne(t => t.Post)

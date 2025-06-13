@@ -12,6 +12,10 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.ToTable("Transactions");
 
         builder.HasKey(t => t.Id);
+        
+        builder.Property(p => p.Title)
+            .IsRequired()
+            .HasMaxLength(ValidationRules.Transaction.TitleMaxLength);
 
         builder.Property(t => t.Price)
             .IsRequired();
@@ -41,6 +45,9 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.Property(t => t.CreatedAt)
             .IsRequired()
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        
+        builder.Property(t => t.TransactionDate)
+            .HasColumnType("date");
         
         builder.Property(t => t.CompletedAt)
             .IsRequired(false)
