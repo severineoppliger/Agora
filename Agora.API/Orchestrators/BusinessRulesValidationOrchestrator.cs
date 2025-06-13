@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
+using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 

@@ -1,6 +1,7 @@
-﻿using Agora.Core.Models;
+﻿using Agora.Core.Interfaces.Filters;
+using Agora.Core.Models;
 
-namespace Agora.Core.Interfaces;
+namespace Agora.Core.Interfaces.Repositories;
 
 public interface IPostCategoryRepository
 {

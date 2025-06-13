@@ -2,7 +2,7 @@
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Agora.Core.Interfaces;
+namespace Agora.Core.Interfaces.Repositories;
 
 public interface IUserRepository
 {

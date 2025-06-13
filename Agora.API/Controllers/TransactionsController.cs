@@ -4,7 +4,7 @@ using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
 using Agora.Core.Constants;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;

@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

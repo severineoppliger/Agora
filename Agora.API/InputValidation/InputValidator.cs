@@ -5,7 +5,7 @@ using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 

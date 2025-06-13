@@ -1,4 +1,4 @@
-﻿namespace Agora.Core.Interfaces;
+﻿namespace Agora.Core.Interfaces.Filters;
 
 public interface IPostCategoryFilter
 {

@@ -1,5 +1,6 @@
 ﻿using Agora.Core.Enums;
-using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -57,10 +58,12 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             .ToListAsync();
     }
 
-    public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string userId)
+    public async Task<IReadOnlyList<Post>> GetAllPostsOfUserAsync(string targetUserId)
     {
         IQueryable<Post> posts = context.Posts;
-        posts = posts.Where(p => p.OwnerUserId == userId);
+        
+        posts = posts.Where(p => p.OwnerUserId == targetUserId);
+        
         return await posts
             .Include(p => p.PostCategory)
             .ToListAsync();
