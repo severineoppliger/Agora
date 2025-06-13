@@ -4,6 +4,7 @@ using Agora.API.DTOs.Transaction;
 using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
@@ -23,12 +24,12 @@ public class InputValidator(
         
         if (await userManager.FindByNameAsync(dto.UserName) is not null)
         {
-            inputErrors.Add($"The username '{dto.UserName}' is already taken. Username must be unique.");
+            inputErrors.Add(ErrorMessages.AlreadyExists("Username", dto.UserName));
         }
         
         if (await userManager.FindByEmailAsync(dto.Email) is not null)
         {
-            inputErrors.Add($"An account with the email '{dto.Email}' already exists. Email must be unique.");
+            inputErrors.Add(ErrorMessages.User.EmailAlreadyRegistered(dto.Email));
         }
         
         return inputErrors;
@@ -40,13 +41,13 @@ public class InputValidator(
 
         if (currentName != null && dto.Name.Equals(currentName))
         {
-            inputErrors.Add("Post category name must be different from the current name.");
+            inputErrors.Add(ErrorMessages.NewMustBeDifferentFromCurrent("post category name"));
             return inputErrors;
         }
         
         if (await postCategoryRepo.NameExistsAsync(dto.Name))
         {
-            inputErrors.Add($"The post category name '{dto.Name}' already exists. Name must be unique.");
+            inputErrors.Add(ErrorMessages.AlreadyExists("post category name", dto.Name));
         }
 
         return inputErrors;
@@ -61,17 +62,17 @@ public class InputValidator(
         
         if (!Enum.TryParse<PostType>(type, true, out _))
         {
-            inputErrors.Add($"Post type '{type}' is invalid.");
+            inputErrors.Add(ErrorMessages.IsInvalid("type", type));
         }
         
         if (dto is UpdatePostDto updatePostDto && !Enum.TryParse<PostStatus>(updatePostDto.Status, true, out _))
         {
-            inputErrors.Add($"Post status '{type}' is invalid.");
+            inputErrors.Add(ErrorMessages.IsInvalid("post status", updatePostDto.Status));
         }
             
         if (!await postCategoryRepo.PostCategoryExistsAsync(postCategoryId))
         {
-            inputErrors.Add($"Related post category {postCategoryId} doesn't exist.");
+            inputErrors.Add(ErrorMessages.RelatedEntityDoesNotExist("post category", postCategoryId));
         }
 
         return inputErrors;
@@ -83,18 +84,18 @@ public class InputValidator(
 
         if (currentName != null && dto.Name.Equals(currentName))
         {
-            inputErrors.Add("Transaction status name must be different from the current name.");
+            inputErrors.Add(ErrorMessages.NewMustBeDifferentFromCurrent("transaction status name"));
             return inputErrors;
         }
         
         if (await transactionStatusRepo.NameExistsAsync(dto.Name))
         {
-            inputErrors.Add($"The transaction status name '{dto.Name}' already exists. Name must be unique.");
+            inputErrors.Add(ErrorMessages.AlreadyExists("transaction status name", dto.Name));
         }
         
         if (dto.IsSuccess & !dto.IsFinal)
         {
-            inputErrors.Add("Transaction status must be final if it's a success.");
+            inputErrors.Add(ErrorMessages.TransactionStatus.MustBeFinalIfSuccess);
         }
 
         return inputErrors;
@@ -106,19 +107,19 @@ public class InputValidator(
         
         List<string> inputErrors = new();
         
-        if (postId != null && !await postRepo.PostExistsAsync(postId.Value))
+        if (postId is not null && !await postRepo.PostExistsAsync(postId.Value))
         {
-            inputErrors.Add($"Related post {postId} doesn't exist.");
+            inputErrors.Add(ErrorMessages.RelatedEntityDoesNotExist("post", postId));
         }
         
         if (await userManager.FindByIdAsync(buyerId) is null)
         {
-            inputErrors.Add($"Buyer (user with id {buyerId}) doesn't exist.");
+            inputErrors.Add(ErrorMessages.User.BuyerOrSellerDoesNotExist("buyer",buyerId));
         }
         
         if (await userManager.FindByIdAsync(sellerId) is null)
         {
-            inputErrors.Add($"Seller (user with id {sellerId}) doesn't exist.");
+            inputErrors.Add(ErrorMessages.User.BuyerOrSellerDoesNotExist("seller",sellerId));
         }
         
         return inputErrors;
