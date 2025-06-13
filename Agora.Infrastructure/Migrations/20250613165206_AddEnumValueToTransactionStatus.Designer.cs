@@ -4,6 +4,7 @@ using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Agora.Infrastructure.Migrations
 {
     [DbContext(typeof(AgoraDbContext))]
-    partial class AgoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250613165206_AddEnumValueToTransactionStatus")]
+    partial class AddEnumValueToTransactionStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -286,9 +289,8 @@ namespace Agora.Infrastructure.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<string>("EnumValue")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("EnumValue")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsFinal")
                         .HasColumnType("tinyint(1)");
@@ -313,7 +315,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 1L,
                             Description = "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
-                            EnumValue = "Pending",
+                            EnumValue = 1,
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "En attente"
@@ -322,7 +324,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 2L,
                             Description = "La demande d'échange a été acceptée par l'autre utilisateur. La transaction peut avoir lieu.",
-                            EnumValue = "Accepted",
+                            EnumValue = 3,
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "Acceptée"
@@ -331,7 +333,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 3L,
                             Description = "La demande d'échange a été refusée par l'autre utilisateur. La transaction n'aura donc pas lieu.",
-                            EnumValue = "Refused",
+                            EnumValue = 4,
                             IsFinal = true,
                             IsSuccess = false,
                             Name = "Refusée"
@@ -340,7 +342,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 4L,
                             Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.",
-                            EnumValue = "Cancelled",
+                            EnumValue = 2,
                             IsFinal = true,
                             IsSuccess = false,
                             Name = "Annulée"
@@ -349,7 +351,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 5L,
                             Description = "Le service n'a pas pu être réalisé, malgré la confirmation de la demande d'échange.",
-                            EnumValue = "Failed",
+                            EnumValue = 5,
                             IsFinal = true,
                             IsSuccess = false,
                             Name = "Échouée"
@@ -358,7 +360,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 6L,
                             Description = "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
-                            EnumValue = "PartiallyValidated",
+                            EnumValue = 6,
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "Partiellement validée"
@@ -367,7 +369,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 7L,
                             Description = "Le service a été réalisé et la transaction a été validée soit par les deux parties,soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
-                            EnumValue = "Completed",
+                            EnumValue = 7,
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Terminée"
@@ -376,7 +378,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 8L,
                             Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
-                            EnumValue = "InDispute",
+                            EnumValue = 8,
                             IsFinal = false,
                             IsSuccess = false,
                             Name = "En litige"
@@ -385,7 +387,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 9L,
                             Description = "La résolution du litige s'est soldé par la validation de la transaction.",
-                            EnumValue = "ResolvedAccepted",
+                            EnumValue = 9,
                             IsFinal = true,
                             IsSuccess = true,
                             Name = "Résolue et acceptée"
@@ -394,7 +396,7 @@ namespace Agora.Infrastructure.Migrations
                         {
                             Id = 10L,
                             Description = "La résolution du litige s'est soldé par l'annulation de la transaction.",
-                            EnumValue = "ResolvedCancelled",
+                            EnumValue = 10,
                             IsFinal = true,
                             IsSuccess = false,
                             Name = "Résolue et annulée"
