@@ -26,6 +26,7 @@ public class UsersController(
 {
     private const string UserNotFoundMessage = "User not found.";
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("admin")]
     public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
     {
