@@ -12,5 +12,5 @@ public interface IInputValidator
     public Task<List<string>> ValidateInputPostCategoryDtoAsync(BaseInputPostCategoryDto dto, string? currentName = null);
     public Task<List<string>> ValidateInputPostDtoAsync(BaseInputPostDto dto);
     public Task<List<string>> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null);
-    public Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto);
+    public Task<List<string>> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto);
 }

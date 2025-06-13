@@ -100,20 +100,15 @@ public class InputValidator(
         return inputErrors;
     }
 
-    public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
+    public async Task<List<string>> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto)
     {
-        (_, long? postId, long transactionStatusId, string buyerId, string sellerId, DateTime? transactionDate) = dto;
+        (_,_, long? postId, string buyerId, string sellerId, _) = dto;
         
         List<string> inputErrors = new();
         
         if (postId != null && !await postRepo.PostExistsAsync(postId.Value))
         {
             inputErrors.Add($"Related post {postId} doesn't exist.");
-        }
-        
-        if (!await transactionStatusRepo.TransactionStatusExistsAsync(transactionStatusId))
-        {
-            inputErrors.Add($"Related transaction status {transactionStatusId} doesn't exist.");
         }
         
         if (await userManager.FindByIdAsync(buyerId) is null)

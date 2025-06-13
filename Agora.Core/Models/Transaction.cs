@@ -11,10 +11,13 @@ public class Transaction : BaseEntity
     public required long TransactionStatusId { get; set; }
     public TransactionStatus? TransactionStatus { get; set; }
     
+    public required string InitiatorId { get; set; }
     public required string BuyerId { get; set; }
+    public required bool BuyerConfirmed { get; set; }
     public AppUser? Buyer { get; set; }
     
     public required string SellerId { get; set; }
+    public required bool SellerConfirmed { get; set; }
     public AppUser? Seller { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
