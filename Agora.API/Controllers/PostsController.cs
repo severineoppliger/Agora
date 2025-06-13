@@ -16,6 +16,7 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class PostsController(
     IPostRepository repo,
+    ITransactionRepository transactionRepo,
     IMapper mapper,
     IInputValidator inputValidator,
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
@@ -23,6 +24,10 @@ public class PostsController(
 {
     private const string PostNotFoundMessage = "Post not found.";
     private const string NotOwnerMessage = "Current user is not the owner of the post.";
+    private const string PostSavedButNotRetrievedMessage = "Post was saved but could not be retrieved.";
+    private const string PostCreationFailedMessage = "Unknown problem creating the post.";
+    private const string PostUpdateFailedMessage = "Unknown problem updating the post.";
+    private const string PostDeletionFailedMessage = "Unknown problem deleting the post.";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
@@ -66,7 +71,7 @@ public class PostsController(
         // Transform to the full entity and validate with business rules
         Post post = mapper.Map<Post>(postDto);
         post.Status = PostStatus.Active;
-        post.OwnerUserId = currentUserId!;
+        post.OwnerUserId = currentUserId;
         
         IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
         if (businessRulesErrors.Count != 0)
@@ -83,7 +88,7 @@ public class PostsController(
             
             if (createdPost == null)
             {
-                return StatusCode(500, "Post was saved but could not be retrieved.");
+                return StatusCode(500, PostSavedButNotRetrievedMessage);
             }
             
             PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
@@ -91,7 +96,7 @@ public class PostsController(
             return CreatedAtAction(nameof(GetPost), new { id = createdPost.Id }, createdPostDetailsDto);
         }
         
-        return BadRequest("Problem creating the post.");
+        return BadRequest(PostCreationFailedMessage);
     }
 
     [Authorize]
@@ -136,7 +141,7 @@ public class PostsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the post.");
+            : BadRequest(PostUpdateFailedMessage);
     }
 
     [Authorize]
@@ -156,11 +161,20 @@ public class PostsController(
         {
             return Unauthorized(NotOwnerMessage);
         }
-
-        repo.DeletePost(post);
-
+        
+        // Check if related transactions exist: if no, remove from DB, if yes change status
+        bool isRelatedToTransaction = await transactionRepo.IsPostInTransactionAsync(id);
+        if (isRelatedToTransaction)
+        {
+            post.Status = PostStatus.Deleted;
+        }
+        else
+        {
+            repo.DeletePost(post);
+        }
+        
         return await repo.SaveChangesAsync() 
             ? NoContent()
-            : BadRequest("Problem deleting the post.");
+            : BadRequest(PostDeletionFailedMessage);
     }
 }

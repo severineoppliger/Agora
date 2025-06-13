@@ -21,8 +21,13 @@ public class TransactionsController(
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
     : ControllerBase
 {
+    private const string UserNotFoundInClaimsMessage = "User ID not found in claims.";
     private const string TransactionNotFoundMessage = "Transaction not found.";
     private const string NotInvolvedMessage = "Current user is not involved in the transaction.";
+    private const string TransactionSavedButNotRetrievedMessage = "Transaction was saved but could not be retrieved.";
+    private const string TransactionCreationFailedMessage = "Unknown problem creating the transaction.";
+    private const string TransactionUpdateFailedMessage = "Unknown problem updating the transaction.";
+    private const string TransactionDeletionFailedMessage = "Unknown problem deleting the transaction.";
     
     // An admin has access to all transactions, but normal user have only access to transactions in which it is involved.
     [Authorize]
@@ -33,7 +38,7 @@ public class TransactionsController(
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (currentUserId is null)
         {
-            return Unauthorized("User ID not found in claims.");
+            return Unauthorized(UserNotFoundInClaimsMessage);
         }
         
         bool isAdmin = User.IsInRole(Roles.Admin);
@@ -92,7 +97,7 @@ public class TransactionsController(
             
             if (createdTransaction == null)
             {
-                return StatusCode(500, "Transaction was saved but could not be retrieved.");
+                return StatusCode(500, TransactionSavedButNotRetrievedMessage);
             }
             
             TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransaction);
@@ -100,7 +105,7 @@ public class TransactionsController(
             return CreatedAtAction(nameof(GetTransaction), new { id = createdTransaction.Id }, createdTransactionDetailsDto);
         }
         
-        return BadRequest("Problem creating the transaction.");
+        return BadRequest(TransactionCreationFailedMessage);
     }
 
     [Authorize]
@@ -141,7 +146,7 @@ public class TransactionsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the transaction.");
+            : BadRequest(TransactionUpdateFailedMessage);
     }
 
     [Authorize]
@@ -166,6 +171,6 @@ public class TransactionsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem deleting the transaction.");
+            : BadRequest(TransactionDeletionFailedMessage);
     }
 }

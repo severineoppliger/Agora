@@ -14,10 +14,18 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class PostCategoriesController(
     IPostCategoryRepository repo, 
+    IPostRepository postRepo,
     IMapper mapper,
     IInputValidator inputValidator) : ControllerBase
 {
     private const string PostCategoryNotFoundMessage = "Post category not found.";
+    private const string PostCategorySavedButNotRetrievedMessage = 
+        "Post category was saved but could not be retrieved.";
+    private const string PostCategoryInUseMessage = "Cannot delete a post category that is used by one or more posts.";
+    private const string PostCategoryCreationFailedMessage = "Unknown problem creating the post category.";
+    private const string PostCategoryUpdateFailedMessage = "Unknown problem updating the post category.";
+    private const string PostCategoryDeletionFailedMessage = "Unknown problem deleting the post category.";
+    
     
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories([FromQuery] PostCategoryQueryParameters queryParameters)
@@ -62,7 +70,7 @@ public class PostCategoriesController(
             
             if (createdPostCategory == null)
             {
-                return StatusCode(500, "Post category was saved but could not be retrieved.");
+                return StatusCode(500, PostCategorySavedButNotRetrievedMessage);
             }
             
             PostCategoryDetailsDto createdPostCategoryDetailsDto =
@@ -71,7 +79,7 @@ public class PostCategoriesController(
             return CreatedAtAction(nameof(GetPostCategory), new { id = createdPostCategory.Id }, createdPostCategoryDetailsDto);
         }
 
-        return BadRequest("Problem creating the post category.");
+        return BadRequest(PostCategoryCreationFailedMessage);
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -100,7 +108,7 @@ public class PostCategoriesController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the post category.");
+            : BadRequest(PostCategoryUpdateFailedMessage);
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -114,10 +122,14 @@ public class PostCategoriesController(
             return NotFound(PostCategoryNotFoundMessage);
         }
 
+        if (await postRepo.IsCategoryInUserAsync(id))
+        {
+            return BadRequest(PostCategoryInUseMessage);
+        }
         repo.DeletePostCategory(postCategory);
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem deleting the post category");
+            : BadRequest(PostCategoryDeletionFailedMessage);
     }
 }

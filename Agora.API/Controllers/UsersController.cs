@@ -25,6 +25,8 @@ public class UsersController(
 
 {
     private const string UserNotFoundMessage = "User not found.";
+    private const string InvalidCredentialsMessage = "Invalid email or password.";
+    private const string UserSavedButNotRetrievedMessage = "User was saved but could not be retrieved.";
 
     [Authorize(Roles = Roles.Admin)]
     [HttpGet("admin")]
@@ -57,7 +59,7 @@ public class UsersController(
         string? userId = repo.GetUserId(User);
         if (userId is null)
         {
-            return BadRequest($"Invalid user ID");
+            return BadRequest(UserNotFoundMessage);
         }
 
         AppUser? user = await repo.GetUserByIdAsync(userId);
@@ -103,7 +105,7 @@ public class UsersController(
 
         if (createdUser == null)
         {
-            return StatusCode(500, "User was saved but could not be retrieved.");
+            return StatusCode(500, UserSavedButNotRetrievedMessage);
         }
 
         UserDetailsDto createdUserDetailsDto = mapper.Map<UserDetailsDto>(createdUser);
@@ -117,7 +119,7 @@ public class UsersController(
         AppUser? user = await repo.GetUserByEmailAsync(signInDto.Email);
         if (user == null)
         {
-            return Unauthorized("Invalid email or password.");
+            return Unauthorized(InvalidCredentialsMessage);
         }
 
         var result =
@@ -126,7 +128,7 @@ public class UsersController(
 
         if (!result.Succeeded)
         {
-            return Unauthorized("Invalid email or password.");
+            return Unauthorized(InvalidCredentialsMessage);
         }
         return NoContent();
     }

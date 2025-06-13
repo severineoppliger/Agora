@@ -18,6 +18,10 @@ public class TransactionStatusController(
     IInputValidator inputValidator) : ControllerBase
 {
     private const string TransactionStatusNotFoundMessage = "Transaction status not found.";
+    private const string TransactionStatusSavedButNotRetrievedMessage = "Transaction status was saved but could not be retrieved.";
+    private const string TransactionStatusCreationFailedMessage = "Unknown problem creating the transaction status.";
+    private const string TransactionStatusUpdateFailedMessage = "Unknown problem updating the transaction status.";
+    private const string TransactionStatusDeletionFailedMessage = "Unknown problem deleting the transaction status.";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus([FromQuery] TransactionStatusQueryParameters queryParameters)
@@ -63,7 +67,7 @@ public class TransactionStatusController(
 
             if (createdTransactionStatus == null)
             {
-                return StatusCode(500, "Transaction status was saved but could not be retrieved.");
+                return StatusCode(500, TransactionStatusSavedButNotRetrievedMessage);
             }
 
             TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
@@ -71,7 +75,7 @@ public class TransactionStatusController(
             return CreatedAtAction(nameof(GetTransactionStatus), new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
         }
 
-        return BadRequest("Problem creating the transaction status.");
+        return BadRequest(TransactionStatusCreationFailedMessage);
     } 
     
     [Authorize(Roles = Roles.Admin)]
@@ -101,7 +105,7 @@ public class TransactionStatusController(
         
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem updating the transaction status.");
+            : BadRequest(TransactionStatusUpdateFailedMessage);
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -119,6 +123,6 @@ public class TransactionStatusController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest("Problem deleting the transaction status.");
+            : BadRequest(TransactionStatusDeletionFailedMessage);
     }
 }
