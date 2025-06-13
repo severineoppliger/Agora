@@ -254,8 +254,11 @@ public static class AgoraDbContextSeed
                     Price = 10,
                     PostId = 1,
                     TransactionStatusId = 1,
+                    InitiatorId = "00000000-0000-0000-0000-000000000002",
                     BuyerId = "00000000-0000-0000-0000-000000000002",
+                    BuyerConfirmed = false,
                     SellerId = "00000000-0000-0000-0000-000000000001",
+                    SellerConfirmed = false,
                     CreatedAt = DateTime.Now
                 }
             ];
