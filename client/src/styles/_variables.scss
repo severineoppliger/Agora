@@ -1,0 +1,23 @@
+﻿@font-face {
+  font-family: 'ScopeOne';
+  src: url('../assets/fonts/ScopeOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Colors
+$color-primary: #648269;
+$color-secondary: #E6DAA8;
+$color-accent: #990404;
+$color-background: #F4F3EA;
+$color-text: #212121;
+
+
+// Other customization
+$header-logo-height: 50px;
+
+// Autres
+$font-stack: ScopeOne, 'Segoe UI', sans-serif;
+$border-radius: 0.375rem;
+$spacing-unit: 1rem;
