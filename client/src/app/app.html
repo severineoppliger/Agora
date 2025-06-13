@@ -1,1 +1,10 @@
-<h1 class="text-3xl font-bold underline">Welcome to {{ title }} !</h1>
+<app-header></app-header>
+
+<div class="">
+    <h1>Welcome to {{ title }} !</h1>
+    <ul>
+        @for (post of posts; track post.id) {
+            <li>{{post.title}}</li>
+        }
+    </ul>
+</div>
