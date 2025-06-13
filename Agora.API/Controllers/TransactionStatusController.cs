@@ -17,11 +17,7 @@ public class TransactionStatusController(
     IMapper mapper,
     IInputValidator inputValidator) : ControllerBase
 {
-    private const string TransactionStatusNotFoundMessage = "Transaction status not found.";
-    private const string TransactionStatusSavedButNotRetrievedMessage = "Transaction status was saved but could not be retrieved.";
-    private const string TransactionStatusCreationFailedMessage = "Unknown problem creating the transaction status.";
-    private const string TransactionStatusUpdateFailedMessage = "Unknown problem updating the transaction status.";
-    private const string TransactionStatusDeletionFailedMessage = "Unknown problem deleting the transaction status.";
+    private const string EntityName = "transaction status";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus([FromQuery] TransactionStatusQueryParameters queryParameters)
@@ -36,7 +32,7 @@ public class TransactionStatusController(
         TransactionStatus? transactionStatus = await repo.GetTransactionStatusByIdAsync(id);
         
         return transactionStatus == null 
-            ? NotFound(TransactionStatusNotFoundMessage)
+            ? NotFound(ErrorMessages.NotFound(EntityName))
             : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
     }
 
@@ -67,7 +63,7 @@ public class TransactionStatusController(
 
             if (createdTransactionStatus == null)
             {
-                return StatusCode(500, TransactionStatusSavedButNotRetrievedMessage);
+                return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
             }
 
             TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
@@ -75,7 +71,7 @@ public class TransactionStatusController(
             return CreatedAtAction(nameof(GetTransactionStatus), new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
         }
 
-        return BadRequest(TransactionStatusCreationFailedMessage);
+        return BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "creation"));
     } 
     
     [Authorize(Roles = Roles.Admin)]
@@ -90,7 +86,7 @@ public class TransactionStatusController(
         TransactionStatus? existingTransactionStatus = await repo.GetTransactionStatusByIdAsync(id);
         if (existingTransactionStatus == null)
         {
-            return NotFound(TransactionStatusNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Input validation
@@ -105,7 +101,7 @@ public class TransactionStatusController(
         
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(TransactionStatusUpdateFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "update"));
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -116,13 +112,13 @@ public class TransactionStatusController(
 
         if (transactionStatus == null)
         {
-            return NotFound(TransactionStatusNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
 
         repo.DeleteTransactionStatus(transactionStatus);
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(TransactionStatusDeletionFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "deletion"));
     }
 }

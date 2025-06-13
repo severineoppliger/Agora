@@ -9,7 +9,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Agora.API.Controllers;
@@ -24,9 +23,7 @@ public class UsersController(
     IInputValidator inputValidator) : ControllerBase
 
 {
-    private const string UserNotFoundMessage = "User not found.";
-    private const string InvalidCredentialsMessage = "Invalid email or password.";
-    private const string UserSavedButNotRetrievedMessage = "User was saved but could not be retrieved.";
+    private const string EntityName = "user";
 
     [Authorize(Roles = Roles.Admin)]
     [HttpGet("admin")]
@@ -48,7 +45,7 @@ public class UsersController(
         AppUser? user = await repo.GetUserByIdAsync(id);
 
         return user == null
-            ? NotFound(UserNotFoundMessage)
+            ? NotFound(ErrorMessages.NotFound(EntityName))
                 : Ok(mapper.Map<UserDetailsDto>(user));
     }
     
@@ -56,16 +53,16 @@ public class UsersController(
     [HttpGet("me")]
     public async Task<ActionResult<UserDetailsDto>> GetCurrentUserAsync()
     {
-        string? userId = repo.GetUserId(User);
+        string? userId = repo.GetUserId(User); //TODO pas même manière qu'ailleurs -> quelle méthode est la bonne ?
         if (userId is null)
         {
-            return BadRequest(UserNotFoundMessage);
+            return BadRequest(ErrorMessages.User.IdNotFoundInClaims);
         }
 
         AppUser? user = await repo.GetUserByIdAsync(userId);
         
         return user == null
-            ? NotFound(UserNotFoundMessage)
+            ? NotFound(ErrorMessages.NotFound(EntityName))
             : Ok(mapper.Map<UserDetailsDto>(user));
     }
 
@@ -105,7 +102,7 @@ public class UsersController(
 
         if (createdUser == null)
         {
-            return StatusCode(500, UserSavedButNotRetrievedMessage);
+            return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
         }
 
         UserDetailsDto createdUserDetailsDto = mapper.Map<UserDetailsDto>(createdUser);
@@ -119,7 +116,7 @@ public class UsersController(
         AppUser? user = await repo.GetUserByEmailAsync(signInDto.Email);
         if (user == null)
         {
-            return Unauthorized(InvalidCredentialsMessage);
+            return Unauthorized(ErrorMessages.User.InvalidCredentials);
         }
 
         var result =
@@ -128,7 +125,7 @@ public class UsersController(
 
         if (!result.Succeeded)
         {
-            return Unauthorized(InvalidCredentialsMessage);
+            return Unauthorized(ErrorMessages.User.InvalidCredentials);
         }
         return NoContent();
     }

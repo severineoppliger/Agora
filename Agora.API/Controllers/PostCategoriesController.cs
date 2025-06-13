@@ -2,7 +2,6 @@
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.QueryParams;
 using Agora.Core.Constants;
-using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using AutoMapper;
@@ -19,14 +18,7 @@ public class PostCategoriesController(
     IMapper mapper,
     IInputValidator inputValidator) : ControllerBase
 {
-    private const string PostCategoryNotFoundMessage = "Post category not found.";
-    private const string PostCategorySavedButNotRetrievedMessage = 
-        "Post category was saved but could not be retrieved.";
-    private const string PostCategoryInUseMessage = "Cannot delete a post category that is used by one or more posts.";
-    private const string PostCategoryCreationFailedMessage = "Unknown problem creating the post category.";
-    private const string PostCategoryUpdateFailedMessage = "Unknown problem updating the post category.";
-    private const string PostCategoryDeletionFailedMessage = "Unknown problem deleting the post category.";
-    
+    private const string EntityName = "post category";
     
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories([FromQuery] PostCategoryQueryParameters queryParameters)
@@ -41,7 +33,7 @@ public class PostCategoriesController(
         PostCategory? postCategory = await repo.GetPostCategoryByIdAsync(id);
 
         return postCategory == null 
-            ? NotFound(PostCategoryNotFoundMessage) 
+            ? NotFound(ErrorMessages.NotFound(EntityName)) 
             : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
@@ -71,7 +63,7 @@ public class PostCategoriesController(
             
             if (createdPostCategory == null)
             {
-                return StatusCode(500, PostCategorySavedButNotRetrievedMessage);
+                return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
             }
             
             PostCategoryDetailsDto createdPostCategoryDetailsDto =
@@ -80,7 +72,7 @@ public class PostCategoriesController(
             return CreatedAtAction(nameof(GetPostCategory), new { id = createdPostCategory.Id }, createdPostCategoryDetailsDto);
         }
 
-        return BadRequest(PostCategoryCreationFailedMessage);
+        return BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "creation"));
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -94,7 +86,7 @@ public class PostCategoriesController(
         PostCategory? existingPostCategory = await repo.GetPostCategoryByIdAsync(id);
         if (existingPostCategory == null)
         {
-            return NotFound(PostCategoryNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
 
         // Input validation
@@ -109,7 +101,7 @@ public class PostCategoriesController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(PostCategoryUpdateFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "update"));
     }
 
     [Authorize(Roles = Roles.Admin)]
@@ -120,17 +112,17 @@ public class PostCategoriesController(
 
         if (postCategory == null)
         {
-            return NotFound(PostCategoryNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
 
         if (await postRepo.IsCategoryInUserAsync(id))
         {
-            return BadRequest(PostCategoryInUseMessage);
+            return BadRequest(ErrorMessages.PostCategory.InUse);
         }
         repo.DeletePostCategory(postCategory);
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(PostCategoryDeletionFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "deletion"));
     }
 }

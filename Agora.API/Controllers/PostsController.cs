@@ -25,13 +25,7 @@ public class PostsController(
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
     : ControllerBase
 {
-    private const string UserNotFoundInClaimsMessage = "User ID not found in claims.";
-    private const string PostNotFoundMessage = "Post not found.";
-    private const string NotOwnerMessage = "Current user is not the owner of the post.";
-    private const string PostSavedButNotRetrievedMessage = "Post was saved but could not be retrieved.";
-    private const string PostCreationFailedMessage = "Unknown problem creating the post.";
-    private const string PostUpdateFailedMessage = "Unknown problem updating the post.";
-    private const string PostDeletionFailedMessage = "Unknown problem deleting the post.";
+    private const string EntityName = "post";
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
@@ -49,7 +43,7 @@ public class PostsController(
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (currentUserId is null)
         {
-            return Unauthorized(UserNotFoundInClaimsMessage);
+            return Unauthorized(ErrorMessages.User.IdNotFoundInClaims);
         }
         IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
             queryParameters,
@@ -65,7 +59,7 @@ public class PostsController(
         Post? post = await postService.GetVisiblePostByIdAsync(id, User.IsInRole(Roles.Admin), User.FindFirstValue(ClaimTypes.NameIdentifier));
         
         return post == null
-            ? NotFound(PostNotFoundMessage)
+            ? NotFound(ErrorMessages.NotFound(EntityName))
             : Ok(mapper.Map<PostDetailsDto>(post));
     }
 
@@ -88,7 +82,7 @@ public class PostsController(
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (currentUserId is null)
         {
-            return Unauthorized("User ID not found in claims.");
+            return Unauthorized(ErrorMessages.User.IdNotFoundInClaims);
         }
 
         // Transform to the full entity and validate with business rules
@@ -111,7 +105,7 @@ public class PostsController(
             
             if (createdPost == null)
             {
-                return StatusCode(500, PostSavedButNotRetrievedMessage);
+                return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
             }
             
             PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
@@ -119,7 +113,7 @@ public class PostsController(
             return CreatedAtAction(nameof(GetPost), new { id = createdPost.Id }, createdPostDetailsDto);
         }
         
-        return BadRequest(PostCreationFailedMessage);
+        return BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "creation"));
     }
 
     [Authorize]
@@ -134,14 +128,14 @@ public class PostsController(
         Post? existingPost = await repo.GetPostByIdAsync(id);
         if (existingPost == null)
         {
-            return NotFound(PostNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (existingPost.OwnerUserId != currentUserId)
         {
-            return Unauthorized(NotOwnerMessage);
+            return Unauthorized(ErrorMessages.Post.NotOwner);
         }
         
         // Input validation
@@ -164,7 +158,7 @@ public class PostsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(PostUpdateFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "update"));
     }
 
     [Authorize]
@@ -175,14 +169,14 @@ public class PostsController(
 
         if (post == null)
         {
-            return NotFound(PostNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (post.OwnerUserId != currentUserId)
         {
-            return Unauthorized(NotOwnerMessage);
+            return Unauthorized(ErrorMessages.Post.NotOwner);
         }
         
         // Check if related transactions exist: if no, remove from DB, if yes change status
@@ -198,6 +192,6 @@ public class PostsController(
         
         return await repo.SaveChangesAsync() 
             ? NoContent()
-            : BadRequest(PostDeletionFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "deletion"));
     }
 }

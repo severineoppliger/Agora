@@ -4,6 +4,7 @@ using Agora.API.InputValidation.Interfaces;
 using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
 using Agora.Core.Constants;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using AutoMapper;
@@ -16,19 +17,14 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class TransactionsController(
     ITransactionRepository repo,
+    ITransactionStatusRepository transactionStatusRepo,
     IMapper mapper,
     IInputValidator inputValidator,
     IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
     : ControllerBase
 {
-    private const string UserNotFoundInClaimsMessage = "User ID not found in claims.";
-    private const string TransactionNotFoundMessage = "Transaction not found.";
-    private const string NotInvolvedMessage = "Current user is not involved in the transaction.";
-    private const string TransactionSavedButNotRetrievedMessage = "Transaction was saved but could not be retrieved.";
-    private const string TransactionCreationFailedMessage = "Unknown problem creating the transaction.";
-    private const string TransactionUpdateFailedMessage = "Unknown problem updating the transaction.";
-    private const string TransactionDeletionFailedMessage = "Unknown problem deleting the transaction.";
-    
+    private const string EntityName = "transaction";
+
     // An admin has access to all transactions, but normal user have only access to transactions in which it is involved.
     [Authorize]
     [HttpGet]
@@ -38,7 +34,7 @@ public class TransactionsController(
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (currentUserId is null)
         {
-            return Unauthorized(UserNotFoundInClaimsMessage);
+            return Unauthorized(ErrorMessages.User.IdNotFoundInClaims);
         }
         
         bool isAdmin = User.IsInRole(Roles.Admin);
@@ -56,14 +52,14 @@ public class TransactionsController(
 
         if (transaction == null)
         {
-            return NotFound(TransactionNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (transaction.BuyerId != currentUserId && transaction.SellerId != currentUserId)
         {
-            return Unauthorized(NotInvolvedMessage);
+            return Unauthorized(ErrorMessages.Transaction.NotInvolved);
         }
         
         return Ok(mapper.Map<TransactionDetailsDto>(transaction));
@@ -74,7 +70,7 @@ public class TransactionsController(
     public async Task<ActionResult<TransactionDetailsDto>> CreateTransaction([FromBody] CreateTransactionDto transactionDto)
     {
         // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
+        List<string> inputErrors = await inputValidator.ValidateCreateTransactionDtoAsync(transactionDto);
         if (inputErrors.Count != 0)
         {
             return BadRequest(new { Errors = inputErrors });
@@ -97,7 +93,7 @@ public class TransactionsController(
             
             if (createdTransaction == null)
             {
-                return StatusCode(500, TransactionSavedButNotRetrievedMessage);
+                return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
             }
             
             TransactionDetailsDto createdTransactionDetailsDto = mapper.Map<TransactionDetailsDto>(createdTransaction);
@@ -105,7 +101,7 @@ public class TransactionsController(
             return CreatedAtAction(nameof(GetTransaction), new { id = createdTransaction.Id }, createdTransactionDetailsDto);
         }
         
-        return BadRequest(TransactionCreationFailedMessage);
+        return BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "creation"));
     }
 
     [Authorize]
@@ -116,22 +112,22 @@ public class TransactionsController(
         Transaction? existingTransaction = await repo.GetTransactionByIdAsync(id);
         if (existingTransaction == null)
         {
-            return NotFound(TransactionNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (existingTransaction.BuyerId != currentUserId && existingTransaction.SellerId != currentUserId)
         {
-            return Unauthorized(NotInvolvedMessage);
+            return Unauthorized(ErrorMessages.Transaction.NotInvolved);
         }
         
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
+        // Input validation TODO
+        // List<string> inputErrors = await inputValidator.ValidateInputTransactionDtoAsync(transactionDto);
+        // if (inputErrors.Count != 0)
+        // {
+        //     return BadRequest(new { Errors = inputErrors });
+        // }
         
         // Transform to the full entity and validate with business rules
         Transaction transaction = mapper.Map<Transaction>(transactionDto);
@@ -146,7 +142,7 @@ public class TransactionsController(
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(TransactionUpdateFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "update"));
     }
 
     [Authorize]
@@ -157,20 +153,20 @@ public class TransactionsController(
 
         if (transaction == null)
         {
-            return NotFound(TransactionNotFoundMessage);
+            return NotFound(ErrorMessages.NotFound(EntityName));
         }
         
         // Ownership validation
         string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (transaction.BuyerId != currentUserId && transaction.SellerId != currentUserId)
         {
-            return Unauthorized(NotInvolvedMessage);
+            return Unauthorized(ErrorMessages.Transaction.NotInvolved);
         }
 
         repo.DeleteTransaction(transaction);
 
         return await repo.SaveChangesAsync()
             ? NoContent()
-            : BadRequest(TransactionDeletionFailedMessage);
+            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "deletion"));
     }
 }
