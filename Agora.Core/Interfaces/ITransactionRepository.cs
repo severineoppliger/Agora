@@ -10,4 +10,5 @@ public interface ITransactionRepository
     void DeleteTransaction(Transaction transaction);
     Task<bool> SaveChangesAsync();
     IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionFilter queryParams);
+    Task<bool> IsPostInTransactionAsync(long postId);
 }

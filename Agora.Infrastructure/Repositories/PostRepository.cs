@@ -109,4 +109,9 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         };
         return query;
     }
+
+    public async Task<bool> IsCategoryInUserAsync(long postCategoryId)
+    {
+        return await context.Posts.AnyAsync(p => p.PostCategoryId == postCategoryId);
+    }
 }

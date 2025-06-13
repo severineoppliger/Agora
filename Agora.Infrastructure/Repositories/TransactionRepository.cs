@@ -91,4 +91,9 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         };
         return query;
     }
+
+    public async Task<bool> IsPostInTransactionAsync(long postId)
+    {
+        return await context.Transactions.AnyAsync(t => t.PostId == postId);
+    }
 }
