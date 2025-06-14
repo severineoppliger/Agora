@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Agora.Core.Interfaces.Repositories;
+﻿using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,19 +39,19 @@ public class UserRepository(
     {
         return await userManager.FindByEmailAsync(email);
     }
-
-    public string? GetUserId(ClaimsPrincipal user)
+    
+    public async Task<AppUser?> GetUserByUsernameAsync(string username)
     {
-        return userManager.GetUserId(user);   
+        return await userManager.FindByNameAsync(username);
     }
-
+    
     public async Task<IdentityResult> AddUserAsync(AppUser user, string password)
     {
         return await signInManager.UserManager.CreateAsync(user, password);
     }
 
-    public async Task<bool> UserExistsAsync(long id)
+    public async Task<bool> UserExistsAsync(string id)
     {
-        throw new NotImplementedException();
+        return await userManager.Users.AnyAsync(u => u.Id == id);
     }
 }

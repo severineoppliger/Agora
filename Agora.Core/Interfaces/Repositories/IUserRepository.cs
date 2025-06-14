@@ -9,7 +9,7 @@ public interface IUserRepository
     Task<IReadOnlyList<AppUser>> GetAllUsersAsync();
     Task<AppUser?> GetUserByIdAsync(string id);
     Task<AppUser?> GetUserByEmailAsync(string email);
-    string? GetUserId(ClaimsPrincipal user);
+    public Task<AppUser?> GetUserByUsernameAsync(string username);
     Task<IdentityResult> AddUserAsync(AppUser user, string password);
-    Task<bool> UserExistsAsync(long id);
+    Task<bool> UserExistsAsync(string id);
 }
