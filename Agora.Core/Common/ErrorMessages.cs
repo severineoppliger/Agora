@@ -1,10 +1,11 @@
-﻿using Agora.Core.Extensions;
+﻿using Agora.Core.Enums;
+using Agora.Core.Extensions;
 
 namespace Agora.Core.Common;
 
 public static class ErrorMessages
 {
-    public static string NotFound(string objectName) => $"{objectName.CapitalizeFirstLetter()} is not found.";
+    public static string NotFound(string objectName, string? objectValue= null) => $"{objectName.CapitalizeFirstLetter()} '{objectValue}' is not found.";
     public static string IsInvalid(string objectName, string objectValue) => $"{objectName.CapitalizeFirstLetter()} '{objectValue}' is invalid.";
 
     public static string NewMustBeDifferentFromCurrent(string objectName) =>
@@ -14,12 +15,13 @@ public static class ErrorMessages
 
     public static string AlreadyExists(string objectName, string objectValue) => 
         $"{objectName.CapitalizeFirstLetter()} {objectValue} already exists. {objectName.CapitalizeFirstLetter()} must be unique";
+    
+    public static string AlreadyDeleted(string objectName) => 
+        $"This {objectName} is already deleted.";
+    
     public static string RelatedEntityDoesNotExist(string entityName, long? entityId) =>
         $"Related {entityName} with ID {entityId} doesn't exist.";
-
-    public static string UnauthorizedAction(string entityName) => 
-        $"You are not authorized to perform this action on this {entityName}.";
-
+    
     public static string ErrorWhenSavingToDb(string entityName) =>
         $"Problem occured when saving the {entityName} in DB.";
     
@@ -34,8 +36,10 @@ public static class ErrorMessages
 
     public static class Post
     {
-        public const string NotOwner = "Current user is not the owner of the post.";
         public const string SameTitle = "User has already posted a post with same title.";
+        public const string InvolvedInOngoingTransaction = "This post is involved in an ongoing transaction." +
+                                                           "It can't be modified or deleted.";
+        public static string SameStatus(PostStatus status) => "Post is already {status}.";
     }
     
     public static class Transaction
@@ -71,7 +75,7 @@ public static class ErrorMessages
             $"An account with the email '{email}' is already registered.";
         public static string BuyerOrSellerDoesNotExist(string buyerOrSeller, string id) => 
             $"{buyerOrSeller.CapitalizeFirstLetter()} (user with id {id}) doesn't exist.";
-        public const string NotAuthenticated = "User is not authenticated.";
-        public const string NotAuthorized = "User is not authorized to perform this action.";
+        public const string NotAuthenticated = "User should be authenticated to perform this action.";
+        public const string NotAuthorized = "User is not allowed to perform this action.";
     }
 }

@@ -15,11 +15,16 @@ public enum ErrorType
     /// The requested entity was not found in the database or source.
     /// </summary>
     NotFound,
-
+    
     /// <summary>
-    /// The current user is not authorized to perform the requested action.
+    /// The current user is not authenticated, but the requested action requires authentication.
     /// </summary>
     Unauthorized,
+
+    /// <summary>
+    /// The current user is authenticated but does not have permission to perform the requested action.
+    /// </summary>
+    Forbidden,
 
     /// <summary> The request was invalid due to data validation or business rule violations. </summary>
     Invalid,
