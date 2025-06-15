@@ -23,10 +23,11 @@ public class PostProfile : Profile
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.PostCategoryName, opt => opt.MapFrom(src => src.PostCategory.Name))
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Owner.UserName));
-        
+
         CreateMap<CreatePostDto, Post>()
-            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title.Trim()))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Trim()))
+            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)));
         
         CreateMap<PostQueryParameters, PostFilter>();
         
