@@ -53,7 +53,6 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.Property(p => p.CreatedAt)
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
         
-        builder.Property(p => p.UpdatedAt)
-            .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
+        builder.Property(p => p.UpdatedAt);
     }
 }
