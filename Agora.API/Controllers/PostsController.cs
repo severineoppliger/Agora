@@ -1,13 +1,16 @@
-﻿using System.Security.Claims;
+﻿using System.Security.Authentication;
 using Agora.API.DTOs.Post;
+using Agora.API.Extensions;
+using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
-using Agora.API.Orchestrators.Interfaces;
 using Agora.API.QueryParams;
+using Agora.Core.Common;
 using Agora.Core.Constants;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Interfaces.Services;
+using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.BusinessServices;
 using Agora.Core.Models;
+using Agora.Core.Models.Requests;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,180 +21,333 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class PostsController(
     IPostService postService,
-    IPostRepository repo,
-    ITransactionRepository transactionRepo,
     IMapper mapper,
     IInputValidator inputValidator,
-    IBusinessRulesValidationOrchestrator businessRulesValidationOrchestrator)
+    IUserContextService userContextService)
     : ControllerBase
 {
     private const string EntityName = "post";
-
-    [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
+    
+    /// <summary>
+    /// Retrieves all public posts visible in the catalog (i.e., with status "Active"),
+    /// optionally filtered and sorted using query parameters.
+    /// </summary>
+    /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, etc.</param>
+    /// <returns>Returns <c>200 OK</c> with a list of summarized post information available to all users.</returns>
+    [HttpGet("catalog")]
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalogue([FromQuery] PostQueryParameters queryParameters)
     {
-        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
-            queryParameters,
-            User.IsInRole(Roles.Admin));
+        // Delegate business logic
+        Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
+            PostVisibilityMode.CatalogOnly,
+            queryParameters, 
+            null);
+        IReadOnlyList<Post> posts = result.Value!;
+        
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
     
+    /// <summary>
+    /// Retrieves all posts created by the currently authenticated user.
+    /// Includes posts with status "Active" or "Inactive", but not "Deleted".
+    /// </summary>
+    /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, etc.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with a list of summarized post information owned by the current user.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// </returns>
     [Authorize]
     [HttpGet("me")]
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetCurrentUserPosts([FromQuery] PostQueryParameters queryParameters)
     {
-        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (currentUserId is null)
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
         {
-            return Unauthorized(ErrorMessages.User.IdNotFoundInClaims);
+            userContext = userContextService.GetCurrentUserContext();
         }
-        IReadOnlyList<Post> posts = await postService.GetAllVisiblePostsAsync(
-            queryParameters,
-            User.IsInRole(Roles.Admin),
-            currentUserId,
-            currentUserId);
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic
+        Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
+            PostVisibilityMode.UserOwnPosts,
+            queryParameters, 
+            userContext);
+        IReadOnlyList<Post> posts = result.Value!;
+        
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
     }
-
+    
+    /// <summary>
+    /// Retrieves all posts from all users, regardless of their status.
+    /// This action is restricted to administrators only.
+    /// </summary>
+    /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, user, etc.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with a list of summarized post information across the platform.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user does not have admin privileges.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
+    [HttpGet("all")]
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
+    {
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic
+        Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
+            PostVisibilityMode.AdminView,
+            queryParameters, 
+            userContext);
+        IReadOnlyList<Post> posts = result.Value!;
+        
+        return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
+    }
+    
+    /// <summary>
+    /// Retrieves detailed information of a specific post by its identifier.
+    /// </summary>
+    /// <param name="id">The identifier of the post to retrieve.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the post details if found and authorized.
+    /// Returns <c>401 Unauthorized</c> if the user is not allowed to view the post.
+    /// Returns <c>404 Not Found</c> if the post does not exist.
+    /// </returns>
     [HttpGet("{id:long}")]
     public async Task<ActionResult<PostDetailsDto>> GetPost([FromRoute] long id)
     {
-        Post? post = await postService.GetVisiblePostByIdAsync(id, User.IsInRole(Roles.Admin), User.FindFirstValue(ClaimTypes.NameIdentifier));
+        // Delegate business logic depending on if the user is authenticated or not
+        Result<Post> result;
+        if (!userContextService.IsAuthenticated())
+        {
+            result = await postService.GetPostByIdAsync(id, null);
+        }
+        else
+        {
+            // Extract current user's context from claims
+            UserContext userContext;
+            try
+            {
+                userContext = userContextService.GetCurrentUserContext();
+            }
+            catch (AuthenticationException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            result = await postService.GetPostByIdAsync(id, userContext);
+        }
         
-        return post == null
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        // Return transaction if no error
+        Post? post = result.Value;
+        return post == null 
             ? NotFound(ErrorMessages.NotFound(EntityName))
             : Ok(mapper.Map<PostDetailsDto>(post));
     }
-
+    
+    /// <summary>
+    /// Creates a new post.
+    /// </summary>
+    /// <param name="dto">The post data transfer object containing creation details.</param>
+    /// <returns>
+    /// Returns <c>201 Created</c> with the newly created post details.
+    /// Returns <c>400 Bad Request</c> if input or business rules validation fails.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// </returns>
     [Authorize]
     [HttpPost]
-    public async Task<ActionResult<PostDetailsDto>> CreatePost([FromBody] CreatePostDto postDto)
+    public async Task<ActionResult<PostDetailsDto>> CreatePost([FromBody] CreatePostDto dto)
     {
-        // Cleaning
-        postDto.Title = postDto.Title.Trim();
-        postDto.Description = postDto.Description.Trim();
-        
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputPostDtoAsync(postDto);
-        if (inputErrors.Count != 0)
+        // Validate input DTO
+        InputValidationResult inputValidationResult = await inputValidator.ValidateCreatePostDtoAsync(dto);
+        if (!inputValidationResult.IsValid)
         {
-            return BadRequest(new { Errors = inputErrors });
+            return BadRequest(inputValidationResult.Errors);
         }
-        
+
         // Assign userId of current user to the post
-        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (currentUserId is null)
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
         {
-            return Unauthorized(ErrorMessages.User.IdNotFoundInClaims);
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
         }
 
-        // Transform to the full entity and validate with business rules
-        Post post = mapper.Map<Post>(postDto);
-        post.Status = PostStatus.Active;
-        post.OwnerUserId = currentUserId;
-        
-        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
-        if (businessRulesErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = businessRulesErrors });
-        }
+        // Map the DTO to the full entity and delegate business logic (business rules + database changes)
+        Post post = mapper.Map<Post>(dto);
+    
+        Result<Post> result = await postService.CreatePostAsync(post, userContext);
 
-        // Add to database
-        repo.AddPost(post);
-        
-        if (await repo.SaveChangesAsync())
+        if (result.IsFailure)
         {
-            Post? createdPost = await repo.GetPostByIdAsync(post.Id);
-            
-            if (createdPost == null)
-            {
-                return StatusCode(500, ErrorMessages.SavedButNotRetrieved(EntityName));
-            }
-            
-            PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(createdPost);
-            
-            return CreatedAtAction(nameof(GetPost), new { id = createdPost.Id }, createdPostDetailsDto);
+            return this.MapErrorResult(result);
         }
         
-        return BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "creation"));
+        // Treat success case
+        PostDetailsDto createdPostDetailsDto = mapper.Map<PostDetailsDto>(result.Value);
+        return CreatedAtAction(nameof(GetPost), new { id = result.Value!.Id }, createdPostDetailsDto);
     }
-
+    
+    /// <summary>
+    /// Updates details of an existing post partially.
+    /// Only allowed if the current user has modification rights.
+    /// </summary>
+    /// <param name="id">The identifier of the post to update.</param>
+    /// <param name="dto">Partial post data to update.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful update.
+    /// Returns <c>400 Bad Request</c> if input validation fails.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user has not the modification rights for this post.
+    /// Returns <c>404 Not Found</c> if the post or a related object does not exist.
+    /// </returns>
     [Authorize]
-    [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdatePost([FromRoute] long id, [FromBody] UpdatePostDto postDto)
+    [HttpPatch("{id:long}")]
+    public async Task<ActionResult> UpdatePostDetails([FromRoute] long id, [FromBody] UpdatePostDetailsDto dto)
     {
-        // Cleaning
-        postDto.Title = postDto.Title.Trim();
-        postDto.Description = postDto.Description.Trim();
-        
-        // Retrieve the existing post
-        Post? existingPost = await repo.GetPostByIdAsync(id);
-        if (existingPost == null)
+        // Validate input DTO
+        InputValidationResult inputValidationResult = await inputValidator.ValidateUpdatePostDtoAsync(dto);
+        if (!inputValidationResult.IsValid)
         {
-            return NotFound(ErrorMessages.NotFound(EntityName));
+            return BadRequest(inputValidationResult.Errors);
         }
         
-        // Ownership validation
-        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (existingPost.OwnerUserId != currentUserId)
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
         {
-            return Unauthorized(ErrorMessages.Post.NotOwner);
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
         }
         
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputPostDtoAsync(postDto);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
-        
-        // Transform to the full entity and validate with business rules
-        Post post = mapper.Map<Post>(postDto);
-        IList<string> businessRulesErrors = await businessRulesValidationOrchestrator.ValidateAndProcessPostAsync(post);
-        if (businessRulesErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = businessRulesErrors });
-        }
+        // Delegate business logic (business rules + database changes)
+        PostDetailsUpdate newDetails = mapper.Map<PostDetailsUpdate>(dto);
+        Result result = await postService.UpdatePostDetailsAsync(id, newDetails, userContext);
 
-        // Apply the updated fields exposed in the DTO to the existing post
-        mapper.Map(postDto, existingPost); 
-
-        return await repo.SaveChangesAsync()
-            ? NoContent()
-            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "update"));
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
     }
 
+    /// <summary>
+    /// Make a post public by setting its status to <c>Active</c>.
+    /// </summary>
+    /// <param name="id">The unique identifier of the post to make public.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> if the operation succeeds.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user does not have permission to activate this post.
+    /// Returns <c>404 Not Found</c> if the post does not exist or is not visible to the user.
+    /// Returns <c>400 Bad Request</c> if the action violates business rules.
+    /// </returns>
+    [Authorize]
+    [HttpPut("{id:long}/activate")]
+    public async Task<IActionResult> ActivatePost([FromRoute] long id)
+    {
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic (business rules + database changes)
+        Result result = await postService.ChangePostStatusAsync(id, userContext, PostStatus.Active);
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
+    }
+
+    /// <summary>
+    /// Hide a post from the public by setting its status to <c>Inactive</c>.
+    /// </summary>
+    /// <param name="id">The unique identifier of the post to hide.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> if the operation succeeds.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user does not have permission to deactivate this post.
+    /// Returns <c>404 Not Found</c> if the post does not exist or is not visible to the user.
+    /// Returns <c>400 Bad Request</c> if the action violates business rules.
+    /// </returns>
+    [Authorize]
+    [HttpPut("{id:long}/deactivate")]
+    public async Task<IActionResult> DeactivatePost([FromRoute] long id)
+    {
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic (business rules + database changes)
+        Result result = await postService.ChangePostStatusAsync(id, userContext, PostStatus.Inactive);
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
+    }
+    
+    /// <summary>
+    /// Deletes a post.
+    /// </summary>
+    /// <param name="id">The identifier of the post to delete.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful deletion.
+    /// Returns <c>400 Bad Request</c> if input validation fails.
+    /// Returns <c>404 Not Found</c> if the post or a related object does not exist.
+    /// </returns>
     [Authorize]
     [HttpDelete("{id:long}")]
     public async Task<ActionResult> DeletePost([FromRoute] long id)
     {
-        Post? post = await repo.GetPostByIdAsync(id);
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic (business rules + database changes)
+        Result result = await postService.DeletePostAsync(id, userContext);
 
-        if (post == null)
-        {
-            return NotFound(ErrorMessages.NotFound(EntityName));
-        }
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
         
-        // Ownership validation
-        string? currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (post.OwnerUserId != currentUserId)
-        {
-            return Unauthorized(ErrorMessages.Post.NotOwner);
-        }
-        
-        // Check if related transactions exist: if no, remove from DB, if yes change status
-        bool isRelatedToTransaction = await transactionRepo.IsPostInTransactionAsync(id);
-        if (isRelatedToTransaction)
-        {
-            post.Status = PostStatus.Deleted;
-        }
-        else
-        {
-            repo.DeletePost(post);
-        }
-        
-        return await repo.SaveChangesAsync() 
-            ? NoContent()
-            : BadRequest(ErrorMessages.UnknownErrorDuringAction(EntityName, "deletion"));
     }
 }
