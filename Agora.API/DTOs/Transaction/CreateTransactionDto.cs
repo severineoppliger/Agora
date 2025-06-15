@@ -3,7 +3,7 @@ using Agora.Core.Validation;
 
 namespace Agora.API.DTOs.Transaction;
 
-public class CreateTransactionDto : BaseInputTransactionDto
+public class CreateTransactionDto
 {
     [Required]
     [NotEmptyOrWhitespace]
@@ -12,18 +12,20 @@ public class CreateTransactionDto : BaseInputTransactionDto
     public string Title { get; set; } = String.Empty;
     
     [Required]
-    public string BuyerId { get; set; }
+    [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
+    public int Price { get; set; }
     
     [Required]
-    public string SellerId { get; set; }
+    public long? PostId { get; set; }
     
-    public void Deconstruct(out string title, out int price, out long? postId, out string buyerId, out string sellerId, out DateTime? transactionDate)
-    {
-        title = Title;
-        price = Price;
-        postId = PostId;
-        buyerId = BuyerId;
-        sellerId = SellerId;
-        transactionDate = TransactionDate;
-    }
+    // DateOnly is not supported so we need a Date like "2025-06-06"
+    [DataType(DataType.Date)]
+    public DateTime? TransactionDate { get; set; }
+    
+    [Required]
+    public string BuyerId { get; set; } = String.Empty;
+    
+    [Required]
+    public string SellerId { get; set; } = String.Empty;
+
 }
