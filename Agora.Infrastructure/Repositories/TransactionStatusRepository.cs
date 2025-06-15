@@ -1,4 +1,6 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Common;
+using Agora.Core.Enums;
+using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
@@ -37,6 +39,15 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         return await context.TransactionStatus
             .Include(ts => ts.Transactions)
             .FirstOrDefaultAsync(ts => ts.Id == id);
+    }
+
+    public async Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum)
+    {
+        TransactionStatus? transactionStatus = await context.TransactionStatus.FirstOrDefaultAsync(s =>
+            s.EnumValue == statusEnum);
+        if (transactionStatus is null)
+            throw new InvalidOperationException(ErrorMessages.NotFound("transactionStatus", statusEnum.ToString()));
+        return transactionStatus.Id;
     }
 
     public void AddTransactionStatus(TransactionStatus transactionStatus)
