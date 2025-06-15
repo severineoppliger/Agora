@@ -29,4 +29,9 @@ public class UserContextService(IHttpContextAccessor httpContextAccessor): IUser
             IsAdmin = isAdmin
         };
     }
+
+    public bool IsAuthenticated()
+    {
+        return httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated == true;
+    }
 }
