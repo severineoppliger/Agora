@@ -1,18 +1,18 @@
 using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
-using Agora.API.Orchestrators;
-using Agora.API.Orchestrators.Interfaces;
 // using Agora.API.Settings;
 using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
+using Agora.Core.BusinessServices;
+using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.BusinessServices;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
-using Agora.Core.Services;
 using Agora.Core.Validation;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
+using Agora.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -91,9 +91,16 @@ try
        | Data validation |
         ----------------- */
     builder.Services.AddScoped<IInputValidator, InputValidator>();
-    builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
+    builder.Services.AddScoped<IAuthorizationBusinessRules, AuthorizationBusinessRules>();
 
+    /*  -------------------
+       | Business services  |
+        -------------------- */
+    builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
+    builder.Services.AddScoped<IPostService, PostService>();
+    builder.Services.AddScoped<ITransactionService, TransactionService>();
+    
     /*  ---------------------------------
       | Authentication and authorization |
         --------------------------------- */
@@ -124,17 +131,13 @@ try
     builder.Services.AddScoped<IUserStore<AppUser>, UserStore<AppUser>>();
     builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
     
+    builder.Services.AddHttpContextAccessor();
+    builder.Services.AddScoped<IUserContextService, UserContextService>();
+    
     /* --------------------------------------
      | Cross-origin ressource sharing (CORS) |
        -------------------------------------- */
     builder.Services.AddCors();
-    
-    /*  ---------------
-    | Other services  |
-      --------------- */
-    builder.Services.AddScoped<IPostService, PostService>();
-    builder.Services.AddScoped<IVisibilityBusinessRules, VisibilityBusinessRules>();
-    
 
 /* ============================================================================================================ */
     var app = builder.Build();
