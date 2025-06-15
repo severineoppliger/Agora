@@ -207,7 +207,7 @@ public static class AgoraDbContextSeed
                     Description = "Offre pour un cours d'appui - Annonce avec transaction en cours",
                     Price = 10,
                     Type = PostType.Offer,
-                    Status = PostStatus.InTransactionActive,
+                    Status = PostStatus.Active,
                     PostCategoryId = 1,
                     OwnerUserId = "00000000-0000-0000-0000-000000000001",
                     CreatedAt = DateTime.Now
