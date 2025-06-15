@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.Transaction;
 using Agora.Core.Models;
+using Agora.Core.Models.Requests;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
@@ -26,7 +27,8 @@ public class TransactionProfile : Profile
                 src.TransactionDate.HasValue ? DateOnly.FromDateTime(src.TransactionDate.Value) : (DateOnly?)null))
             .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
         
-        CreateMap<UpdateTransactionDto, Transaction>()
+        CreateMap<UpdateTransactionDetailsDto, TransactionDetailsUpdate>()
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title != null ? src.Title.Trim() : null))
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src => 
                 src.TransactionDate.HasValue ? DateOnly.FromDateTime(src.TransactionDate.Value) : (DateOnly?)null))
             .ForAllMembers(opts => opts.Condition((_, _, srcMember) => srcMember != null));
