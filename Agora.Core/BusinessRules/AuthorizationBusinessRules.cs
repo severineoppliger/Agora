@@ -6,20 +6,13 @@ using Agora.Core.Models;
 namespace Agora.Core.BusinessRules;
 
 /// <summary>
-/// Determine if a certain user can see some entity.
+/// Determine if a certain user can see, create, modify or delete some entity.
 /// </summary>
 public class AuthorizationBusinessRules : IAuthorizationBusinessRules
 {
-    // Admin sees posts with any status
-    // Non-admin sees:
-    //   - All their posts without the deleted ones if they target to see their posts
-    //   - Only active posts of others
-    public bool CanViewPost(Post post, UserContext userContext)
+    public bool CanManagePost(Post post, UserContext userContext)
     {
-        bool isOwner = post.OwnerUserId == userContext.UserId;
-        return userContext.IsAdmin 
-               || isOwner && post.Status != PostStatus.Deleted
-               || !isOwner && post.Status is PostStatus.Active or PostStatus.InTransactionActive;
+        return userContext.IsAdmin || userContext.UserId == post.OwnerUserId;
     }
     
     public bool CanViewTransaction(Transaction transaction, UserContext userContext)
@@ -27,7 +20,7 @@ public class AuthorizationBusinessRules : IAuthorizationBusinessRules
         return IsInvolvedOrAdmin(transaction, userContext);
     }
     
-    public bool CanModifyTransaction(Transaction transaction, UserContext userContext)
+    public bool CanManageTransaction(Transaction transaction, UserContext userContext)
     {
         return IsInvolvedOrAdmin(transaction, userContext);
     }
