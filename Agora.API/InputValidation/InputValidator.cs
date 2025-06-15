@@ -151,9 +151,9 @@ public class InputValidator(
         InputValidationResult result = new InputValidationResult();
         
         // Status should have existing value
-        if (!Enum.IsDefined(typeof(TransactionStatusEnum), dto.newStatus))
+        if (!Enum.IsDefined(typeof(TransactionStatusEnum), dto.NewStatus))
         {
-            result.Errors.Add(ErrorMessages.IsInvalid("transaction status", dto.newStatus.ToString()));
+            result.Errors.Add(ErrorMessages.IsInvalid("transaction status", dto.NewStatus.ToString()));
         }
 
         return result;
