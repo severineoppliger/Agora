@@ -2,7 +2,7 @@
 
 namespace Agora.Core.Models;
 
-public class AppUser : IdentityUser
+public class User : IdentityUser
 {
     public int Credit { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

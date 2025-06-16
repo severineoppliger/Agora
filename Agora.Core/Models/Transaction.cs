@@ -14,18 +14,18 @@ public class Transaction : BaseEntity
     public required string InitiatorId { get; set; }
     public required string BuyerId { get; set; }
     public required bool BuyerConfirmed { get; set; }
-    public AppUser? Buyer { get; set; }
+    public User? Buyer { get; set; }
     
     public required string SellerId { get; set; }
     public required bool SellerConfirmed { get; set; }
-    public AppUser? Seller { get; set; }
+    public User? Seller { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    
+    public DateTime? UpdatedAt { get; set; }
     public DateOnly? TransactionDate { get; set; }
     public DateTime? CompletedAt { get; set; }
     
-    public void Deconstruct(out int price, out Post? post, out string buyerId, out AppUser? buyer, out string sellerId)
+    public void Deconstruct(out int price, out Post? post, out string buyerId, out User? buyer, out string sellerId)
     {
         price = Price;
         post = Post;

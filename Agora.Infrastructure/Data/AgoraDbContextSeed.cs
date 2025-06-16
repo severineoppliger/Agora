@@ -135,7 +135,7 @@ public static class AgoraDbContextSeed
         }
     }
 
-    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager)
+    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<User> userManager)
     {
         if (!context.Users.Any())
         {
@@ -151,7 +151,7 @@ public static class AgoraDbContextSeed
         }
     }
 
-    private static async Task SeedUsers(UserManager<AppUser> userManager)
+    private static async Task SeedUsers(UserManager<User> userManager)
     {
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
@@ -171,7 +171,7 @@ public static class AgoraDbContextSeed
             if (await userManager.FindByIdAsync(id) != null)
                 continue;
 
-            var user = new AppUser
+            var user = new User
             {
                 Id = id,
                 UserName = userName,

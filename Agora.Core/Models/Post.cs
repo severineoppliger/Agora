@@ -14,7 +14,7 @@ public class Post : BaseEntity
     public PostCategory PostCategory { get; set; }
 
     public required string OwnerUserId { get; set; }
-    public AppUser Owner { get; set; }
+    public User Owner { get; set; }
 
     public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 

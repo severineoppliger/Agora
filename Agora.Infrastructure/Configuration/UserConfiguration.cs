@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Agora.Infrastructure.Configuration;
 
-public class UserConfiguration: IEntityTypeConfiguration<AppUser>
+public class UserConfiguration: IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<AppUser> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.Property(u => u.UserName)
             .IsRequired()
