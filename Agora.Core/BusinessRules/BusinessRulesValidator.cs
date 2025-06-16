@@ -4,21 +4,26 @@ using Agora.Core.Enums;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Core.Models.Filters;
+using Agora.Core.Models.Requests;
 
 namespace Agora.Core.BusinessRules;
 
 public class BusinessRulesValidator(
     IPostRepository postRepo,
     IPostCategoryRepository postCategoryRepo,
+    ITransactionStatusRepository transactionStatusRepo,
     ITransactionRepository transactionRepo
     ) : IBusinessRulesValidator
 {
+    #region User
     public Result ValidateUser(AppUser user)
     {
         throw new NotImplementedException();
         // TODO
     }
-
+    #endregion
+   
+    #region PostCategory
     public async Task<Result> ValidateNewPostCategoryAsync(PostCategory postCategory)
     {
         if (await postCategoryRepo.NameExistsAsync(postCategory.Name))
@@ -51,7 +56,9 @@ public class BusinessRulesValidator(
             : Result.Success();
     }
 
-
+    #endregion
+    
+    #region Post
     public async Task<Result> ValidateNewPostAsync(Post newPost, UserContext userContext)
     {
         PostFilter postFilter = new PostFilter()
@@ -125,6 +132,31 @@ public class BusinessRulesValidator(
         return Result.Success();
     }
 
+    #endregion
+    
+    #region TransactionStatus
+    public async Task<Result> ValidateTransactionStatusUpdateAsync(TransactionStatus oldTransactionStatus, TransactionStatusDetailsUpdate newDetails)
+    {
+        if (newDetails.Name != null)
+        {
+            if (oldTransactionStatus.Name == newDetails.Name)
+            {
+                return Result.Failure(ErrorType.Invalid,
+                    ErrorMessages.NewMustBeDifferentFromCurrent("transaction status name"));
+            }
+
+            if (await transactionStatusRepo.NameExistsAsync(newDetails.Name))
+            {
+                return Result.Failure(ErrorType.Invalid,
+                    ErrorMessages.AlreadyExists("transaction status name", newDetails.Name));
+            }
+        }
+
+        return Result.Success();
+    }
+    #endregion
+
+    #region Transaction
     public Result ValidateTransactionStatusChange(
         Transaction transaction,
         TransactionStatusEnum oldStatus, 
@@ -205,5 +237,5 @@ public class BusinessRulesValidator(
             ? Result.Failure(errors)
             : Result.Success();
     }
-    
+    #endregion
 }

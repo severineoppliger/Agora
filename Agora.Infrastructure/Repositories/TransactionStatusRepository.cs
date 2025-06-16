@@ -50,16 +50,6 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         return transactionStatus.Id;
     }
 
-    public void AddTransactionStatus(TransactionStatus transactionStatus)
-    {
-        context.TransactionStatus.Add(transactionStatus);
-    }
-
-    public void DeleteTransactionStatus(TransactionStatus transactionStatus)
-    {
-        context.TransactionStatus.Remove(transactionStatus);
-    }
-
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;

@@ -1,6 +1,7 @@
 ﻿using Agora.Core.Common;
 using Agora.Core.Enums;
 using Agora.Core.Models;
+using Agora.Core.Models.Requests;
 
 namespace Agora.Core.BusinessRules.Interfaces;
 
@@ -90,7 +91,19 @@ public interface IBusinessRulesValidator
     /// </returns>
     public Task<Result> ValidatePostDeletionAsync(Post post, UserContext userContext);
 
-    
+    /// <summary>
+    /// Validates the update of an existing transaction status by verifying business rules,
+    /// such as ensuring the new name is not duplicate with a name of another transaction status.
+    /// </summary>
+    /// <param name="oldTransactionStatus">The existing transaction status entity.</param>
+    /// <param name="newDetails">The new data proposed for the transaction status.</param>
+    /// <returns>
+    /// A <see cref="Result"/> indicating whether the update is valid.
+    /// Returns a failure result if the new name is identical to the current name or already exists.
+    /// </returns>
+    public Task<Result> ValidateTransactionStatusUpdateAsync(TransactionStatus oldTransactionStatus,
+        TransactionStatusDetailsUpdate newDetails);
+
     /// <summary>
     /// Validates whether a user is authorized to change a transaction's status from the specified old status to the new status,
     /// based on business rules and the current user's context.

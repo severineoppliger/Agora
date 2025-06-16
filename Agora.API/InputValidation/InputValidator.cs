@@ -1,6 +1,5 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.DTOs.Transaction;
-using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Common;
@@ -75,32 +74,6 @@ public class InputValidator(
         return result;
     }
 
-    #endregion
-    
-    #region TransactionStatus
-    public async Task<InputValidationResult> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null)
-    {
-        InputValidationResult result = new InputValidationResult();
-
-        if (currentName != null && dto.Name.Equals(currentName))
-        {
-            result.Errors.Add(ErrorMessages.NewMustBeDifferentFromCurrent("transaction status name"));
-            return result;
-        }
-        
-        if (await transactionStatusRepo.NameExistsAsync(dto.Name))
-        {
-            result.Errors.Add(ErrorMessages.AlreadyExists("transaction status name", dto.Name));
-        }
-        
-        if (dto.IsSuccess & !dto.IsFinal)
-        {
-            result.Errors.Add(ErrorMessages.TransactionStatus.MustBeFinalIfSuccess);
-        }
-
-        return result;
-    }
-    
     #endregion
 
     #region Transaction

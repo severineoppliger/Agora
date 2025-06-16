@@ -1,4 +1,5 @@
 ﻿using Agora.API.DTOs.TransactionStatus;
+using Agora.Core.Models.Requests;
 using AutoMapper;
 using TransactionStatus = Agora.Core.Models.TransactionStatus;
 
@@ -13,9 +14,9 @@ public class TransactionStatusProfile : Profile
         CreateMap<TransactionStatus, TransactionStatusDetailsDto>()
             .ForMember(dest => dest.Transactions, opt => opt.MapFrom(src => src.Transactions));
         
-        CreateMap<CreateTransactionStatusDto, TransactionStatus>();
-        
-        CreateMap<UpdateTransactionStatusDto, TransactionStatus>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<UpdateTransactionStatusDetailsDto, TransactionStatusDetailsUpdate>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name != null ? src.Name.Trim() : null))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description != null ? src.Description.Trim() : null))
+            .ForAllMembers(opts => opts.Condition((_, _, srcMember) => srcMember != null));
     }
 }

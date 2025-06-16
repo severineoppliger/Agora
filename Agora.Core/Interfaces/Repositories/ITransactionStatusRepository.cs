@@ -9,8 +9,6 @@ public interface ITransactionStatusRepository
     Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusFilter filter);
     Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id);
     Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum);
-    void AddTransactionStatus(TransactionStatus transactionStatus);
-    void DeleteTransactionStatus(TransactionStatus transactionStatus);
     Task<bool> SaveChangesAsync();
     Task<bool> TransactionStatusExistsAsync(long id);
     Task<bool> NameExistsAsync(string name);

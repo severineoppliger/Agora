@@ -97,9 +97,11 @@ try
     /*  -------------------
        | Business services  |
         -------------------- */
+    builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
     builder.Services.AddScoped<IPostService, PostService>();
     builder.Services.AddScoped<ITransactionService, TransactionService>();
+    builder.Services.AddScoped<ITransactionStatusService, TransactionStatusService>();
     
     /*  ---------------------------------
       | Authentication and authorization |

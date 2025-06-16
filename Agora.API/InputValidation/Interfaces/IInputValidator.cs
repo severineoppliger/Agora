@@ -32,15 +32,6 @@ public interface IInputValidator
     public Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto);
     
     /// <summary>
-    /// Validates the input data for creating or updating a <c>TransactionStatus</c>.
-    /// Ensures the name is unique (and optionally different from the current name), and that successful statuses are marked as final.
-    /// </summary>
-    /// <param name="dto">The DTO containing transaction status data.</param>
-    /// <param name="currentName">The current name of the status (used for update scenarios).</param>
-    /// <returns>An <see cref="InputValidationResult"/> containing any validation errors.</returns>
-    public Task<InputValidationResult> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null);
-    
-    /// <summary>
     /// Validates the input data for creating a new <c>Transaction</c>.
     /// Ensures that the referenced post (if any) exists, and that both buyer and seller users are valid.
     /// </summary>
