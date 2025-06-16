@@ -14,7 +14,14 @@ public interface IInputValidator
     /// <param name="dto">The DTO containing registration data.</param>
     /// <returns>An <see cref="InputValidationResult"/> containing any validation errors.</returns>
     public Task<InputValidationResult> ValidateRegisterDtoAsync(RegisterDto dto);
-    
+
+    /// <summary>
+    /// Validates that the user id respects the required format (GUID).
+    /// </summary>
+    /// <param name="id">The user id to check</param>
+    /// <returns>An <see cref="InputValidationResult"/> containing any validation errors.</returns>
+    public InputValidationResult ValidateUserId(string id);
+
     /// <summary>
     /// Validates the input data for creating a new <c>Post</c>.
     /// Ensures the post type is valid and the specified post category exists.

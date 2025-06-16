@@ -7,7 +7,6 @@ namespace Agora.Core.BusinessRules.Interfaces;
 
 public interface IBusinessRulesValidator
 {
-    public Result ValidateUser(AppUser user);
     /// <summary>
     /// Validates the creation of a new post category by checking business rules,
     /// such as ensuring the category name does not already exist.

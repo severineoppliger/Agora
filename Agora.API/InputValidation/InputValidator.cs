@@ -4,6 +4,7 @@ using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Common;
 using Agora.Core.Enums;
+using Agora.Core.Extensions;
 using Agora.Core.Interfaces.Repositories;
 
 namespace Agora.API.InputValidation;
@@ -30,8 +31,26 @@ public class InputValidator(
             result.Errors.Add(ErrorMessages.User.EmailAlreadyRegistered(dto.Email));
         }
         
+        if (dto.Password != dto.Password.Trim())
+        {
+            result.Errors.Add(ErrorMessages.User.PasswordWithoutSpaceBeforeOrAfter);
+        }
+        
         return result;
     }
+    
+    public InputValidationResult ValidateUserId(string id)
+    {
+        InputValidationResult result = new InputValidationResult();
+        
+        if (!id.IsGuid())
+        {
+            result.Errors.Add(ErrorMessages.User.InvalidIdFormat(id));
+        }
+        
+        return result;
+    }
+    
     
     #endregion
     

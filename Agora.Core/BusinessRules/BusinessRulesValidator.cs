@@ -15,14 +15,6 @@ public class BusinessRulesValidator(
     ITransactionRepository transactionRepo
     ) : IBusinessRulesValidator
 {
-    #region User
-    public Result ValidateUser(AppUser user)
-    {
-        throw new NotImplementedException();
-        // TODO
-    }
-    #endregion
-   
     #region PostCategory
     public async Task<Result> ValidateNewPostCategoryAsync(PostCategory postCategory)
     {
@@ -214,7 +206,7 @@ public class BusinessRulesValidator(
     
      public Result ValidateTransaction(Transaction transaction)
     {
-        (int price, Post? post, string buyerId, AppUser? buyer, string sellerId) = transaction;
+        (int price, Post? post, string buyerId, User? buyer, string sellerId) = transaction;
         
         List<ErrorDetail> errors = new();
            

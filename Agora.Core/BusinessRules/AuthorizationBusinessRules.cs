@@ -10,6 +10,19 @@ namespace Agora.Core.BusinessRules;
 /// </summary>
 public class AuthorizationBusinessRules : IAuthorizationBusinessRules
 {
+    public bool CanViewUser(string userId, UserContext userContext)
+    {
+        return userContext.IsAdmin || userContext.UserId == userId;
+    }
+
+    public bool CanViewPost(Post post, UserContext userContext)
+    {
+        bool isOwner = post.OwnerUserId == userContext.UserId;
+        return (userContext.IsAdmin) ||
+               (isOwner && post.Status is PostStatus.Active or PostStatus.Inactive)
+               || (!isOwner && post.Status == PostStatus.Active);
+    }
+
     public bool CanManagePost(Post post, UserContext userContext)
     {
         return userContext.IsAdmin || userContext.UserId == post.OwnerUserId;
