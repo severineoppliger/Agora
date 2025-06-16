@@ -1,23 +1,27 @@
 ﻿using Agora.Core.Common;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces.Filters;
 using Agora.Core.Models;
+using Agora.Core.Models.Filters;
 using Agora.Core.Models.Requests;
 
 namespace Agora.Core.Interfaces.BusinessServices;
 
+/// <summary>
+/// Defines business logic for managing user posts,
+/// including creation, updates, filtering, and status changes.
+/// </summary>
 public interface IPostService
 {
     /// <summary>
     /// Retrieves all <c>Post</c> visible to the user according to authorization rules and visibility mode.
     /// </summary>
-    /// <param name="postQueryParameters">Filter criteria to apply when querying posts.</param>
+    /// <param name="postFilter">Filter criteria to apply when querying posts.</param>
     /// <param name="userContext">Context of the current user making the request.</param>
     /// <param name="postVisibilityMode">Specifies the scope of posts to retrieve (e.g., catalog only, user-owned, admin view).</param>
     /// <returns>A successful Result wrapping a list of posts visible to user, or failure if an error occurs.</returns>
     Task<Result<IReadOnlyList<Post>>> GetAllPostsAsync(
         PostVisibilityMode postVisibilityMode,
-        IPostFilter postQueryParameters,
+        PostFilter postFilter,
         UserContext? userContext
     );
     
@@ -27,7 +31,7 @@ public interface IPostService
     /// <param name="postId">The ID of the post to retrieve.</param>
     /// <param name="userContext">Context of the current user requesting the post.</param>
     /// <returns>
-    /// Success wrapping the post if found and authorized,
+    /// Success wrapping the <c>Post</c> if found and authorized,
     /// failure with NotFound if missing,
     /// or failure with Unauthorized if the user cannot view it.
     /// </returns>

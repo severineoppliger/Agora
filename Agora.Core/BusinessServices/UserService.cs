@@ -8,18 +8,21 @@ using Agora.Core.Models;
 
 namespace Agora.Core.BusinessServices;
 
+/// <inheritdoc />
 public class UserService(
     IUserRepository userRepo,
     IAuthorizationBusinessRules authorizationBusinessRules) : IUserService
 {
     private const string EntityName = "user";
 
+    /// <inheritdoc />
     public async Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserFilter userQueryParameters)
     {
         IReadOnlyList<User> users = await userRepo.GetAllUsersAsync(userQueryParameters);
         return Result<IReadOnlyList<User>>.Success(users);
     }
 
+    /// <inheritdoc />
     public async Task<Result<User>> GetUserByIdAsync(string userId, UserContext userContext)
     {
         // Control authorization to see some user details

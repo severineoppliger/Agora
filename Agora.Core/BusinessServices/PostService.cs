@@ -2,36 +2,34 @@
 using Agora.Core.Common;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.BusinessServices;
-using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Core.Models.Filters;
 using Agora.Core.Models.Requests;
-using AutoMapper;
 
 namespace Agora.Core.BusinessServices;
 
+/// <inheritdoc />
 public class PostService(
-    IMapper mapper,
     IPostRepository postRepo, 
     ITransactionRepository transactionRepo,
     IAuthorizationBusinessRules authorizationBusinessRules,
     IBusinessRulesValidator businessRulesValidator) : IPostService
 {
     private const string EntityName = "post";
+
+    /// <inheritdoc />
     public async Task<Result<IReadOnlyList<Post>>> GetAllPostsAsync(
         PostVisibilityMode postVisibilityMode,
-        IPostFilter postQueryParameters,
+        PostFilter postFilter,
         UserContext? userContext
         )
     {
-        PostFilter internalPostFilter = mapper.Map<PostFilter>(postQueryParameters);
-        
         // Enhance filter according to business rules
         switch (postVisibilityMode)
         {
             case PostVisibilityMode.CatalogOnly:
-                internalPostFilter.StatusNames = [PostStatus.Active.ToString()];
+                postFilter.StatusNames = [PostStatus.Active.ToString()];
                 break;
 
             case PostVisibilityMode.UserOwnPosts:
@@ -40,8 +38,8 @@ public class PostService(
                     return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
                         ErrorMessages.User.NotAuthenticated);
                 }
-                internalPostFilter.StatusNames = [PostStatus.Active.ToString(), PostStatus.Inactive.ToString()];
-                internalPostFilter.UserId = userContext.UserId;
+                postFilter.StatusNames = [PostStatus.Active.ToString(), PostStatus.Inactive.ToString()];
+                postFilter.UserId = userContext.UserId;
                 break;
         }
 
@@ -51,11 +49,12 @@ public class PostService(
         }
 
         // Get filtered posts
-        IReadOnlyList<Post> posts = await postRepo.GetAllPostsAsync(internalPostFilter);
+        IReadOnlyList<Post> posts = await postRepo.GetAllPostsAsync(postFilter);
         
         return Result<IReadOnlyList<Post>>.Success(posts);
     }
-    
+
+    /// <inheritdoc />
     public async Task<Result<Post>> GetPostByIdAsync(long postId, UserContext? userContext)
     {
         Post? post = await postRepo.GetPostByIdAsync(postId);
@@ -90,6 +89,7 @@ public class PostService(
         }
     }
 
+    /// <inheritdoc />
     public async Task<Result<Post>> CreatePostAsync(Post post, UserContext userContext)
     {
         // Validate business rules of transaction
@@ -116,6 +116,7 @@ public class PostService(
         return  Result<Post>.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
+    /// <inheritdoc />
     public async Task<Result> UpdatePostDetailsAsync(long postId, PostDetailsUpdate newDetails, UserContext userContext)
     {
         // Retrieve the existing post
@@ -188,6 +189,7 @@ public class PostService(
             : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
+    /// <inheritdoc />
     public async Task<Result> ChangePostStatusAsync(long postId, UserContext userContext, PostStatus targetStatus)
     {
         // Retrieve the existing post
@@ -232,6 +234,7 @@ public class PostService(
             : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
+    /// <inheritdoc />
     public async Task<Result> DeletePostAsync(long postId, UserContext userContext)
     {
         // Retrieve the existing post

@@ -59,17 +59,13 @@ public static class ErrorMessages
         public static string InvalidTransactionStatusChange(string oldStatus, string newStatus) =>
             "The transaction status change from {oldStatus} to {newStatus} is invalid.";
     }
-    
-    public static class TransactionStatus
-    { 
-        public const string MustBeFinalIfSuccess = "Transaction status must be final if it's a success.";
-        
-    }
 
     
     public static class User
     {
+        public static string InvalidIdFormat(string id) => $"Invalid user ID format: {id}. Must be a valid GUID.";
         public const string IdNotFoundInClaims = "User ID not found in claims.";
+        public const string PasswordWithoutSpaceBeforeOrAfter = "Password must not start or end with a space.";
         public const string InvalidCredentials = "Invalid email or password.";
         public static string EmailAlreadyRegistered(string email) =>
             $"An account with the email '{email}' is already registered.";

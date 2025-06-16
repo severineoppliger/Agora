@@ -12,14 +12,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Handles operations related to transaction status management,
+/// such as updating status definitions or retrieving status information.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class TransactionStatusController(
     IMapper mapper,
     ITransactionStatusService transactionStatusService) : ControllerBase
 {
-    private const string EntityName = "transaction status";
-    
     /// <summary>
     /// Retrieves all transaction status, optionally filtered and sorted by query parameters.
     /// </summary>
@@ -52,16 +54,9 @@ public class TransactionStatusController(
         // Delegate business logic
         Result<TransactionStatus> result = await transactionStatusService.GetTransactionStatusByIdAsync(id);
         
-        if (result.IsFailure)
-        {
-            return this.MapErrorResult(result);
-        }
-
-        // Return transaction if no error
-        TransactionStatus? transactionStatus = result.Value;
-        return transactionStatus == null 
-            ? NotFound(ErrorMessages.NotFound(EntityName))
-            : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
+        return result.IsFailure
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<TransactionStatusDetailsDto>(result.Value));
     }
     
     

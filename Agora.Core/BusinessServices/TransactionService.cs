@@ -9,7 +9,7 @@ using Agora.Core.Models.Requests;
 
 namespace Agora.Core.BusinessServices;
 
-
+/// <inheritdoc />
 public class TransactionService(
     IPostRepository postRepo,
     ITransactionRepository transactionRepo,
@@ -21,6 +21,7 @@ public class TransactionService(
 {
     private const string EntityName = "transaction";
     
+    /// <inheritdoc />
     public async Task<Result<IReadOnlyList<Transaction>>> GetAllVisibleTransactionsAsync(
         ITransactionFilter transactionFilter,
         UserContext userContext
@@ -33,6 +34,7 @@ public class TransactionService(
         return Result<IReadOnlyList<Transaction>>.Success(transactions);
     }
     
+    /// <inheritdoc />
     public async Task<Result<Transaction>> GetVisibleTransactionByIdAsync(long transactionId, UserContext userContext)
     {
         Transaction? transaction = await transactionRepo.GetTransactionByIdAsync(transactionId);
@@ -46,6 +48,7 @@ public class TransactionService(
             : Result<Transaction>.Success(transaction);
     }
     
+    /// <inheritdoc />
     public async Task<Result<Transaction>> CreateTransactionAsync(Transaction transaction, UserContext userContext)
     {
         // Control authorization to create the transaction
@@ -92,7 +95,7 @@ public class TransactionService(
         return Result<Transaction>.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
-
+    /// <inheritdoc />
     public async Task<Result> UpdateTransactionDetailsAsync(
         long transactionId,
         TransactionDetailsUpdate newDetails,
@@ -160,7 +163,7 @@ public class TransactionService(
             : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
     
-    
+    /// <inheritdoc />
     public async Task<Result> ChangeTransactionStatusAsync(
         long transactionId,
         UserContext userContext,

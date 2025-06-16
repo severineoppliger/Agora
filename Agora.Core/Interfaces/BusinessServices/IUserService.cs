@@ -4,6 +4,10 @@ using Agora.Core.Models;
 
 namespace Agora.Core.Interfaces.BusinessServices;
 
+/// <summary>
+/// Provides business logic related to user management,
+/// including access control and profile retrieval.
+/// </summary>
 public interface IUserService
 {
     /// <summary>
@@ -17,6 +21,7 @@ public interface IUserService
     /// Retrieves a single <c>User</c> by its ID.
     /// </summary>
     /// <param name="userId">The ID of the user to retrieve.</param>
+    /// <param name="userContext">Context of the current user requesting user details.</param>
     /// <returns>
     /// Success wrapping the <c>User</c> if found and authorized,
     /// failure with NotFound if missing.

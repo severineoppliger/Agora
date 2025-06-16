@@ -38,7 +38,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         if (filter.StatusNames.Any(s => !string.IsNullOrWhiteSpace(s)))
         {
             List<PostStatus> parsedStatuses = filter.StatusNames
-                .Select(s => Enum.TryParse<PostStatus>(s, true, out var status) ? (PostStatus?)status : null)
+                .Select(s => Enum.TryParse<PostStatus>(s, true, out var status) ? (PostStatus?) status : null)
                 .Where(e => e.HasValue)
                 .Select(e => e!.Value)
                 .ToList();

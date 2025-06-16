@@ -5,6 +5,10 @@ using Agora.Core.Models.Requests;
 
 namespace Agora.Core.Interfaces.BusinessServices;
 
+/// <summary>
+/// Defines operations for managing transaction statuses,
+/// including creation, updates, and validation of status rules.
+/// </summary>
 public interface ITransactionStatusService
 {
     /// <summary>

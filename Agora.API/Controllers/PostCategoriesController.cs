@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Manages operations for post categories, including listing and retrieving post category data.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class PostCategoriesController(

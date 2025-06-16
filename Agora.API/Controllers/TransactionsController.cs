@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Manages transactions between users, including creation, updates, and status changes.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class TransactionsController(

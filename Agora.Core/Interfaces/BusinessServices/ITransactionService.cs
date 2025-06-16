@@ -6,6 +6,10 @@ using Agora.Core.Models.Requests;
 
 namespace Agora.Core.Interfaces.BusinessServices;
 
+/// <summary>
+/// Encapsulates business rules for handling transactions between users,
+/// including creation, updates, and validation of transaction flows.
+/// </summary>
 public interface ITransactionService
 {
     /// <summary>

@@ -30,7 +30,6 @@ public class UsersController(
     IUserContextService userContextService) : ControllerBase
 
 {
-    private const string EntityName = "user";
 
     /// <summary>
     /// Retrieves a list of all users in the system, optionally filtered and sorted using query parameters.
@@ -130,7 +129,6 @@ public class UsersController(
     /// Returns <c>400 BadRequest</c> if input validation fails or the user already exists.
     /// Returns <c>500 Internal Server Error</c> if the user was saved but could not be retrieved afterwards.
     /// </returns>
-    //TODO
     [HttpPost("register")]
     public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterDto dto)
     {

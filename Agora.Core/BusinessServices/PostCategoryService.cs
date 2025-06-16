@@ -8,6 +8,7 @@ using Agora.Core.Models;
 
 namespace Agora.Core.BusinessServices;
 
+/// <inheritdoc />
 public class PostCategoryService(
     IPostCategoryRepository postCategoryRepo,
     IBusinessRulesValidator businessRulesValidator
@@ -15,6 +16,7 @@ public class PostCategoryService(
 {
     private const string EntityName = "post category";
 
+    /// <inheritdoc />
     public async Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(IPostCategoryFilter postCategoryFilter)
     {
         IReadOnlyList<PostCategory> postCategories = await postCategoryRepo.GetAllPostCategoriesAsync(postCategoryFilter);
@@ -22,6 +24,7 @@ public class PostCategoryService(
         return Result<IReadOnlyList<PostCategory>>.Success(postCategories);
     }
 
+    /// <inheritdoc />
     public async Task<Result<PostCategory>> GetPostCategoryByIdAsync(long postCategoryId)
     {
         PostCategory? postCategory = await postCategoryRepo.GetPostCategoryByIdAsync(postCategoryId);
@@ -30,6 +33,7 @@ public class PostCategoryService(
             : Result<PostCategory>.Success(postCategory);
     }
 
+    /// <inheritdoc />
     public async Task<Result<PostCategory>> CreatePostCategoryAsync(PostCategory postCategory)
     {
         // Validate business rules
@@ -51,6 +55,7 @@ public class PostCategoryService(
         return  Result<PostCategory>.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
+    /// <inheritdoc />
     public async Task<Result> UpdatePostCategoryNameAsync(long postCategoryId, string newName)
     {
         // Retrieve the existing post category
@@ -75,6 +80,7 @@ public class PostCategoryService(
             : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
+    /// <inheritdoc />
     public async Task<Result> DeletePostCategoryAsync(long postCategoryId)
     {
         // Retrieve the existing post category

@@ -10,6 +10,7 @@ using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.BusinessServices;
 using Agora.Core.Models;
+using Agora.Core.Models.Filters;
 using Agora.Core.Models.Requests;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Handles creation, updating, deletion, and retrieval of posts offered or requested by users.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class PostsController(
@@ -38,9 +42,11 @@ public class PostsController(
     public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalogue([FromQuery] PostQueryParameters queryParameters)
     {
         // Delegate business logic
+        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.CatalogOnly,
-            queryParameters, 
+            internalPostFilter, 
             null);
         IReadOnlyList<Post> posts = result.Value!;
         
@@ -72,9 +78,11 @@ public class PostsController(
         }
         
         // Delegate business logic
+        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.UserOwnPosts,
-            queryParameters, 
+            internalPostFilter, 
             userContext);
         IReadOnlyList<Post> posts = result.Value!;
         
@@ -107,9 +115,11 @@ public class PostsController(
         }
         
         // Delegate business logic
+        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.AdminView,
-            queryParameters, 
+            internalPostFilter, 
             userContext);
         IReadOnlyList<Post> posts = result.Value!;
         

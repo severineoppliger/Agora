@@ -9,6 +9,7 @@ using Agora.Core.Models.Requests;
 
 namespace Agora.Core.BusinessServices;
 
+/// <inheritdoc />
 public class TransactionStatusService(
     ITransactionStatusRepository transactionStatusRepo,
     IBusinessRulesValidator businessRulesValidator
@@ -16,6 +17,7 @@ public class TransactionStatusService(
 {
     private const string EntityName = "transaction status";
     
+    /// <inheritdoc />
     public async Task<Result<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatusAsync(ITransactionStatusFilter transactionStatusFilter)
     {
         IReadOnlyList<TransactionStatus> transactionStatus = await transactionStatusRepo.GetAllTransactionStatusAsync(transactionStatusFilter);
@@ -23,6 +25,7 @@ public class TransactionStatusService(
         return Result<IReadOnlyList<TransactionStatus>>.Success(transactionStatus);
     }
 
+    /// <inheritdoc />
     public async Task<Result<TransactionStatus>> GetTransactionStatusByIdAsync(long transactionStatusId)
     {
         TransactionStatus? transactionStatus =
@@ -33,6 +36,7 @@ public class TransactionStatusService(
             : Result<TransactionStatus>.Success(transactionStatus);
     }
     
+    /// <inheritdoc />
     public async Task<Result> UpdateTransactionStatusDetailsAsync(long transactionStatusId, TransactionStatusDetailsUpdate newDetails)
     {
         // Retrieve the existing transaction status

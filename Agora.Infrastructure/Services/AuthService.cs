@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace Agora.Infrastructure.Services;
 
+/// <inheritdoc />
 public class AuthService(
     SignInManager<User> signInManager,
     UserManager<User> userManager,

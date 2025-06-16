@@ -4,6 +4,10 @@ using Agora.Core.Models;
 
 namespace Agora.Core.Interfaces.BusinessServices;
 
+/// <summary>
+/// Defines business operations related to post categories,
+/// including retrieval and management of post category details.
+/// </summary>
 public interface IPostCategoryService
 {
     /// <summary>
