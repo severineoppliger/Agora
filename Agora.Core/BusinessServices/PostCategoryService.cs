@@ -10,8 +10,7 @@ namespace Agora.Core.BusinessServices;
 
 public class PostCategoryService(
     IPostCategoryRepository postCategoryRepo,
-    IBusinessRulesValidator businessRulesValidator,
-    IAuthorizationBusinessRules authorizationBusinessRules
+    IBusinessRulesValidator businessRulesValidator
     ) : IPostCategoryService
 {
     private const string EntityName = "post category";
@@ -26,12 +25,9 @@ public class PostCategoryService(
     public async Task<Result<PostCategory>> GetPostCategoryByIdAsync(long postCategoryId)
     {
         PostCategory? postCategory = await postCategoryRepo.GetPostCategoryByIdAsync(postCategoryId);
-        if (postCategory is null)
-        {
-            return Result<PostCategory>.Failure(ErrorType.NotFound,ErrorMessages.NotFound(EntityName));
-        }
-        
-        return Result<PostCategory>.Success(postCategory);
+        return postCategory is null
+            ? Result<PostCategory>.Failure(ErrorType.NotFound,ErrorMessages.NotFound(EntityName))
+            : Result<PostCategory>.Success(postCategory);
     }
 
     public async Task<Result<PostCategory>> CreatePostCategoryAsync(PostCategory postCategory)

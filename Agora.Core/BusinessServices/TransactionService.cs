@@ -104,6 +104,7 @@ public class TransactionService(
         {
             return Result.Failure(ErrorType.NotFound,ErrorMessages.NotFound(EntityName));
         }
+        
         // Control authorization to modify the transaction
         if (!authorizationBusinessRules.CanManageTransaction(transaction, userContext))
         {
