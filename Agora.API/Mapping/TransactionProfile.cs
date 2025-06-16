@@ -21,11 +21,11 @@ public class TransactionProfile : Profile
             .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.UserName))
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src =>
                 src.TransactionDate.HasValue ? src.TransactionDate.Value.ToDateTime(TimeOnly.MinValue) : (DateTime?)null));
-        
+
         CreateMap<CreateTransactionDto, Transaction>()
-            .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src => 
+            .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src =>
                 src.TransactionDate.HasValue ? DateOnly.FromDateTime(src.TransactionDate.Value) : (DateOnly?)null))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
         
         CreateMap<UpdateTransactionDetailsDto, TransactionDetailsUpdate>()
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title != null ? src.Title.Trim() : null))

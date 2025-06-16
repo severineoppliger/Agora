@@ -27,7 +27,8 @@ public class PostProfile : Profile
         CreateMap<CreatePostDto, Post>()
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title.Trim()))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Trim()))
-            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)));
+            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
         
         CreateMap<PostQueryParameters, PostFilter>();
         
