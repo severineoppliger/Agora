@@ -110,7 +110,7 @@ try
     builder.Services.AddAuthorization();
     
     // Identity system with roles and store
-    builder.Services.AddIdentityCore<AppUser>(options =>
+    builder.Services.AddIdentityCore<User>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -124,17 +124,19 @@ try
         .AddEntityFrameworkStores<AgoraDbContext>();
     
     // Expose Identity API endpoints (e.g. /login, /register, etc.)
-    builder.Services.AddIdentityApiEndpoints<AppUser>(); 
+    builder.Services.AddIdentityApiEndpoints<User>(); 
     
     // Identity management services
     builder.Services.AddScoped<RoleManager<IdentityRole>>();
-    builder.Services.AddScoped<UserManager<AppUser>>();
-    builder.Services.AddScoped<SignInManager<AppUser>>(); // For manual logins
-    builder.Services.AddScoped<IUserStore<AppUser>, UserStore<AppUser>>();
+    builder.Services.AddScoped<UserManager<User>>();
+    builder.Services.AddScoped<SignInManager<User>>(); // For manual logins
+    builder.Services.AddScoped<IUserStore<User>, UserStore<User>>();
     builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
     
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddScoped<IUserContextService, UserContextService>();
+    builder.Services.AddScoped<IAuthService, AuthService>();
+
     
     /* --------------------------------------
      | Cross-origin ressource sharing (CORS) |
@@ -173,7 +175,7 @@ try
             var context = services.GetRequiredService<AgoraDbContext>();
             await context.Database.MigrateAsync();
             
-            var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            var userManager = services.GetRequiredService<UserManager<User>>();
             
             await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
         }
