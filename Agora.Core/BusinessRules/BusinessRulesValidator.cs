@@ -163,12 +163,12 @@ public class BusinessRulesValidator(
                     case TransactionStatusEnum.Accepted or TransactionStatusEnum.Refused:
                     {
                         return userContext.UserId == transaction.InitiatorId
-                            ? Result.Failure(ErrorType.Unauthorized, ErrorMessages.Transaction.InitiatorCantAcceptOrRefuseOwnTransaction)
+                            ? Result.Failure(ErrorType.Forbidden, ErrorMessages.Transaction.InitiatorCantAcceptOrRefuseOwnTransaction)
                             : Result.Success();
                     }
                     case TransactionStatusEnum.Cancelled:
                         return userContext.UserId != transaction.InitiatorId
-                            ? Result.Failure(ErrorType.Unauthorized, ErrorMessages.Transaction.InitiatorCanCancelOwnTransaction)
+                            ? Result.Failure(ErrorType.Forbidden, ErrorMessages.Transaction.InitiatorCanCancelOwnTransaction)
                             : Result.Success();
                 }
                 break; 
@@ -177,12 +177,17 @@ public class BusinessRulesValidator(
                     return Result.Success();
                 }
                 break;
+            case TransactionStatusEnum.Failed:
+                if (newStatus is TransactionStatusEnum.InDispute){ 
+                    return Result.Success();
+                }
+                break;
             case TransactionStatusEnum.InDispute:
                 if (newStatus is TransactionStatusEnum.ResolvedAccepted or TransactionStatusEnum.ResolvedCancelled)
                 {
                     return userContext.IsAdmin
                         ? Result.Success()
-                        : Result.Failure(ErrorType.Unauthorized, ErrorMessages.Transaction.AdminShouldResolveAConflict);
+                        : Result.Failure(ErrorType.Forbidden, ErrorMessages.Transaction.AdminShouldResolveAConflict);
                 }
                 break;
             case TransactionStatusEnum.PartiallyValidated:
@@ -196,7 +201,7 @@ public class BusinessRulesValidator(
                         {
                             return Result.Success();
                         }
-                        return Result.Failure(ErrorType.Unauthorized, ErrorMessages.Transaction.OtherPartShouldComplete);
+                        return Result.Failure(ErrorType.Forbidden, ErrorMessages.Transaction.OtherPartShouldComplete);
                 }
                 break;
         }
