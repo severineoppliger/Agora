@@ -33,7 +33,7 @@ public class BusinessRulesValidator(
             return Result.Failure(ErrorType.Invalid, ErrorMessages.NewMustBeDifferentFromCurrent("post category name"));
         }
         
-        if (await postCategoryRepo.NameExistsAsync(postCategory.Name))
+        if (await postCategoryRepo.NameExistsAsync(newName))
         {
             return Result.Failure(ErrorType.Invalid, ErrorMessages.AlreadyExists("post category name", postCategory.Name));
         }
