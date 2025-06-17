@@ -42,10 +42,19 @@ public class PostService(
                 postFilter.UserId = userContext.UserId;
                 break;
         }
-
-        if ((userContext is null || !userContext.IsAdmin) && postVisibilityMode == PostVisibilityMode.AdminView)
+        
+        if (postVisibilityMode == PostVisibilityMode.AdminView)
         {
-            return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized, ErrorMessages.User.NotAuthorized);
+            if (userContext is null)
+            {
+                return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
+                    ErrorMessages.User.NotAuthenticated);
+            }
+            if (!userContext.IsAdmin)
+            {
+                return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
+                    ErrorMessages.User.NotAuthorized);
+            }
         }
 
         // Get filtered posts

@@ -18,6 +18,6 @@ public class Post : BaseEntity
 
     public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 
-    public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public required DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 }
