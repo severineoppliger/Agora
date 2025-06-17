@@ -78,7 +78,7 @@ public class TransactionStatusController(
     /// Returns <c>404 Not Found</c> if the transaction status or a related object does not exist.
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
-    [HttpPut("{id:long}")]
+    [HttpPatch("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDetailsDto dto)
     {
         // Validate input DTO

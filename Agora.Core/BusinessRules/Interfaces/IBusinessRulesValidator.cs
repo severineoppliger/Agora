@@ -124,4 +124,14 @@ public interface IBusinessRulesValidator
     /// <param name="transaction">The transaction to validate.</param>
     /// <returns>A result indicating success if the transaction is valid; otherwise, a result containing the relevant validation errors.</returns>
     public Result ValidateTransaction(Transaction transaction);
+
+    /// <summary>
+    /// Validates the update of an existing transaction by verifying business rules.
+    /// </summary>
+    /// <param name="transaction">The existing transaction entity.</param>
+    /// <returns>
+    /// A <see cref="Result"/> indicating whether the update is valid.
+    /// Returns a failure result if any business rule is not respected.
+    /// </returns>
+    public Result ValidateTransactionUpdate(Transaction transaction);
 }

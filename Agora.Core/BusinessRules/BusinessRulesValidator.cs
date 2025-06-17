@@ -234,5 +234,39 @@ public class BusinessRulesValidator(
             ? Result.Failure(errors)
             : Result.Success();
     }
+
+    public Result ValidateTransactionUpdate(Transaction transaction)
+    {
+        (int price, Post? post, string buyerId, User? buyer, string sellerId) = transaction;
+
+        List<ErrorDetail> errors = new();
+        
+        List<TransactionStatusEnum> updateAllowedForStatus =
+        [
+            TransactionStatusEnum.Pending,
+            TransactionStatusEnum.Accepted
+        ];
+        
+        if (!updateAllowedForStatus.Contains(transaction.TransactionStatus!.EnumValue))
+        {
+            errors.Add(new ErrorDetail(ErrorType.Invalid, ErrorMessages.Transaction.UpdateOnlyWhenPendingOrAccepted));
+        }
+        
+        if (post != null && post.OwnerUserId != buyerId && post.OwnerUserId != sellerId)
+        {
+            errors.Add(new ErrorDetail(ErrorType.Invalid,ErrorMessages.Transaction.NotPostOwner));
+        }
+
+        
+        if (buyer != null && price > buyer.Credit)
+        {
+            errors.Add(new ErrorDetail(ErrorType.Invalid,ErrorMessages.Transaction.CreditInsufficient));
+        }
+        
+        return errors.Any()
+            ? Result.Failure(errors)
+            : Result.Success();
+    }
+
     #endregion
 }

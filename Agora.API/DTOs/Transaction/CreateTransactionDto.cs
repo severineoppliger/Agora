@@ -15,7 +15,6 @@ public class CreateTransactionDto
     [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int Price { get; set; }
     
-    [Required]
     public long? PostId { get; set; }
     
     // DateOnly is not supported so we need a Date like "2025-06-06"

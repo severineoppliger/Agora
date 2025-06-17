@@ -22,7 +22,7 @@ public static class ErrorMessages
         $"{entityName} was saved but could not be retrieved.";
 
     public static string AlreadyExists(string objectName, string objectValue) => 
-        $"{objectName.CapitalizeFirstLetter()} {objectValue} already exists. {objectName.CapitalizeFirstLetter()} must be unique";
+        $"{objectName.CapitalizeFirstLetter()} '{objectValue}' already exists. {objectName.CapitalizeFirstLetter()} must be unique";
     
     public static string AlreadyDeleted(string objectName) => 
         $"This {objectName} is already deleted.";
@@ -60,6 +60,7 @@ public static class ErrorMessages
         public const string NotPostOwner = "Buyer or seller must be the owner of the post.";
         public const string BuyerEqualsSeller = "Buyer and seller cannot be the same user.";
         public const string CreditInsufficient = "Buyer does not have enough credit.";
+        public const string UpdateOnlyWhenPendingOrAccepted = "You can only update transaction details when the status is Pending or Accepted.";
         public const string InitiatorCantAcceptOrRefuseOwnTransaction =
             "A user can't accept or refuse the transaction he/she has initiated. This must be done by the other part.";
         public const string InitiatorCanCancelOwnTransaction =

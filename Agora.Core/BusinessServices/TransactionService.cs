@@ -57,6 +57,12 @@ public class TransactionService(
         {
             return Result<Transaction>.Failure(ErrorType.Forbidden,ErrorMessages.User.NotAuthorized);
         }        
+        
+        // Complete transaction information
+        transaction.InitiatorId = userContext.UserId;
+        transaction.CreatedAt = DateTime.Now;
+        transaction.TransactionStatusId = await transactionStatusRepo.GetIdByEnumAsync(TransactionStatusEnum.Pending);
+        
         // Validate business rules (need navigation properties)
         Result<Transaction> enhanceTransactionResult = await EnhanceTransactionWithNavigationProperties(transaction);
         if (enhanceTransactionResult.IsFailure)
@@ -75,11 +81,6 @@ public class TransactionService(
         {
             return Result<Transaction>.Failure(businessRulesValidationResult.Errors!);
         }
-        
-        // Complete transaction information
-        transaction.InitiatorId = userContext.UserId;
-        transaction.CreatedAt = DateTime.Now;
-        transaction.TransactionStatusId = await transactionStatusRepo.GetIdByEnumAsync(TransactionStatusEnum.Pending);
         
         // Add to database
         transactionRepo.AddTransaction(transaction);
@@ -138,20 +139,8 @@ public class TransactionService(
         
         transaction.UpdatedAt = DateTime.Now;
         
-        // Validate business rules of transaction (need navigation properties)
-        Result<Transaction> enhanceTransactionResult = await EnhanceTransactionWithNavigationProperties(transaction);
-        if (enhanceTransactionResult.IsFailure)
-        {
-            return enhanceTransactionResult;
-        }
-        Transaction? enhancedTransaction = enhanceTransactionResult.Value;
-        if (enhancedTransaction is null)
-        {
-            return Result<Transaction>.Failure(ErrorType.Unknown,
-                ErrorMessages.UnknownErrorDuringAction("transaction", "enhancement with navigation properties"));
-        }
-        
-        Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(transaction);
+        // Validate business rules of transaction
+        Result businessRulesValidationResult = businessRulesValidator.ValidateTransactionUpdate(transaction);
         if (businessRulesValidationResult.IsFailure)
         {
             return businessRulesValidationResult;
