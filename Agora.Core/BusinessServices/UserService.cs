@@ -5,6 +5,7 @@ using Agora.Core.Interfaces.BusinessServices;
 using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Agora.Core.BusinessServices;
 
@@ -41,5 +42,27 @@ public class UserService(
         user.Posts = user.Posts.Where(p => authorizationBusinessRules.CanViewPost(p, userContext)).ToList();
         
         return Result<User>.Success(user);
+    }
+
+    public async Task<Result> TransferCreditAsync(User buyer, User seller, int price)
+    {
+        buyer.Credit -= price;
+        seller.Credit += price;
+        
+        // Update buyer
+        IdentityResult updateBuyerResult = await userRepo.UpdateUserAsync(buyer);
+        if (!updateBuyerResult.Succeeded)
+        {
+            return Result.Failure(ErrorType.Persistence, ErrorMessages.ErrorWhenSavingToDb("new buyer credit"));
+        }
+
+        // Update seller
+        IdentityResult updateSellerResult = await userRepo.UpdateUserAsync(seller);
+        if (!updateSellerResult.Succeeded)
+        {
+            return Result.Failure(ErrorType.Persistence, ErrorMessages.ErrorWhenSavingToDb("new seller credit"));
+        }
+
+        return Result.Success();
     }
 }

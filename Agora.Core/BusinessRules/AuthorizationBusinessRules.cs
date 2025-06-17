@@ -10,6 +10,11 @@ namespace Agora.Core.BusinessRules;
 /// </summary>
 public class AuthorizationBusinessRules : IAuthorizationBusinessRules
 {
+    public bool CanPayPrice(User buyer, int price)
+    {
+        return buyer.Credit >= price;
+    }
+
     public bool CanViewUser(string userId, UserContext userContext)
     {
         return userContext.IsAdmin || userContext.UserId == userId;

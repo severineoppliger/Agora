@@ -41,6 +41,13 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
             .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 
+    public async Task<TransactionStatus?> GetTransactionStatusByEnumAsync(TransactionStatusEnum statusEnum)
+    {
+        return await context.TransactionStatus
+            .Include(ts =>ts.Transactions)
+            .FirstOrDefaultAsync(ts => ts.EnumValue == statusEnum);
+    }
+
     public async Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum)
     {
         TransactionStatus? transactionStatus = await context.TransactionStatus.FirstOrDefaultAsync(s =>

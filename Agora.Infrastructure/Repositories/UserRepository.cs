@@ -83,6 +83,11 @@ public class UserRepository(
         return await signInManager.UserManager.CreateAsync(user, password);
     }
 
+    public async Task<IdentityResult> UpdateUserAsync(User user)
+    {
+        return await userManager.UpdateAsync(user);
+    }
+
     public async Task<bool> UserExistsAsync(string id)
     {
         return await userManager.Users.AnyAsync(u => u.Id == id);

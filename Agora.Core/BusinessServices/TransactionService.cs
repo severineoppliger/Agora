@@ -15,6 +15,7 @@ public class TransactionService(
     ITransactionRepository transactionRepo,
     ITransactionStatusRepository transactionStatusRepo,
     IUserRepository userRepo,
+    IUserService userService,
     IAuthorizationBusinessRules authorizationBusinessRules,
     IBusinessRulesValidator businessRulesValidator
     ) : ITransactionService
@@ -44,7 +45,7 @@ public class TransactionService(
         }
         
         return !authorizationBusinessRules.CanViewTransaction(transaction, userContext)
-            ? Result<Transaction>.Failure(ErrorType.Unauthorized,ErrorMessages.Transaction.NotInvolved)
+            ? Result<Transaction>.Failure(ErrorType.Forbidden,ErrorMessages.Transaction.NotInvolved)
             : Result<Transaction>.Success(transaction);
     }
     
@@ -69,7 +70,7 @@ public class TransactionService(
                 ErrorMessages.UnknownErrorDuringAction("transaction", "enhancement with navigation properties"));
         }
         
-        Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(transaction);
+        Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(enhancedTransaction);
         if (businessRulesValidationResult.IsFailure)
         {
             return Result<Transaction>.Failure(businessRulesValidationResult.Errors!);
@@ -136,7 +137,6 @@ public class TransactionService(
         }
         
         transaction.UpdatedAt = DateTime.Now;
-
         
         // Validate business rules of transaction (need navigation properties)
         Result<Transaction> enhanceTransactionResult = await EnhanceTransactionWithNavigationProperties(transaction);
@@ -169,7 +169,7 @@ public class TransactionService(
         UserContext userContext,
         TransactionStatusEnum newStatus)
     {
-        // Retrieve the existing transaction
+        // Retrieve the existing transaction and necessary information
         Transaction? transaction = await transactionRepo.GetTransactionByIdAsync(transactionId);
         if (transaction == null)
         {
@@ -182,19 +182,7 @@ public class TransactionService(
             return Result.Failure(ErrorType.Forbidden,ErrorMessages.User.NotAuthorized);
         }
         
-        // Validate business rules of transaction (need navigation properties)
-        Result<Transaction> enhanceTransactionResult = await EnhanceTransactionWithNavigationProperties(transaction);
-        if (enhanceTransactionResult.IsFailure)
-        {
-            return enhanceTransactionResult;
-        }
-        Transaction? enhancedTransaction = enhanceTransactionResult.Value;
-        if (enhancedTransaction is null)
-        {
-            return Result.Failure(ErrorType.Unknown,
-                ErrorMessages.UnknownErrorDuringAction("transaction", "enhancement with navigation properties"));
-        }
-
+        // Validate business rules of transaction
         Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(transaction);
         if (businessRulesValidationResult.IsFailure)
         {
@@ -239,10 +227,44 @@ public class TransactionService(
         }
 
         transaction.TransactionStatusId = await transactionStatusRepo.GetIdByEnumAsync(newStatus);
+        
+        // Business rules to transfer Credit or not
+        TransactionStatus? oldTransactionStatus = await transactionStatusRepo.GetTransactionStatusByEnumAsync(oldStatus);
+        if (oldTransactionStatus is null)
+        {
+            return Result.Failure(ErrorType.NotFound,
+                ErrorMessages.NotFound("transaction status", oldStatus.ToString()));
+        }
+        
+        TransactionStatus? newTransactionStatus = await transactionStatusRepo.GetTransactionStatusByEnumAsync(newStatus);
+        if (newTransactionStatus is null)
+        {
+            return Result.Failure(ErrorType.NotFound,
+                ErrorMessages.NotFound("transaction status", newStatus.ToString()));
+        }
 
+        bool mustTransferCredit = !oldTransactionStatus.IsSuccess 
+                                  && newTransactionStatus is { IsFinal: true, IsSuccess: true };
+
+        if (mustTransferCredit)
+        {
+            Result transferResult = await PerformCreditTransfer(transaction);
+            if (transferResult.IsFailure)
+            {
+                return transferResult;
+            }
+        }
+        
+        // Complete information
+        bool completedTransaction = !oldTransactionStatus.IsFinal && newTransactionStatus.IsFinal;
+        if (completedTransaction)
+        {
+            transaction.CompletedAt = DateTime.Now;
+        }
+        
         return await transactionRepo.SaveChangesAsync()
             ? Result.Success()
-            : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb("transaction"));
+            : Result.Failure(ErrorType.Persistence,ErrorMessages.ErrorWhenSavingToDb(EntityName));
     }
 
 
@@ -270,5 +292,19 @@ public class TransactionService(
         return transaction.TransactionStatus is null
             ? Result<Transaction>.Failure(ErrorType.NotFound, ErrorMessages.RelatedEntityDoesNotExist("transaction status", transaction.TransactionStatusId))
             : Result<Transaction>.Success(transaction);
+    }
+    
+    private async Task<Result> PerformCreditTransfer(Transaction transaction)
+    {
+        User buyer = transaction.Buyer!;
+        User seller = transaction.Seller!;
+        int price = transaction.Price;
+
+        if (!authorizationBusinessRules.CanPayPrice(buyer, price))
+        {
+            return Result.Failure(ErrorType.Invalid, ErrorMessages.Transaction.CreditInsufficient);
+        }
+
+        return await userService.TransferCreditAsync(buyer, seller, price);
     }
 }

@@ -27,4 +27,7 @@ public interface IUserService
     /// failure with NotFound if missing.
     /// </returns>
     Task<Result<User>> GetUserByIdAsync(string userId, UserContext userContext);
+    
+    //TODO
+    Task<Result> TransferCreditAsync(User buyer, User seller, int price);
 }

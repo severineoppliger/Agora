@@ -8,6 +8,7 @@ namespace Agora.Core.BusinessRules.Interfaces;
 /// </summary>
 public interface IAuthorizationBusinessRules
 {
+    public bool CanPayPrice(User buyer, int price);
     public bool CanViewUser(string id, UserContext userContext);
     public bool CanViewPost(Post post, UserContext userContext);
     public bool CanManagePost(Post post, UserContext userContext);
