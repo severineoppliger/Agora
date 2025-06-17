@@ -5,7 +5,15 @@ namespace Agora.Core.Common;
 
 public static class ErrorMessages
 {
-    public static string NotFound(string objectName, string? objectValue= null) => $"{objectName.CapitalizeFirstLetter()} '{objectValue}' is not found.";
+    public const string EmptyDto = "At least one field must be provided.";
+    public static string NotFound(string objectName, string? objectValue= null)
+    {
+        return (objectValue is null)
+            ? $"{objectName.CapitalizeFirstLetter()} is not found."
+            : $"{objectName.CapitalizeFirstLetter()} '{objectValue}' is not found.";
+
+    }
+
     public static string IsInvalid(string objectName, string objectValue) => $"{objectName.CapitalizeFirstLetter()} '{objectValue}' is invalid.";
 
     public static string NewMustBeDifferentFromCurrent(string objectName) =>
@@ -19,9 +27,13 @@ public static class ErrorMessages
     public static string AlreadyDeleted(string objectName) => 
         $"This {objectName} is already deleted.";
     
-    public static string RelatedEntityDoesNotExist(string entityName, long? entityId) =>
-        $"Related {entityName} with ID {entityId} doesn't exist.";
-    
+    public static string RelatedEntityDoesNotExist(string entityName, long? entityId)
+    {
+        return (entityId is null)
+            ? $"Related {entityName} doesn't exist."
+            : $"Related {entityName} with ID {entityId} doesn't exist.";
+    }
+
     public static string ErrorWhenSavingToDb(string entityName) =>
         $"Problem occured when saving the {entityName} in DB.";
     
@@ -39,7 +51,7 @@ public static class ErrorMessages
         public const string SameTitle = "User has already posted a post with same title.";
         public const string InvolvedInOngoingTransaction = "This post is involved in an ongoing transaction." +
                                                            "It can't be modified or deleted.";
-        public static string SameStatus(PostStatus status) => "Post is already {status}.";
+        public static string SameStatus(PostStatus status) => $"Post is already {status}.";
     }
     
     public static class Transaction
@@ -57,7 +69,7 @@ public static class ErrorMessages
         public const string OtherPartShouldComplete =
             "Only the other part is allowed to complete the transaction";
         public static string InvalidTransactionStatusChange(string oldStatus, string newStatus) =>
-            "The transaction status change from {oldStatus} to {newStatus} is invalid.";
+            $"The transaction status change from {oldStatus} to {newStatus} is invalid.";
     }
 
     

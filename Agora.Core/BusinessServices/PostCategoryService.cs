@@ -47,7 +47,7 @@ public class PostCategoryService(
         postCategoryRepo.AddPostCategory(postCategory);
         if (await postCategoryRepo.SaveChangesAsync())
         {
-            return await postCategoryRepo.PostCategoryExistsAsync(postCategory.Id) 
+            return !await postCategoryRepo.PostCategoryExistsAsync(postCategory.Id) 
                 ? Result<PostCategory>.Failure(ErrorType.Persistence, ErrorMessages.SavedButNotRetrieved(EntityName))
                 : Result<PostCategory>.Success(postCategory);
         }

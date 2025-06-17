@@ -3,11 +3,11 @@ using Agora.API.DTOs.User;
 using Agora.API.Extensions;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
+using Agora.API.QueryParams;
 using Agora.Core.Common;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.BusinessServices;
-using Agora.Core.Interfaces.Filters;
 using Agora.Core.Models;
 using Agora.Core.Models.Requests;
 using AutoMapper;
@@ -39,7 +39,7 @@ public class UsersController(
     /// Returns <c>403 Forbidden</c> if the user does not have admin privileges.</returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers([FromQuery] IUserFilter queryParameters)
+    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers([FromQuery] UserQueryParameters queryParameters)
     {
         // Delegate business logic
         Result<IReadOnlyList<User>> result = await userService.GetAllUsersAsync(queryParameters);

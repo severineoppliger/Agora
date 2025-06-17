@@ -56,6 +56,11 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             posts = posts.Where(p => p.Owner.UserName!.Contains(filter.UserName));
         }
         
+        if (!string.IsNullOrWhiteSpace(filter.UserId))
+        {
+            posts = posts.Where(p => p.OwnerUserId == filter.UserId);
+        }
+        
         posts = ApplySorting(posts, filter);
         
         return await posts
@@ -69,6 +74,12 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         return await context.Posts
             .Include(p => p.Owner)
             .Include(p => p.PostCategory)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.Buyer)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.Seller)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.TransactionStatus)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 

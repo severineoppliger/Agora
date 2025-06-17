@@ -38,23 +38,24 @@ public class PostService(
                     return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
                         ErrorMessages.User.NotAuthenticated);
                 }
+
                 postFilter.StatusNames = [PostStatus.Active.ToString(), PostStatus.Inactive.ToString()];
                 postFilter.UserId = userContext.UserId;
                 break;
-        }
-        
-        if (postVisibilityMode == PostVisibilityMode.AdminView)
-        {
-            if (userContext is null)
-            {
-                return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
-                    ErrorMessages.User.NotAuthenticated);
-            }
-            if (!userContext.IsAdmin)
-            {
-                return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
-                    ErrorMessages.User.NotAuthorized);
-            }
+            case PostVisibilityMode.AdminView:
+                if (userContext is null)
+                {
+                    return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
+                        ErrorMessages.User.NotAuthenticated);
+                }
+
+                if (!userContext.IsAdmin)
+                {
+                    return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
+                        ErrorMessages.User.NotAuthorized);
+                }
+
+                break;
         }
 
         // Get filtered posts
@@ -82,7 +83,7 @@ public class PostService(
                 if (userContext is null)
                     return Result<Post>.Failure(ErrorType.Unauthorized, ErrorMessages.User.NotAuthenticated);
 
-                if (post.OwnerUserId != userContext.UserId)
+                if (post.OwnerUserId != userContext.UserId & !userContext.IsAdmin)
                     return Result<Post>.Failure(ErrorType.Forbidden, ErrorMessages.User.NotAuthorized);
 
                 return Result<Post>.Success(post);
@@ -117,7 +118,7 @@ public class PostService(
         postRepo.AddPost(post);
         if (await postRepo.SaveChangesAsync())
         {
-            return await postRepo.PostExistsAsync(post.Id) 
+            return ! await postRepo.PostExistsAsync(post.Id) 
                 ? Result<Post>.Failure(ErrorType.Persistence, ErrorMessages.SavedButNotRetrieved(EntityName))
                 : Result<Post>.Success(post);
         }
