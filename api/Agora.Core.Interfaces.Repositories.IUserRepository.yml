@@ -1,0 +1,627 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IUserRepository
+  id: IUserRepository
+  parent: Agora.Core.Interfaces.Repositories
+  children:
+  - Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync(Agora.Core.Models.User,System.String)
+  - Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  - Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync(System.String)
+  - Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync(System.String)
+  - Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync(System.String)
+  - Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IUserRepository
+  nameWithType: IUserRepository
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IUserRepository
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: public interface IUserRepository
+    content.vb: Public Interface IUserRepository
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  id: GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllUsersAsync(IUserFilter)
+  nameWithType: IUserRepository.GetAllUsersAsync(IUserFilter)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllUsersAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter)
+    parameters:
+    - id: filter
+      type: Agora.Core.Interfaces.Filters.IUserFilter
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}
+    content.vb: Function GetAllUsersAsync(filter As IUserFilter) As Task(Of IReadOnlyList(Of User))
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync*
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync(System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync(System.String)
+  id: GetUserByIdAsync(System.String)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: GetUserByIdAsync(string)
+  nameWithType: IUserRepository.GetUserByIdAsync(string)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetUserByIdAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<User?> GetUserByIdAsync(string id)
+    parameters:
+    - id: id
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Models.User}
+    content.vb: Function GetUserByIdAsync(id As String) As Task(Of User)
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync*
+  nameWithType.vb: IUserRepository.GetUserByIdAsync(String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync(String)
+  name.vb: GetUserByIdAsync(String)
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync(System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync(System.String)
+  id: GetUserByEmailAsync(System.String)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: GetUserByEmailAsync(string)
+  nameWithType: IUserRepository.GetUserByEmailAsync(string)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetUserByEmailAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 13
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<User?> GetUserByEmailAsync(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Models.User}
+    content.vb: Function GetUserByEmailAsync(email As String) As Task(Of User)
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync*
+  nameWithType.vb: IUserRepository.GetUserByEmailAsync(String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync(String)
+  name.vb: GetUserByEmailAsync(String)
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync(System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync(System.String)
+  id: GetUserByUsernameAsync(System.String)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: GetUserByUsernameAsync(string)
+  nameWithType: IUserRepository.GetUserByUsernameAsync(string)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetUserByUsernameAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 14
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<User?> GetUserByUsernameAsync(string username)
+    parameters:
+    - id: username
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Models.User}
+    content.vb: Function GetUserByUsernameAsync(username As String) As Task(Of User)
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync*
+  nameWithType.vb: IUserRepository.GetUserByUsernameAsync(String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync(String)
+  name.vb: GetUserByUsernameAsync(String)
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync(Agora.Core.Models.User,System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync(Agora.Core.Models.User,System.String)
+  id: AddUserAsync(Agora.Core.Models.User,System.String)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: AddUserAsync(User, string)
+  nameWithType: IUserRepository.AddUserAsync(User, string)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync(Agora.Core.Models.User, string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AddUserAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 15
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<IdentityResult> AddUserAsync(User user, string password)
+    parameters:
+    - id: user
+      type: Agora.Core.Models.User
+    - id: password
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.AspNetCore.Identity.IdentityResult}
+    content.vb: Function AddUserAsync(user As User, password As String) As Task(Of IdentityResult)
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync*
+  nameWithType.vb: IUserRepository.AddUserAsync(User, String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync(Agora.Core.Models.User, String)
+  name.vb: AddUserAsync(User, String)
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync(System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync(System.String)
+  id: UserExistsAsync(System.String)
+  parent: Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: UserExistsAsync(string)
+  nameWithType: IUserRepository.UserExistsAsync(string)
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserExistsAsync
+    path: Agora.Core/Interfaces/Repositories/IUserRepository.cs
+    startLine: 16
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> UserExistsAsync(string id)
+    parameters:
+    - id: id
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function UserExistsAsync(id As String) As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync*
+  nameWithType.vb: IUserRepository.UserExistsAsync(String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync(String)
+  name.vb: UserExistsAsync(String)
+references:
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_GetAllUsersAsync_Agora_Core_Interfaces_Filters_IUserFilter_
+  name: GetAllUsersAsync
+  nameWithType: IUserRepository.GetAllUsersAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetAllUsersAsync
+- uid: Agora.Core.Interfaces.Filters.IUserFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IUserFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html
+  name: IUserFilter
+  nameWithType: IUserFilter
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<User>>
+  nameWithType: Task<IReadOnlyList<User>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.User>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of User))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.User))
+  name.vb: Task(Of IReadOnlyList(Of User))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: )
+  - name: )
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_GetUserByIdAsync_System_String_
+  name: GetUserByIdAsync
+  nameWithType: IUserRepository.GetUserByIdAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByIdAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{Agora.Core.Models.User}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Models.User}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<User>
+  nameWithType: Task<User>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Models.User>
+  nameWithType.vb: Task(Of User)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Models.User)
+  name.vb: Task(Of User)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_GetUserByEmailAsync_System_String_
+  name: GetUserByEmailAsync
+  nameWithType: IUserRepository.GetUserByEmailAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByEmailAsync
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_GetUserByUsernameAsync_System_String_
+  name: GetUserByUsernameAsync
+  nameWithType: IUserRepository.GetUserByUsernameAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.GetUserByUsernameAsync
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_AddUserAsync_Agora_Core_Models_User_System_String_
+  name: AddUserAsync
+  nameWithType: IUserRepository.AddUserAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.AddUserAsync
+- uid: Agora.Core.Models.User
+  commentId: T:Agora.Core.Models.User
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.User.html
+  name: User
+  nameWithType: User
+  fullName: Agora.Core.Models.User
+- uid: System.Threading.Tasks.Task{Microsoft.AspNetCore.Identity.IdentityResult}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.AspNetCore.Identity.IdentityResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IdentityResult>
+  nameWithType: Task<IdentityResult>
+  fullName: System.Threading.Tasks.Task<Microsoft.AspNetCore.Identity.IdentityResult>
+  nameWithType.vb: Task(Of IdentityResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.AspNetCore.Identity.IdentityResult)
+  name.vb: Task(Of IdentityResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Microsoft.AspNetCore.Identity.IdentityResult
+    name: IdentityResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.identityresult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.AspNetCore.Identity.IdentityResult
+    name: IdentityResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.identityresult
+  - name: )
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html#Agora_Core_Interfaces_Repositories_IUserRepository_UserExistsAsync_System_String_
+  name: UserExistsAsync
+  nameWithType: IUserRepository.UserExistsAsync
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository.UserExistsAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )

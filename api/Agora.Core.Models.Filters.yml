@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Models.Filters
+  commentId: N:Agora.Core.Models.Filters
+  id: Agora.Core.Models.Filters
+  children:
+  - Agora.Core.Models.Filters.PostFilter
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Models.Filters
+  nameWithType: Agora.Core.Models.Filters
+  fullName: Agora.Core.Models.Filters
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Models.Filters.PostFilter
+  commentId: T:Agora.Core.Models.Filters.PostFilter
+  parent: Agora.Core.Models.Filters
+  href: Agora.Core.Models.Filters.PostFilter.html
+  name: PostFilter
+  nameWithType: PostFilter
+  fullName: Agora.Core.Models.Filters.PostFilter
+- uid: Agora.Core.Models.Filters
+  commentId: N:Agora.Core.Models.Filters
+  href: Agora.html
+  name: Agora.Core.Models.Filters
+  nameWithType: Agora.Core.Models.Filters
+  fullName: Agora.Core.Models.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html

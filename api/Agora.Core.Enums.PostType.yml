@@ -1,0 +1,120 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums.PostType
+  commentId: T:Agora.Core.Enums.PostType
+  id: PostType
+  parent: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.PostType.Offer
+  - Agora.Core.Enums.PostType.Request
+  langs:
+  - csharp
+  - vb
+  name: PostType
+  nameWithType: PostType
+  fullName: Agora.Core.Enums.PostType
+  type: Enum
+  source:
+    remote:
+      path: Agora.Core/Enums/PostType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostType
+    path: Agora.Core/Enums/PostType.cs
+    startLine: 2
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: public enum PostType
+    content.vb: Public Enum PostType
+- uid: Agora.Core.Enums.PostType.Offer
+  commentId: F:Agora.Core.Enums.PostType.Offer
+  id: Offer
+  parent: Agora.Core.Enums.PostType
+  langs:
+  - csharp
+  - vb
+  name: Offer
+  nameWithType: PostType.Offer
+  fullName: Agora.Core.Enums.PostType.Offer
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Offer
+    path: Agora.Core/Enums/PostType.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Offer = 0
+    return:
+      type: Agora.Core.Enums.PostType
+- uid: Agora.Core.Enums.PostType.Request
+  commentId: F:Agora.Core.Enums.PostType.Request
+  id: Request
+  parent: Agora.Core.Enums.PostType
+  langs:
+  - csharp
+  - vb
+  name: Request
+  nameWithType: PostType.Request
+  fullName: Agora.Core.Enums.PostType.Request
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Request
+    path: Agora.Core/Enums/PostType.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Request = 1
+    return:
+      type: Agora.Core.Enums.PostType
+references:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Enums.PostType
+  commentId: T:Agora.Core.Enums.PostType
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostType.html
+  name: PostType
+  nameWithType: PostType
+  fullName: Agora.Core.Enums.PostType

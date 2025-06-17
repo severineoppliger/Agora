@@ -1,0 +1,619 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  id: IPostCategoryService
+  parent: Agora.Core.Interfaces.BusinessServices
+  children:
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync(Agora.Core.Models.PostCategory)
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(System.Int64)
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(System.Int64)
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(System.Int64,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IPostCategoryService
+  nameWithType: IPostCategoryService
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IPostCategoryService
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: >-
+    Defines business operations related to post categories,
+
+    including retrieval and management of post category details.
+  example: []
+  syntax:
+    content: public interface IPostCategoryService
+    content.vb: Public Interface IPostCategoryService
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)
+  id: GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  langs:
+  - csharp
+  - vb
+  name: GetAllPostCategoriesAsync(IPostCategoryFilter)
+  nameWithType: IPostCategoryService.GetAllPostCategoriesAsync(IPostCategoryFilter)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllPostCategoriesAsync
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 17
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Retrieves all <code>PostCategory</code>, possibly filtered and sorted.
+  example: []
+  syntax:
+    content: Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(IPostCategoryFilter postCategoryFilter)
+    parameters:
+    - id: postCategoryFilter
+      type: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+      description: Filter criteria to apply on post categories.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.PostCategory}}}
+      description: A successful Result wrapping a list of <code>PostCategory</code>, or failure if an error occurs.
+    content.vb: Function GetAllPostCategoriesAsync(postCategoryFilter As IPostCategoryFilter) As Task(Of Result(Of IReadOnlyList(Of PostCategory)))
+  overload: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync*
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(System.Int64)
+  id: GetPostCategoryByIdAsync(System.Int64)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  langs:
+  - csharp
+  - vb
+  name: GetPostCategoryByIdAsync(long)
+  nameWithType: IPostCategoryService.GetPostCategoryByIdAsync(long)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetPostCategoryByIdAsync
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 27
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Retrieves a single <code>PostCategory</code> by its ID.
+  example: []
+  syntax:
+    content: Task<Result<PostCategory>> GetPostCategoryByIdAsync(long postCategoryId)
+    parameters:
+    - id: postCategoryId
+      type: System.Int64
+      description: The ID of the <code>PostCategory</code> to retrieve.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.PostCategory}}
+      description: >-
+        Success wrapping the <code>PostCategory</code> if found,
+
+        failure with NotFound if missing.
+    content.vb: Function GetPostCategoryByIdAsync(postCategoryId As Long) As Task(Of Result(Of PostCategory))
+  overload: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync*
+  nameWithType.vb: IPostCategoryService.GetPostCategoryByIdAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(Long)
+  name.vb: GetPostCategoryByIdAsync(Long)
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync(Agora.Core.Models.PostCategory)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync(Agora.Core.Models.PostCategory)
+  id: CreatePostCategoryAsync(Agora.Core.Models.PostCategory)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  langs:
+  - csharp
+  - vb
+  name: CreatePostCategoryAsync(PostCategory)
+  nameWithType: IPostCategoryService.CreatePostCategoryAsync(PostCategory)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync(Agora.Core.Models.PostCategory)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CreatePostCategoryAsync
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 37
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Creates a new <code>PostCategory</code> after validating authorization.
+  example: []
+  syntax:
+    content: Task<Result<PostCategory>> CreatePostCategoryAsync(PostCategory postCategory)
+    parameters:
+    - id: postCategory
+      type: Agora.Core.Models.PostCategory
+      description: The <code>PostCategory</code> entity to create.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.PostCategory}}
+      description: >-
+        Success wrapping the created <code>PostCategory</code> if successful,
+
+        or failure with relevant error details.
+    content.vb: Function CreatePostCategoryAsync(postCategory As PostCategory) As Task(Of Result(Of PostCategory))
+  overload: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync*
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(System.Int64,System.String)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(System.Int64,System.String)
+  id: UpdatePostCategoryNameAsync(System.Int64,System.String)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  langs:
+  - csharp
+  - vb
+  name: UpdatePostCategoryNameAsync(long, string)
+  nameWithType: IPostCategoryService.UpdatePostCategoryNameAsync(long, string)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(long, string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UpdatePostCategoryNameAsync
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 48
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Updates name of an existing <code>PostCategory</code> after validating authorization and business rules.
+  example: []
+  syntax:
+    content: Task<Result> UpdatePostCategoryNameAsync(long postCategoryId, string newName)
+    parameters:
+    - id: postCategoryId
+      type: System.Int64
+      description: ID of the <code>PostCategory</code> to update.
+    - id: newName
+      type: System.String
+      description: The new name of the <code>PostCategory</code>.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        Success if update and save are successful,
+
+        or failure with appropriate error messages.
+    content.vb: Function UpdatePostCategoryNameAsync(postCategoryId As Long, newName As String) As Task(Of Result)
+  overload: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync*
+  nameWithType.vb: IPostCategoryService.UpdatePostCategoryNameAsync(Long, String)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(Long, String)
+  name.vb: UpdatePostCategoryNameAsync(Long, String)
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(System.Int64)
+  id: DeletePostCategoryAsync(System.Int64)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  langs:
+  - csharp
+  - vb
+  name: DeletePostCategoryAsync(long)
+  nameWithType: IPostCategoryService.DeletePostCategoryAsync(long)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: DeletePostCategoryAsync
+    path: Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs
+    startLine: 58
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Delete a <code>PostCategory</code> after validating authorization and business rules.
+  example: []
+  syntax:
+    content: Task<Result> DeletePostCategoryAsync(long postCategoryId)
+    parameters:
+    - id: postCategoryId
+      type: System.Int64
+      description: ID of the <code>PostCategory</code> to delete.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        Success if the <code>PostCategory</code> was successfully deleted,
+
+        or failure with relevant error details if invalid or unauthorized.
+    content.vb: Function DeletePostCategoryAsync(postCategoryId As Long) As Task(Of Result)
+  overload: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync*
+  nameWithType.vb: IPostCategoryService.DeletePostCategoryAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(Long)
+  name.vb: DeletePostCategoryAsync(Long)
+references:
+- uid: Agora.Core.Interfaces.BusinessServices
+  commentId: N:Agora.Core.Interfaces.BusinessServices
+  href: Agora.html
+  name: Agora.Core.Interfaces.BusinessServices
+  nameWithType: Agora.Core.Interfaces.BusinessServices
+  fullName: Agora.Core.Interfaces.BusinessServices
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html#Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetAllPostCategoriesAsync_Agora_Core_Interfaces_Filters_IPostCategoryFilter_
+  name: GetAllPostCategoriesAsync
+  nameWithType: IPostCategoryService.GetAllPostCategoriesAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync
+- uid: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IPostCategoryFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IPostCategoryFilter.html
+  name: IPostCategoryFilter
+  nameWithType: IPostCategoryFilter
+  fullName: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.PostCategory}}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.PostCategory}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<IReadOnlyList<PostCategory>>>
+  nameWithType: Task<Result<IReadOnlyList<PostCategory>>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.PostCategory>>>
+  nameWithType.vb: Task(Of Result(Of IReadOnlyList(Of PostCategory)))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.PostCategory)))
+  name.vb: Task(Of Result(Of IReadOnlyList(Of PostCategory)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+  - name: )
+  - name: )
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html#Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetPostCategoryByIdAsync_System_Int64_
+  name: GetPostCategoryByIdAsync
+  nameWithType: IPostCategoryService.GetPostCategoryByIdAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.PostCategory}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.PostCategory}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<PostCategory>>
+  nameWithType: Task<Result<PostCategory>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<Agora.Core.Models.PostCategory>>
+  nameWithType.vb: Task(Of Result(Of PostCategory))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of Agora.Core.Models.PostCategory))
+  name.vb: Task(Of Result(Of PostCategory))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html#Agora_Core_Interfaces_BusinessServices_IPostCategoryService_CreatePostCategoryAsync_Agora_Core_Models_PostCategory_
+  name: CreatePostCategoryAsync
+  nameWithType: IPostCategoryService.CreatePostCategoryAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync
+- uid: Agora.Core.Models.PostCategory
+  commentId: T:Agora.Core.Models.PostCategory
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.PostCategory.html
+  name: PostCategory
+  nameWithType: PostCategory
+  fullName: Agora.Core.Models.PostCategory
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html#Agora_Core_Interfaces_BusinessServices_IPostCategoryService_UpdatePostCategoryNameAsync_System_Int64_System_String_
+  name: UpdatePostCategoryNameAsync
+  nameWithType: IPostCategoryService.UpdatePostCategoryNameAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result>
+  nameWithType: Task<Result>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result>
+  nameWithType.vb: Task(Of Result)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result)
+  name.vb: Task(Of Result)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: )
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html#Agora_Core_Interfaces_BusinessServices_IPostCategoryService_DeletePostCategoryAsync_System_Int64_
+  name: DeletePostCategoryAsync
+  nameWithType: IPostCategoryService.DeletePostCategoryAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync

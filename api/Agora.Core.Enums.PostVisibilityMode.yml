@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums.PostVisibilityMode
+  commentId: T:Agora.Core.Enums.PostVisibilityMode
+  id: PostVisibilityMode
+  parent: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.PostVisibilityMode.AdminView
+  - Agora.Core.Enums.PostVisibilityMode.CatalogOnly
+  - Agora.Core.Enums.PostVisibilityMode.UserOwnPosts
+  langs:
+  - csharp
+  - vb
+  name: PostVisibilityMode
+  nameWithType: PostVisibilityMode
+  fullName: Agora.Core.Enums.PostVisibilityMode
+  type: Enum
+  source:
+    remote:
+      path: Agora.Core/Enums/PostVisibilityMode.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostVisibilityMode
+    path: Agora.Core/Enums/PostVisibilityMode.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: Specifies the visibility mode for retrieving posts.
+  example: []
+  syntax:
+    content: public enum PostVisibilityMode
+    content.vb: Public Enum PostVisibilityMode
+- uid: Agora.Core.Enums.PostVisibilityMode.CatalogOnly
+  commentId: F:Agora.Core.Enums.PostVisibilityMode.CatalogOnly
+  id: CatalogOnly
+  parent: Agora.Core.Enums.PostVisibilityMode
+  langs:
+  - csharp
+  - vb
+  name: CatalogOnly
+  nameWithType: PostVisibilityMode.CatalogOnly
+  fullName: Agora.Core.Enums.PostVisibilityMode.CatalogOnly
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostVisibilityMode.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CatalogOnly
+    path: Agora.Core/Enums/PostVisibilityMode.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: Only active posts are shown, typically used for public catalog views.
+  example: []
+  syntax:
+    content: CatalogOnly = 0
+    return:
+      type: Agora.Core.Enums.PostVisibilityMode
+- uid: Agora.Core.Enums.PostVisibilityMode.UserOwnPosts
+  commentId: F:Agora.Core.Enums.PostVisibilityMode.UserOwnPosts
+  id: UserOwnPosts
+  parent: Agora.Core.Enums.PostVisibilityMode
+  langs:
+  - csharp
+  - vb
+  name: UserOwnPosts
+  nameWithType: PostVisibilityMode.UserOwnPosts
+  fullName: Agora.Core.Enums.PostVisibilityMode.UserOwnPosts
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostVisibilityMode.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserOwnPosts
+    path: Agora.Core/Enums/PostVisibilityMode.cs
+    startLine: 15
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: Shows active and inactive posts belonging to the current user.
+  example: []
+  syntax:
+    content: UserOwnPosts = 1
+    return:
+      type: Agora.Core.Enums.PostVisibilityMode
+- uid: Agora.Core.Enums.PostVisibilityMode.AdminView
+  commentId: F:Agora.Core.Enums.PostVisibilityMode.AdminView
+  id: AdminView
+  parent: Agora.Core.Enums.PostVisibilityMode
+  langs:
+  - csharp
+  - vb
+  name: AdminView
+  nameWithType: PostVisibilityMode.AdminView
+  fullName: Agora.Core.Enums.PostVisibilityMode.AdminView
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostVisibilityMode.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AdminView
+    path: Agora.Core/Enums/PostVisibilityMode.cs
+    startLine: 20
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: Shows all posts regardless of status, intended for administrators.
+  example: []
+  syntax:
+    content: AdminView = 2
+    return:
+      type: Agora.Core.Enums.PostVisibilityMode
+references:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Enums.PostVisibilityMode
+  commentId: T:Agora.Core.Enums.PostVisibilityMode
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostVisibilityMode.html
+  name: PostVisibilityMode
+  nameWithType: PostVisibilityMode
+  fullName: Agora.Core.Enums.PostVisibilityMode

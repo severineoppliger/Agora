@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.PostCategory
+  commentId: N:Agora.API.DTOs.PostCategory
+  id: Agora.API.DTOs.PostCategory
+  children:
+  - Agora.API.DTOs.PostCategory.CreatePostCategoryDto
+  - Agora.API.DTOs.PostCategory.PostCategoryDetailsDto
+  - Agora.API.DTOs.PostCategory.PostCategorySummaryDto
+  - Agora.API.DTOs.PostCategory.UpdatePostCategoryDto
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.DTOs.PostCategory
+  nameWithType: Agora.API.DTOs.PostCategory
+  fullName: Agora.API.DTOs.PostCategory
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.DTOs.PostCategory.CreatePostCategoryDto
+  commentId: T:Agora.API.DTOs.PostCategory.CreatePostCategoryDto
+  parent: Agora.API.DTOs.PostCategory
+  href: Agora.API.DTOs.PostCategory.CreatePostCategoryDto.html
+  name: CreatePostCategoryDto
+  nameWithType: CreatePostCategoryDto
+  fullName: Agora.API.DTOs.PostCategory.CreatePostCategoryDto
+- uid: Agora.API.DTOs.PostCategory.PostCategoryDetailsDto
+  commentId: T:Agora.API.DTOs.PostCategory.PostCategoryDetailsDto
+  href: Agora.API.DTOs.PostCategory.PostCategoryDetailsDto.html
+  name: PostCategoryDetailsDto
+  nameWithType: PostCategoryDetailsDto
+  fullName: Agora.API.DTOs.PostCategory.PostCategoryDetailsDto
+- uid: Agora.API.DTOs.PostCategory.PostCategorySummaryDto
+  commentId: T:Agora.API.DTOs.PostCategory.PostCategorySummaryDto
+  href: Agora.API.DTOs.PostCategory.PostCategorySummaryDto.html
+  name: PostCategorySummaryDto
+  nameWithType: PostCategorySummaryDto
+  fullName: Agora.API.DTOs.PostCategory.PostCategorySummaryDto
+- uid: Agora.API.DTOs.PostCategory.UpdatePostCategoryDto
+  commentId: T:Agora.API.DTOs.PostCategory.UpdatePostCategoryDto
+  parent: Agora.API.DTOs.PostCategory
+  href: Agora.API.DTOs.PostCategory.UpdatePostCategoryDto.html
+  name: UpdatePostCategoryDto
+  nameWithType: UpdatePostCategoryDto
+  fullName: Agora.API.DTOs.PostCategory.UpdatePostCategoryDto
+- uid: Agora.API.DTOs.PostCategory
+  commentId: N:Agora.API.DTOs.PostCategory
+  href: Agora.html
+  name: Agora.API.DTOs.PostCategory
+  nameWithType: Agora.API.DTOs.PostCategory
+  fullName: Agora.API.DTOs.PostCategory
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.PostCategory
+    name: PostCategory
+    href: Agora.API.DTOs.PostCategory.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.PostCategory
+    name: PostCategory
+    href: Agora.API.DTOs.PostCategory.html

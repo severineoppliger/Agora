@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.Mapping
+  commentId: N:Agora.API.Mapping
+  id: Agora.API.Mapping
+  children:
+  - Agora.API.Mapping.PostCategoryProfile
+  - Agora.API.Mapping.PostProfile
+  - Agora.API.Mapping.TransactionProfile
+  - Agora.API.Mapping.TransactionStatusProfile
+  - Agora.API.Mapping.UserProfile
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.Mapping
+  nameWithType: Agora.API.Mapping
+  fullName: Agora.API.Mapping
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.Mapping.PostCategoryProfile
+  commentId: T:Agora.API.Mapping.PostCategoryProfile
+  href: Agora.API.Mapping.PostCategoryProfile.html
+  name: PostCategoryProfile
+  nameWithType: PostCategoryProfile
+  fullName: Agora.API.Mapping.PostCategoryProfile
+- uid: Agora.API.Mapping.PostProfile
+  commentId: T:Agora.API.Mapping.PostProfile
+  href: Agora.API.Mapping.PostProfile.html
+  name: PostProfile
+  nameWithType: PostProfile
+  fullName: Agora.API.Mapping.PostProfile
+- uid: Agora.API.Mapping.TransactionProfile
+  commentId: T:Agora.API.Mapping.TransactionProfile
+  href: Agora.API.Mapping.TransactionProfile.html
+  name: TransactionProfile
+  nameWithType: TransactionProfile
+  fullName: Agora.API.Mapping.TransactionProfile
+- uid: Agora.API.Mapping.TransactionStatusProfile
+  commentId: T:Agora.API.Mapping.TransactionStatusProfile
+  href: Agora.API.Mapping.TransactionStatusProfile.html
+  name: TransactionStatusProfile
+  nameWithType: TransactionStatusProfile
+  fullName: Agora.API.Mapping.TransactionStatusProfile
+- uid: Agora.API.Mapping.UserProfile
+  commentId: T:Agora.API.Mapping.UserProfile
+  href: Agora.API.Mapping.UserProfile.html
+  name: UserProfile
+  nameWithType: UserProfile
+  fullName: Agora.API.Mapping.UserProfile

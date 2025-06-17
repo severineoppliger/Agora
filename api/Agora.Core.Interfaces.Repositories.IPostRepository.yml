@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostRepository
+  id: IPostRepository
+  parent: Agora.Core.Interfaces.Repositories
+  children:
+  - Agora.Core.Interfaces.Repositories.IPostRepository.AddPost(Agora.Core.Models.Post)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.Post},Agora.Core.Interfaces.Filters.IPostFilter)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost(Agora.Core.Models.Post)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync(System.Int64)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync(System.Int64)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync(System.Int64)
+  - Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync
+  langs:
+  - csharp
+  - vb
+  name: IPostRepository
+  nameWithType: IPostRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IPostRepository
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: public interface IPostRepository
+    content.vb: Public Interface IPostRepository
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)
+  id: GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllPostsAsync(PostFilter)
+  nameWithType: IPostRepository.GetAllPostsAsync(PostFilter)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllPostsAsync
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<IReadOnlyList<Post>> GetAllPostsAsync(PostFilter filter)
+    parameters:
+    - id: filter
+      type: Agora.Core.Models.Filters.PostFilter
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}
+    content.vb: Function GetAllPostsAsync(filter As PostFilter) As Task(Of IReadOnlyList(Of Post))
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync*
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync(System.Int64)
+  id: GetPostByIdAsync(System.Int64)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: GetPostByIdAsync(long)
+  nameWithType: IPostRepository.GetPostByIdAsync(long)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetPostByIdAsync
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<Post?> GetPostByIdAsync(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Models.Post}
+    content.vb: Function GetPostByIdAsync(id As Long) As Task(Of Post)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync*
+  nameWithType.vb: IPostRepository.GetPostByIdAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync(Long)
+  name.vb: GetPostByIdAsync(Long)
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.AddPost(Agora.Core.Models.Post)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.AddPost(Agora.Core.Models.Post)
+  id: AddPost(Agora.Core.Models.Post)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: AddPost(Post)
+  nameWithType: IPostRepository.AddPost(Post)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.AddPost(Agora.Core.Models.Post)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AddPost
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: void AddPost(Post post)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    content.vb: Sub AddPost(post As Post)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.AddPost*
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost(Agora.Core.Models.Post)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost(Agora.Core.Models.Post)
+  id: DeletePost(Agora.Core.Models.Post)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: DeletePost(Post)
+  nameWithType: IPostRepository.DeletePost(Post)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost(Agora.Core.Models.Post)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: DeletePost
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: void DeletePost(Post post)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    content.vb: Sub DeletePost(post As Post)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost*
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync
+  id: SaveChangesAsync
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: SaveChangesAsync()
+  nameWithType: IPostRepository.SaveChangesAsync()
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync()
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SaveChangesAsync
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> SaveChangesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function SaveChangesAsync() As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync*
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync(System.Int64)
+  id: PostExistsAsync(System.Int64)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: PostExistsAsync(long)
+  nameWithType: IPostRepository.PostExistsAsync(long)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostExistsAsync
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 13
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> PostExistsAsync(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function PostExistsAsync(id As Long) As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync*
+  nameWithType.vb: IPostRepository.PostExistsAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync(Long)
+  name.vb: PostExistsAsync(Long)
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.Post},Agora.Core.Interfaces.Filters.IPostFilter)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.Post},Agora.Core.Interfaces.Filters.IPostFilter)
+  id: ApplySorting(System.Linq.IQueryable{Agora.Core.Models.Post},Agora.Core.Interfaces.Filters.IPostFilter)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: ApplySorting(IQueryable<Post>, IPostFilter)
+  nameWithType: IPostRepository.ApplySorting(IQueryable<Post>, IPostFilter)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting(System.Linq.IQueryable<Agora.Core.Models.Post>, Agora.Core.Interfaces.Filters.IPostFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ApplySorting
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 14
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostFilter queryParams)
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{Agora.Core.Models.Post}
+    - id: queryParams
+      type: Agora.Core.Interfaces.Filters.IPostFilter
+    return:
+      type: System.Linq.IQueryable{Agora.Core.Models.Post}
+    content.vb: Function ApplySorting(query As IQueryable(Of Post), queryParams As IPostFilter) As IQueryable(Of Post)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting*
+  nameWithType.vb: IPostRepository.ApplySorting(IQueryable(Of Post), IPostFilter)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting(System.Linq.IQueryable(Of Agora.Core.Models.Post), Agora.Core.Interfaces.Filters.IPostFilter)
+  name.vb: ApplySorting(IQueryable(Of Post), IPostFilter)
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync(System.Int64)
+  id: IsCategoryInUseAsync(System.Int64)
+  parent: Agora.Core.Interfaces.Repositories.IPostRepository
+  langs:
+  - csharp
+  - vb
+  name: IsCategoryInUseAsync(long)
+  nameWithType: IPostRepository.IsCategoryInUseAsync(long)
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IsCategoryInUseAsync
+    path: Agora.Core/Interfaces/Repositories/IPostRepository.cs
+    startLine: 15
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> IsCategoryInUseAsync(long postCategoryId)
+    parameters:
+    - id: postCategoryId
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function IsCategoryInUseAsync(postCategoryId As Long) As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync*
+  nameWithType.vb: IPostRepository.IsCategoryInUseAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync(Long)
+  name.vb: IsCategoryInUseAsync(Long)
+references:
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_GetAllPostsAsync_Agora_Core_Models_Filters_PostFilter_
+  name: GetAllPostsAsync
+  nameWithType: IPostRepository.GetAllPostsAsync
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.GetAllPostsAsync
+- uid: Agora.Core.Models.Filters.PostFilter
+  commentId: T:Agora.Core.Models.Filters.PostFilter
+  parent: Agora.Core.Models.Filters
+  href: Agora.Core.Models.Filters.PostFilter.html
+  name: PostFilter
+  nameWithType: PostFilter
+  fullName: Agora.Core.Models.Filters.PostFilter
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<Post>>
+  nameWithType: Task<IReadOnlyList<Post>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.Post>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of Post))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.Post))
+  name.vb: Task(Of IReadOnlyList(Of Post))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: )
+  - name: )
+- uid: Agora.Core.Models.Filters
+  commentId: N:Agora.Core.Models.Filters
+  href: Agora.html
+  name: Agora.Core.Models.Filters
+  nameWithType: Agora.Core.Models.Filters
+  fullName: Agora.Core.Models.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_GetPostByIdAsync_System_Int64_
+  name: GetPostByIdAsync
+  nameWithType: IPostRepository.GetPostByIdAsync
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.GetPostByIdAsync
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Threading.Tasks.Task{Agora.Core.Models.Post}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Models.Post}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Post>
+  nameWithType: Task<Post>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Models.Post>
+  nameWithType.vb: Task(Of Post)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Models.Post)
+  name.vb: Task(Of Post)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.AddPost*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.AddPost
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_AddPost_Agora_Core_Models_Post_
+  name: AddPost
+  nameWithType: IPostRepository.AddPost
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.AddPost
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_DeletePost_Agora_Core_Models_Post_
+  name: DeletePost
+  nameWithType: IPostRepository.DeletePost
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.DeletePost
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_SaveChangesAsync
+  name: SaveChangesAsync
+  nameWithType: IPostRepository.SaveChangesAsync
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.SaveChangesAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_PostExistsAsync_System_Int64_
+  name: PostExistsAsync
+  nameWithType: IPostRepository.PostExistsAsync
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.PostExistsAsync
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_ApplySorting_System_Linq_IQueryable_Agora_Core_Models_Post__Agora_Core_Interfaces_Filters_IPostFilter_
+  name: ApplySorting
+  nameWithType: IPostRepository.ApplySorting
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.ApplySorting
+- uid: System.Linq.IQueryable{Agora.Core.Models.Post}
+  commentId: T:System.Linq.IQueryable{Agora.Core.Models.Post}
+  parent: System.Linq
+  definition: System.Linq.IQueryable`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<Post>
+  nameWithType: IQueryable<Post>
+  fullName: System.Linq.IQueryable<Agora.Core.Models.Post>
+  nameWithType.vb: IQueryable(Of Post)
+  fullName.vb: System.Linq.IQueryable(Of Agora.Core.Models.Post)
+  name.vb: IQueryable(Of Post)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: )
+- uid: Agora.Core.Interfaces.Filters.IPostFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IPostFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html
+  name: IPostFilter
+  nameWithType: IPostFilter
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter
+- uid: System.Linq.IQueryable`1
+  commentId: T:System.Linq.IQueryable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<T>
+  nameWithType: IQueryable<T>
+  fullName: System.Linq.IQueryable<T>
+  nameWithType.vb: IQueryable(Of T)
+  fullName.vb: System.Linq.IQueryable(Of T)
+  name.vb: IQueryable(Of T)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Linq
+  commentId: N:System.Linq
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq
+  nameWithType: System.Linq
+  fullName: System.Linq
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html#Agora_Core_Interfaces_Repositories_IPostRepository_IsCategoryInUseAsync_System_Int64_
+  name: IsCategoryInUseAsync
+  nameWithType: IPostRepository.IsCategoryInUseAsync
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository.IsCategoryInUseAsync

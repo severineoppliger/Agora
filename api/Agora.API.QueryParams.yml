@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.QueryParams
+  commentId: N:Agora.API.QueryParams
+  id: Agora.API.QueryParams
+  children:
+  - Agora.API.QueryParams.PostCategoryQueryParameters
+  - Agora.API.QueryParams.PostQueryParameters
+  - Agora.API.QueryParams.TransactionQueryParameters
+  - Agora.API.QueryParams.TransactionStatusQueryParameters
+  - Agora.API.QueryParams.UserQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.QueryParams
+  nameWithType: Agora.API.QueryParams
+  fullName: Agora.API.QueryParams
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.QueryParams.PostCategoryQueryParameters
+  commentId: T:Agora.API.QueryParams.PostCategoryQueryParameters
+  parent: Agora.API.QueryParams
+  href: Agora.API.QueryParams.PostCategoryQueryParameters.html
+  name: PostCategoryQueryParameters
+  nameWithType: PostCategoryQueryParameters
+  fullName: Agora.API.QueryParams.PostCategoryQueryParameters
+- uid: Agora.API.QueryParams.PostQueryParameters
+  commentId: T:Agora.API.QueryParams.PostQueryParameters
+  parent: Agora.API.QueryParams
+  href: Agora.API.QueryParams.PostQueryParameters.html
+  name: PostQueryParameters
+  nameWithType: PostQueryParameters
+  fullName: Agora.API.QueryParams.PostQueryParameters
+- uid: Agora.API.QueryParams.TransactionQueryParameters
+  commentId: T:Agora.API.QueryParams.TransactionQueryParameters
+  parent: Agora.API.QueryParams
+  href: Agora.API.QueryParams.TransactionQueryParameters.html
+  name: TransactionQueryParameters
+  nameWithType: TransactionQueryParameters
+  fullName: Agora.API.QueryParams.TransactionQueryParameters
+- uid: Agora.API.QueryParams.TransactionStatusQueryParameters
+  commentId: T:Agora.API.QueryParams.TransactionStatusQueryParameters
+  parent: Agora.API.QueryParams
+  href: Agora.API.QueryParams.TransactionStatusQueryParameters.html
+  name: TransactionStatusQueryParameters
+  nameWithType: TransactionStatusQueryParameters
+  fullName: Agora.API.QueryParams.TransactionStatusQueryParameters
+- uid: Agora.API.QueryParams.UserQueryParameters
+  commentId: T:Agora.API.QueryParams.UserQueryParameters
+  href: Agora.API.QueryParams.UserQueryParameters.html
+  name: UserQueryParameters
+  nameWithType: UserQueryParameters
+  fullName: Agora.API.QueryParams.UserQueryParameters
+- uid: Agora.API.QueryParams
+  commentId: N:Agora.API.QueryParams
+  href: Agora.html
+  name: Agora.API.QueryParams
+  nameWithType: Agora.API.QueryParams
+  fullName: Agora.API.QueryParams
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.QueryParams
+    name: QueryParams
+    href: Agora.API.QueryParams.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.QueryParams
+    name: QueryParams
+    href: Agora.API.QueryParams.html

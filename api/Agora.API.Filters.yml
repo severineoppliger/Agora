@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.Filters
+  commentId: N:Agora.API.Filters
+  id: Agora.API.Filters
+  children:
+  - Agora.API.Filters.LogActionFilter
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.Filters
+  nameWithType: Agora.API.Filters
+  fullName: Agora.API.Filters
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.Filters.LogActionFilter
+  commentId: T:Agora.API.Filters.LogActionFilter
+  href: Agora.API.Filters.LogActionFilter.html
+  name: LogActionFilter
+  nameWithType: LogActionFilter
+  fullName: Agora.API.Filters.LogActionFilter

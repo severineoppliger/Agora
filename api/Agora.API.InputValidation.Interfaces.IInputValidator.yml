@@ -1,0 +1,691 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator
+  commentId: T:Agora.API.InputValidation.Interfaces.IInputValidator
+  id: IInputValidator
+  parent: Agora.API.InputValidation.Interfaces
+  children:
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto(Agora.API.DTOs.Transaction.ChangeTransactionStatusDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync(Agora.API.DTOs.Post.CreatePostDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync(Agora.API.DTOs.Transaction.CreateTransactionDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync(Agora.API.DTOs.User.RegisterDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync(Agora.API.DTOs.Post.UpdatePostDetailsDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync(Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto)
+  - Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IInputValidator
+  nameWithType: IInputValidator
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator
+  type: Interface
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IInputValidator
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 7
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  syntax:
+    content: public interface IInputValidator
+    content.vb: Public Interface IInputValidator
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync(Agora.API.DTOs.User.RegisterDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync(Agora.API.DTOs.User.RegisterDto)
+  id: ValidateRegisterDtoAsync(Agora.API.DTOs.User.RegisterDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateRegisterDtoAsync(RegisterDto)
+  nameWithType: IInputValidator.ValidateRegisterDtoAsync(RegisterDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync(Agora.API.DTOs.User.RegisterDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateRegisterDtoAsync
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 15
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for a new <code>User</code> registration.
+
+    Checks for username and email uniqueness.
+  example: []
+  syntax:
+    content: Task<InputValidationResult> ValidateRegisterDtoAsync(RegisterDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.User.RegisterDto
+      description: The DTO containing registration data.
+    return:
+      type: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateRegisterDtoAsync(dto As RegisterDto) As Task(Of InputValidationResult)
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync*
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId(System.String)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId(System.String)
+  id: ValidateUserId(System.String)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateUserId(string)
+  nameWithType: IInputValidator.ValidateUserId(string)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateUserId
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 22
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: Validates that the user id respects the required format (GUID).
+  example: []
+  syntax:
+    content: InputValidationResult ValidateUserId(string id)
+    parameters:
+    - id: id
+      type: System.String
+      description: The user id to check
+    return:
+      type: Agora.API.InputValidation.InputValidationResult
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateUserId(id As String) As InputValidationResult
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId*
+  nameWithType.vb: IInputValidator.ValidateUserId(String)
+  fullName.vb: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId(String)
+  name.vb: ValidateUserId(String)
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync(Agora.API.DTOs.Post.CreatePostDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync(Agora.API.DTOs.Post.CreatePostDto)
+  id: ValidateCreatePostDtoAsync(Agora.API.DTOs.Post.CreatePostDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateCreatePostDtoAsync(CreatePostDto)
+  nameWithType: IInputValidator.ValidateCreatePostDtoAsync(CreatePostDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync(Agora.API.DTOs.Post.CreatePostDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateCreatePostDtoAsync
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 30
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for creating a new <code>Post</code>.
+
+    Ensures the post type is valid and the specified post category exists.
+  example: []
+  syntax:
+    content: Task<InputValidationResult> ValidateCreatePostDtoAsync(CreatePostDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.Post.CreatePostDto
+      description: The DTO containing post creation data.
+    return:
+      type: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateCreatePostDtoAsync(dto As CreatePostDto) As Task(Of InputValidationResult)
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync*
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync(Agora.API.DTOs.Post.UpdatePostDetailsDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync(Agora.API.DTOs.Post.UpdatePostDetailsDto)
+  id: ValidateUpdatePostDtoAsync(Agora.API.DTOs.Post.UpdatePostDetailsDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateUpdatePostDtoAsync(UpdatePostDetailsDto)
+  nameWithType: IInputValidator.ValidateUpdatePostDtoAsync(UpdatePostDetailsDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync(Agora.API.DTOs.Post.UpdatePostDetailsDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateUpdatePostDtoAsync
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 38
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for updating an existing <code>Post</code>.
+
+    Checks for valid post type and verifies the existence of the specified post category if provided.
+  example: []
+  syntax:
+    content: Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.Post.UpdatePostDetailsDto
+      description: The DTO containing updated post details.
+    return:
+      type: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateUpdatePostDtoAsync(dto As UpdatePostDetailsDto) As Task(Of InputValidationResult)
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync*
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync(Agora.API.DTOs.Transaction.CreateTransactionDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync(Agora.API.DTOs.Transaction.CreateTransactionDto)
+  id: ValidateCreateTransactionDtoAsync(Agora.API.DTOs.Transaction.CreateTransactionDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateCreateTransactionDtoAsync(CreateTransactionDto)
+  nameWithType: IInputValidator.ValidateCreateTransactionDtoAsync(CreateTransactionDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync(Agora.API.DTOs.Transaction.CreateTransactionDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateCreateTransactionDtoAsync
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 46
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for creating a new <code>Transaction</code>.
+
+    Ensures that the referenced post (if any) exists, and that both buyer and seller users are valid.
+  example: []
+  syntax:
+    content: Task<InputValidationResult> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.Transaction.CreateTransactionDto
+      description: The DTO containing transaction creation data.
+    return:
+      type: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateCreateTransactionDtoAsync(dto As CreateTransactionDto) As Task(Of InputValidationResult)
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync*
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync(Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync(Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto)
+  id: ValidateUpdateTransactionDetailsDtoAsync(Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateUpdateTransactionDetailsDtoAsync(UpdateTransactionDetailsDto)
+  nameWithType: IInputValidator.ValidateUpdateTransactionDetailsDtoAsync(UpdateTransactionDetailsDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync(Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateUpdateTransactionDetailsDtoAsync
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 54
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for updating an existing <code>Transaction</code>.
+
+    Ensures the referenced post (if any) exists.
+  example: []
+  syntax:
+    content: Task<InputValidationResult> ValidateUpdateTransactionDetailsDtoAsync(UpdateTransactionDetailsDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto
+      description: The DTO containing updated transaction data.
+    return:
+      type: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateUpdateTransactionDetailsDtoAsync(dto As UpdateTransactionDetailsDto) As Task(Of InputValidationResult)
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync*
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto(Agora.API.DTOs.Transaction.ChangeTransactionStatusDto)
+  commentId: M:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto(Agora.API.DTOs.Transaction.ChangeTransactionStatusDto)
+  id: ValidateChangeTransactionStatusDto(Agora.API.DTOs.Transaction.ChangeTransactionStatusDto)
+  parent: Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateChangeTransactionStatusDto(ChangeTransactionStatusDto)
+  nameWithType: IInputValidator.ValidateChangeTransactionStatusDto(ChangeTransactionStatusDto)
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto(Agora.API.DTOs.Transaction.ChangeTransactionStatusDto)
+  type: Method
+  source:
+    remote:
+      path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateChangeTransactionStatusDto
+    path: Agora.API/InputValidation/Interfaces/IInputValidator.cs
+    startLine: 62
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.InputValidation.Interfaces
+  summary: >-
+    Validates the input data for changing the status of a <code>Transaction</code>.
+
+    Ensures that the provided new status exists in <code>TransactionStatusEnum</code>.
+  example: []
+  syntax:
+    content: InputValidationResult ValidateChangeTransactionStatusDto(ChangeTransactionStatusDto dto)
+    parameters:
+    - id: dto
+      type: Agora.API.DTOs.Transaction.ChangeTransactionStatusDto
+      description: The DTO containing the requested status change.
+    return:
+      type: Agora.API.InputValidation.InputValidationResult
+      description: An <xref href="Agora.API.InputValidation.InputValidationResult" data-throw-if-not-resolved="false"></xref> containing any validation errors.
+    content.vb: Function ValidateChangeTransactionStatusDto(dto As ChangeTransactionStatusDto) As InputValidationResult
+  overload: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto*
+references:
+- uid: Agora.API.InputValidation.Interfaces
+  commentId: N:Agora.API.InputValidation.Interfaces
+  href: Agora.html
+  name: Agora.API.InputValidation.Interfaces
+  nameWithType: Agora.API.InputValidation.Interfaces
+  fullName: Agora.API.InputValidation.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+  - name: .
+  - uid: Agora.API.InputValidation.Interfaces
+    name: Interfaces
+    href: Agora.API.InputValidation.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+  - name: .
+  - uid: Agora.API.InputValidation.Interfaces
+    name: Interfaces
+    href: Agora.API.InputValidation.Interfaces.html
+- uid: Agora.API.InputValidation.InputValidationResult
+  commentId: T:Agora.API.InputValidation.InputValidationResult
+  parent: Agora.API.InputValidation
+  href: Agora.API.InputValidation.InputValidationResult.html
+  name: InputValidationResult
+  nameWithType: InputValidationResult
+  fullName: Agora.API.InputValidation.InputValidationResult
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateRegisterDtoAsync_Agora_API_DTOs_User_RegisterDto_
+  name: ValidateRegisterDtoAsync
+  nameWithType: IInputValidator.ValidateRegisterDtoAsync
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateRegisterDtoAsync
+- uid: Agora.API.DTOs.User.RegisterDto
+  commentId: T:Agora.API.DTOs.User.RegisterDto
+  parent: Agora.API.DTOs.User
+  href: Agora.API.DTOs.User.RegisterDto.html
+  name: RegisterDto
+  nameWithType: RegisterDto
+  fullName: Agora.API.DTOs.User.RegisterDto
+- uid: System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+  commentId: T:System.Threading.Tasks.Task{Agora.API.InputValidation.InputValidationResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<InputValidationResult>
+  nameWithType: Task<InputValidationResult>
+  fullName: System.Threading.Tasks.Task<Agora.API.InputValidation.InputValidationResult>
+  nameWithType.vb: Task(Of InputValidationResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.API.InputValidation.InputValidationResult)
+  name.vb: Task(Of InputValidationResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.API.InputValidation.InputValidationResult
+    name: InputValidationResult
+    href: Agora.API.InputValidation.InputValidationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.API.InputValidation.InputValidationResult
+    name: InputValidationResult
+    href: Agora.API.InputValidation.InputValidationResult.html
+  - name: )
+- uid: Agora.API.InputValidation
+  commentId: N:Agora.API.InputValidation
+  href: Agora.html
+  name: Agora.API.InputValidation
+  nameWithType: Agora.API.InputValidation
+  fullName: Agora.API.InputValidation
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+- uid: Agora.API.DTOs.User
+  commentId: N:Agora.API.DTOs.User
+  href: Agora.html
+  name: Agora.API.DTOs.User
+  nameWithType: Agora.API.DTOs.User
+  fullName: Agora.API.DTOs.User
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateUserId_System_String_
+  name: ValidateUserId
+  nameWithType: IInputValidator.ValidateUserId
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUserId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateCreatePostDtoAsync_Agora_API_DTOs_Post_CreatePostDto_
+  name: ValidateCreatePostDtoAsync
+  nameWithType: IInputValidator.ValidateCreatePostDtoAsync
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreatePostDtoAsync
+- uid: Agora.API.DTOs.Post.CreatePostDto
+  commentId: T:Agora.API.DTOs.Post.CreatePostDto
+  parent: Agora.API.DTOs.Post
+  href: Agora.API.DTOs.Post.CreatePostDto.html
+  name: CreatePostDto
+  nameWithType: CreatePostDto
+  fullName: Agora.API.DTOs.Post.CreatePostDto
+- uid: Agora.API.DTOs.Post
+  commentId: N:Agora.API.DTOs.Post
+  href: Agora.html
+  name: Agora.API.DTOs.Post
+  nameWithType: Agora.API.DTOs.Post
+  fullName: Agora.API.DTOs.Post
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Post
+    name: Post
+    href: Agora.API.DTOs.Post.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Post
+    name: Post
+    href: Agora.API.DTOs.Post.html
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateUpdatePostDtoAsync_Agora_API_DTOs_Post_UpdatePostDetailsDto_
+  name: ValidateUpdatePostDtoAsync
+  nameWithType: IInputValidator.ValidateUpdatePostDtoAsync
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdatePostDtoAsync
+- uid: Agora.API.DTOs.Post.UpdatePostDetailsDto
+  commentId: T:Agora.API.DTOs.Post.UpdatePostDetailsDto
+  parent: Agora.API.DTOs.Post
+  href: Agora.API.DTOs.Post.UpdatePostDetailsDto.html
+  name: UpdatePostDetailsDto
+  nameWithType: UpdatePostDetailsDto
+  fullName: Agora.API.DTOs.Post.UpdatePostDetailsDto
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateCreateTransactionDtoAsync_Agora_API_DTOs_Transaction_CreateTransactionDto_
+  name: ValidateCreateTransactionDtoAsync
+  nameWithType: IInputValidator.ValidateCreateTransactionDtoAsync
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateCreateTransactionDtoAsync
+- uid: Agora.API.DTOs.Transaction.CreateTransactionDto
+  commentId: T:Agora.API.DTOs.Transaction.CreateTransactionDto
+  parent: Agora.API.DTOs.Transaction
+  href: Agora.API.DTOs.Transaction.CreateTransactionDto.html
+  name: CreateTransactionDto
+  nameWithType: CreateTransactionDto
+  fullName: Agora.API.DTOs.Transaction.CreateTransactionDto
+- uid: Agora.API.DTOs.Transaction
+  commentId: N:Agora.API.DTOs.Transaction
+  href: Agora.html
+  name: Agora.API.DTOs.Transaction
+  nameWithType: Agora.API.DTOs.Transaction
+  fullName: Agora.API.DTOs.Transaction
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Transaction
+    name: Transaction
+    href: Agora.API.DTOs.Transaction.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Transaction
+    name: Transaction
+    href: Agora.API.DTOs.Transaction.html
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateUpdateTransactionDetailsDtoAsync_Agora_API_DTOs_Transaction_UpdateTransactionDetailsDto_
+  name: ValidateUpdateTransactionDetailsDtoAsync
+  nameWithType: IInputValidator.ValidateUpdateTransactionDetailsDtoAsync
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateUpdateTransactionDetailsDtoAsync
+- uid: Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto
+  commentId: T:Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto
+  parent: Agora.API.DTOs.Transaction
+  href: Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto.html
+  name: UpdateTransactionDetailsDto
+  nameWithType: UpdateTransactionDetailsDto
+  fullName: Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto*
+  commentId: Overload:Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html#Agora_API_InputValidation_Interfaces_IInputValidator_ValidateChangeTransactionStatusDto_Agora_API_DTOs_Transaction_ChangeTransactionStatusDto_
+  name: ValidateChangeTransactionStatusDto
+  nameWithType: IInputValidator.ValidateChangeTransactionStatusDto
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator.ValidateChangeTransactionStatusDto
+- uid: Agora.API.DTOs.Transaction.ChangeTransactionStatusDto
+  commentId: T:Agora.API.DTOs.Transaction.ChangeTransactionStatusDto
+  parent: Agora.API.DTOs.Transaction
+  href: Agora.API.DTOs.Transaction.ChangeTransactionStatusDto.html
+  name: ChangeTransactionStatusDto
+  nameWithType: ChangeTransactionStatusDto
+  fullName: Agora.API.DTOs.Transaction.ChangeTransactionStatusDto

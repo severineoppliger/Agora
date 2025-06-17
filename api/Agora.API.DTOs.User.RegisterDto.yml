@@ -1,0 +1,569 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.User.RegisterDto
+  commentId: T:Agora.API.DTOs.User.RegisterDto
+  id: RegisterDto
+  parent: Agora.API.DTOs.User
+  children:
+  - Agora.API.DTOs.User.RegisterDto.Email
+  - Agora.API.DTOs.User.RegisterDto.Password
+  - Agora.API.DTOs.User.RegisterDto.UserName
+  langs:
+  - csharp
+  - vb
+  name: RegisterDto
+  nameWithType: RegisterDto
+  fullName: Agora.API.DTOs.User.RegisterDto
+  type: Class
+  source:
+    remote:
+      path: Agora.API/DTOs/User/RegisterDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: RegisterDto
+    path: Agora.API/DTOs/User/RegisterDto.cs
+    startLine: 5
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public class RegisterDto
+    content.vb: Public Class RegisterDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.API.DTOs.User.RegisterDto.UserName
+  commentId: P:Agora.API.DTOs.User.RegisterDto.UserName
+  id: UserName
+  parent: Agora.API.DTOs.User.RegisterDto
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: RegisterDto.UserName
+  fullName: Agora.API.DTOs.User.RegisterDto.UserName
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/RegisterDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserName
+    path: Agora.API/DTOs/User/RegisterDto.cs
+    startLine: 7
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: >-
+      [Required]
+
+      [NotEmptyOrWhitespace]
+
+      [MinLength(5, ErrorMessage = "{0} must be at least {1} characters.")]
+
+      [MaxLength(50, ErrorMessage = "{0} must be less than {1} characters.")]
+
+      public string UserName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <NotEmptyOrWhitespace>
+
+      <MinLength(5, ErrorMessage:="{0} must be at least {1} characters.")>
+
+      <MaxLength(50, ErrorMessage:="{0} must be less than {1} characters.")>
+
+      Public Property UserName As String
+  overload: Agora.API.DTOs.User.RegisterDto.UserName*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+    ctor: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MinLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MinLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 5
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be at least {1} characters.'
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 50
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be less than {1} characters.'
+- uid: Agora.API.DTOs.User.RegisterDto.Email
+  commentId: P:Agora.API.DTOs.User.RegisterDto.Email
+  id: Email
+  parent: Agora.API.DTOs.User.RegisterDto
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: RegisterDto.Email
+  fullName: Agora.API.DTOs.User.RegisterDto.Email
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/RegisterDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Email
+    path: Agora.API/DTOs/User/RegisterDto.cs
+    startLine: 13
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: >-
+      [Required]
+
+      [NotEmptyOrWhitespace]
+
+      [EmailAddress]
+
+      [MinLength(5, ErrorMessage = "{0} must be at least {1} characters.")]
+
+      [MaxLength(255, ErrorMessage = "{0} must be less than {1} characters.")]
+
+      public string Email { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <NotEmptyOrWhitespace>
+
+      <EmailAddress>
+
+      <MinLength(5, ErrorMessage:="{0} must be at least {1} characters.")>
+
+      <MaxLength(255, ErrorMessage:="{0} must be less than {1} characters.")>
+
+      Public Property Email As String
+  overload: Agora.API.DTOs.User.RegisterDto.Email*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+    ctor: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.EmailAddressAttribute
+    ctor: System.ComponentModel.DataAnnotations.EmailAddressAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MinLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MinLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 5
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be at least {1} characters.'
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 255
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be less than {1} characters.'
+- uid: Agora.API.DTOs.User.RegisterDto.Password
+  commentId: P:Agora.API.DTOs.User.RegisterDto.Password
+  id: Password
+  parent: Agora.API.DTOs.User.RegisterDto
+  langs:
+  - csharp
+  - vb
+  name: Password
+  nameWithType: RegisterDto.Password
+  fullName: Agora.API.DTOs.User.RegisterDto.Password
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/RegisterDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Password
+    path: Agora.API/DTOs/User/RegisterDto.cs
+    startLine: 20
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: >-
+      [Required]
+
+      [NotEmptyOrWhitespace]
+
+      [MinLength(8, ErrorMessage = "{0} must be at least {1} characters.")]
+
+      [MaxLength(255, ErrorMessage = "{0} must be less than {1} characters.")]
+
+      public string Password { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <NotEmptyOrWhitespace>
+
+      <MinLength(8, ErrorMessage:="{0} must be at least {1} characters.")>
+
+      <MaxLength(255, ErrorMessage:="{0} must be less than {1} characters.")>
+
+      Public Property Password As String
+  overload: Agora.API.DTOs.User.RegisterDto.Password*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+    ctor: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MinLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MinLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be at least {1} characters.'
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 255
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: '{0} must be less than {1} characters.'
+references:
+- uid: Agora.API.DTOs.User
+  commentId: N:Agora.API.DTOs.User
+  href: Agora.html
+  name: Agora.API.DTOs.User
+  nameWithType: Agora.API.DTOs.User
+  fullName: Agora.API.DTOs.User
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.API.DTOs.User.RegisterDto.UserName*
+  commentId: Overload:Agora.API.DTOs.User.RegisterDto.UserName
+  href: Agora.API.DTOs.User.RegisterDto.html#Agora_API_DTOs_User_RegisterDto_UserName
+  name: UserName
+  nameWithType: RegisterDto.UserName
+  fullName: Agora.API.DTOs.User.RegisterDto.UserName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.API.DTOs.User.RegisterDto.Email*
+  commentId: Overload:Agora.API.DTOs.User.RegisterDto.Email
+  href: Agora.API.DTOs.User.RegisterDto.html#Agora_API_DTOs_User_RegisterDto_Email
+  name: Email
+  nameWithType: RegisterDto.Email
+  fullName: Agora.API.DTOs.User.RegisterDto.Email
+- uid: Agora.API.DTOs.User.RegisterDto.Password*
+  commentId: Overload:Agora.API.DTOs.User.RegisterDto.Password
+  href: Agora.API.DTOs.User.RegisterDto.html#Agora_API_DTOs_User_RegisterDto_Password
+  name: Password
+  nameWithType: RegisterDto.Password
+  fullName: Agora.API.DTOs.User.RegisterDto.Password

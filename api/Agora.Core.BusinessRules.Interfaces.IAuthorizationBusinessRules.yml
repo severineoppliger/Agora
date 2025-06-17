@@ -1,0 +1,382 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  commentId: T:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  id: IAuthorizationBusinessRules
+  parent: Agora.Core.BusinessRules.Interfaces
+  children:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  langs:
+  - csharp
+  - vb
+  name: IAuthorizationBusinessRules
+  nameWithType: IAuthorizationBusinessRules
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IAuthorizationBusinessRules
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  summary: Determine if a certain user can see, create, modify or delete some entity.
+  example: []
+  syntax:
+    content: public interface IAuthorizationBusinessRules
+    content.vb: Public Interface IAuthorizationBusinessRules
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  id: CanViewUser(System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewUser(string, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewUser(string, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(string, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewUser
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  syntax:
+    content: bool CanViewUser(string id, UserContext userContext)
+    parameters:
+    - id: id
+      type: System.String
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanViewUser(id As String, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser*
+  nameWithType.vb: IAuthorizationBusinessRules.CanViewUser(String, UserContext)
+  fullName.vb: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(String, Agora.Core.Common.UserContext)
+  name.vb: CanViewUser(String, UserContext)
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewPost(Post, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewPost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewPost
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  syntax:
+    content: bool CanViewPost(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanViewPost(post As Post, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost*
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanManagePost(Post, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanManagePost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanManagePost
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  syntax:
+    content: bool CanManagePost(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanManagePost(post As Post, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost*
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  id: CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewTransaction(Transaction, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewTransaction
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 13
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  syntax:
+    content: bool CanViewTransaction(Transaction transaction, UserContext userContext)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanViewTransaction(transaction As Transaction, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction*
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  id: CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanManageTransaction(Transaction, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanManageTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanManageTransaction
+    path: Agora.Core/BusinessRules/Interfaces/IAuthorizationBusinessRules.cs
+    startLine: 14
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules.Interfaces
+  syntax:
+    content: bool CanManageTransaction(Transaction transaction, UserContext userContext)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Function CanManageTransaction(transaction As Transaction, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction*
+references:
+- uid: Agora.Core.BusinessRules.Interfaces
+  commentId: N:Agora.Core.BusinessRules.Interfaces
+  href: Agora.html
+  name: Agora.Core.BusinessRules.Interfaces
+  nameWithType: Agora.Core.BusinessRules.Interfaces
+  fullName: Agora.Core.BusinessRules.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser*
+  commentId: Overload:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewUser_System_String_Agora_Core_Common_UserContext_
+  name: CanViewUser
+  nameWithType: IAuthorizationBusinessRules.CanViewUser
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost*
+  commentId: Overload:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewPost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanViewPost
+  nameWithType: IAuthorizationBusinessRules.CanViewPost
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost*
+  commentId: Overload:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManagePost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanManagePost
+  nameWithType: IAuthorizationBusinessRules.CanManagePost
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction*
+  commentId: Overload:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanViewTransaction
+  nameWithType: IAuthorizationBusinessRules.CanViewTransaction
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction
+- uid: Agora.Core.Models.Transaction
+  commentId: T:Agora.Core.Models.Transaction
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Transaction.html
+  name: Transaction
+  nameWithType: Transaction
+  fullName: Agora.Core.Models.Transaction
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction*
+  commentId: Overload:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManageTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanManageTransaction
+  nameWithType: IAuthorizationBusinessRules.CanManageTransaction
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction

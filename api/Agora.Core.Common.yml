@@ -1,0 +1,195 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  id: Agora.Core.Common
+  children:
+  - Agora.Core.Common.ErrorDetail
+  - Agora.Core.Common.ErrorMessages
+  - Agora.Core.Common.ErrorMessages.Post
+  - Agora.Core.Common.ErrorMessages.PostCategory
+  - Agora.Core.Common.ErrorMessages.Transaction
+  - Agora.Core.Common.ErrorMessages.User
+  - Agora.Core.Common.Result
+  - Agora.Core.Common.Result`1
+  - Agora.Core.Common.UserContext
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Common.ErrorDetail
+  commentId: T:Agora.Core.Common.ErrorDetail
+  href: Agora.Core.Common.ErrorDetail.html
+  name: ErrorDetail
+  nameWithType: ErrorDetail
+  fullName: Agora.Core.Common.ErrorDetail
+- uid: Agora.Core.Common.ErrorMessages
+  commentId: T:Agora.Core.Common.ErrorMessages
+  href: Agora.Core.Common.ErrorMessages.html
+  name: ErrorMessages
+  nameWithType: ErrorMessages
+  fullName: Agora.Core.Common.ErrorMessages
+- uid: Agora.Core.Common.ErrorMessages.PostCategory
+  commentId: T:Agora.Core.Common.ErrorMessages.PostCategory
+  href: Agora.Core.Common.ErrorMessages.html
+  name: ErrorMessages.PostCategory
+  nameWithType: ErrorMessages.PostCategory
+  fullName: Agora.Core.Common.ErrorMessages.PostCategory
+  spec.csharp:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.PostCategory
+    name: PostCategory
+    href: Agora.Core.Common.ErrorMessages.PostCategory.html
+  spec.vb:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.PostCategory
+    name: PostCategory
+    href: Agora.Core.Common.ErrorMessages.PostCategory.html
+- uid: Agora.Core.Common.ErrorMessages.Post
+  commentId: T:Agora.Core.Common.ErrorMessages.Post
+  href: Agora.Core.Common.ErrorMessages.html
+  name: ErrorMessages.Post
+  nameWithType: ErrorMessages.Post
+  fullName: Agora.Core.Common.ErrorMessages.Post
+  spec.csharp:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.Post
+    name: Post
+    href: Agora.Core.Common.ErrorMessages.Post.html
+  spec.vb:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.Post
+    name: Post
+    href: Agora.Core.Common.ErrorMessages.Post.html
+- uid: Agora.Core.Common.ErrorMessages.Transaction
+  commentId: T:Agora.Core.Common.ErrorMessages.Transaction
+  href: Agora.Core.Common.ErrorMessages.html
+  name: ErrorMessages.Transaction
+  nameWithType: ErrorMessages.Transaction
+  fullName: Agora.Core.Common.ErrorMessages.Transaction
+  spec.csharp:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.Transaction
+    name: Transaction
+    href: Agora.Core.Common.ErrorMessages.Transaction.html
+  spec.vb:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.Transaction
+    name: Transaction
+    href: Agora.Core.Common.ErrorMessages.Transaction.html
+- uid: Agora.Core.Common.ErrorMessages.User
+  commentId: T:Agora.Core.Common.ErrorMessages.User
+  href: Agora.Core.Common.ErrorMessages.html
+  name: ErrorMessages.User
+  nameWithType: ErrorMessages.User
+  fullName: Agora.Core.Common.ErrorMessages.User
+  spec.csharp:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.User
+    name: User
+    href: Agora.Core.Common.ErrorMessages.User.html
+  spec.vb:
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    href: Agora.Core.Common.ErrorMessages.html
+  - name: .
+  - uid: Agora.Core.Common.ErrorMessages.User
+    name: User
+    href: Agora.Core.Common.ErrorMessages.User.html
+- uid: Agora.Core.Common.Result
+  commentId: T:Agora.Core.Common.Result
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result.html
+  name: Result
+  nameWithType: Result
+  fullName: Agora.Core.Common.Result
+- uid: Agora.Core.Common.Result`1
+  commentId: T:Agora.Core.Common.Result`1
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result-1.html
+  name: Result<T>
+  nameWithType: Result<T>
+  fullName: Agora.Core.Common.Result<T>
+  nameWithType.vb: Result(Of T)
+  fullName.vb: Agora.Core.Common.Result(Of T)
+  name.vb: Result(Of T)
+  spec.csharp:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html

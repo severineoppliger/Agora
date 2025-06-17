@@ -1,0 +1,485 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Validation.ValidationRules.AppUser
+  commentId: T:Agora.Core.Validation.ValidationRules.AppUser
+  id: ValidationRules.AppUser
+  parent: Agora.Core.Validation
+  children:
+  - Agora.Core.Validation.ValidationRules.AppUser.EmailMaxLength
+  - Agora.Core.Validation.ValidationRules.AppUser.EmailMinLength
+  - Agora.Core.Validation.ValidationRules.AppUser.PasswordMaxLength
+  - Agora.Core.Validation.ValidationRules.AppUser.PasswordMinLength
+  - Agora.Core.Validation.ValidationRules.AppUser.UsernameMaxLength
+  - Agora.Core.Validation.ValidationRules.AppUser.UsernameMinLength
+  langs:
+  - csharp
+  - vb
+  name: ValidationRules.AppUser
+  nameWithType: ValidationRules.AppUser
+  fullName: Agora.Core.Validation.ValidationRules.AppUser
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AppUser
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public static class ValidationRules.AppUser
+    content.vb: Public Module ValidationRules.AppUser
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Core.Validation.ValidationRules.AppUser.UsernameMinLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.UsernameMinLength
+  id: UsernameMinLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: UsernameMinLength
+  nameWithType: ValidationRules.AppUser.UsernameMinLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.UsernameMinLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UsernameMinLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int UsernameMinLength = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const UsernameMinLength As Integer = 5
+- uid: Agora.Core.Validation.ValidationRules.AppUser.UsernameMaxLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.UsernameMaxLength
+  id: UsernameMaxLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: UsernameMaxLength
+  nameWithType: ValidationRules.AppUser.UsernameMaxLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.UsernameMaxLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UsernameMaxLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int UsernameMaxLength = 50
+    return:
+      type: System.Int32
+    content.vb: Public Const UsernameMaxLength As Integer = 50
+- uid: Agora.Core.Validation.ValidationRules.AppUser.EmailMinLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.EmailMinLength
+  id: EmailMinLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: EmailMinLength
+  nameWithType: ValidationRules.AppUser.EmailMinLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.EmailMinLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: EmailMinLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int EmailMinLength = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const EmailMinLength As Integer = 5
+- uid: Agora.Core.Validation.ValidationRules.AppUser.EmailMaxLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.EmailMaxLength
+  id: EmailMaxLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: EmailMaxLength
+  nameWithType: ValidationRules.AppUser.EmailMaxLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.EmailMaxLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: EmailMaxLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int EmailMaxLength = 255
+    return:
+      type: System.Int32
+    content.vb: Public Const EmailMaxLength As Integer = 255
+- uid: Agora.Core.Validation.ValidationRules.AppUser.PasswordMinLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.PasswordMinLength
+  id: PasswordMinLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: PasswordMinLength
+  nameWithType: ValidationRules.AppUser.PasswordMinLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.PasswordMinLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PasswordMinLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int PasswordMinLength = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const PasswordMinLength As Integer = 8
+- uid: Agora.Core.Validation.ValidationRules.AppUser.PasswordMaxLength
+  commentId: F:Agora.Core.Validation.ValidationRules.AppUser.PasswordMaxLength
+  id: PasswordMaxLength
+  parent: Agora.Core.Validation.ValidationRules.AppUser
+  langs:
+  - csharp
+  - vb
+  name: PasswordMaxLength
+  nameWithType: ValidationRules.AppUser.PasswordMaxLength
+  fullName: Agora.Core.Validation.ValidationRules.AppUser.PasswordMaxLength
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Validation/ValidationRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PasswordMaxLength
+    path: Agora.Core/Validation/ValidationRules.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Validation
+  syntax:
+    content: public const int PasswordMaxLength = 255
+    return:
+      type: System.Int32
+    content.vb: Public Const PasswordMaxLength As Integer = 255
+references:
+- uid: Agora.Core.Validation
+  commentId: N:Agora.Core.Validation
+  href: Agora.html
+  name: Agora.Core.Validation
+  nameWithType: Agora.Core.Validation
+  fullName: Agora.Core.Validation
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Validation
+    name: Validation
+    href: Agora.Core.Validation.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Validation
+    name: Validation
+    href: Agora.Core.Validation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

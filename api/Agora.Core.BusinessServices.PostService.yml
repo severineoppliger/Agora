@@ -1,0 +1,1516 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessServices.PostService
+  commentId: T:Agora.Core.BusinessServices.PostService
+  id: PostService
+  parent: Agora.Core.BusinessServices
+  children:
+  - Agora.Core.BusinessServices.PostService.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository,Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules,Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)
+  - Agora.Core.BusinessServices.PostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  - Agora.Core.BusinessServices.PostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessServices.PostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessServices.PostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessServices.PostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  langs:
+  - csharp
+  - vb
+  name: PostService
+  nameWithType: PostService
+  fullName: Agora.Core.BusinessServices.PostService
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostService
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.
+  example: []
+  syntax:
+    content: 'public class PostService : IPostService'
+    content.vb: Public Class PostService Implements IPostService
+  inheritance:
+  - System.Object
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Core.BusinessServices.PostService.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository,Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules,Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)
+  commentId: M:Agora.Core.BusinessServices.PostService.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository,Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules,Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)
+  id: '#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository,Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules,Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)'
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: PostService(IPostRepository, ITransactionRepository, IAuthorizationBusinessRules, IBusinessRulesValidator)
+  nameWithType: PostService.PostService(IPostRepository, ITransactionRepository, IAuthorizationBusinessRules, IBusinessRulesValidator)
+  fullName: Agora.Core.BusinessServices.PostService.PostService(Agora.Core.Interfaces.Repositories.IPostRepository, Agora.Core.Interfaces.Repositories.ITransactionRepository, Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules, Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)
+  type: Constructor
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: .ctor
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  example: []
+  syntax:
+    content: public PostService(IPostRepository postRepo, ITransactionRepository transactionRepo, IAuthorizationBusinessRules authorizationBusinessRules, IBusinessRulesValidator businessRulesValidator)
+    parameters:
+    - id: postRepo
+      type: Agora.Core.Interfaces.Repositories.IPostRepository
+    - id: transactionRepo
+      type: Agora.Core.Interfaces.Repositories.ITransactionRepository
+    - id: authorizationBusinessRules
+      type: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+    - id: businessRulesValidator
+      type: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+    content.vb: Public Sub New(postRepo As IPostRepository, transactionRepo As ITransactionRepository, authorizationBusinessRules As IAuthorizationBusinessRules, businessRulesValidator As IBusinessRulesValidator)
+  overload: Agora.Core.BusinessServices.PostService.#ctor*
+  nameWithType.vb: PostService.New(IPostRepository, ITransactionRepository, IAuthorizationBusinessRules, IBusinessRulesValidator)
+  fullName.vb: Agora.Core.BusinessServices.PostService.New(Agora.Core.Interfaces.Repositories.IPostRepository, Agora.Core.Interfaces.Repositories.ITransactionRepository, Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules, Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)
+  name.vb: New(IPostRepository, ITransactionRepository, IAuthorizationBusinessRules, IBusinessRulesValidator)
+- uid: Agora.Core.BusinessServices.PostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessServices.PostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  id: GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext?)
+  nameWithType: PostService.GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext?)
+  fullName: Agora.Core.BusinessServices.PostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode, Agora.Core.Models.Filters.PostFilter, Agora.Core.Common.UserContext?)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllPostsAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 21
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Retrieves all <code>Post</code> visible to the user according to authorization rules and visibility mode.
+  example: []
+  syntax:
+    content: public Task<Result<IReadOnlyList<Post>>> GetAllPostsAsync(PostVisibilityMode postVisibilityMode, PostFilter postFilter, UserContext? userContext)
+    parameters:
+    - id: postVisibilityMode
+      type: Agora.Core.Enums.PostVisibilityMode
+      description: Specifies the scope of posts to retrieve (e.g., catalog only, user-owned, admin view).
+    - id: postFilter
+      type: Agora.Core.Models.Filters.PostFilter
+      description: Filter criteria to apply when querying posts.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the current user making the request.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}}
+      description: A successful Result wrapping a list of posts visible to user, or failure if an error occurs.
+    content.vb: Public Function GetAllPostsAsync(postVisibilityMode As PostVisibilityMode, postFilter As PostFilter, userContext As UserContext) As Task(Of Result(Of IReadOnlyList(Of Post)))
+  overload: Agora.Core.BusinessServices.PostService.GetAllPostsAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  nameWithType.vb: PostService.GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext)
+  fullName.vb: Agora.Core.BusinessServices.PostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode, Agora.Core.Models.Filters.PostFilter, Agora.Core.Common.UserContext)
+  name.vb: GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext)
+- uid: Agora.Core.BusinessServices.PostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessServices.PostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  id: GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: GetPostByIdAsync(long, UserContext?)
+  nameWithType: PostService.GetPostByIdAsync(long, UserContext?)
+  fullName: Agora.Core.BusinessServices.PostService.GetPostByIdAsync(long, Agora.Core.Common.UserContext?)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetPostByIdAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 57
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Retrieves a single <code>Post</code> by its ID if visible to the user.
+  example: []
+  syntax:
+    content: public Task<Result<Post>> GetPostByIdAsync(long postId, UserContext? userContext)
+    parameters:
+    - id: postId
+      type: System.Int64
+      description: The ID of the post to retrieve.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the current user requesting the post.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.Post}}
+      description: >-
+        Success wrapping the <code>Post</code> if found and authorized,
+
+        failure with NotFound if missing,
+
+        or failure with Unauthorized if the user cannot view it.
+    content.vb: Public Function GetPostByIdAsync(postId As Long, userContext As UserContext) As Task(Of Result(Of Post))
+  overload: Agora.Core.BusinessServices.PostService.GetPostByIdAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  nameWithType.vb: PostService.GetPostByIdAsync(Long, UserContext)
+  fullName.vb: Agora.Core.BusinessServices.PostService.GetPostByIdAsync(Long, Agora.Core.Common.UserContext)
+  name.vb: GetPostByIdAsync(Long, UserContext)
+- uid: Agora.Core.BusinessServices.PostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessServices.PostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: CreatePostAsync(Post, UserContext)
+  nameWithType: PostService.CreatePostAsync(Post, UserContext)
+  fullName: Agora.Core.BusinessServices.PostService.CreatePostAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CreatePostAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 92
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Creates a new <code>Post</code> after validating authorization and business rules.
+  example: []
+  syntax:
+    content: public Task<Result<Post>> CreatePostAsync(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+      description: The <code>Post</code> entity to create.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the user creating the post.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.Post}}
+      description: Success wrapping the created <code>Post</code> if successful, or failure with relevant error details.
+    content.vb: Public Function CreatePostAsync(post As Post, userContext As UserContext) As Task(Of Result(Of Post))
+  overload: Agora.Core.BusinessServices.PostService.CreatePostAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  id: UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: UpdatePostDetailsAsync(long, PostDetailsUpdate, UserContext)
+  nameWithType: PostService.UpdatePostDetailsAsync(long, PostDetailsUpdate, UserContext)
+  fullName: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync(long, Agora.Core.Models.Requests.PostDetailsUpdate, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UpdatePostDetailsAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 119
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: >-
+    Updates specified details of an existing <code>Post</code> after validating authorization and business rules.
+
+    Only non-null values in <code class="paramref">newDetails</code> are applied.
+  example: []
+  syntax:
+    content: public Task<Result> UpdatePostDetailsAsync(long postId, PostDetailsUpdate newDetails, UserContext userContext)
+    parameters:
+    - id: postId
+      type: System.Int64
+      description: ID of the <code>Post</code> to update.
+    - id: newDetails
+      type: Agora.Core.Models.Requests.PostDetailsUpdate
+      description: The details to update.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the user performing the update.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        Success if update and save are successful,
+
+        or failure with appropriate error messages.
+    content.vb: Public Function UpdatePostDetailsAsync(postId As Long, newDetails As PostDetailsUpdate, userContext As UserContext) As Task(Of Result)
+  overload: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  nameWithType.vb: PostService.UpdatePostDetailsAsync(Long, PostDetailsUpdate, UserContext)
+  fullName.vb: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync(Long, Agora.Core.Models.Requests.PostDetailsUpdate, Agora.Core.Common.UserContext)
+  name.vb: UpdatePostDetailsAsync(Long, PostDetailsUpdate, UserContext)
+- uid: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  commentId: M:Agora.Core.BusinessServices.PostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  id: ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: ChangePostStatusAsync(long, UserContext, PostStatus)
+  nameWithType: PostService.ChangePostStatusAsync(long, UserContext, PostStatus)
+  fullName: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync(long, Agora.Core.Common.UserContext, Agora.Core.Enums.PostStatus)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ChangePostStatusAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 192
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Changes the status of an existing <code>Post</code> after authorization and validation of state transitions.
+  example: []
+  syntax:
+    content: public Task<Result> ChangePostStatusAsync(long postId, UserContext userContext, PostStatus targetStatus)
+    parameters:
+    - id: postId
+      type: System.Int64
+      description: ID of the <code>Post</code> to update status for.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the user performing the status change.
+    - id: targetStatus
+      type: Agora.Core.Enums.PostStatus
+      description: The new post status to apply.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        Success if the status was changed and saved successfully,
+
+        or failure with relevant error details if invalid or unauthorized.
+    content.vb: Public Function ChangePostStatusAsync(postId As Long, userContext As UserContext, targetStatus As PostStatus) As Task(Of Result)
+  overload: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  nameWithType.vb: PostService.ChangePostStatusAsync(Long, UserContext, PostStatus)
+  fullName.vb: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync(Long, Agora.Core.Common.UserContext, Agora.Core.Enums.PostStatus)
+  name.vb: ChangePostStatusAsync(Long, UserContext, PostStatus)
+- uid: Agora.Core.BusinessServices.PostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessServices.PostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  id: DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessServices.PostService
+  langs:
+  - csharp
+  - vb
+  name: DeletePostAsync(long, UserContext)
+  nameWithType: PostService.DeletePostAsync(long, UserContext)
+  fullName: Agora.Core.BusinessServices.PostService.DeletePostAsync(long, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessServices/PostService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: DeletePostAsync
+    path: Agora.Core/BusinessServices/PostService.cs
+    startLine: 237
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessServices
+  summary: Delete a <code>Post</code> after validating authorization and business rules.
+  example: []
+  syntax:
+    content: public Task<Result> DeletePostAsync(long postId, UserContext userContext)
+    parameters:
+    - id: postId
+      type: System.Int64
+      description: ID of the <code>Post</code> to delete.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the user requesting the deletion.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        Success if the <code>Post</code> was successfully deleted,
+
+        or failure with relevant error details if invalid or unauthorized.
+    content.vb: Public Function DeletePostAsync(postId As Long, userContext As UserContext) As Task(Of Result)
+  overload: Agora.Core.BusinessServices.PostService.DeletePostAsync*
+  implements:
+  - Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  nameWithType.vb: PostService.DeletePostAsync(Long, UserContext)
+  fullName.vb: Agora.Core.BusinessServices.PostService.DeletePostAsync(Long, Agora.Core.Common.UserContext)
+  name.vb: DeletePostAsync(Long, UserContext)
+references:
+- uid: Agora.Core.BusinessServices
+  commentId: N:Agora.Core.BusinessServices
+  href: Agora.html
+  name: Agora.Core.BusinessServices
+  nameWithType: Agora.Core.BusinessServices
+  fullName: Agora.Core.BusinessServices
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.BusinessServices.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.BusinessServices.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IPostService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html
+  name: IPostService
+  nameWithType: IPostService
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.BusinessServices
+  commentId: N:Agora.Core.Interfaces.BusinessServices
+  href: Agora.html
+  name: Agora.Core.Interfaces.BusinessServices
+  nameWithType: Agora.Core.Interfaces.BusinessServices
+  fullName: Agora.Core.Interfaces.BusinessServices
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+- uid: Agora.Core.BusinessServices.PostService.#ctor*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.#ctor
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService__ctor_Agora_Core_Interfaces_Repositories_IPostRepository_Agora_Core_Interfaces_Repositories_ITransactionRepository_Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_
+  name: PostService
+  nameWithType: PostService.PostService
+  fullName: Agora.Core.BusinessServices.PostService.PostService
+  nameWithType.vb: PostService.New
+  fullName.vb: Agora.Core.BusinessServices.PostService.New
+  name.vb: New
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html
+  name: IPostRepository
+  nameWithType: IPostRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.ITransactionRepository.html
+  name: ITransactionRepository
+  nameWithType: ITransactionRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionRepository
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  commentId: T:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  parent: Agora.Core.BusinessRules.Interfaces
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html
+  name: IAuthorizationBusinessRules
+  nameWithType: IAuthorizationBusinessRules
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  commentId: T:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  parent: Agora.Core.BusinessRules.Interfaces
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html
+  name: IBusinessRulesValidator
+  nameWithType: IBusinessRulesValidator
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+- uid: Agora.Core.BusinessRules.Interfaces
+  commentId: N:Agora.Core.BusinessRules.Interfaces
+  href: Agora.html
+  name: Agora.Core.BusinessRules.Interfaces
+  nameWithType: Agora.Core.BusinessRules.Interfaces
+  fullName: Agora.Core.BusinessRules.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+- uid: Agora.Core.BusinessServices.PostService.GetAllPostsAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.GetAllPostsAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_GetAllPostsAsync_Agora_Core_Enums_PostVisibilityMode_Agora_Core_Models_Filters_PostFilter_Agora_Core_Common_UserContext_
+  name: GetAllPostsAsync
+  nameWithType: PostService.GetAllPostsAsync
+  fullName: Agora.Core.BusinessServices.PostService.GetAllPostsAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetAllPostsAsync_Agora_Core_Enums_PostVisibilityMode_Agora_Core_Models_Filters_PostFilter_Agora_Core_Common_UserContext_
+  name: GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext)
+  nameWithType: IPostService.GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode, Agora.Core.Models.Filters.PostFilter, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+    name: GetAllPostsAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetAllPostsAsync_Agora_Core_Enums_PostVisibilityMode_Agora_Core_Models_Filters_PostFilter_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Enums.PostVisibilityMode
+    name: PostVisibilityMode
+    href: Agora.Core.Enums.PostVisibilityMode.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Filters.PostFilter
+    name: PostFilter
+    href: Agora.Core.Models.Filters.PostFilter.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)
+    name: GetAllPostsAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetAllPostsAsync_Agora_Core_Enums_PostVisibilityMode_Agora_Core_Models_Filters_PostFilter_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Enums.PostVisibilityMode
+    name: PostVisibilityMode
+    href: Agora.Core.Enums.PostVisibilityMode.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Filters.PostFilter
+    name: PostFilter
+    href: Agora.Core.Models.Filters.PostFilter.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Enums.PostVisibilityMode
+  commentId: T:Agora.Core.Enums.PostVisibilityMode
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostVisibilityMode.html
+  name: PostVisibilityMode
+  nameWithType: PostVisibilityMode
+  fullName: Agora.Core.Enums.PostVisibilityMode
+- uid: Agora.Core.Models.Filters.PostFilter
+  commentId: T:Agora.Core.Models.Filters.PostFilter
+  parent: Agora.Core.Models.Filters
+  href: Agora.Core.Models.Filters.PostFilter.html
+  name: PostFilter
+  nameWithType: PostFilter
+  fullName: Agora.Core.Models.Filters.PostFilter
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.Post}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<IReadOnlyList<Post>>>
+  nameWithType: Task<Result<IReadOnlyList<Post>>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.Post>>>
+  nameWithType.vb: Task(Of Result(Of IReadOnlyList(Of Post)))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.Post)))
+  name.vb: Task(Of Result(Of IReadOnlyList(Of Post)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: )
+  - name: )
+  - name: )
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Models.Filters
+  commentId: N:Agora.Core.Models.Filters
+  href: Agora.html
+  name: Agora.Core.Models.Filters
+  nameWithType: Agora.Core.Models.Filters
+  fullName: Agora.Core.Models.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Filters
+    name: Filters
+    href: Agora.Core.Models.Filters.html
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.BusinessServices.PostService.GetPostByIdAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.GetPostByIdAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_GetPostByIdAsync_System_Int64_Agora_Core_Common_UserContext_
+  name: GetPostByIdAsync
+  nameWithType: PostService.GetPostByIdAsync
+  fullName: Agora.Core.BusinessServices.PostService.GetPostByIdAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  isExternal: true
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetPostByIdAsync_System_Int64_Agora_Core_Common_UserContext_
+  name: GetPostByIdAsync(long, UserContext)
+  nameWithType: IPostService.GetPostByIdAsync(long, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(long, Agora.Core.Common.UserContext)
+  nameWithType.vb: IPostService.GetPostByIdAsync(Long, UserContext)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(Long, Agora.Core.Common.UserContext)
+  name.vb: GetPostByIdAsync(Long, UserContext)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+    name: GetPostByIdAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetPostByIdAsync_System_Int64_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)
+    name: GetPostByIdAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_GetPostByIdAsync_System_Int64_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.Post}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.Post}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<Post>>
+  nameWithType: Task<Result<Post>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<Agora.Core.Models.Post>>
+  nameWithType.vb: Task(Of Result(Of Post))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of Agora.Core.Models.Post))
+  name.vb: Task(Of Result(Of Post))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: )
+  - name: )
+- uid: Agora.Core.BusinessServices.PostService.CreatePostAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.CreatePostAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_CreatePostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CreatePostAsync
+  nameWithType: PostService.CreatePostAsync
+  fullName: Agora.Core.BusinessServices.PostService.CreatePostAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_CreatePostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CreatePostAsync(Post, UserContext)
+  nameWithType: IPostService.CreatePostAsync(Post, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CreatePostAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_CreatePostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CreatePostAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_CreatePostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_UpdatePostDetailsAsync_System_Int64_Agora_Core_Models_Requests_PostDetailsUpdate_Agora_Core_Common_UserContext_
+  name: UpdatePostDetailsAsync
+  nameWithType: PostService.UpdatePostDetailsAsync
+  fullName: Agora.Core.BusinessServices.PostService.UpdatePostDetailsAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  isExternal: true
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_UpdatePostDetailsAsync_System_Int64_Agora_Core_Models_Requests_PostDetailsUpdate_Agora_Core_Common_UserContext_
+  name: UpdatePostDetailsAsync(long, PostDetailsUpdate, UserContext)
+  nameWithType: IPostService.UpdatePostDetailsAsync(long, PostDetailsUpdate, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(long, Agora.Core.Models.Requests.PostDetailsUpdate, Agora.Core.Common.UserContext)
+  nameWithType.vb: IPostService.UpdatePostDetailsAsync(Long, PostDetailsUpdate, UserContext)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(Long, Agora.Core.Models.Requests.PostDetailsUpdate, Agora.Core.Common.UserContext)
+  name.vb: UpdatePostDetailsAsync(Long, PostDetailsUpdate, UserContext)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+    name: UpdatePostDetailsAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_UpdatePostDetailsAsync_System_Int64_Agora_Core_Models_Requests_PostDetailsUpdate_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Requests.PostDetailsUpdate
+    name: PostDetailsUpdate
+    href: Agora.Core.Models.Requests.PostDetailsUpdate.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)
+    name: UpdatePostDetailsAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_UpdatePostDetailsAsync_System_Int64_Agora_Core_Models_Requests_PostDetailsUpdate_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Requests.PostDetailsUpdate
+    name: PostDetailsUpdate
+    href: Agora.Core.Models.Requests.PostDetailsUpdate.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Requests.PostDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.PostDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.PostDetailsUpdate.html
+  name: PostDetailsUpdate
+  nameWithType: PostDetailsUpdate
+  fullName: Agora.Core.Models.Requests.PostDetailsUpdate
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result>
+  nameWithType: Task<Result>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result>
+  nameWithType.vb: Task(Of Result)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result)
+  name.vb: Task(Of Result)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: )
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  href: Agora.html
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+- uid: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.ChangePostStatusAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_ChangePostStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_PostStatus_
+  name: ChangePostStatusAsync
+  nameWithType: PostService.ChangePostStatusAsync
+  fullName: Agora.Core.BusinessServices.PostService.ChangePostStatusAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  isExternal: true
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_ChangePostStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_PostStatus_
+  name: ChangePostStatusAsync(long, UserContext, PostStatus)
+  nameWithType: IPostService.ChangePostStatusAsync(long, UserContext, PostStatus)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(long, Agora.Core.Common.UserContext, Agora.Core.Enums.PostStatus)
+  nameWithType.vb: IPostService.ChangePostStatusAsync(Long, UserContext, PostStatus)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(Long, Agora.Core.Common.UserContext, Agora.Core.Enums.PostStatus)
+  name.vb: ChangePostStatusAsync(Long, UserContext, PostStatus)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+    name: ChangePostStatusAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_ChangePostStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_PostStatus_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.PostStatus
+    name: PostStatus
+    href: Agora.Core.Enums.PostStatus.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)
+    name: ChangePostStatusAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_ChangePostStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_PostStatus_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.PostStatus
+    name: PostStatus
+    href: Agora.Core.Enums.PostStatus.html
+  - name: )
+- uid: Agora.Core.Enums.PostStatus
+  commentId: T:Agora.Core.Enums.PostStatus
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostStatus.html
+  name: PostStatus
+  nameWithType: PostStatus
+  fullName: Agora.Core.Enums.PostStatus
+- uid: Agora.Core.BusinessServices.PostService.DeletePostAsync*
+  commentId: Overload:Agora.Core.BusinessServices.PostService.DeletePostAsync
+  href: Agora.Core.BusinessServices.PostService.html#Agora_Core_BusinessServices_PostService_DeletePostAsync_System_Int64_Agora_Core_Common_UserContext_
+  name: DeletePostAsync
+  nameWithType: PostService.DeletePostAsync
+  fullName: Agora.Core.BusinessServices.PostService.DeletePostAsync
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IPostService
+  isExternal: true
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_DeletePostAsync_System_Int64_Agora_Core_Common_UserContext_
+  name: DeletePostAsync(long, UserContext)
+  nameWithType: IPostService.DeletePostAsync(long, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(long, Agora.Core.Common.UserContext)
+  nameWithType.vb: IPostService.DeletePostAsync(Long, UserContext)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(Long, Agora.Core.Common.UserContext)
+  name.vb: DeletePostAsync(Long, UserContext)
+  spec.csharp:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+    name: DeletePostAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_DeletePostAsync_System_Int64_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)
+    name: DeletePostAsync
+    href: Agora.Core.Interfaces.BusinessServices.IPostService.html#Agora_Core_Interfaces_BusinessServices_IPostService_DeletePostAsync_System_Int64_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )

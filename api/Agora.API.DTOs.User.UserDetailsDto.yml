@@ -1,0 +1,840 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.User.UserDetailsDto
+  commentId: T:Agora.API.DTOs.User.UserDetailsDto
+  id: UserDetailsDto
+  parent: Agora.API.DTOs.User
+  children:
+  - Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+  - Agora.API.DTOs.User.UserDetailsDto.Credit
+  - Agora.API.DTOs.User.UserDetailsDto.Email
+  - Agora.API.DTOs.User.UserDetailsDto.Id
+  - Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+  - Agora.API.DTOs.User.UserDetailsDto.Posts
+  - Agora.API.DTOs.User.UserDetailsDto.ToString
+  - Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+  - Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+  - Agora.API.DTOs.User.UserDetailsDto.UserName
+  langs:
+  - csharp
+  - vb
+  name: UserDetailsDto
+  nameWithType: UserDetailsDto
+  fullName: Agora.API.DTOs.User.UserDetailsDto
+  type: Class
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserDetailsDto
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 5
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public class UserDetailsDto
+    content.vb: Public Class UserDetailsDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Agora.API.DTOs.User.UserDetailsDto.Id
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.Id
+  id: Id
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserDetailsDto.Id
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Id
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Id
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 7
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Agora.API.DTOs.User.UserDetailsDto.Id*
+- uid: Agora.API.DTOs.User.UserDetailsDto.UserName
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.UserName
+  id: UserName
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: UserDetailsDto.UserName
+  fullName: Agora.API.DTOs.User.UserDetailsDto.UserName
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserName
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 8
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public string UserName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserName As String
+  overload: Agora.API.DTOs.User.UserDetailsDto.UserName*
+- uid: Agora.API.DTOs.User.UserDetailsDto.Email
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.Email
+  id: Email
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: UserDetailsDto.Email
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Email
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Email
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 9
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public string Email { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Email As String
+  overload: Agora.API.DTOs.User.UserDetailsDto.Email*
+- uid: Agora.API.DTOs.User.UserDetailsDto.Credit
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.Credit
+  id: Credit
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Credit
+  nameWithType: UserDetailsDto.Credit
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Credit
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Credit
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 10
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public int Credit { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Credit As Integer
+  overload: Agora.API.DTOs.User.UserDetailsDto.Credit*
+- uid: Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+  id: CreatedAt
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: UserDetailsDto.CreatedAt
+  fullName: Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CreatedAt
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 11
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: Agora.API.DTOs.User.UserDetailsDto.CreatedAt*
+- uid: Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+  id: LastLoginAt
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: LastLoginAt
+  nameWithType: UserDetailsDto.LastLoginAt
+  fullName: Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: LastLoginAt
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 12
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public DateTime LastLoginAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property LastLoginAt As Date
+  overload: Agora.API.DTOs.User.UserDetailsDto.LastLoginAt*
+- uid: Agora.API.DTOs.User.UserDetailsDto.Posts
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.Posts
+  id: Posts
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Posts
+  nameWithType: UserDetailsDto.Posts
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Posts
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Posts
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 14
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public List<PostSummaryDto> Posts { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Agora.API.DTOs.Post.PostSummaryDto}
+    content.vb: Public Property Posts As List(Of PostSummaryDto)
+  overload: Agora.API.DTOs.User.UserDetailsDto.Posts*
+- uid: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+  id: TransactionsAsBuyer
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: TransactionsAsBuyer
+  nameWithType: UserDetailsDto.TransactionsAsBuyer
+  fullName: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionsAsBuyer
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 15
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public List<TransactionSummaryDto> TransactionsAsBuyer { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Agora.API.DTOs.Transaction.TransactionSummaryDto}
+    content.vb: Public Property TransactionsAsBuyer As List(Of TransactionSummaryDto)
+  overload: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer*
+- uid: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+  commentId: P:Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+  id: TransactionsAsSeller
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: TransactionsAsSeller
+  nameWithType: UserDetailsDto.TransactionsAsSeller
+  fullName: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+  type: Property
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionsAsSeller
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 16
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  syntax:
+    content: public List<TransactionSummaryDto> TransactionsAsSeller { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Agora.API.DTOs.Transaction.TransactionSummaryDto}
+    content.vb: Public Property TransactionsAsSeller As List(Of TransactionSummaryDto)
+  overload: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller*
+- uid: Agora.API.DTOs.User.UserDetailsDto.ToString
+  commentId: M:Agora.API.DTOs.User.UserDetailsDto.ToString
+  id: ToString
+  parent: Agora.API.DTOs.User.UserDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: UserDetailsDto.ToString()
+  fullName: Agora.API.DTOs.User.UserDetailsDto.ToString()
+  type: Method
+  source:
+    remote:
+      path: Agora.API/DTOs/User/UserDetailsDto.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ToString
+    path: Agora.API/DTOs/User/UserDetailsDto.cs
+    startLine: 18
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.DTOs.User
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Agora.API.DTOs.User.UserDetailsDto.ToString*
+references:
+- uid: Agora.API.DTOs.User
+  commentId: N:Agora.API.DTOs.User
+  href: Agora.html
+  name: Agora.API.DTOs.User
+  nameWithType: Agora.API.DTOs.User
+  fullName: Agora.API.DTOs.User
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.API.DTOs.User.UserDetailsDto.Id*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.Id
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_Id
+  name: Id
+  nameWithType: UserDetailsDto.Id
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.API.DTOs.User.UserDetailsDto.UserName*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.UserName
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_UserName
+  name: UserName
+  nameWithType: UserDetailsDto.UserName
+  fullName: Agora.API.DTOs.User.UserDetailsDto.UserName
+- uid: Agora.API.DTOs.User.UserDetailsDto.Email*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.Email
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_Email
+  name: Email
+  nameWithType: UserDetailsDto.Email
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Email
+- uid: Agora.API.DTOs.User.UserDetailsDto.Credit*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.Credit
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_Credit
+  name: Credit
+  nameWithType: UserDetailsDto.Credit
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Credit
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Agora.API.DTOs.User.UserDetailsDto.CreatedAt*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_CreatedAt
+  name: CreatedAt
+  nameWithType: UserDetailsDto.CreatedAt
+  fullName: Agora.API.DTOs.User.UserDetailsDto.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Agora.API.DTOs.User.UserDetailsDto.LastLoginAt*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_LastLoginAt
+  name: LastLoginAt
+  nameWithType: UserDetailsDto.LastLoginAt
+  fullName: Agora.API.DTOs.User.UserDetailsDto.LastLoginAt
+- uid: Agora.API.DTOs.User.UserDetailsDto.Posts*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.Posts
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_Posts
+  name: Posts
+  nameWithType: UserDetailsDto.Posts
+  fullName: Agora.API.DTOs.User.UserDetailsDto.Posts
+- uid: System.Collections.Generic.List{Agora.API.DTOs.Post.PostSummaryDto}
+  commentId: T:System.Collections.Generic.List{Agora.API.DTOs.Post.PostSummaryDto}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<PostSummaryDto>
+  nameWithType: List<PostSummaryDto>
+  fullName: System.Collections.Generic.List<Agora.API.DTOs.Post.PostSummaryDto>
+  nameWithType.vb: List(Of PostSummaryDto)
+  fullName.vb: System.Collections.Generic.List(Of Agora.API.DTOs.Post.PostSummaryDto)
+  name.vb: List(Of PostSummaryDto)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Agora.API.DTOs.Post.PostSummaryDto
+    name: PostSummaryDto
+    href: Agora.API.DTOs.Post.PostSummaryDto.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.API.DTOs.Post.PostSummaryDto
+    name: PostSummaryDto
+    href: Agora.API.DTOs.Post.PostSummaryDto.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_TransactionsAsBuyer
+  name: TransactionsAsBuyer
+  nameWithType: UserDetailsDto.TransactionsAsBuyer
+  fullName: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsBuyer
+- uid: System.Collections.Generic.List{Agora.API.DTOs.Transaction.TransactionSummaryDto}
+  commentId: T:System.Collections.Generic.List{Agora.API.DTOs.Transaction.TransactionSummaryDto}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<TransactionSummaryDto>
+  nameWithType: List<TransactionSummaryDto>
+  fullName: System.Collections.Generic.List<Agora.API.DTOs.Transaction.TransactionSummaryDto>
+  nameWithType.vb: List(Of TransactionSummaryDto)
+  fullName.vb: System.Collections.Generic.List(Of Agora.API.DTOs.Transaction.TransactionSummaryDto)
+  name.vb: List(Of TransactionSummaryDto)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Agora.API.DTOs.Transaction.TransactionSummaryDto
+    name: TransactionSummaryDto
+    href: Agora.API.DTOs.Transaction.TransactionSummaryDto.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.API.DTOs.Transaction.TransactionSummaryDto
+    name: TransactionSummaryDto
+    href: Agora.API.DTOs.Transaction.TransactionSummaryDto.html
+  - name: )
+- uid: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_TransactionsAsSeller
+  name: TransactionsAsSeller
+  nameWithType: UserDetailsDto.TransactionsAsSeller
+  fullName: Agora.API.DTOs.User.UserDetailsDto.TransactionsAsSeller
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Agora.API.DTOs.User.UserDetailsDto.ToString*
+  commentId: Overload:Agora.API.DTOs.User.UserDetailsDto.ToString
+  href: Agora.API.DTOs.User.UserDetailsDto.html#Agora_API_DTOs_User_UserDetailsDto_ToString
+  name: ToString
+  nameWithType: UserDetailsDto.ToString
+  fullName: Agora.API.DTOs.User.UserDetailsDto.ToString
