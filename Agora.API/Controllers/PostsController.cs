@@ -164,10 +164,10 @@ public class PostsController(
             return this.MapErrorResult(result);
         }
         
-        // Return transaction if no error
+        // Return post if no error
         Post? post = result.Value;
         return post == null 
-            ? NotFound(ErrorMessages.NotFound(EntityName))
+            ? NotFound(ErrorMessages.NotFound(EntityName, id.ToString()))
             : Ok(mapper.Map<PostDetailsDto>(post));
     }
     

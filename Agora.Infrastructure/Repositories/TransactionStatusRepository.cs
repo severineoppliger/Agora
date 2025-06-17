@@ -38,6 +38,11 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
     {
         return await context.TransactionStatus
             .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Post)
+            .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Buyer)
+            .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Seller)
             .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 

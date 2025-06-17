@@ -62,7 +62,7 @@ public class PostCategoriesController(
         // Return post category if no error
         PostCategory? postCategory = result.Value;
         return postCategory == null 
-            ? NotFound(ErrorMessages.NotFound(EntityName))
+            ? NotFound(ErrorMessages.NotFound(EntityName, id.ToString()))
             : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
@@ -110,10 +110,10 @@ public class PostCategoriesController(
     public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDto dto)
     {
         // Cleaning
-        dto.NewName = dto.NewName.Trim();
+        dto.Name = dto.Name.Trim();
         
         // Delegate business logic (business rules + database changes)
-        Result result = await postCategoryService.UpdatePostCategoryNameAsync(id, dto.NewName);
+        Result result = await postCategoryService.UpdatePostCategoryNameAsync(id, dto.Name);
 
         return result.IsFailure 
             ? this.MapErrorResult(result)

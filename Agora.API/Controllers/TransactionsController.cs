@@ -93,7 +93,7 @@ public class TransactionsController(
         // Return transaction if no error
         Transaction? transaction = result.Value;
         return transaction == null 
-            ? NotFound(ErrorMessages.NotFound(EntityName))
+            ? NotFound(ErrorMessages.NotFound(EntityName, id.ToString()))
             : Ok(mapper.Map<TransactionDetailsDto>(transaction));
     }
     
