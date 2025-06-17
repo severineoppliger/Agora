@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
@@ -46,7 +47,10 @@ try
     builder.Services.AddControllers(options =>
     {
         options.Filters.Add<LogActionFilter>();
-    });
+    }).AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });;
     
     // Inactivate automatic model validation when entering an action method of a controller
     // This will be taken in charge by LogActionFilter.
