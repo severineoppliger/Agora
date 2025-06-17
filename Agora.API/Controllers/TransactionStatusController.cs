@@ -1,5 +1,7 @@
 ﻿using Agora.API.DTOs.TransactionStatus;
 using Agora.API.Extensions;
+using Agora.API.InputValidation;
+using Agora.API.InputValidation.Interfaces;
 using Agora.API.QueryParams;
 using Agora.Core.Common;
 using Agora.Core.Constants;
@@ -20,7 +22,8 @@ namespace Agora.API.Controllers;
 [Route("api/[controller]")]
 public class TransactionStatusController(
     IMapper mapper,
-    ITransactionStatusService transactionStatusService) : ControllerBase
+    ITransactionStatusService transactionStatusService,
+    IInputValidator inputValidator) : ControllerBase
 {
     /// <summary>
     /// Retrieves all transaction status, optionally filtered and sorted by query parameters.
@@ -78,6 +81,12 @@ public class TransactionStatusController(
     [HttpPut("{id:long}")]
     public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDetailsDto dto)
     {
+        // Validate input DTO
+        InputValidationResult inputValidationResult = inputValidator.ValidateUpdateTransactionStatusDtoAsync(dto);
+        if (!inputValidationResult.IsValid)
+        {
+            return BadRequest(inputValidationResult.Errors);
+        }
         // Delegate business logic (business rules + database changes)
         TransactionStatusDetailsUpdate newDetails = mapper.Map<TransactionStatusDetailsUpdate>(dto);
         Result result = await transactionStatusService.UpdateTransactionStatusDetailsAsync(id, newDetails);

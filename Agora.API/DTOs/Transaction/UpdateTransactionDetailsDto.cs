@@ -8,7 +8,7 @@ public class UpdateTransactionDetailsDto
 {
     [MinLength(ValidationRules.Transaction.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
     [MaxLength(ValidationRules.Transaction.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
-    public string? Title { get; set; } = String.Empty;
+    public string? Title { get; set; }
 
     [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int? Price { get; set; }
@@ -18,4 +18,12 @@ public class UpdateTransactionDetailsDto
     // DateOnly is not supported so we need a Date like "2025-06-06"
     [DataType(DataType.Date)]
     public DateTime? TransactionDate { get; set; }
+    
+    public bool IsEmpty()
+    {
+        return Title == null
+               && Price == null
+               && PostId == null
+               && TransactionDate == null;
+    }
 }

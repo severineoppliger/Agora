@@ -37,6 +37,13 @@ public interface IInputValidator
     /// <param name="dto">The DTO containing updated post details.</param>
     /// <returns>An <see cref="InputValidationResult"/> containing any validation errors.</returns>
     public Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto);
+
+    /// <summary>
+    /// Validates the input data for updating an existing <c>TransactionStatus</c>.
+    /// </summary>
+    /// <param name="dto">The DTO containing updated transaction status details.</param>
+    /// <returns>An <see cref="InputValidationResult"/> containing any validation errors.</returns>
+    public InputValidationResult ValidateUpdateTransactionStatusDtoAsync(UpdateTransactionStatusDetailsDto dto);
     
     /// <summary>
     /// Validates the input data for creating a new <c>Transaction</c>.

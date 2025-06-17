@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.API.DTOs.Transaction;
+using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
 using Agora.Core.Common;
@@ -78,6 +79,11 @@ public class InputValidator(
     public async Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto)
     {
         InputValidationResult result = new InputValidationResult();
+
+        if (dto.IsEmpty())
+        {
+            result.Errors.Add(ErrorMessages.EmptyDto);
+        }
         
         if (dto.Type is not null && !Enum.TryParse<PostType>(dto.Type, true, out _))
         {
@@ -95,6 +101,18 @@ public class InputValidator(
 
     #endregion
 
+    public InputValidationResult ValidateUpdateTransactionStatusDtoAsync(UpdateTransactionStatusDetailsDto dto)
+    {
+        InputValidationResult result = new InputValidationResult();
+
+        if (dto.IsEmpty())
+        {
+            result.Errors.Add(ErrorMessages.EmptyDto);
+        }
+
+        return result;
+    }
+    
     #region Transaction
     /// <summary>
     /// Validates the input for a new transaction request.
@@ -126,6 +144,11 @@ public class InputValidator(
     {
         InputValidationResult result = new InputValidationResult();
         
+        if (dto.IsEmpty())
+        {
+            result.Errors.Add(ErrorMessages.EmptyDto);
+        }
+        
         if (dto.PostId is not null && !await postRepo.PostExistsAsync(dto.PostId.Value))
         {
             result.Errors.Add(ErrorMessages.RelatedEntityDoesNotExist("post", dto.PostId));
@@ -151,5 +174,4 @@ public class InputValidator(
         return result;
     }
     #endregion
-
 }

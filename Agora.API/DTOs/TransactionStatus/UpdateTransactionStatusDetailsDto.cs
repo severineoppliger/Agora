@@ -12,4 +12,10 @@ public class UpdateTransactionStatusDetailsDto
     [MinLength(ValidationRules.TransactionStatus.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
     [MaxLength(ValidationRules.TransactionStatus.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Description { get; set; }
+    
+    public bool IsEmpty()
+    {
+        return Name == null
+               && Description == null;
+    }
 }
