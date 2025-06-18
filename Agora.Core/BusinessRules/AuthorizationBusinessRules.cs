@@ -38,11 +38,21 @@ public class AuthorizationBusinessRules : IAuthorizationBusinessRules
         return IsInvolvedOrAdmin(transaction, userContext);
     }
     
+    public bool CanCreateTransaction(Transaction transaction, UserContext userContext)
+    { 
+        return IsInvolved(transaction, userContext);
+    }
+    
     public bool CanManageTransaction(Transaction transaction, UserContext userContext)
     {
         return IsInvolvedOrAdmin(transaction, userContext);
     }
-
+    
+    private bool IsInvolved(Transaction transaction, UserContext userContext)
+    {
+        return transaction.BuyerId == userContext.UserId || transaction.SellerId == userContext.UserId;
+    }
+    
     private bool IsInvolvedOrAdmin(Transaction transaction, UserContext userContext)
     {
         bool isInvolved = transaction.BuyerId == userContext.UserId || transaction.SellerId == userContext.UserId;

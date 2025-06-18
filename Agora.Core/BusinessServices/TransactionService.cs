@@ -53,10 +53,10 @@ public class TransactionService(
     public async Task<Result<Transaction>> CreateTransactionAsync(Transaction transaction, UserContext userContext)
     {
         // Control authorization to create the transaction
-        if (!authorizationBusinessRules.CanManageTransaction(transaction, userContext))
+        if (!authorizationBusinessRules.CanCreateTransaction(transaction, userContext))
         {
             return Result<Transaction>.Failure(ErrorType.Forbidden,ErrorMessages.User.NotAuthorized);
-        }        
+        }
         
         // Complete transaction information
         transaction.InitiatorId = userContext.UserId;

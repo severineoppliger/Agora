@@ -13,5 +13,6 @@ public interface IAuthorizationBusinessRules
     public bool CanViewPost(Post post, UserContext userContext);
     public bool CanManagePost(Post post, UserContext userContext);
     public bool CanViewTransaction(Transaction transaction, UserContext userContext);
+    public bool CanCreateTransaction(Transaction transaction, UserContext userContext);
     public bool CanManageTransaction(Transaction transaction, UserContext userContext);
 }
