@@ -64,11 +64,6 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         context.Transactions.Add(transaction);
     }
 
-    public void DeleteTransaction(Transaction transaction)
-    {
-        context.Transactions.Remove(transaction);
-    }
-
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
