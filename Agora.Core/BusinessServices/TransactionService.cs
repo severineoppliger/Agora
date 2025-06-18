@@ -60,7 +60,7 @@ public class TransactionService(
         
         // Complete transaction information
         transaction.InitiatorId = userContext.UserId;
-        transaction.CreatedAt = DateTime.Now;
+        transaction.CreatedAt = DateTime.UtcNow;
         transaction.TransactionStatusId = await transactionStatusRepo.GetIdByEnumAsync(TransactionStatusEnum.Pending);
         
         // Validate business rules (need navigation properties)
@@ -137,7 +137,7 @@ public class TransactionService(
             transaction.TransactionDate = newDetails.TransactionDate.Value;
         }
         
-        transaction.UpdatedAt = DateTime.Now;
+        transaction.UpdatedAt = DateTime.UtcNow;
         
         // Validate business rules of transaction
         Result businessRulesValidationResult = businessRulesValidator.ValidateTransactionUpdate(transaction);
@@ -183,7 +183,7 @@ public class TransactionService(
         // Business logic according to the origin transaction status
         switch (oldStatus)
         {
-            case TransactionStatusEnum.Pending or TransactionStatusEnum.Failed or TransactionStatusEnum.InDispute:
+            case TransactionStatusEnum.Pending or TransactionStatusEnum.InDispute:
                 break;
             case TransactionStatusEnum.Accepted:
                 if (newStatus == TransactionStatusEnum.PartiallyValidated)
@@ -242,7 +242,7 @@ public class TransactionService(
         bool completedTransaction = !oldTransactionStatus.IsFinal && newTransactionStatus.IsFinal;
         if (completedTransaction)
         {
-            transaction.CompletedAt = DateTime.Now;
+            transaction.CompletedAt = DateTime.UtcNow;
         }
         
         return await transactionRepo.SaveChangesAsync()

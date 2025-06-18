@@ -29,7 +29,7 @@ public class AuthService(
             UserName = registrationInfo.UserName,
             Email = registrationInfo.Email,
             Credit = userSettings.Value.InitialCredit,
-            CreatedAt = DateTime.Now
+            CreatedAt = DateTime.UtcNow
         };
 
         // Registration
@@ -74,7 +74,7 @@ public class AuthService(
         }
         
         // Update LastLoginAt property
-        user.LastLoginAt = DateTime.Now;
+        user.LastLoginAt = DateTime.UtcNow;
         IdentityResult identityResult = await userManager.UpdateAsync(user);
         return identityResult.Succeeded
             ? Result.Success()
