@@ -14,7 +14,7 @@ public static class ControllerExtensions
         if (errors.Any(e => e.Type == ErrorType.Unauthorized))
             return controller.Unauthorized(errors);
         if (errors.Any(e => e.Type == ErrorType.Forbidden))
-            return controller.Forbid();
+            return controller.StatusCode(StatusCodes.Status403Forbidden, result.Errors);
         if (errors.Any(e => e.Type == ErrorType.Invalid))
             return controller.BadRequest(errors);
         return controller.StatusCode(500, errors);
