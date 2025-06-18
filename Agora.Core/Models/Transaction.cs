@@ -12,6 +12,8 @@ public class Transaction : BaseEntity
     public TransactionStatus? TransactionStatus { get; set; }
     
     public required string InitiatorId { get; set; }
+    public User? Initiator { get; set; }
+
     public required string BuyerId { get; set; }
     public required bool BuyerConfirmed { get; set; }
     public User? Buyer { get; set; }

@@ -17,6 +17,7 @@ public class TransactionProfile : Profile
         
         CreateMap<Transaction, TransactionDetailsDto>()
             .ForMember(dest => dest.TransactionStatusName, opt => opt.MapFrom(src => src.TransactionStatus!.Name))
+            .ForMember(dest => dest.InitiatorUsername, opt => opt.MapFrom(src => src.Initiator!.UserName))
             .ForMember(dest => dest.BuyerUsername, opt => opt.MapFrom(src => src.Buyer!.UserName))
             .ForMember(dest => dest.SellerUsername, opt => opt.MapFrom(src => src.Seller!.UserName))
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src =>

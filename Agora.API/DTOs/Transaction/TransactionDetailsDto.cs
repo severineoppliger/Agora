@@ -10,6 +10,7 @@ public class TransactionDetailsDto
     public int Price { get; set; }
     public PostSummaryDto Post { get; set; } = new();
     public string TransactionStatusName { get; set; } = String.Empty;
+    public string InitiatorUsername { get; set; } = String.Empty;
     public string BuyerUsername { get; set; } = String.Empty;
     public bool BuyerConfirmed { get; set; }
     public string SellerUsername { get; set; } = String.Empty;

@@ -37,6 +37,10 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.Property(t => t.InitiatorId)
             .IsRequired();
         
+        builder.HasOne(t => t.Initiator)
+            .WithMany()
+            .HasForeignKey(t => t.InitiatorId);
+        
         builder.HasOne(t => t.Buyer)
             .WithMany(u => u.TransactionsAsBuyer)
             .HasForeignKey(t => t.BuyerId);
