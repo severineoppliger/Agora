@@ -177,11 +177,6 @@ public class BusinessRulesValidator(
                     return Result.Success();
                 }
                 break;
-            case TransactionStatusEnum.Failed:
-                if (newStatus is TransactionStatusEnum.InDispute){ 
-                    return Result.Success();
-                }
-                break;
             case TransactionStatusEnum.InDispute:
                 if (newStatus is TransactionStatusEnum.ResolvedAccepted or TransactionStatusEnum.ResolvedCancelled)
                 {
