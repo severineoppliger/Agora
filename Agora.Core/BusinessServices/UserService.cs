@@ -44,6 +44,15 @@ public class UserService(
         return Result<User>.Success(user);
     }
 
+    public async Task<Result<User>> GetUserEmailByUsernameAsync(string userName)
+    {
+        // Retrieve entity
+        User? user = await userRepo.GetUserByUsernameAsync(userName);
+        return user is null
+            ? Result<User>.Failure(ErrorType.NotFound,ErrorMessages.NotFound(EntityName, userName))
+            : Result<User>.Success(user);
+    }
+
     public async Task<Result> TransferCreditAsync(User buyer, User seller, int price)
     {
         buyer.Credit -= price;

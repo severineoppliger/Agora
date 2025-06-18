@@ -91,6 +91,27 @@ public class UsersController(
     }
     
     /// <summary>
+    /// Retrieves Email address of a specific user, knowing its username.
+    /// </summary>
+    /// <param name="userName">The userName of the user to retrieve.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the user's email.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>404 Not Found</c> if the user cannot be retrieved.
+    /// </returns>
+    [Authorize]
+    [HttpGet("{userName}/email")]
+    public async Task<ActionResult<UserEmailDto>> GetUserEmail([FromRoute] string userName)
+    {
+        // Delegate business logic
+        Result<User> result = await userService.GetUserEmailByUsernameAsync(userName);
+
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<UserEmailDto>(result.Value));
+    }
+    
+    /// <summary>
     /// Retrieves the currently authenticated user's details.
     /// </summary>
     /// <returns>

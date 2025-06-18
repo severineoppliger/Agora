@@ -22,5 +22,6 @@ public class UserProfile : Profile
             .ForMember(dest => dest.TransactionsAsSeller, opt => opt.MapFrom(src => src.TransactionsAsSeller));
 
         CreateMap<User, UserSummaryDto>();
+        CreateMap<User, UserEmailDto>();
     }
 }
