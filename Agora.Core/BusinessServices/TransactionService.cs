@@ -76,7 +76,7 @@ public class TransactionService(
                 ErrorMessages.UnknownErrorDuringAction("transaction", "enhancement with navigation properties"));
         }
         
-        Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(enhancedTransaction);
+        Result businessRulesValidationResult = businessRulesValidator.ValidateNewTransaction(enhancedTransaction);
         if (businessRulesValidationResult.IsFailure)
         {
             return Result<Transaction>.Failure(businessRulesValidationResult.Errors!);
@@ -171,13 +171,7 @@ public class TransactionService(
             return Result.Failure(ErrorType.Forbidden,ErrorMessages.User.NotAuthorized);
         }
         
-        // Validate business rules of transaction
-        Result businessRulesValidationResult = businessRulesValidator.ValidateTransaction(transaction);
-        if (businessRulesValidationResult.IsFailure)
-        {
-            return businessRulesValidationResult;
-        }
-
+        // Validate business rules
         TransactionStatusEnum oldStatus = transaction.TransactionStatus!.EnumValue;
         Result statusChangeValidationResult =
             businessRulesValidator.ValidateTransactionStatusChange(transaction, oldStatus, newStatus, userContext);

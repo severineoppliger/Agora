@@ -209,7 +209,7 @@ public class BusinessRulesValidator(
         return Result.Failure(ErrorType.Invalid, ErrorMessages.Transaction.InvalidTransactionStatusChange(oldStatus.ToString(), newStatus.ToString()));
     }
     
-     public Result ValidateTransaction(Transaction transaction)
+     public Result ValidateNewTransaction(Transaction transaction)
     {
         (int price, Post? post, string buyerId, User? buyer, string sellerId) = transaction;
         

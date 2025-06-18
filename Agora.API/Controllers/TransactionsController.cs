@@ -222,7 +222,7 @@ public class TransactionsController(
         }
         
         // Delegate business logic (business rules + database changes)
-        Result result = await transactionService.ChangeTransactionStatusAsync(id, userContext, dto.NewStatus);
+        Result result = await transactionService.ChangeTransactionStatusAsync(id, userContext, dto.Status);
 
         return result.IsFailure 
             ? this.MapErrorResult(result)

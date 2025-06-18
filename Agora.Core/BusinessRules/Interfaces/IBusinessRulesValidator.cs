@@ -123,7 +123,7 @@ public interface IBusinessRulesValidator
     /// </summary>
     /// <param name="transaction">The transaction to validate.</param>
     /// <returns>A result indicating success if the transaction is valid; otherwise, a result containing the relevant validation errors.</returns>
-    public Result ValidateTransaction(Transaction transaction);
+    public Result ValidateNewTransaction(Transaction transaction);
 
     /// <summary>
     /// Validates the update of an existing transaction by verifying business rules.
