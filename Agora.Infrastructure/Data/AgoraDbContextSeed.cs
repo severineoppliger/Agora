@@ -156,8 +156,8 @@ public static class AgoraDbContextSeed
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
             ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100, true),
-            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200, false),
-            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300, false),
+            ("00000000-0000-0000-0000-000000000002", "testmember1", "testmember1@test.ch", "Test1234!", 200, false),
+            ("00000000-0000-0000-0000-000000000003", "testmember2", "testmember2@test.ch", "Test2345!", 300, false),
         };
 
         foreach (var (id, userName, email, password, credit, isAdmin) in users)

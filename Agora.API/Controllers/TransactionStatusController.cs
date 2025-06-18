@@ -63,7 +63,6 @@ public class TransactionStatusController(
     }
     
     
-    // TODO Change name
     /// <summary>
     /// Updates details of an existing transaction status partially (name and/or description).
     /// Only allowed if the current user is an admin.
@@ -79,7 +78,7 @@ public class TransactionStatusController(
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpPatch("{id:long}")]
-    public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDetailsDto dto)
+    public async Task<ActionResult> UpdateTransactionStatusDetails([FromRoute] long id, [FromBody] UpdateTransactionStatusDetailsDto dto)
     {
         // Validate input DTO
         InputValidationResult inputValidationResult = inputValidator.ValidateUpdateTransactionStatusDtoAsync(dto);
