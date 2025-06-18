@@ -49,12 +49,12 @@ public class PostDetailsDto
     public string UserName { get; set; } = string.Empty;
     
     /// <summary>
-    /// Date and time when the post was created.
+    /// Date and time (UTC) when the post was created.
     /// </summary>
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
-    /// Date and time when the post was last updated.
+    /// Date and time (UTC) when the post was last updated.
     /// </summary>
     public DateTime? UpdatedAt { get; set; }
     

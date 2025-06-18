@@ -30,14 +30,14 @@ public class UserDetailsDto
     public int Credit { get; set; }
     
     /// <summary>
-    /// Date and time when the user account was created.
+    /// Date and time (UTC) when the user account was created.
     /// </summary>
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
-    /// Date and time of the user's last login.
+    /// Date and time (UTC) of the user's last login, if applicable.
     /// </summary>
-    public DateTime LastLoginAt { get; set; }
+    public DateTime? LastLoginAt { get; set; }
 
     /// <summary>
     /// List of posts created by the user.

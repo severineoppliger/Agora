@@ -59,12 +59,12 @@ public class TransactionDetailsDto
     public bool SellerConfirmed { get; set; }
     
     /// <summary>
-    /// Date and time when the transaction was created (UTC).
+    /// Date and time (UTC) when the transaction was created.
     /// </summary>
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
-    /// Date and time when the post was last updated.
+    /// Date and time (UTC) when the post was last updated.
     /// </summary>
     public DateTime? UpdatedAt { get; set; }
     
@@ -74,7 +74,7 @@ public class TransactionDetailsDto
     public DateTime? TransactionDate { get; set; }
     
     /// <summary>
-    /// Date and time when the transaction was completed, if applicable (UTC).
+    /// Date and time (UTC) when the transaction was completed, if applicable.
     /// </summary>
     public DateTime? CompletedAt { get; set; }
     

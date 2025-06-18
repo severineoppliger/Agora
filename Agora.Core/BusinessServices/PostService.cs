@@ -112,7 +112,7 @@ public class PostService(
         // Complete post information
         post.Status = PostStatus.Active;
         post.OwnerUserId = userContext.UserId;
-        post.CreatedAt = DateTime.Now;
+        post.CreatedAt = DateTime.UtcNow;
         
         // Add to database
         postRepo.AddPost(post);
@@ -191,7 +191,7 @@ public class PostService(
             post.PostCategoryId = newDetails.PostCategoryId.Value;
         }
         
-        post.UpdatedAt = DateTime.Now;
+        post.UpdatedAt = DateTime.UtcNow;
 
         // Save updates
         return await postRepo.SaveChangesAsync()

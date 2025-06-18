@@ -210,7 +210,7 @@ public static class AgoraDbContextSeed
                     Status = PostStatus.Active,
                     PostCategoryId = 1,
                     OwnerUserId = "00000000-0000-0000-0000-000000000001",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 },
                 new Post
                 {
@@ -221,7 +221,7 @@ public static class AgoraDbContextSeed
                     Status = PostStatus.Inactive,
                     PostCategoryId = 2,
                     OwnerUserId = "00000000-0000-0000-0000-000000000002",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 },
                 new Post
                 {
@@ -232,7 +232,7 @@ public static class AgoraDbContextSeed
                     Status = PostStatus.Active,
                     PostCategoryId = 3,
                     OwnerUserId = "00000000-0000-0000-0000-000000000003",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 }
 
             ];
@@ -259,7 +259,7 @@ public static class AgoraDbContextSeed
                     BuyerConfirmed = false,
                     SellerId = "00000000-0000-0000-0000-000000000001",
                     SellerConfirmed = false,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 }
             ];
 
