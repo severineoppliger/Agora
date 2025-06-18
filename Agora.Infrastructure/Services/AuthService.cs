@@ -34,7 +34,7 @@ public class AuthService(
 
         // Registration
         IdentityResult registrationResult = await userRepo.AddUserAsync(user, registrationInfo.Password);
-        if (registrationResult.Succeeded)
+        if (!registrationResult.Succeeded)
         {
             return Result<User>.Failure(ErrorType.Persistence, ErrorMessages.ErrorWhenSavingToDb(EntityName));
         }
@@ -51,9 +51,9 @@ public class AuthService(
                 Email = registrationInfo.Email, 
                 Password = registrationInfo.Password
             });
-    return loginResult.IsFailure
-            ? Result<User>.Failure(loginResult.Errors!)
-            : Result<User>.Success(createdUser);
+        return loginResult.IsFailure
+                ? Result<User>.Failure(loginResult.Errors!)
+                : Result<User>.Success(createdUser);
     }
 
     /// <inheritdoc />

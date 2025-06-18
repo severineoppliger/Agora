@@ -87,7 +87,7 @@ public class TransactionService(
         
         if (await transactionRepo.SaveChangesAsync())
         {
-            Transaction? createdTransaction = await transactionRepo.GetTransactionByIdAsync(transaction.Id); // TODO Nécessaire de garder ce fonctionnement ? Cf. PostService
+            Transaction? createdTransaction = await transactionRepo.GetTransactionByIdAsync(transaction.Id);
 
             return createdTransaction == null 
                 ? Result<Transaction>.Failure(ErrorType.Persistence, ErrorMessages.SavedButNotRetrieved(EntityName))

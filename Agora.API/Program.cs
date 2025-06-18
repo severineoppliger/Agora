@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
-// using Agora.API.Settings;
+using Agora.API.Settings;
 using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.BusinessServices;
@@ -50,7 +50,7 @@ try
     }).AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });;
+    });
     
     // Inactivate automatic model validation when entering an action method of a controller
     // This will be taken in charge by LogActionFilter.
@@ -80,7 +80,7 @@ try
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     
     // Configuration settings
-   // builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
+    builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
     
     /*  --------------
        | Repositories |
