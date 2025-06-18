@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using Agora.API.DTOs.User;
 using Agora.API.Extensions;
+using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
 using Agora.API.QueryParams;
@@ -130,6 +131,7 @@ public class UsersController(
     /// Returns <c>500 Internal Server Error</c> if the user was saved but could not be retrieved afterwards.
     /// </returns>
     [HttpPost("register")]
+    [DisallowAuthenticated]
     public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterDto dto)
     {
         // Validate input DTO

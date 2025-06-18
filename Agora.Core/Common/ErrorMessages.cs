@@ -86,5 +86,7 @@ public static class ErrorMessages
             $"{buyerOrSeller.CapitalizeFirstLetter()} (user with id {id}) doesn't exist.";
         public const string NotAuthenticated = "User should be authenticated to perform this action.";
         public const string NotAuthorized = "User is not allowed to perform this action.";
+        public const string RegisterRequiresNoAuthentication =
+            "You are already logged in. Please log out first to register a new account.";
     }
 }
