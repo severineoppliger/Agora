@@ -48,6 +48,12 @@ public class PostsController(
             PostVisibilityMode.CatalogOnly,
             internalPostQueryParameters, 
             null);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+
         IReadOnlyList<Post> posts = result.Value!;
         
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
@@ -84,6 +90,12 @@ public class PostsController(
             PostVisibilityMode.UserOwnPosts,
             internalPostQueryParameters, 
             userContext);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
         IReadOnlyList<Post> posts = result.Value!;
         
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));
@@ -121,6 +133,12 @@ public class PostsController(
             PostVisibilityMode.AdminView,
             internalPostQueryParameters, 
             userContext);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
         IReadOnlyList<Post> posts = result.Value!;
         
         return Ok(mapper.Map<IReadOnlyList<PostSummaryDto>>(posts));

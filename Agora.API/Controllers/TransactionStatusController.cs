@@ -35,8 +35,14 @@ public class TransactionStatusController(
     {
         // Delegate business logic
         Result<IReadOnlyList<TransactionStatus>> result = await transactionStatusService.GetAllTransactionStatusAsync(queryParameters);
-        IReadOnlyList<TransactionStatus> transactions = result.Value!;
         
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<TransactionStatus> transactions = result.Value!;
+
         return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactions));
     }
 

@@ -53,8 +53,13 @@ public class TransactionsController(
         
         // Delegate business logic
         Result<IReadOnlyList<Transaction>> result = await transactionService.GetAllVisibleTransactionsAsync(queryParameters, userContext);
-        IReadOnlyList<Transaction> transactions = result.Value!;
         
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<Transaction> transactions = result.Value!;
         return Ok(mapper.Map<IReadOnlyList<TransactionSummaryDto>>(transactions));
     }
 

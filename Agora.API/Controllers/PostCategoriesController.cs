@@ -33,8 +33,14 @@ public class PostCategoriesController(
     {
         // Delegate business logic
         Result<IReadOnlyList<PostCategory>> result = await postCategoryService.GetAllPostCategoriesAsync(queryParameters);
-        IReadOnlyList<PostCategory> postCategories = result.Value!;
         
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<PostCategory> postCategories = result.Value!;
+
         return Ok(mapper.Map<IReadOnlyList<PostCategorySummaryDto>>(postCategories));
     }
 

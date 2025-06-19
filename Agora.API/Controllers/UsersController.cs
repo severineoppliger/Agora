@@ -45,6 +45,12 @@ public class UsersController(
     {
         // Delegate business logic
         Result<IReadOnlyList<User>> result = await userService.GetAllUsersAsync(queryParameters);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
         IReadOnlyList<User> users = result.Value!;
         
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));

@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Commands;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.QueryParameters;
@@ -20,9 +21,17 @@ public class TransactionStatusService(
     private const string EntityName = "transaction status";
     
     /// <inheritdoc />
-    public async Task<Result<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters transactionStatusQueryParameters)
+    public async Task<Result<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters queryParams)
     {
-        IReadOnlyList<TransactionStatus> transactionStatus = await transactionStatusRepo.GetAllTransactionStatusAsync(transactionStatusQueryParameters);
+        // Validate business rules
+        Result businessRulesValidationResult = businessRulesValidator.ValidateSortBy(queryParams.SortBy, SortByOptions.TransactionStatus);
+        if (businessRulesValidationResult.IsFailure)
+        {
+            return Result<IReadOnlyList<TransactionStatus>>.Failure(businessRulesValidationResult.Errors!);
+        }
+        
+        // Retrieve in database
+        IReadOnlyList<TransactionStatus> transactionStatus = await transactionStatusRepo.GetAllTransactionStatusAsync(queryParams);
         
         return Result<IReadOnlyList<TransactionStatus>>.Success(transactionStatus);
     }

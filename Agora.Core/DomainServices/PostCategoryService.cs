@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Commands;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.QueryParameters;
@@ -20,9 +21,19 @@ public class PostCategoryService(
     private const string EntityName = "post category";
 
     /// <inheritdoc />
-    public async Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(IPostCategoryQueryParameters postCategoryQueryParameters)
+    public async Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(
+        IPostCategoryQueryParameters queryParams)
     {
-        IReadOnlyList<PostCategory> postCategories = await postCategoryRepo.GetAllPostCategoriesAsync(postCategoryQueryParameters);
+        // Validate business rules
+        Result businessRulesValidationResult = 
+            businessRulesValidator.ValidateSortBy(queryParams.SortBy, SortByOptions.PostCategory);
+        if (businessRulesValidationResult.IsFailure)
+        {
+            return Result<IReadOnlyList<PostCategory>>.Failure(businessRulesValidationResult.Errors!);
+        }
+        
+        // Retrieve in database
+        IReadOnlyList<PostCategory> postCategories = await postCategoryRepo.GetAllPostCategoriesAsync(queryParams);
         
         return Result<IReadOnlyList<PostCategory>>.Success(postCategories);
     }

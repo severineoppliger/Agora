@@ -14,9 +14,9 @@ public interface ITransactionStatusService
     /// <summary>
     /// Retrieves all <c>TransactionStatus</c>, possibly filtered and sorted.
     /// </summary>
-    /// <param name="transactionStatusQueryParameters">Filter criteria to apply on transaction status.</param>
+    /// <param name="queryParams">Filter criteria to apply on transaction status.</param>
     /// <returns>A successful Result wrapping a list of <c>TransactionStatus</c>, or failure if an error occurs.</returns>
-    public Task<Result<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters transactionStatusQueryParameters);
+    public Task<Result<IReadOnlyList<TransactionStatus>>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters queryParams);
     
     /// <summary>
     /// Retrieves a single <c>TransactionStatus</c> by its ID.

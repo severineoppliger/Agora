@@ -16,11 +16,11 @@ public interface ITransactionService
     /// <summary>
     /// Retrieves all <c>Transaction</c> visible to the user based on authorization rules.
     /// </summary>
-    /// <param name="transactionQueryParameters">Filter criteria to apply on transactions.</param>
+    /// <param name="queryParams">Filter criteria to apply on transactions.</param>
     /// <param name="userContext">Context of the current user requesting transactions.</param>
     /// <returns>A successful Result wrapping a list of visible <c>Transaction</c>, or failure if an error occurs.</returns>
     public Task<Result<IReadOnlyList<Transaction>>> GetAllVisibleTransactionsAsync(
-        ITransactionQueryParameters transactionQueryParameters,
+        ITransactionQueryParameters queryParams,
         UserContext userContext
     );
     

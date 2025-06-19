@@ -140,4 +140,16 @@ public interface IBusinessRulesValidator
     /// Returns a failure result if any business rule is not respected.
     /// </returns>
     public Result ValidateTransactionUpdate(Transaction transaction);
+    
+    /// <summary>
+    /// Validates whether a provided <c>SortBy</c> value is allowed for the given entity type,
+    /// and returns a <see cref="Result"/> indicating success or failure.
+    /// </summary>
+    /// <param name="sortByValue">The <c>SortBy</c> value to validate. Can be <c>null</c> or empty.</param>
+    /// <param name="allowedValues">The set of allowed <c>SortBy</c> values for the entity.</param>
+    /// <returns>
+    /// A <see cref="Result"/> that is successful if <paramref name="sortByValue"/> is valid or empty;
+    /// otherwise, a failed <see cref="Result"/> containing an appropriate error message.
+    /// </returns>
+    public Result ValidateSortBy(string? sortByValue, HashSet<string> allowedValues);
 }

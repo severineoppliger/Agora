@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Commands;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.Repositories;
@@ -24,15 +25,23 @@ public class PostService(
     /// <inheritdoc />
     public async Task<Result<IReadOnlyList<Post>>> GetAllPostsAsync(
         PostVisibilityMode postVisibilityMode,
-        PostQueryParameters postQueryParameters,
+        PostQueryParameters queryParams,
         UserContext? userContext
         )
     {
+        // Validate business rules
+        Result businessRulesValidationResult = businessRulesValidator.ValidateSortBy(queryParams.SortBy, SortByOptions.Post);
+        if (businessRulesValidationResult.IsFailure)
+        {
+            return Result<IReadOnlyList<Post>>.Failure(businessRulesValidationResult.Errors!);
+        }
+        
+        // Retrieve in database
         // Enhance queryParameters according to business rules
         switch (postVisibilityMode)
         {
             case PostVisibilityMode.CatalogOnly:
-                postQueryParameters.StatusNames = [PostStatus.Active.ToString()];
+                queryParams.StatusNames = [PostStatus.Active.ToString()];
                 break;
 
             case PostVisibilityMode.UserOwnPosts:
@@ -42,8 +51,8 @@ public class PostService(
                         ErrorMessages.User.NotAuthenticated);
                 }
 
-                postQueryParameters.StatusNames = [PostStatus.Active.ToString(), PostStatus.Inactive.ToString()];
-                postQueryParameters.UserId = userContext.UserId;
+                queryParams.StatusNames = [PostStatus.Active.ToString(), PostStatus.Inactive.ToString()];
+                queryParams.UserId = userContext.UserId;
                 break;
             case PostVisibilityMode.AdminView:
                 if (userContext is null)
@@ -62,7 +71,7 @@ public class PostService(
         }
 
         // Get filtered posts
-        IReadOnlyList<Post> posts = await postRepo.GetAllPostsAsync(postQueryParameters);
+        IReadOnlyList<Post> posts = await postRepo.GetAllPostsAsync(queryParams);
         
         return Result<IReadOnlyList<Post>>.Success(posts);
     }

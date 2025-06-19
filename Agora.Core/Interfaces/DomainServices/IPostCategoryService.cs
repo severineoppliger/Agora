@@ -14,9 +14,9 @@ public interface IPostCategoryService
     /// <summary>
     /// Retrieves all <c>PostCategory</c>, possibly filtered and sorted.
     /// </summary>
-    /// <param name="postCategoryQueryParameters">Filter criteria to apply on post categories.</param>
+    /// <param name="queryParams">Filter criteria to apply on post categories.</param>
     /// <returns>A successful Result wrapping a list of <c>PostCategory</c>, or failure if an error occurs.</returns>
-    public Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(IPostCategoryQueryParameters postCategoryQueryParameters);
+    public Task<Result<IReadOnlyList<PostCategory>>> GetAllPostCategoriesAsync(IPostCategoryQueryParameters queryParams);
     
     /// <summary>
     /// Retrieves a single <c>PostCategory</c> by its ID.

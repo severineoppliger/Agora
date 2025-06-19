@@ -14,12 +14,12 @@ public interface IUserService
     /// <summary>
     /// Retrieves all <c>User</c>.
     /// </summary>
-    /// <param name="userQueryParameters">Filter criteria to apply when querying users.</param>
+    /// <param name="queryParams">Filter criteria to apply when querying users.</param>
     /// <returns>
     /// A successful <see cref="Result{T}"/> wrapping a list of <c>User</c>,
     /// or failure if an error occurs.
     /// </returns>
-    Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserQueryParameters userQueryParameters);
+    Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserQueryParameters queryParams);
     
     /// <summary>
     /// Retrieves a single <c>User</c> by its ID.

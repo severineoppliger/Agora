@@ -278,4 +278,12 @@ public class BusinessRulesValidator(
     }
 
     #endregion
+    
+    /// <inheritdoc />
+    public Result ValidateSortBy(string? sortByValue, HashSet<string> allowedValues)
+    {
+        return string.IsNullOrWhiteSpace(sortByValue) || allowedValues.Contains(sortByValue)
+            ? Result.Success()
+            : Result.Failure(ErrorType.Invalid, ErrorMessages.IsInvalid("SortBy query parameter", sortByValue));
+    }
 }

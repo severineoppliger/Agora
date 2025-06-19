@@ -1,4 +1,5 @@
-﻿using Agora.Core.Enums;
+﻿using Agora.Core.Constants;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
@@ -15,14 +16,23 @@ namespace Agora.Core.DomainServices;
 /// </summary>
 public class UserService(
     IUserRepository userRepo,
-    IAuthorizationValidator authorizationValidator) : IUserService
+    IAuthorizationValidator authorizationValidator,
+    IBusinessRulesValidator businessRulesValidator) : IUserService
 {
     private const string EntityName = "user";
 
     /// <inheritdoc />
-    public async Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserQueryParameters userQueryParameters)
+    public async Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserQueryParameters queryParams)
     {
-        IReadOnlyList<User> users = await userRepo.GetAllUsersAsync(userQueryParameters);
+        // Validate business rules
+        Result businessRulesValidationResult = businessRulesValidator.ValidateSortBy(queryParams.SortBy, SortByOptions.User);
+        if (businessRulesValidationResult.IsFailure)
+        {
+            return Result<IReadOnlyList<User>>.Failure(businessRulesValidationResult.Errors!);
+        }
+        
+        // Retrieve in database
+        IReadOnlyList<User> users = await userRepo.GetAllUsersAsync(queryParams);
         return Result<IReadOnlyList<User>>.Success(users);
     }
 

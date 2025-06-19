@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Commands;
+using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.QueryParameters;
@@ -27,11 +28,19 @@ public class TransactionService(
     
     /// <inheritdoc />
     public async Task<Result<IReadOnlyList<Transaction>>> GetAllVisibleTransactionsAsync(
-        ITransactionQueryParameters transactionQueryParameters,
+        ITransactionQueryParameters queryParams,
         UserContext userContext
     )
     {
-        IReadOnlyList<Transaction> transactions = await transactionRepo.GetAllTransactionsAsync(transactionQueryParameters);
+        // Validate business rules
+        Result businessRulesValidationResult = businessRulesValidator.ValidateSortBy(queryParams.SortBy, SortByOptions.Transaction);
+        if (businessRulesValidationResult.IsFailure)
+        {
+            return Result<IReadOnlyList<Transaction>>.Failure(businessRulesValidationResult.Errors!);
+        }
+        
+        // Retrieve in database
+        IReadOnlyList<Transaction> transactions = await transactionRepo.GetAllTransactionsAsync(queryParams);
         
         transactions = transactions.Where(t => authorizationValidator.CanViewTransaction(t, userContext)).ToList();
 
