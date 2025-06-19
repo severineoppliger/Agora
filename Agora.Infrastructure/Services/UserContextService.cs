@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace Agora.Infrastructure.Services;
 
-/// <inheritdoc />
+/// <summary>
+/// Default implementation of <see cref="IUserContextService"/>.
+/// </summary>
 public class UserContextService(IHttpContextAccessor httpContextAccessor): IUserContextService
 {
     /// <inheritdoc />

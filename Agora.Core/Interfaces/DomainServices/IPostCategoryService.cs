@@ -1,5 +1,4 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 

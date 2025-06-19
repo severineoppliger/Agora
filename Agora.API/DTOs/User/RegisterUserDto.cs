@@ -15,8 +15,8 @@ public class RegisterUserDto
     /// </summary>
     [Required]
     [NotEmptyOrWhitespace]
-    [MinLength(ValidationConstants.AppUser.UsernameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationConstants.AppUser.UsernameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.User.UsernameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.User.UsernameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string UserName { get; set; } = String.Empty;
     
     /// <summary>
@@ -25,8 +25,8 @@ public class RegisterUserDto
     [Required]
     [NotEmptyOrWhitespace]
     [EmailAddress]
-    [MinLength(ValidationConstants.AppUser.EmailMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationConstants.AppUser.EmailMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.User.EmailMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.User.EmailMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string Email { get; set; } = String.Empty;
     
     /// <summary>
@@ -34,7 +34,7 @@ public class RegisterUserDto
     /// </summary>
     [Required]
     [NotEmptyOrWhitespace]
-    [MinLength(ValidationConstants.AppUser.PasswordMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationConstants.AppUser.PasswordMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.User.PasswordMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.User.PasswordMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string Password { get; set; } = String.Empty;
 }

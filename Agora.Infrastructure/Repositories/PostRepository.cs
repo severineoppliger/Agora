@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
-/// <inheritdoc/>
+/// <summary>
+/// Default implementation of <see cref="IPostRepository"/>.
+/// </summary>
 public class PostRepository(AgoraDbContext context) : IPostRepository
 {
     /// <inheritdoc/>
