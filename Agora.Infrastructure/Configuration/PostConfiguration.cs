@@ -1,11 +1,15 @@
-﻿using Agora.Core.Models;
-using Agora.Core.Models.Entities;
+﻿using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Agora.Infrastructure.Configuration;
 
+/// <summary>
+/// Configuration for the <see cref="Post"/> entity for the <b>Posts</b> DB table,
+/// defining table mapping, primary key, property constraints, check constraints,
+/// enum conversions to string representation, and relationships with related entities.
+/// </summary>
 public class PostConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)

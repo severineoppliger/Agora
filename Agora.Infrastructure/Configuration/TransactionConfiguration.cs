@@ -1,11 +1,15 @@
-﻿using Agora.Core.Models;
-using Agora.Core.Models.Entities;
+﻿using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Agora.Infrastructure.Configuration;
 
+/// <summary>
+/// Configuration for the <see cref="Transaction"/> entity for the <b>Transactions</b> DB table,
+/// including table mapping, primary key, property constraints,
+/// check constraints, foreign keys, and navigation properties.
+/// </summary>
 public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 {
     public void Configure(EntityTypeBuilder<Transaction> builder)
