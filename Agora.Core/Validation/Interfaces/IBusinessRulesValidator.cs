@@ -27,12 +27,14 @@ public interface IBusinessRulesValidator
     /// such as ensuring the new name is different from the current one and does not already exist.
     /// </summary>
     /// <param name="postCategory">The existing post category entity.</param>
-    /// <param name="newName">The new name proposed for the post category.</param>
+    /// <param name="newDetails">The new data proposed for the post category.</param>
     /// <returns>
     /// A <see cref="Result"/> indicating whether the update is valid.
-    /// Returns a failure result if the new name is identical to the current name or already exists.
+    /// Returns a failure result if the new name is null, identical to the current name or already exists.
     /// </returns>
-    public Task<Result> ValidatePostCategoryUpdateAsync(PostCategory postCategory, string newName);
+    public Task<Result> ValidatePostCategoryUpdateAsync(
+        PostCategory postCategory, 
+        UpdatePostCategoryDetailsCommand newDetails);
     
     /// <summary>
     /// Validates the deletion of an existing post category by verifying it is not used by any post.
@@ -63,13 +65,13 @@ public interface IBusinessRulesValidator
     /// such as ensuring the new title is not duplicate with a title of another post of the user.
     /// </summary>
     /// <param name="oldPost">The existing post entity.</param>
-    /// <param name="newTitle">The new title proposed for the post.</param>
+    /// <param name="newDetails">The new data proposed for the post.</param>
     /// <param name="userContext">The context of the user attempting to update the post.</param>
     /// <returns>
     /// A <see cref="Result"/> indicating whether the update is valid.
     /// Returns a failure result if the new name is identical to the current name or already exists.
     /// </returns>
-    public Task<Result> ValidatePostUpdateAsync(Post oldPost, string? newTitle, UserContext userContext);
+    public Task<Result> ValidatePostUpdateAsync(Post oldPost, UpdatePostDetailsCommand newDetails, UserContext userContext);
     
     /// <summary>
     /// Validates whether a post is allowed to transition from its current status to a new specified status,

@@ -32,14 +32,14 @@ public class BusinessRulesValidator(
     }
 
     /// <inheritdoc />
-    public async Task<Result> ValidatePostCategoryUpdateAsync(PostCategory postCategory, string newName)
+    public async Task<Result> ValidatePostCategoryUpdateAsync(PostCategory postCategory, UpdatePostCategoryDetailsCommand newDetails)
     {
-        if (postCategory.Name == newName)
+        if (postCategory.Name == newDetails.Name)
         {
             return Result.Failure(ErrorType.Invalid, ErrorMessages.NewMustBeDifferentFromCurrent("post category name"));
         }
         
-        if (await postCategoryRepo.NameExistsAsync(newName))
+        if (await postCategoryRepo.NameExistsAsync(newDetails.Name))
         {
             return Result.Failure(ErrorType.Invalid, ErrorMessages.AlreadyExists("post category name", postCategory.Name));
         }
@@ -78,9 +78,9 @@ public class BusinessRulesValidator(
     }
 
     /// <inheritdoc />
-    public async Task<Result> ValidatePostUpdateAsync(Post oldPost, string? newTitle, UserContext userContext)
+    public async Task<Result> ValidatePostUpdateAsync(Post oldPost, UpdatePostDetailsCommand newDetails, UserContext userContext)
     {
-        if (newTitle is not null && newTitle != oldPost.Title)
+        if (newDetails.Title is not null && newDetails.Title != oldPost.Title)
         {
             PostQueryParameters postQueryParameters = new PostQueryParameters()
             {
@@ -90,7 +90,7 @@ public class BusinessRulesValidator(
 
             IReadOnlyList<Post> postsOfUser = await postRepo.GetAllPostsAsync(postQueryParameters);
             List<string> postTitlesOfUser = postsOfUser.Select(p => p.Title).ToList();
-            if (postTitlesOfUser.Contains(newTitle))
+            if (postTitlesOfUser.Contains(newDetails.Title))
             {
                 return Result.Failure(ErrorType.Invalid, ErrorMessages.Post.SameTitle);
             }

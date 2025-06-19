@@ -161,7 +161,7 @@ public class PostService(
         // Validate business rules
         Result businessRulesValidationResult = await businessRulesValidator.ValidatePostUpdateAsync(
             post, 
-            newDetails.Title,
+            newDetails,
             userContext);
         if (businessRulesValidationResult.IsFailure)
         {

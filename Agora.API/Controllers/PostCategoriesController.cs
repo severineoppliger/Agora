@@ -1,6 +1,7 @@
 ﻿using Agora.API.ApiQueryParameters;
 using Agora.API.DTOs.PostCategory;
 using Agora.API.Extensions;
+using Agora.Core.Commands;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models.Entities;
@@ -113,7 +114,8 @@ public class PostCategoriesController(
         dto.Name = dto.Name.Trim();
         
         // Delegate business logic (business rules + database changes)
-        Result result = await postCategoryService.UpdatePostCategoryNameAsync(id, dto.Name);
+        UpdatePostCategoryDetailsCommand newDetails = mapper.Map<UpdatePostCategoryDetailsCommand>(dto);
+        Result result = await postCategoryService.UpdatePostCategoryDetailsAsync(id, newDetails);
 
         return result.IsFailure 
             ? this.MapErrorResult(result)

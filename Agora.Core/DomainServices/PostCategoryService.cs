@@ -1,4 +1,5 @@
-﻿using Agora.Core.Enums;
+﻿using Agora.Core.Commands;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
@@ -58,7 +59,7 @@ public class PostCategoryService(
     }
 
     /// <inheritdoc />
-    public async Task<Result> UpdatePostCategoryNameAsync(long postCategoryId, string newName)
+    public async Task<Result> UpdatePostCategoryDetailsAsync(long postCategoryId, UpdatePostCategoryDetailsCommand newDetails)
     {
         // Retrieve the existing post category
         PostCategory? postCategory = await postCategoryRepo.GetPostCategoryByIdAsync(postCategoryId);
@@ -68,14 +69,14 @@ public class PostCategoryService(
         }
         
         // Validate business rules
-        Result businessRulesValidationResult = await businessRulesValidator.ValidatePostCategoryUpdateAsync(postCategory, newName);
+        Result businessRulesValidationResult = await businessRulesValidator.ValidatePostCategoryUpdateAsync(postCategory, newDetails);
         if (businessRulesValidationResult.IsFailure)
         {
             return businessRulesValidationResult;
         }
         
         // Apply modification and save to database
-        postCategory.Name = newName;
+        postCategory.Name = newDetails.Name;
         
         return await postCategoryRepo.SaveChangesAsync()
             ? Result.Success()

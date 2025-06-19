@@ -1,4 +1,5 @@
 ﻿using Agora.API.DTOs.PostCategory;
+using Agora.Core.Commands;
 using Agora.Core.Models.Entities;
 using AutoMapper;
 
@@ -19,5 +20,9 @@ public class PostCategoryProfile : Profile
         
         CreateMap<CreatePostCategoryDto, PostCategory>()
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Trim()));
+        
+        CreateMap<UpdatePostCategoryDetailsDto, UpdatePostCategoryDetailsCommand>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Trim()))
+            .ForAllMembers(opts => opts.Condition((_, _, srcMember) => srcMember != null));
     }
 }

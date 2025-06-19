@@ -1,4 +1,5 @@
-﻿using Agora.Core.Interfaces.QueryParameters;
+﻿using Agora.Core.Commands;
+using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 
@@ -38,15 +39,16 @@ public interface IPostCategoryService
     public Task<Result<PostCategory>> CreatePostCategoryAsync(PostCategory postCategory);
     
     /// <summary>
-    /// Updates name of an existing <c>PostCategory</c> after validating authorization and business rules.
+    /// Updates specified details, like the name, of an existing <c>PostCategory</c>
+    /// after validating authorization and business rules.
     /// </summary>
     /// <param name="postCategoryId">ID of the <c>PostCategory</c> to update.</param>
-    /// <param name="newName">The new name of the <c>PostCategory</c>.</param>
+    /// <param name="newDetails">The details to update.</param>
     /// <returns>
     /// Success if update and save are successful,
     /// or failure with appropriate error messages.
     /// </returns>
-    public Task<Result> UpdatePostCategoryNameAsync(long postCategoryId, string newName);
+    public Task<Result> UpdatePostCategoryDetailsAsync(long postCategoryId, UpdatePostCategoryDetailsCommand newDetails);
     
     /// <summary>
     /// Delete a <c>PostCategory</c> after validating authorization and business rules.
