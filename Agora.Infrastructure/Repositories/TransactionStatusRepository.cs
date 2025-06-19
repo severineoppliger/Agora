@@ -8,8 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
+/// <inheritdoc/>
 public class TransactionStatusRepository(AgoraDbContext context): ITransactionStatusRepository
 {
+    /// <inheritdoc/>
     public async Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters queryParameters)
     {
         IQueryable<TransactionStatus> transactionStatus = context.TransactionStatus;
@@ -34,6 +36,7 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         return await transactionStatus.ToListAsync();
     }
 
+    /// <inheritdoc/>
     public async Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id)
     {
         return await context.TransactionStatus
@@ -46,6 +49,7 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
             .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 
+    /// <inheritdoc/>
     public async Task<TransactionStatus?> GetTransactionStatusByEnumAsync(TransactionStatusEnum statusEnum)
     {
         return await context.TransactionStatus
@@ -53,6 +57,7 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
             .FirstOrDefaultAsync(ts => ts.EnumValue == statusEnum);
     }
 
+    /// <inheritdoc/>
     public async Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum)
     {
         TransactionStatus? transactionStatus = await context.TransactionStatus.FirstOrDefaultAsync(s =>
@@ -62,17 +67,25 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         return transactionStatus.Id;
     }
 
+    /// <inheritdoc/>
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
     }
 
+    /// <inheritdoc/>
     public Task<bool> NameExistsAsync(string name)
     {
         return context.TransactionStatus.AnyAsync(ts => ts.Name == name);
     }
 
-    public IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusQueryParameters queryParams)
+    /// <summary>
+    /// Applies sorting to the given <see cref="IQueryable{TransactionStatus}"/> based on the specified query parameters.
+    /// </summary>
+    /// <param name="query">The queryable collection of <see cref="TransactionStatus"/> to sort.</param>
+    /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
+    /// <returns>The sorted <see cref="IQueryable{TransactionStatus}"/>.</returns>
+    private IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

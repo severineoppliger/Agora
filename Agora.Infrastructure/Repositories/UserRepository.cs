@@ -93,16 +93,22 @@ public class UserRepository(
         return await userManager.Users.AnyAsync(u => u.Id == id);
     }
     
-    private IQueryable<User> ApplySorting(IQueryable<User> query, IUserQueryParameters queryParameters)
+        /// <summary>
+        /// Applies sorting to the given <see cref="IQueryable{User}"/> based on the specified query parameters.
+        /// </summary>
+        /// <param name="query">The queryable collection of <see cref="User"/> to sort.</param>
+        /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
+        /// <returns>The sorted <see cref="IQueryable{User}"/>.</returns>
+    private IQueryable<User> ApplySorting(IQueryable<User> query, IUserQueryParameters queryParams)
     {
-        query = queryParameters.SortBy?.ToLower() switch
+        query = queryParams.SortBy?.ToLower() switch
         {
-            "id" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
-            "username" => queryParameters.SortDesc ? query.OrderByDescending(u => u.UserName) : query.OrderBy(u => u.UserName),
-            "email" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
-            "credit" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
-            "createdat" => queryParameters.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
-            "lastloginat" => queryParameters.SortDesc ? query.OrderByDescending(u => u.LastLoginAt) : query.OrderBy(u => u.LastLoginAt),
+            "id" => queryParams.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
+            "username" => queryParams.SortDesc ? query.OrderByDescending(u => u.UserName) : query.OrderBy(u => u.UserName),
+            "email" => queryParams.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
+            "credit" => queryParams.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
+            "createdat" => queryParams.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
+            "lastloginat" => queryParams.SortDesc ? query.OrderByDescending(u => u.LastLoginAt) : query.OrderBy(u => u.LastLoginAt),
             _ => query.OrderBy(p => p.Id)
         };
         return query;

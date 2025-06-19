@@ -1,7 +1,6 @@
 ﻿using Agora.Core.Enums;
 using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
@@ -9,8 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
+/// <inheritdoc/>
 public class PostRepository(AgoraDbContext context) : IPostRepository
 {
+    /// <inheritdoc/>
     public async Task<IReadOnlyList<Post>> GetAllPostsAsync(PostQueryParameters queryParameters)
     {
         IQueryable<Post> posts = context.Posts.AsQueryable();
@@ -70,6 +71,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             .ToListAsync();
     }
 
+    /// <inheritdoc/>
     public async Task<Post?> GetPostByIdAsync(long id)
     {
         return await context.Posts
@@ -84,27 +86,37 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 
+    /// <inheritdoc/>
     public void AddPost(Post post)
     {
         context.Posts.Add(post);
     }
-
+    
+    /// <inheritdoc/>
     public void DeletePost(Post post)
     {
         context.Posts.Remove(post);
     }
     
+    /// <inheritdoc/>
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
     }
 
+    /// <inheritdoc/>
     public async Task<bool> PostExistsAsync(long id)
     {
         return await context.Posts.AnyAsync(p => p.Id == id);
     }
 
-    public IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostQueryParameters queryParams)
+    /// <summary>
+    /// Applies sorting to the given <see cref="IQueryable{Post}"/> based on the specified query parameters.
+    /// </summary>
+    /// <param name="query">The queryable collection of <see cref="Post"/> to sort.</param>
+    /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
+    /// <returns>The sorted <see cref="IQueryable{Post}"/>.</returns>
+    private IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {
@@ -123,6 +135,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         return query;
     }
 
+    /// <inheritdoc/>
     public async Task<bool> IsCategoryInUseAsync(long postCategoryId)
     {
         return await context.Posts.AnyAsync(p => p.PostCategoryId == postCategoryId);

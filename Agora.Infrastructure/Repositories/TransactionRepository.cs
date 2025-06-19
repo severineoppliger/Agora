@@ -6,8 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
+/// <inheritdoc/>
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
+    /// <inheritdoc/>
     public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionQueryParameters queryParameters)
     {
         IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
@@ -47,6 +49,7 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             .ToListAsync();
     }
 
+    /// <inheritdoc/>
     public async Task<Transaction?> GetTransactionByIdAsync(long id)
     {
         return await context.Transactions
@@ -59,17 +62,25 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             .FirstOrDefaultAsync(t => t.Id == id);
     }
 
+    /// <inheritdoc/>
     public void AddTransaction(Transaction transaction)
     {
         context.Transactions.Add(transaction);
     }
 
+    /// <inheritdoc/>
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
     }
 
-    public IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionQueryParameters queryParams)
+    /// <summary>
+    /// Applies sorting to the given <see cref="IQueryable{Transaction}"/> based on the specified query parameters.
+    /// </summary>
+    /// <param name="query">The queryable collection of <see cref="Transaction"/> to sort.</param>
+    /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
+    /// <returns>The sorted <see cref="IQueryable{Transaction}"/>.</returns>
+    private IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {
@@ -85,11 +96,13 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         return query;
     }
 
+    /// <inheritdoc/>
     public async Task<bool> IsPostInTransactionAsync(long postId)
     {
         return await context.Transactions.AnyAsync(t => t.PostId == postId);
     }
     
+    /// <inheritdoc/>
     public async Task<bool> IsPostInOnGoingTransactionAsync(long postId)
     {
         return await context.Transactions.AnyAsync(t => t.PostId == postId && !t.TransactionStatus!.IsFinal);
