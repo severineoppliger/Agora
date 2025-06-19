@@ -1,10 +1,13 @@
 ﻿using Agora.API.DTOs.PostCategory;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
 
+/// <summary>
+/// AutoMapper profile that defines mappings between <see cref="PostCategory"/> domain model
+/// and its corresponding DTOs used for creation and data projection.
+/// </summary>
 public class PostCategoryProfile : Profile
 {
     public PostCategoryProfile()

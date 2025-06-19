@@ -1,11 +1,14 @@
 ﻿using Agora.API.DTOs.Transaction;
 using Agora.Core.Commands;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
 
+/// <summary>
+/// AutoMapper profile that defines mappings between the <see cref="Transaction"/> domain model,
+/// API DTOs, and command objects used for creating, updating, and projecting transactions.
+/// </summary>
 public class TransactionProfile : Profile
 {
     public TransactionProfile()

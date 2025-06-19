@@ -7,7 +7,7 @@ namespace Agora.API.DTOs.PostCategory;
 /// <summary>
 /// Data Transfer Object for updating an existing <c>PostCategory</c>.
 /// </summary>
-public class UpdatePostCategoryDto
+public class UpdatePostCategoryDetailsDto
 {
     /// <summary>
     /// New name for the post category.

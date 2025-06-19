@@ -1,13 +1,16 @@
 ﻿using Agora.API.DTOs.Post;
 using Agora.Core.Commands;
 using Agora.Core.Enums;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using AutoMapper;
 using PostQueryParameters = Agora.Core.Models.DomainQueryParameters.PostQueryParameters;
 
 namespace Agora.API.Mapping;
 
+/// <summary>
+/// AutoMapper profile that defines mappings between the <see cref="Post"/> domain model,
+/// API DTOs, and command objects used for creating, updating, and querying posts.
+/// </summary>
 public class PostProfile : Profile
 {
     public PostProfile()

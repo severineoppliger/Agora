@@ -5,10 +5,18 @@ using Serilog;
 
 namespace Agora.API.Filters;
 
-// Filter (like a hook) to add logs related to actions methods in controllers
+/// <summary>
+/// Action filter that logs entry, exit, and model validation details of controller actions.
+/// Helps in monitoring request flow and diagnosing issues.
+/// </summary>
 public class LogActionFilter(ILogger<LogActionFilter> logger) : IActionFilter
-{
-    // Before the action methods runs
+{ 
+    /// <summary>
+    /// Called before the action method executes.
+    /// Logs the action name and its input parameters.
+    /// If model validation fails, logs the errors and returns a <see cref="BadRequestObjectResult"/>.
+    /// </summary>
+    /// <param name="context">The action executing context.</param>
     public void OnActionExecuting(ActionExecutingContext context)
     {
         logger.LogInformation("\u27a1  Entering action {ActionName} with parameters {Parameters}", 
@@ -27,7 +35,11 @@ public class LogActionFilter(ILogger<LogActionFilter> logger) : IActionFilter
         }
     }
 
-    // After the action methods runs
+    /// <summary>
+    /// Called after the action method executes.
+    /// Logs the outcome of the action (BadRequest, ObjectResult, StatusCode, or unknown).
+    /// </summary>
+    /// <param name="context">The action executed context.</param>
     public void OnActionExecuted(ActionExecutedContext context)
     {
         // Extract return result of the action method

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Agora.Core.Enums;
 using Agora.Core.Validation;
 
 namespace Agora.API.DTOs.Transaction;

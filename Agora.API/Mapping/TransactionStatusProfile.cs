@@ -5,6 +5,10 @@ using TransactionStatus = Agora.Core.Models.Entities.TransactionStatus;
 
 namespace Agora.API.Mapping;
 
+/// <summary>
+/// AutoMapper profile that defines mappings between the <see cref="TransactionStatus"/> domain model,
+/// API DTOs, and command objects used for updating transaction status details.
+/// </summary>
 public class TransactionStatusProfile : Profile
 {
     public TransactionStatusProfile()
