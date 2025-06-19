@@ -1,131 +1,177 @@
 ﻿using Agora.API.DTOs.Post;
-using Agora.API.DTOs.PostCategory;
 using Agora.API.DTOs.Transaction;
 using Agora.API.DTOs.TransactionStatus;
 using Agora.API.DTOs.User;
 using Agora.API.InputValidation.Interfaces;
+using Agora.Core.Common;
 using Agora.Core.Enums;
+using Agora.Core.Extensions;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace Agora.API.InputValidation;
 
 public class InputValidator(
-    UserManager<AppUser> userManager,
+    IUserRepository userRepo,
     IPostCategoryRepository postCategoryRepo,
     IPostRepository postRepo,
     ITransactionStatusRepository transactionStatusRepo): IInputValidator
 {
-    public async Task<List<string>> ValidateInputRegisterDtoAsync(RegisterDto dto)
+    #region Users
+
+    public async Task<InputValidationResult> ValidateRegisterDtoAsync(RegisterDto dto)
     {
-        List<string> inputErrors = new();
+        InputValidationResult result = new InputValidationResult();
         
-        if (await userManager.FindByNameAsync(dto.UserName) is not null)
+        if (await userRepo.GetUserByUsernameAsync(dto.UserName) is not null)
         {
-            inputErrors.Add($"The username '{dto.UserName}' is already taken. Username must be unique.");
+            result.Errors.Add(ErrorMessages.AlreadyExists("Username", dto.UserName));
         }
         
-        if (await userManager.FindByEmailAsync(dto.Email) is not null)
+        if (await userRepo.GetUserByEmailAsync(dto.Email) is not null)
         {
-            inputErrors.Add($"An account with the email '{dto.Email}' already exists. Email must be unique.");
+            result.Errors.Add(ErrorMessages.User.EmailAlreadyRegistered(dto.Email));
         }
         
-        return inputErrors;
+        if (dto.Password != dto.Password.Trim())
+        {
+            result.Errors.Add(ErrorMessages.User.PasswordWithoutSpaceBeforeOrAfter);
+        }
+        
+        return result;
     }
     
-    public async Task<List<string>> ValidateInputPostCategoryDtoAsync(BaseInputPostCategoryDto dto, string? currentName = null)
+    public InputValidationResult ValidateUserId(string id)
     {
-        List<string> inputErrors = new();
-
-        if (currentName != null && dto.Name.Equals(currentName))
+        InputValidationResult result = new InputValidationResult();
+        
+        if (!id.IsGuid())
         {
-            inputErrors.Add("Post category name must be different from the current name.");
-            return inputErrors;
+            result.Errors.Add(ErrorMessages.User.InvalidIdFormat(id));
         }
         
-        if (await postCategoryRepo.NameExistsAsync(dto.Name))
-        {
-            inputErrors.Add($"The post category name '{dto.Name}' already exists. Name must be unique.");
-        }
-
-        return inputErrors;
+        return result;
     }
+    
+    
+    #endregion
+    
+    #region Posts
 
-    public async Task<List<string>> ValidateInputPostDtoAsync(BaseInputPostDto dto)
+
+    public async Task<InputValidationResult> ValidateCreatePostDtoAsync(CreatePostDto dto)
     {
-        string type = dto.Type;
-        long postCategoryId = dto.PostCategoryId;
+        InputValidationResult result = new InputValidationResult();
         
-        List<string> inputErrors = new();
-        
-        if (!Enum.TryParse<PostType>(type, true, out _))
+        if (!Enum.TryParse<PostType>(dto.Type, true, out _))
         {
-            inputErrors.Add($"Post type '{type}' is invalid.");
+            result.Errors.Add(ErrorMessages.IsInvalid("type", dto.Type));
         }
-        
-        if (dto is UpdatePostDto updatePostDto && !Enum.TryParse<PostStatus>(updatePostDto.Status, true, out _))
-        {
-            inputErrors.Add($"Post status '{type}' is invalid.");
-        }
+
             
-        if (!await postCategoryRepo.PostCategoryExistsAsync(postCategoryId))
+        if (!await postCategoryRepo.PostCategoryExistsAsync(dto.PostCategoryId))
         {
-            inputErrors.Add($"Related post category {postCategoryId} doesn't exist.");
+            result.Errors.Add(ErrorMessages.RelatedEntityDoesNotExist("post category", dto.PostCategoryId));
         }
 
-        return inputErrors;
+        return result;
     }
 
-    public async Task<List<string>> ValidateInputTransactionStatusDtoAsync(BaseInputTransactionStatusDto dto, string? currentName = null)
+    public async Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto)
     {
-        List<string> inputErrors = new();
+        InputValidationResult result = new InputValidationResult();
 
-        if (currentName != null && dto.Name.Equals(currentName))
+        if (dto.IsEmpty())
         {
-            inputErrors.Add("Transaction status name must be different from the current name.");
-            return inputErrors;
+            result.Errors.Add(ErrorMessages.EmptyDto);
         }
         
-        if (await transactionStatusRepo.NameExistsAsync(dto.Name))
+        if (dto.Type is not null && !Enum.TryParse<PostType>(dto.Type, true, out _))
         {
-            inputErrors.Add($"The transaction status name '{dto.Name}' already exists. Name must be unique.");
-        }
-        
-        if (dto.IsSuccess & !dto.IsFinal)
-        {
-            inputErrors.Add("Transaction status must be final if it's a success.");
+            result.Errors.Add(ErrorMessages.IsInvalid("type", dto.Type));
         }
 
-        return inputErrors;
+            
+        if (dto.PostCategoryId is not null && !await postCategoryRepo.PostCategoryExistsAsync(dto.PostCategoryId.Value))
+        {
+            result.Errors.Add(ErrorMessages.RelatedEntityDoesNotExist("post category", dto.PostCategoryId));
+        }
+
+        return result;
     }
 
-    public async Task<List<string>> ValidateInputTransactionDtoAsync(BaseInputTransactionDto dto)
+    #endregion
+
+    public InputValidationResult ValidateUpdateTransactionStatusDtoAsync(UpdateTransactionStatusDetailsDto dto)
     {
-        (_, long? postId, long transactionStatusId, string buyerId, string sellerId, DateTime? transactionDate) = dto;
-        
-        List<string> inputErrors = new();
-        
-        if (postId != null && !await postRepo.PostExistsAsync(postId.Value))
+        InputValidationResult result = new InputValidationResult();
+
+        if (dto.IsEmpty())
         {
-            inputErrors.Add($"Related post {postId} doesn't exist.");
+            result.Errors.Add(ErrorMessages.EmptyDto);
         }
-        
-        if (!await transactionStatusRepo.TransactionStatusExistsAsync(transactionStatusId))
-        {
-            inputErrors.Add($"Related transaction status {transactionStatusId} doesn't exist.");
-        }
-        
-        if (await userManager.FindByIdAsync(buyerId) is null)
-        {
-            inputErrors.Add($"Buyer (user with id {buyerId}) doesn't exist.");
-        }
-        
-        if (await userManager.FindByIdAsync(sellerId) is null)
-        {
-            inputErrors.Add($"Seller (user with id {sellerId}) doesn't exist.");
-        }
-        
-        return inputErrors;
+
+        return result;
     }
+    
+    #region Transaction
+    /// <summary>
+    /// Validates the input for a new transaction request.
+    /// Ensures that the involved users and the optional linked post exist in database
+    /// </summary>
+    public async Task<InputValidationResult> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto)
+    {
+        InputValidationResult result = new InputValidationResult();
+        
+        if (dto.PostId is not null && !await postRepo.PostExistsAsync(dto.PostId.Value))
+        {
+            result.Errors.Add(ErrorMessages.RelatedEntityDoesNotExist("post", dto.PostId));
+        }
+        
+        if (!await userRepo.UserExistsAsync(dto.BuyerId))
+        {
+            result.Errors.Add(ErrorMessages.User.BuyerOrSellerDoesNotExist("buyer",dto.BuyerId));
+        }
+        
+        if (!await userRepo.UserExistsAsync(dto.SellerId))
+        {
+            result.Errors.Add(ErrorMessages.User.BuyerOrSellerDoesNotExist("seller",dto.SellerId));
+        }
+        
+        return result;
+    }
+
+    public async Task<InputValidationResult> ValidateUpdateTransactionDetailsDtoAsync(UpdateTransactionDetailsDto dto)
+    {
+        InputValidationResult result = new InputValidationResult();
+        
+        if (dto.IsEmpty())
+        {
+            result.Errors.Add(ErrorMessages.EmptyDto);
+        }
+        
+        if (dto.PostId is not null && !await postRepo.PostExistsAsync(dto.PostId.Value))
+        {
+            result.Errors.Add(ErrorMessages.RelatedEntityDoesNotExist("post", dto.PostId));
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Validates the input for a transaction status change request.
+    /// Ensures that the provided transaction status exists within the TransactionStatusEnum.
+    /// </summary>
+    public InputValidationResult ValidateChangeTransactionStatusDto(ChangeTransactionStatusDto dto)
+    {
+        InputValidationResult result = new InputValidationResult();
+        
+        // Status should have existing value
+        if (!Enum.IsDefined(typeof(TransactionStatusEnum), dto.Status))
+        {
+            result.Errors.Add(ErrorMessages.IsInvalid("transaction status", dto.Status.ToString()));
+        }
+
+        return result;
+    }
+    #endregion
 }

@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  id: Agora.Core.Interfaces.Repositories
+  children:
+  - Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+  - Agora.Core.Interfaces.Repositories.IPostRepository
+  - Agora.Core.Interfaces.Repositories.ITransactionRepository
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  - Agora.Core.Interfaces.Repositories.IUserRepository
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IPostCategoryRepository.html
+  name: IPostCategoryRepository
+  nameWithType: IPostCategoryRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html
+  name: IPostRepository
+  nameWithType: IPostRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.ITransactionRepository.html
+  name: ITransactionRepository
+  nameWithType: ITransactionRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html
+  name: ITransactionStatusRepository
+  nameWithType: ITransactionStatusRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+- uid: Agora.Core.Interfaces.Repositories.IUserRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IUserRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IUserRepository.html
+  name: IUserRepository
+  nameWithType: IUserRepository
+  fullName: Agora.Core.Interfaces.Repositories.IUserRepository
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html

@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Validation
+  commentId: N:Agora.Core.Validation
+  id: Agora.Core.Validation
+  children:
+  - Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+  - Agora.Core.Validation.ValidationRules
+  - Agora.Core.Validation.ValidationRules.AppUser
+  - Agora.Core.Validation.ValidationRules.Post
+  - Agora.Core.Validation.ValidationRules.PostCategory
+  - Agora.Core.Validation.ValidationRules.Transaction
+  - Agora.Core.Validation.ValidationRules.TransactionStatus
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Validation
+  nameWithType: Agora.Core.Validation
+  fullName: Agora.Core.Validation
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+  commentId: T:Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+  parent: Agora.Core.Validation
+  href: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.html
+  name: NotEmptyOrWhitespaceAttribute
+  nameWithType: NotEmptyOrWhitespaceAttribute
+  fullName: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+- uid: Agora.Core.Validation.ValidationRules
+  commentId: T:Agora.Core.Validation.ValidationRules
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules
+  nameWithType: ValidationRules
+  fullName: Agora.Core.Validation.ValidationRules
+- uid: Agora.Core.Validation.ValidationRules.AppUser
+  commentId: T:Agora.Core.Validation.ValidationRules.AppUser
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules.AppUser
+  nameWithType: ValidationRules.AppUser
+  fullName: Agora.Core.Validation.ValidationRules.AppUser
+  spec.csharp:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.AppUser
+    name: AppUser
+    href: Agora.Core.Validation.ValidationRules.AppUser.html
+  spec.vb:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.AppUser
+    name: AppUser
+    href: Agora.Core.Validation.ValidationRules.AppUser.html
+- uid: Agora.Core.Validation.ValidationRules.PostCategory
+  commentId: T:Agora.Core.Validation.ValidationRules.PostCategory
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules.PostCategory
+  nameWithType: ValidationRules.PostCategory
+  fullName: Agora.Core.Validation.ValidationRules.PostCategory
+  spec.csharp:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.PostCategory
+    name: PostCategory
+    href: Agora.Core.Validation.ValidationRules.PostCategory.html
+  spec.vb:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.PostCategory
+    name: PostCategory
+    href: Agora.Core.Validation.ValidationRules.PostCategory.html
+- uid: Agora.Core.Validation.ValidationRules.Post
+  commentId: T:Agora.Core.Validation.ValidationRules.Post
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules.Post
+  nameWithType: ValidationRules.Post
+  fullName: Agora.Core.Validation.ValidationRules.Post
+  spec.csharp:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.Post
+    name: Post
+    href: Agora.Core.Validation.ValidationRules.Post.html
+  spec.vb:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.Post
+    name: Post
+    href: Agora.Core.Validation.ValidationRules.Post.html
+- uid: Agora.Core.Validation.ValidationRules.TransactionStatus
+  commentId: T:Agora.Core.Validation.ValidationRules.TransactionStatus
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules.TransactionStatus
+  nameWithType: ValidationRules.TransactionStatus
+  fullName: Agora.Core.Validation.ValidationRules.TransactionStatus
+  spec.csharp:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Validation.ValidationRules.TransactionStatus.html
+  spec.vb:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Validation.ValidationRules.TransactionStatus.html
+- uid: Agora.Core.Validation.ValidationRules.Transaction
+  commentId: T:Agora.Core.Validation.ValidationRules.Transaction
+  href: Agora.Core.Validation.ValidationRules.html
+  name: ValidationRules.Transaction
+  nameWithType: ValidationRules.Transaction
+  fullName: Agora.Core.Validation.ValidationRules.Transaction
+  spec.csharp:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.Transaction
+    name: Transaction
+    href: Agora.Core.Validation.ValidationRules.Transaction.html
+  spec.vb:
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    href: Agora.Core.Validation.ValidationRules.html
+  - name: .
+  - uid: Agora.Core.Validation.ValidationRules.Transaction
+    name: Transaction
+    href: Agora.Core.Validation.ValidationRules.Transaction.html
+- uid: Agora.Core.Validation
+  commentId: N:Agora.Core.Validation
+  href: Agora.html
+  name: Agora.Core.Validation
+  nameWithType: Agora.Core.Validation
+  fullName: Agora.Core.Validation
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Validation
+    name: Validation
+    href: Agora.Core.Validation.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Validation
+    name: Validation
+    href: Agora.Core.Validation.html

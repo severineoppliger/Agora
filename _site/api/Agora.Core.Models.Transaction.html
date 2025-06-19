@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Transaction | Agora </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Transaction | Agora ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Agora">
+            Agora
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Agora.Core.Models.Transaction">
+
+
+
+  <h1 id="Agora_Core_Models_Transaction" data-uid="Agora.Core.Models.Transaction" class="text-break">
+Class Transaction  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=3"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Agora.html">Agora</a>.<a class="xref" href="Agora.Core.html">Core</a>.<a class="xref" href="Agora.Core.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Agora.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Transaction : BaseEntity</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Agora.Core.Models.BaseEntity.html">BaseEntity</a></div>
+      <div><span class="xref">Transaction</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Agora.Core.Models.BaseEntity.html#Agora_Core_Models_BaseEntity_Id">BaseEntity.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Agora_Core_Models_Transaction_Buyer_" data-uid="Agora.Core.Models.Transaction.Buyer*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Buyer" data-uid="Agora.Core.Models.Transaction.Buyer">
+  Buyer
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public User? Buyer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Agora.Core.Models.User.html">User</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_BuyerConfirmed_" data-uid="Agora.Core.Models.Transaction.BuyerConfirmed*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_BuyerConfirmed" data-uid="Agora.Core.Models.Transaction.BuyerConfirmed">
+  BuyerConfirmed
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required bool BuyerConfirmed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_BuyerId_" data-uid="Agora.Core.Models.Transaction.BuyerId*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_BuyerId" data-uid="Agora.Core.Models.Transaction.BuyerId">
+  BuyerId
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string BuyerId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_CompletedAt_" data-uid="Agora.Core.Models.Transaction.CompletedAt*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_CompletedAt" data-uid="Agora.Core.Models.Transaction.CompletedAt">
+  CompletedAt
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime? CompletedAt { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_CreatedAt_" data-uid="Agora.Core.Models.Transaction.CreatedAt*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_CreatedAt" data-uid="Agora.Core.Models.Transaction.CreatedAt">
+  CreatedAt
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAt { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_InitiatorId_" data-uid="Agora.Core.Models.Transaction.InitiatorId*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_InitiatorId" data-uid="Agora.Core.Models.Transaction.InitiatorId">
+  InitiatorId
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string InitiatorId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_Post_" data-uid="Agora.Core.Models.Transaction.Post*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Post" data-uid="Agora.Core.Models.Transaction.Post">
+  Post
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=9"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Post? Post { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Agora.Core.Models.Post.html">Post</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_PostId_" data-uid="Agora.Core.Models.Transaction.PostId*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_PostId" data-uid="Agora.Core.Models.Transaction.PostId">
+  PostId
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=8"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required long? PostId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_Price_" data-uid="Agora.Core.Models.Transaction.Price*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Price" data-uid="Agora.Core.Models.Transaction.Price">
+  Price
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=6"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required int Price { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_Seller_" data-uid="Agora.Core.Models.Transaction.Seller*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Seller" data-uid="Agora.Core.Models.Transaction.Seller">
+  Seller
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public User? Seller { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Agora.Core.Models.User.html">User</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_SellerConfirmed_" data-uid="Agora.Core.Models.Transaction.SellerConfirmed*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_SellerConfirmed" data-uid="Agora.Core.Models.Transaction.SellerConfirmed">
+  SellerConfirmed
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required bool SellerConfirmed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_SellerId_" data-uid="Agora.Core.Models.Transaction.SellerId*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_SellerId" data-uid="Agora.Core.Models.Transaction.SellerId">
+  SellerId
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string SellerId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_Title_" data-uid="Agora.Core.Models.Transaction.Title*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Title" data-uid="Agora.Core.Models.Transaction.Title">
+  Title
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=5"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string Title { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_TransactionDate_" data-uid="Agora.Core.Models.Transaction.TransactionDate*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_TransactionDate" data-uid="Agora.Core.Models.Transaction.TransactionDate">
+  TransactionDate
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateOnly? TransactionDate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dateonly">DateOnly</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_TransactionStatus_" data-uid="Agora.Core.Models.Transaction.TransactionStatus*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_TransactionStatus" data-uid="Agora.Core.Models.Transaction.TransactionStatus">
+  TransactionStatus
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionStatus? TransactionStatus { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Agora.Core.Models.TransactionStatus.html">TransactionStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_TransactionStatusId_" data-uid="Agora.Core.Models.Transaction.TransactionStatusId*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_TransactionStatusId" data-uid="Agora.Core.Models.Transaction.TransactionStatusId">
+  TransactionStatusId
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required long TransactionStatusId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Models_Transaction_UpdatedAt_" data-uid="Agora.Core.Models.Transaction.UpdatedAt*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_UpdatedAt" data-uid="Agora.Core.Models.Transaction.UpdatedAt">
+  UpdatedAt
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime? UpdatedAt { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Agora_Core_Models_Transaction_Deconstruct_" data-uid="Agora.Core.Models.Transaction.Deconstruct*"></a>
+
+  <h3 id="Agora_Core_Models_Transaction_Deconstruct_System_Int32__Agora_Core_Models_Post__System_String__Agora_Core_Models_User__System_String__" data-uid="Agora.Core.Models.Transaction.Deconstruct(System.Int32@,Agora.Core.Models.Post@,System.String@,Agora.Core.Models.User@,System.String@)">
+  Deconstruct(out int, out Post?, out string, out User?, out string)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Deconstruct(out int price, out Post? post, out string buyerId, out User? buyer, out string sellerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>price</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>post</code> <a class="xref" href="Agora.Core.Models.Post.html">Post</a></dt>
+    <dd></dd>
+    <dt><code>buyerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>buyer</code> <a class="xref" href="Agora.Core.Models.User.html">User</a></dt>
+    <dd></dd>
+    <dt><code>sellerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Models/Transaction.cs&amp;version=GB15-Transition-status-logic&amp;line=3" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

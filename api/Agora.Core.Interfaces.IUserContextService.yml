@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.IUserContextService
+  commentId: T:Agora.Core.Interfaces.IUserContextService
+  id: IUserContextService
+  parent: Agora.Core.Interfaces
+  children:
+  - Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext
+  - Agora.Core.Interfaces.IUserContextService.IsAuthenticated
+  langs:
+  - csharp
+  - vb
+  name: IUserContextService
+  nameWithType: IUserContextService
+  fullName: Agora.Core.Interfaces.IUserContextService
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IUserContextService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IUserContextService
+    path: Agora.Core/Interfaces/IUserContextService.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  syntax:
+    content: public interface IUserContextService
+    content.vb: Public Interface IUserContextService
+- uid: Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext
+  commentId: M:Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext
+  id: GetCurrentUserContext
+  parent: Agora.Core.Interfaces.IUserContextService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentUserContext()
+  nameWithType: IUserContextService.GetCurrentUserContext()
+  fullName: Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext()
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IUserContextService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetCurrentUserContext
+    path: Agora.Core/Interfaces/IUserContextService.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  syntax:
+    content: UserContext GetCurrentUserContext()
+    return:
+      type: Agora.Core.Common.UserContext
+    content.vb: Function GetCurrentUserContext() As UserContext
+  overload: Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext*
+- uid: Agora.Core.Interfaces.IUserContextService.IsAuthenticated
+  commentId: M:Agora.Core.Interfaces.IUserContextService.IsAuthenticated
+  id: IsAuthenticated
+  parent: Agora.Core.Interfaces.IUserContextService
+  langs:
+  - csharp
+  - vb
+  name: IsAuthenticated()
+  nameWithType: IUserContextService.IsAuthenticated()
+  fullName: Agora.Core.Interfaces.IUserContextService.IsAuthenticated()
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IUserContextService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IsAuthenticated
+    path: Agora.Core/Interfaces/IUserContextService.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  syntax:
+    content: bool IsAuthenticated()
+    return:
+      type: System.Boolean
+    content.vb: Function IsAuthenticated() As Boolean
+  overload: Agora.Core.Interfaces.IUserContextService.IsAuthenticated*
+references:
+- uid: Agora.Core.Interfaces
+  commentId: N:Agora.Core.Interfaces
+  href: Agora.html
+  name: Agora.Core.Interfaces
+  nameWithType: Agora.Core.Interfaces
+  fullName: Agora.Core.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+- uid: Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext*
+  commentId: Overload:Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext
+  href: Agora.Core.Interfaces.IUserContextService.html#Agora_Core_Interfaces_IUserContextService_GetCurrentUserContext
+  name: GetCurrentUserContext
+  nameWithType: IUserContextService.GetCurrentUserContext
+  fullName: Agora.Core.Interfaces.IUserContextService.GetCurrentUserContext
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: Agora.Core.Interfaces.IUserContextService.IsAuthenticated*
+  commentId: Overload:Agora.Core.Interfaces.IUserContextService.IsAuthenticated
+  href: Agora.Core.Interfaces.IUserContextService.html#Agora_Core_Interfaces_IUserContextService_IsAuthenticated
+  name: IsAuthenticated
+  nameWithType: IUserContextService.IsAuthenticated
+  fullName: Agora.Core.Interfaces.IUserContextService.IsAuthenticated
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

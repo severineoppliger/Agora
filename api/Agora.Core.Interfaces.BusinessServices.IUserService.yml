@@ -1,0 +1,434 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IUserService
+  id: IUserService
+  parent: Agora.Core.Interfaces.BusinessServices
+  children:
+  - Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  - Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync(System.String,Agora.Core.Common.UserContext)
+  langs:
+  - csharp
+  - vb
+  name: IUserService
+  nameWithType: IUserService
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IUserService
+    path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: >-
+    Provides business logic related to user management,
+
+    including access control and profile retrieval.
+  example: []
+  syntax:
+    content: public interface IUserService
+    content.vb: Public Interface IUserService
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  id: GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  parent: Agora.Core.Interfaces.BusinessServices.IUserService
+  langs:
+  - csharp
+  - vb
+  name: GetAllUsersAsync(IUserFilter)
+  nameWithType: IUserService.GetAllUsersAsync(IUserFilter)
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync(Agora.Core.Interfaces.Filters.IUserFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllUsersAsync
+    path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+    startLine: 17
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Retrieves all <code>User</code>.
+  example: []
+  syntax:
+    content: Task<Result<IReadOnlyList<User>>> GetAllUsersAsync(IUserFilter userQueryParameters)
+    parameters:
+    - id: userQueryParameters
+      type: Agora.Core.Interfaces.Filters.IUserFilter
+      description: Filter criteria to apply when querying users.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}}
+      description: A successful Result wrapping a list of users, or failure if an error occurs.
+    content.vb: Function GetAllUsersAsync(userQueryParameters As IUserFilter) As Task(Of Result(Of IReadOnlyList(Of User)))
+  overload: Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync*
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync(System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync(System.String,Agora.Core.Common.UserContext)
+  id: GetUserByIdAsync(System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.Interfaces.BusinessServices.IUserService
+  langs:
+  - csharp
+  - vb
+  name: GetUserByIdAsync(string, UserContext)
+  nameWithType: IUserService.GetUserByIdAsync(string, UserContext)
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync(string, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetUserByIdAsync
+    path: Agora.Core/Interfaces/BusinessServices/IUserService.cs
+    startLine: 28
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.BusinessServices
+  summary: Retrieves a single <code>User</code> by its ID.
+  example: []
+  syntax:
+    content: Task<Result<User>> GetUserByIdAsync(string userId, UserContext userContext)
+    parameters:
+    - id: userId
+      type: System.String
+      description: The ID of the user to retrieve.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Context of the current user requesting user details.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+      description: >-
+        Success wrapping the <code>User</code> if found and authorized,
+
+        failure with NotFound if missing.
+    content.vb: Function GetUserByIdAsync(userId As String, userContext As UserContext) As Task(Of Result(Of User))
+  overload: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync*
+  nameWithType.vb: IUserService.GetUserByIdAsync(String, UserContext)
+  fullName.vb: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync(String, Agora.Core.Common.UserContext)
+  name.vb: GetUserByIdAsync(String, UserContext)
+references:
+- uid: Agora.Core.Interfaces.BusinessServices
+  commentId: N:Agora.Core.Interfaces.BusinessServices
+  href: Agora.html
+  name: Agora.Core.Interfaces.BusinessServices
+  nameWithType: Agora.Core.Interfaces.BusinessServices
+  fullName: Agora.Core.Interfaces.BusinessServices
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync
+  href: Agora.Core.Interfaces.BusinessServices.IUserService.html#Agora_Core_Interfaces_BusinessServices_IUserService_GetAllUsersAsync_Agora_Core_Interfaces_Filters_IUserFilter_
+  name: GetAllUsersAsync
+  nameWithType: IUserService.GetAllUsersAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService.GetAllUsersAsync
+- uid: Agora.Core.Interfaces.Filters.IUserFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IUserFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html
+  name: IUserFilter
+  nameWithType: IUserFilter
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.User}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<IReadOnlyList<User>>>
+  nameWithType: Task<Result<IReadOnlyList<User>>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.User>>>
+  nameWithType.vb: Task(Of Result(Of IReadOnlyList(Of User)))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.User)))
+  name.vb: Task(Of Result(Of IReadOnlyList(Of User)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: )
+  - name: )
+  - name: )
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync*
+  commentId: Overload:Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync
+  href: Agora.Core.Interfaces.BusinessServices.IUserService.html#Agora_Core_Interfaces_BusinessServices_IUserService_GetUserByIdAsync_System_String_Agora_Core_Common_UserContext_
+  name: GetUserByIdAsync
+  nameWithType: IUserService.GetUserByIdAsync
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService.GetUserByIdAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<User>>
+  nameWithType: Task<Result<User>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<Agora.Core.Models.User>>
+  nameWithType.vb: Task(Of Result(Of User))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of Agora.Core.Models.User))
+  name.vb: Task(Of Result(Of User))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html

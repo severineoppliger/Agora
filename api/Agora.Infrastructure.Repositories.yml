@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Infrastructure.Repositories
+  commentId: N:Agora.Infrastructure.Repositories
+  id: Agora.Infrastructure.Repositories
+  children:
+  - Agora.Infrastructure.Repositories.PostCategoryRepository
+  - Agora.Infrastructure.Repositories.PostRepository
+  - Agora.Infrastructure.Repositories.TransactionRepository
+  - Agora.Infrastructure.Repositories.TransactionStatusRepository
+  - Agora.Infrastructure.Repositories.UserRepository
+  langs:
+  - csharp
+  - vb
+  name: Agora.Infrastructure.Repositories
+  nameWithType: Agora.Infrastructure.Repositories
+  fullName: Agora.Infrastructure.Repositories
+  type: Namespace
+  assemblies:
+  - Agora.Infrastructure
+references:
+- uid: Agora.Infrastructure.Repositories.PostCategoryRepository
+  commentId: T:Agora.Infrastructure.Repositories.PostCategoryRepository
+  href: Agora.Infrastructure.Repositories.PostCategoryRepository.html
+  name: PostCategoryRepository
+  nameWithType: PostCategoryRepository
+  fullName: Agora.Infrastructure.Repositories.PostCategoryRepository
+- uid: Agora.Infrastructure.Repositories.PostRepository
+  commentId: T:Agora.Infrastructure.Repositories.PostRepository
+  href: Agora.Infrastructure.Repositories.PostRepository.html
+  name: PostRepository
+  nameWithType: PostRepository
+  fullName: Agora.Infrastructure.Repositories.PostRepository
+- uid: Agora.Infrastructure.Repositories.TransactionRepository
+  commentId: T:Agora.Infrastructure.Repositories.TransactionRepository
+  href: Agora.Infrastructure.Repositories.TransactionRepository.html
+  name: TransactionRepository
+  nameWithType: TransactionRepository
+  fullName: Agora.Infrastructure.Repositories.TransactionRepository
+- uid: Agora.Infrastructure.Repositories.TransactionStatusRepository
+  commentId: T:Agora.Infrastructure.Repositories.TransactionStatusRepository
+  href: Agora.Infrastructure.Repositories.TransactionStatusRepository.html
+  name: TransactionStatusRepository
+  nameWithType: TransactionStatusRepository
+  fullName: Agora.Infrastructure.Repositories.TransactionStatusRepository
+- uid: Agora.Infrastructure.Repositories.UserRepository
+  commentId: T:Agora.Infrastructure.Repositories.UserRepository
+  href: Agora.Infrastructure.Repositories.UserRepository.html
+  name: UserRepository
+  nameWithType: UserRepository
+  fullName: Agora.Infrastructure.Repositories.UserRepository

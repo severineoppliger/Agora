@@ -1,6 +1,9 @@
 ﻿using Agora.API.DTOs.Post;
+using Agora.API.QueryParams;
 using Agora.Core.Enums;
 using Agora.Core.Models;
+using Agora.Core.Models.Filters;
+using Agora.Core.Models.Requests;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
@@ -20,15 +23,18 @@ public class PostProfile : Profile
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.PostCategoryName, opt => opt.MapFrom(src => src.PostCategory.Name))
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Owner.UserName));
-        
+
         CreateMap<CreatePostDto, Post>()
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title.Trim()))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description.Trim()))
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow));
+            .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
         
-        CreateMap<UpdatePostDto, Post>()
-            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.Parse<PostStatus>(src.Status)))
-            .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<PostQueryParameters, PostFilter>();
+        
+        CreateMap<UpdatePostDetailsDto, PostDetailsUpdate>()
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title != null ? src.Title.Trim() : null))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description != null ? src.Description.Trim() : null))
+            .ForAllMembers(opts => opts.Condition((_, _, srcMember) => srcMember != null));
     }
 }

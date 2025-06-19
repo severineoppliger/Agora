@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Constants
+  commentId: N:Agora.Core.Constants
+  id: Agora.Core.Constants
+  children:
+  - Agora.Core.Constants.Roles
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Constants
+  nameWithType: Agora.Core.Constants
+  fullName: Agora.Core.Constants
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Constants.Roles
+  commentId: T:Agora.Core.Constants.Roles
+  href: Agora.Core.Constants.Roles.html
+  name: Roles
+  nameWithType: Roles
+  fullName: Agora.Core.Constants.Roles

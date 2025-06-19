@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  id: Agora.Core.Models.Requests
+  children:
+  - Agora.Core.Models.Requests.PostDetailsUpdate
+  - Agora.Core.Models.Requests.TransactionDetailsUpdate
+  - Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+  - Agora.Core.Models.Requests.UserRegistrationInfo
+  - Agora.Core.Models.Requests.UserSignInInfo
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Models.Requests.PostDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.PostDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.PostDetailsUpdate.html
+  name: PostDetailsUpdate
+  nameWithType: PostDetailsUpdate
+  fullName: Agora.Core.Models.Requests.PostDetailsUpdate
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.TransactionDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.TransactionDetailsUpdate.html
+  name: TransactionDetailsUpdate
+  nameWithType: TransactionDetailsUpdate
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate
+- uid: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.html
+  name: TransactionStatusDetailsUpdate
+  nameWithType: TransactionStatusDetailsUpdate
+  fullName: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+- uid: Agora.Core.Models.Requests.UserRegistrationInfo
+  commentId: T:Agora.Core.Models.Requests.UserRegistrationInfo
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.UserRegistrationInfo.html
+  name: UserRegistrationInfo
+  nameWithType: UserRegistrationInfo
+  fullName: Agora.Core.Models.Requests.UserRegistrationInfo
+- uid: Agora.Core.Models.Requests.UserSignInInfo
+  commentId: T:Agora.Core.Models.Requests.UserSignInInfo
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.UserSignInInfo.html
+  name: UserSignInInfo
+  nameWithType: UserSignInInfo
+  fullName: Agora.Core.Models.Requests.UserSignInInfo
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  href: Agora.html
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html

@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Infrastructure.Configuration
+  commentId: N:Agora.Infrastructure.Configuration
+  id: Agora.Infrastructure.Configuration
+  children:
+  - Agora.Infrastructure.Configuration.PostCategoryConfiguration
+  - Agora.Infrastructure.Configuration.PostConfiguration
+  - Agora.Infrastructure.Configuration.TransactionConfiguration
+  - Agora.Infrastructure.Configuration.TransactionStatusConfiguration
+  - Agora.Infrastructure.Configuration.UserConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Agora.Infrastructure.Configuration
+  nameWithType: Agora.Infrastructure.Configuration
+  fullName: Agora.Infrastructure.Configuration
+  type: Namespace
+  assemblies:
+  - Agora.Infrastructure
+references:
+- uid: Agora.Infrastructure.Configuration.PostCategoryConfiguration
+  commentId: T:Agora.Infrastructure.Configuration.PostCategoryConfiguration
+  href: Agora.Infrastructure.Configuration.PostCategoryConfiguration.html
+  name: PostCategoryConfiguration
+  nameWithType: PostCategoryConfiguration
+  fullName: Agora.Infrastructure.Configuration.PostCategoryConfiguration
+- uid: Agora.Infrastructure.Configuration.PostConfiguration
+  commentId: T:Agora.Infrastructure.Configuration.PostConfiguration
+  href: Agora.Infrastructure.Configuration.PostConfiguration.html
+  name: PostConfiguration
+  nameWithType: PostConfiguration
+  fullName: Agora.Infrastructure.Configuration.PostConfiguration
+- uid: Agora.Infrastructure.Configuration.TransactionConfiguration
+  commentId: T:Agora.Infrastructure.Configuration.TransactionConfiguration
+  href: Agora.Infrastructure.Configuration.TransactionConfiguration.html
+  name: TransactionConfiguration
+  nameWithType: TransactionConfiguration
+  fullName: Agora.Infrastructure.Configuration.TransactionConfiguration
+- uid: Agora.Infrastructure.Configuration.TransactionStatusConfiguration
+  commentId: T:Agora.Infrastructure.Configuration.TransactionStatusConfiguration
+  href: Agora.Infrastructure.Configuration.TransactionStatusConfiguration.html
+  name: TransactionStatusConfiguration
+  nameWithType: TransactionStatusConfiguration
+  fullName: Agora.Infrastructure.Configuration.TransactionStatusConfiguration
+- uid: Agora.Infrastructure.Configuration.UserConfiguration
+  commentId: T:Agora.Infrastructure.Configuration.UserConfiguration
+  href: Agora.Infrastructure.Configuration.UserConfiguration.html
+  name: UserConfiguration
+  nameWithType: UserConfiguration
+  fullName: Agora.Infrastructure.Configuration.UserConfiguration

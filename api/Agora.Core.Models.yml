@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  id: Agora.Core.Models
+  children:
+  - Agora.Core.Models.BaseEntity
+  - Agora.Core.Models.Post
+  - Agora.Core.Models.PostCategory
+  - Agora.Core.Models.Transaction
+  - Agora.Core.Models.TransactionStatus
+  - Agora.Core.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Models.BaseEntity
+  commentId: T:Agora.Core.Models.BaseEntity
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.BaseEntity.html
+  name: BaseEntity
+  nameWithType: BaseEntity
+  fullName: Agora.Core.Models.BaseEntity
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Models.PostCategory
+  commentId: T:Agora.Core.Models.PostCategory
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.PostCategory.html
+  name: PostCategory
+  nameWithType: PostCategory
+  fullName: Agora.Core.Models.PostCategory
+- uid: Agora.Core.Models.Transaction
+  commentId: T:Agora.Core.Models.Transaction
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Transaction.html
+  name: Transaction
+  nameWithType: Transaction
+  fullName: Agora.Core.Models.Transaction
+- uid: Agora.Core.Models.TransactionStatus
+  commentId: T:Agora.Core.Models.TransactionStatus
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.TransactionStatus.html
+  name: TransactionStatus
+  nameWithType: TransactionStatus
+  fullName: Agora.Core.Models.TransactionStatus
+- uid: Agora.Core.Models.User
+  commentId: T:Agora.Core.Models.User
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.User.html
+  name: User
+  nameWithType: User
+  fullName: Agora.Core.Models.User
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html

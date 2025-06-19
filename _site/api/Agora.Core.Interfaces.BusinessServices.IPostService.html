@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IPostService | Agora </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IPostService | Agora ">
+      
+      <meta name="description" content="Defines business logic for managing user posts, including creation, updates, filtering, and status changes.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Agora">
+            Agora
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Agora.Core.Interfaces.BusinessServices.IPostService">
+
+
+
+  <h1 id="Agora_Core_Interfaces_BusinessServices_IPostService" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService" class="text-break">
+Interface IPostService  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Agora.html">Agora</a>.<a class="xref" href="Agora.Core.html">Core</a>.<a class="xref" href="Agora.Core.Interfaces.html">Interfaces</a>.<a class="xref" href="Agora.Core.Interfaces.BusinessServices.html">BusinessServices</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Agora.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines business logic for managing user posts,
+including creation, updates, filtering, and status changes.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IPostService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_ChangePostStatusAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_ChangePostStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_PostStatus_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.ChangePostStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.PostStatus)">
+  ChangePostStatusAsync(long, UserContext, PostStatus)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the status of an existing <code>Post</code> after authorization and validation of state transitions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; ChangePostStatusAsync(long postId, UserContext userContext, PostStatus targetStatus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>Post</code> to update status for.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user performing the status change.</p>
+</dd>
+    <dt><code>targetStatus</code> <a class="xref" href="Agora.Core.Enums.PostStatus.html">PostStatus</a></dt>
+    <dd><p>The new post status to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if the status was changed and saved successfully,
+or failure with relevant error details if invalid or unauthorized.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_CreatePostAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_CreatePostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.CreatePostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)">
+  CreatePostAsync(Post, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <code>Post</code> after validating authorization and business rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;Post&gt;&gt; CreatePostAsync(Post post, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>post</code> <a class="xref" href="Agora.Core.Models.Post.html">Post</a></dt>
+    <dd><p>The <code>Post</code> entity to create.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user creating the post.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the created <code>Post</code> if successful, or failure with relevant error details.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_DeletePostAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_DeletePostAsync_System_Int64_Agora_Core_Common_UserContext_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.DeletePostAsync(System.Int64,Agora.Core.Common.UserContext)">
+  DeletePostAsync(long, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delete a <code>Post</code> after validating authorization and business rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; DeletePostAsync(long postId, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>Post</code> to delete.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user requesting the deletion.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if the <code>Post</code> was successfully deleted,
+or failure with relevant error details if invalid or unauthorized.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_GetAllPostsAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_GetAllPostsAsync_Agora_Core_Enums_PostVisibilityMode_Agora_Core_Models_Filters_PostFilter_Agora_Core_Common_UserContext_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.GetAllPostsAsync(Agora.Core.Enums.PostVisibilityMode,Agora.Core.Models.Filters.PostFilter,Agora.Core.Common.UserContext)">
+  GetAllPostsAsync(PostVisibilityMode, PostFilter, UserContext?)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves all <code>Post</code> visible to the user according to authorization rules and visibility mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IReadOnlyList&lt;Post&gt;&gt;&gt; GetAllPostsAsync(PostVisibilityMode postVisibilityMode, PostFilter postFilter, UserContext? userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postVisibilityMode</code> <a class="xref" href="Agora.Core.Enums.PostVisibilityMode.html">PostVisibilityMode</a></dt>
+    <dd><p>Specifies the scope of posts to retrieve (e.g., catalog only, user-owned, admin view).</p>
+</dd>
+    <dt><code>postFilter</code> <a class="xref" href="Agora.Core.Models.Filters.PostFilter.html">PostFilter</a></dt>
+    <dd><p>Filter criteria to apply when querying posts.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the current user making the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;&gt;&gt;</dt>
+    <dd><p>A successful Result wrapping a list of posts visible to user, or failure if an error occurs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_GetPostByIdAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_GetPostByIdAsync_System_Int64_Agora_Core_Common_UserContext_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.GetPostByIdAsync(System.Int64,Agora.Core.Common.UserContext)">
+  GetPostByIdAsync(long, UserContext?)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a single <code>Post</code> by its ID if visible to the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;Post&gt;&gt; GetPostByIdAsync(long postId, UserContext? userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The ID of the post to retrieve.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the current user requesting the post.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the <code>Post</code> if found and authorized,
+failure with NotFound if missing,
+or failure with Unauthorized if the user cannot view it.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostService_UpdatePostDetailsAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostService_UpdatePostDetailsAsync_System_Int64_Agora_Core_Models_Requests_PostDetailsUpdate_Agora_Core_Common_UserContext_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostService.UpdatePostDetailsAsync(System.Int64,Agora.Core.Models.Requests.PostDetailsUpdate,Agora.Core.Common.UserContext)">
+  UpdatePostDetailsAsync(long, PostDetailsUpdate, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates specified details of an existing <code>Post</code> after validating authorization and business rules.
+Only non-null values in <code class="paramref">newDetails</code> are applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdatePostDetailsAsync(long postId, PostDetailsUpdate newDetails, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>Post</code> to update.</p>
+</dd>
+    <dt><code>newDetails</code> <a class="xref" href="Agora.Core.Models.Requests.PostDetailsUpdate.html">PostDetailsUpdate</a></dt>
+    <dd><p>The details to update.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user performing the update.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if update and save are successful,
+or failure with appropriate error messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostService.cs&amp;version=GB15-Transition-status-logic&amp;line=13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

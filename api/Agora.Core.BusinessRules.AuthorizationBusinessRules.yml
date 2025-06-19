@@ -1,0 +1,857 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  commentId: T:Agora.Core.BusinessRules.AuthorizationBusinessRules
+  id: AuthorizationBusinessRules
+  parent: Agora.Core.BusinessRules
+  children:
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  langs:
+  - csharp
+  - vb
+  name: AuthorizationBusinessRules
+  nameWithType: AuthorizationBusinessRules
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AuthorizationBusinessRules
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: Determine if a certain user can see, create, modify or delete some entity.
+  example: []
+  syntax:
+    content: 'public class AuthorizationBusinessRules : IAuthorizationBusinessRules'
+    content.vb: Public Class AuthorizationBusinessRules Implements IAuthorizationBusinessRules
+  inheritance:
+  - System.Object
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  id: CanViewUser(System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewUser(string, UserContext)
+  nameWithType: AuthorizationBusinessRules.CanViewUser(string, UserContext)
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser(string, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewUser
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  example: []
+  syntax:
+    content: public bool CanViewUser(string userId, UserContext userContext)
+    parameters:
+    - id: userId
+      type: System.String
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanViewUser(userId As String, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  nameWithType.vb: AuthorizationBusinessRules.CanViewUser(String, UserContext)
+  fullName.vb: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser(String, Agora.Core.Common.UserContext)
+  name.vb: CanViewUser(String, UserContext)
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewPost(Post, UserContext)
+  nameWithType: AuthorizationBusinessRules.CanViewPost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewPost
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 17
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  example: []
+  syntax:
+    content: public bool CanViewPost(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanViewPost(post As Post, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanManagePost(Post, UserContext)
+  nameWithType: AuthorizationBusinessRules.CanManagePost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanManagePost
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 25
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  example: []
+  syntax:
+    content: public bool CanManagePost(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanManagePost(post As Post, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  id: CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanViewTransaction(Transaction, UserContext)
+  nameWithType: AuthorizationBusinessRules.CanViewTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanViewTransaction
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 30
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  example: []
+  syntax:
+    content: public bool CanViewTransaction(Transaction transaction, UserContext userContext)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanViewTransaction(transaction As Transaction, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  id: CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  langs:
+  - csharp
+  - vb
+  name: CanManageTransaction(Transaction, UserContext)
+  nameWithType: AuthorizationBusinessRules.CanManageTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: CanManageTransaction
+    path: Agora.Core/BusinessRules/AuthorizationBusinessRules.cs
+    startLine: 35
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  example: []
+  syntax:
+    content: public bool CanManageTransaction(Transaction transaction, UserContext userContext)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanManageTransaction(transaction As Transaction, userContext As UserContext) As Boolean
+  overload: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+references:
+- uid: Agora.Core.BusinessRules
+  commentId: N:Agora.Core.BusinessRules
+  href: Agora.html
+  name: Agora.Core.BusinessRules
+  nameWithType: Agora.Core.BusinessRules
+  fullName: Agora.Core.BusinessRules
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  commentId: T:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  parent: Agora.Core.BusinessRules.Interfaces
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html
+  name: IAuthorizationBusinessRules
+  nameWithType: IAuthorizationBusinessRules
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.BusinessRules.Interfaces
+  commentId: N:Agora.Core.BusinessRules.Interfaces
+  href: Agora.html
+  name: Agora.Core.BusinessRules.Interfaces
+  nameWithType: Agora.Core.BusinessRules.Interfaces
+  fullName: Agora.Core.BusinessRules.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser*
+  commentId: Overload:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html#Agora_Core_BusinessRules_AuthorizationBusinessRules_CanViewUser_System_String_Agora_Core_Common_UserContext_
+  name: CanViewUser
+  nameWithType: AuthorizationBusinessRules.CanViewUser
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewUser
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  isExternal: true
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewUser_System_String_Agora_Core_Common_UserContext_
+  name: CanViewUser(string, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewUser(string, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(string, Agora.Core.Common.UserContext)
+  nameWithType.vb: IAuthorizationBusinessRules.CanViewUser(String, UserContext)
+  fullName.vb: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(String, Agora.Core.Common.UserContext)
+  name.vb: CanViewUser(String, UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+    name: CanViewUser
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewUser_System_String_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewUser(System.String,Agora.Core.Common.UserContext)
+    name: CanViewUser
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewUser_System_String_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost*
+  commentId: Overload:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html#Agora_Core_BusinessRules_AuthorizationBusinessRules_CanViewPost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanViewPost
+  nameWithType: AuthorizationBusinessRules.CanViewPost
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewPost
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewPost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanViewPost(Post, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewPost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CanViewPost
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewPost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewPost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CanViewPost
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewPost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost*
+  commentId: Overload:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html#Agora_Core_BusinessRules_AuthorizationBusinessRules_CanManagePost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanManagePost
+  nameWithType: AuthorizationBusinessRules.CanManagePost
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManagePost
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManagePost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: CanManagePost(Post, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanManagePost(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CanManagePost
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManagePost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManagePost(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: CanManagePost
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManagePost_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction*
+  commentId: Overload:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html#Agora_Core_BusinessRules_AuthorizationBusinessRules_CanViewTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanViewTransaction
+  nameWithType: AuthorizationBusinessRules.CanViewTransaction
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanViewTransaction
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanViewTransaction(Transaction, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanViewTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+    name: CanViewTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanViewTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+    name: CanViewTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanViewTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Transaction
+  commentId: T:Agora.Core.Models.Transaction
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Transaction.html
+  name: Transaction
+  nameWithType: Transaction
+  fullName: Agora.Core.Models.Transaction
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction*
+  commentId: Overload:Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html#Agora_Core_BusinessRules_AuthorizationBusinessRules_CanManageTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanManageTransaction
+  nameWithType: AuthorizationBusinessRules.CanManageTransaction
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules.CanManageTransaction
+- uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+  href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManageTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  name: CanManageTransaction(Transaction, UserContext)
+  nameWithType: IAuthorizationBusinessRules.CanManageTransaction(Transaction, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+    name: CanManageTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManageTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.CanManageTransaction(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)
+    name: CanManageTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html#Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_CanManageTransaction_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )

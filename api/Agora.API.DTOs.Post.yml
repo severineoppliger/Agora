@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.Post
+  commentId: N:Agora.API.DTOs.Post
+  id: Agora.API.DTOs.Post
+  children:
+  - Agora.API.DTOs.Post.CreatePostDto
+  - Agora.API.DTOs.Post.PostDetailsDto
+  - Agora.API.DTOs.Post.PostSummaryDto
+  - Agora.API.DTOs.Post.UpdatePostDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.DTOs.Post
+  nameWithType: Agora.API.DTOs.Post
+  fullName: Agora.API.DTOs.Post
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.DTOs.Post.CreatePostDto
+  commentId: T:Agora.API.DTOs.Post.CreatePostDto
+  parent: Agora.API.DTOs.Post
+  href: Agora.API.DTOs.Post.CreatePostDto.html
+  name: CreatePostDto
+  nameWithType: CreatePostDto
+  fullName: Agora.API.DTOs.Post.CreatePostDto
+- uid: Agora.API.DTOs.Post.PostDetailsDto
+  commentId: T:Agora.API.DTOs.Post.PostDetailsDto
+  href: Agora.API.DTOs.Post.PostDetailsDto.html
+  name: PostDetailsDto
+  nameWithType: PostDetailsDto
+  fullName: Agora.API.DTOs.Post.PostDetailsDto
+- uid: Agora.API.DTOs.Post.PostSummaryDto
+  commentId: T:Agora.API.DTOs.Post.PostSummaryDto
+  parent: Agora.API.DTOs.Post
+  href: Agora.API.DTOs.Post.PostSummaryDto.html
+  name: PostSummaryDto
+  nameWithType: PostSummaryDto
+  fullName: Agora.API.DTOs.Post.PostSummaryDto
+- uid: Agora.API.DTOs.Post.UpdatePostDetailsDto
+  commentId: T:Agora.API.DTOs.Post.UpdatePostDetailsDto
+  parent: Agora.API.DTOs.Post
+  href: Agora.API.DTOs.Post.UpdatePostDetailsDto.html
+  name: UpdatePostDetailsDto
+  nameWithType: UpdatePostDetailsDto
+  fullName: Agora.API.DTOs.Post.UpdatePostDetailsDto
+- uid: Agora.API.DTOs.Post
+  commentId: N:Agora.API.DTOs.Post
+  href: Agora.html
+  name: Agora.API.DTOs.Post
+  nameWithType: Agora.API.DTOs.Post
+  fullName: Agora.API.DTOs.Post
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Post
+    name: Post
+    href: Agora.API.DTOs.Post.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.Post
+    name: Post
+    href: Agora.API.DTOs.Post.html

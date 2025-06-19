@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IPostCategoryService | Agora </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IPostCategoryService | Agora ">
+      
+      <meta name="description" content="Defines business operations related to post categories, including retrieval and management of post category details.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Agora">
+            Agora
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService">
+
+
+
+  <h1 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService" class="text-break">
+Interface IPostCategoryService  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Agora.html">Agora</a>.<a class="xref" href="Agora.Core.html">Core</a>.<a class="xref" href="Agora.Core.Interfaces.html">Interfaces</a>.<a class="xref" href="Agora.Core.Interfaces.BusinessServices.html">BusinessServices</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Agora.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines business operations related to post categories,
+including retrieval and management of post category details.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IPostCategoryService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_CreatePostCategoryAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_CreatePostCategoryAsync_Agora_Core_Models_PostCategory_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.CreatePostCategoryAsync(Agora.Core.Models.PostCategory)">
+  CreatePostCategoryAsync(PostCategory)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <code>PostCategory</code> after validating authorization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;PostCategory&gt;&gt; CreatePostCategoryAsync(PostCategory postCategory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategory</code> <a class="xref" href="Agora.Core.Models.PostCategory.html">PostCategory</a></dt>
+    <dd><p>The <code>PostCategory</code> entity to create.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.PostCategory.html">PostCategory</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the created <code>PostCategory</code> if successful,
+or failure with relevant error details.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_DeletePostCategoryAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_DeletePostCategoryAsync_System_Int64_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.DeletePostCategoryAsync(System.Int64)">
+  DeletePostCategoryAsync(long)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delete a <code>PostCategory</code> after validating authorization and business rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; DeletePostCategoryAsync(long postCategoryId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategoryId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>PostCategory</code> to delete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if the <code>PostCategory</code> was successfully deleted,
+or failure with relevant error details if invalid or unauthorized.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetAllPostCategoriesAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetAllPostCategoriesAsync_Agora_Core_Interfaces_Filters_IPostCategoryFilter_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetAllPostCategoriesAsync(Agora.Core.Interfaces.Filters.IPostCategoryFilter)">
+  GetAllPostCategoriesAsync(IPostCategoryFilter)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves all <code>PostCategory</code>, possibly filtered and sorted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IReadOnlyList&lt;PostCategory&gt;&gt;&gt; GetAllPostCategoriesAsync(IPostCategoryFilter postCategoryFilter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategoryFilter</code> <a class="xref" href="Agora.Core.Interfaces.Filters.IPostCategoryFilter.html">IPostCategoryFilter</a></dt>
+    <dd><p>Filter criteria to apply on post categories.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Agora.Core.Models.PostCategory.html">PostCategory</a>&gt;&gt;&gt;</dt>
+    <dd><p>A successful Result wrapping a list of <code>PostCategory</code>, or failure if an error occurs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetPostCategoryByIdAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_GetPostCategoryByIdAsync_System_Int64_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.GetPostCategoryByIdAsync(System.Int64)">
+  GetPostCategoryByIdAsync(long)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a single <code>PostCategory</code> by its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;PostCategory&gt;&gt; GetPostCategoryByIdAsync(long postCategoryId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategoryId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The ID of the <code>PostCategory</code> to retrieve.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.PostCategory.html">PostCategory</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the <code>PostCategory</code> if found,
+failure with NotFound if missing.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_UpdatePostCategoryNameAsync_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync*"></a>
+
+  <h3 id="Agora_Core_Interfaces_BusinessServices_IPostCategoryService_UpdatePostCategoryNameAsync_System_Int64_System_String_" data-uid="Agora.Core.Interfaces.BusinessServices.IPostCategoryService.UpdatePostCategoryNameAsync(System.Int64,System.String)">
+  UpdatePostCategoryNameAsync(long, string)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates name of an existing <code>PostCategory</code> after validating authorization and business rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdatePostCategoryNameAsync(long postCategoryId, string newName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategoryId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>PostCategory</code> to update.</p>
+</dd>
+    <dt><code>newName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new name of the <code>PostCategory</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if update and save are successful,
+or failure with appropriate error messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/Interfaces/BusinessServices/IPostCategoryService.cs&amp;version=GB15-Transition-status-logic&amp;line=11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

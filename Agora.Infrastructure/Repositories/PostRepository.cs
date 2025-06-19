@@ -2,6 +2,7 @@
 using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.Filters;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,7 @@ namespace Agora.Infrastructure.Repositories;
 
 public class PostRepository(AgoraDbContext context) : IPostRepository
 {
-    public async Task<IReadOnlyList<Post>> GetAllPostsAsync(IPostFilter filter)
+    public async Task<IReadOnlyList<Post>> GetAllPostsAsync(PostFilter filter)
     {
         IQueryable<Post> posts = context.Posts.AsQueryable();
 
@@ -33,11 +34,16 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         {
             posts = posts.Where(p => p.Type == filterType);
         }
-        
-        if (!string.IsNullOrWhiteSpace(filter.StatusName) &&
-            Enum.TryParse<PostStatus>(filter.StatusName, true, out var filterStatus))
+
+        if (filter.StatusNames.Any(s => !string.IsNullOrWhiteSpace(s)))
         {
-            posts = posts.Where(p => p.Status == filterStatus);
+            List<PostStatus> parsedStatuses = filter.StatusNames
+                .Select(s => Enum.TryParse<PostStatus>(s, true, out var status) ? (PostStatus?) status : null)
+                .Where(e => e.HasValue)
+                .Select(e => e!.Value)
+                .ToList();
+
+            posts = posts.Where(p => parsedStatuses.Contains(p.Status));
         }
         
         if (!string.IsNullOrWhiteSpace(filter.PostCategoryName))
@@ -48,6 +54,11 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         if (!string.IsNullOrWhiteSpace(filter.UserName))
         {
             posts = posts.Where(p => p.Owner.UserName!.Contains(filter.UserName));
+        }
+        
+        if (!string.IsNullOrWhiteSpace(filter.UserId))
+        {
+            posts = posts.Where(p => p.OwnerUserId == filter.UserId);
         }
         
         posts = ApplySorting(posts, filter);
@@ -63,6 +74,12 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         return await context.Posts
             .Include(p => p.Owner)
             .Include(p => p.PostCategory)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.Buyer)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.Seller)
+            .Include(p=> p.Transactions)
+                .ThenInclude(t => t.TransactionStatus)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 
@@ -102,7 +119,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         return query;
     }
 
-    public async Task<bool> IsCategoryInUserAsync(long postCategoryId)
+    public async Task<bool> IsCategoryInUseAsync(long postCategoryId)
     {
         return await context.Posts.AnyAsync(p => p.PostCategoryId == postCategoryId);
     }

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TransactionService | Agora </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TransactionService | Agora ">
+      
+      <meta name="description" content="Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Agora">
+            Agora
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Agora.Core.BusinessServices.TransactionService">
+
+
+
+  <h1 id="Agora_Core_BusinessServices_TransactionService" data-uid="Agora.Core.BusinessServices.TransactionService" class="text-break">
+Class TransactionService  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Agora.html">Agora</a>.<a class="xref" href="Agora.Core.html">Core</a>.<a class="xref" href="Agora.Core.BusinessServices.html">BusinessServices</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Agora.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TransactionService : ITransactionService</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TransactionService</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Agora.Core.Interfaces.BusinessServices.ITransactionService.html">ITransactionService</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService__ctor_" data-uid="Agora.Core.BusinessServices.TransactionService.#ctor*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService__ctor_Agora_Core_Interfaces_Repositories_IPostRepository_Agora_Core_Interfaces_Repositories_ITransactionRepository_Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_Agora_Core_Interfaces_Repositories_IUserRepository_Agora_Core_BusinessRules_Interfaces_IAuthorizationBusinessRules_Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_" data-uid="Agora.Core.BusinessServices.TransactionService.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository,Agora.Core.Interfaces.Repositories.ITransactionStatusRepository,Agora.Core.Interfaces.Repositories.IUserRepository,Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules,Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator)">
+  TransactionService(IPostRepository, ITransactionRepository, ITransactionStatusRepository, IUserRepository, IAuthorizationBusinessRules, IBusinessRulesValidator)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TransactionService(IPostRepository postRepo, ITransactionRepository transactionRepo, ITransactionStatusRepository transactionStatusRepo, IUserRepository userRepo, IAuthorizationBusinessRules authorizationBusinessRules, IBusinessRulesValidator businessRulesValidator)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postRepo</code> <a class="xref" href="Agora.Core.Interfaces.Repositories.IPostRepository.html">IPostRepository</a></dt>
+    <dd></dd>
+    <dt><code>transactionRepo</code> <a class="xref" href="Agora.Core.Interfaces.Repositories.ITransactionRepository.html">ITransactionRepository</a></dt>
+    <dd></dd>
+    <dt><code>transactionStatusRepo</code> <a class="xref" href="Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html">ITransactionStatusRepository</a></dt>
+    <dd></dd>
+    <dt><code>userRepo</code> <a class="xref" href="Agora.Core.Interfaces.Repositories.IUserRepository.html">IUserRepository</a></dt>
+    <dd></dd>
+    <dt><code>authorizationBusinessRules</code> <a class="xref" href="Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html">IAuthorizationBusinessRules</a></dt>
+    <dd></dd>
+    <dt><code>businessRulesValidator</code> <a class="xref" href="Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html">IBusinessRulesValidator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService_ChangeTransactionStatusAsync_" data-uid="Agora.Core.BusinessServices.TransactionService.ChangeTransactionStatusAsync*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService_ChangeTransactionStatusAsync_System_Int64_Agora_Core_Common_UserContext_Agora_Core_Enums_TransactionStatusEnum_" data-uid="Agora.Core.BusinessServices.TransactionService.ChangeTransactionStatusAsync(System.Int64,Agora.Core.Common.UserContext,Agora.Core.Enums.TransactionStatusEnum)">
+  ChangeTransactionStatusAsync(long, UserContext, TransactionStatusEnum)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the status of an existing <code>Transaction</code> after authorization and validation of state transitions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Result&gt; ChangeTransactionStatusAsync(long transactionId, UserContext userContext, TransactionStatusEnum newStatus)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>Transaction</code> to update status for.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user performing the status change.</p>
+</dd>
+    <dt><code>newStatus</code> <a class="xref" href="Agora.Core.Enums.TransactionStatusEnum.html">TransactionStatusEnum</a></dt>
+    <dd><p>The new <code>Transaction</code> status to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if the status was changed and saved successfully,
+or failure with relevant error details if invalid or unauthorized.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService_CreateTransactionAsync_" data-uid="Agora.Core.BusinessServices.TransactionService.CreateTransactionAsync*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService_CreateTransactionAsync_Agora_Core_Models_Transaction_Agora_Core_Common_UserContext_" data-uid="Agora.Core.BusinessServices.TransactionService.CreateTransactionAsync(Agora.Core.Models.Transaction,Agora.Core.Common.UserContext)">
+  CreateTransactionAsync(Transaction, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <code>Transaction</code> after validating authorization and business rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Result&lt;Transaction&gt;&gt; CreateTransactionAsync(Transaction transaction, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transaction</code> <a class="xref" href="Agora.Core.Models.Transaction.html">Transaction</a></dt>
+    <dd><p>The <code>Transaction</code> entity to create.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user creating the <code>Transaction</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.Transaction.html">Transaction</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the created <code>Transaction</code> if successful,
+or failure with relevant error details.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService_GetAllVisibleTransactionsAsync_" data-uid="Agora.Core.BusinessServices.TransactionService.GetAllVisibleTransactionsAsync*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService_GetAllVisibleTransactionsAsync_Agora_Core_Interfaces_Filters_ITransactionFilter_Agora_Core_Common_UserContext_" data-uid="Agora.Core.BusinessServices.TransactionService.GetAllVisibleTransactionsAsync(Agora.Core.Interfaces.Filters.ITransactionFilter,Agora.Core.Common.UserContext)">
+  GetAllVisibleTransactionsAsync(ITransactionFilter, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves all <code>Transaction</code> visible to the user based on authorization rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Result&lt;IReadOnlyList&lt;Transaction&gt;&gt;&gt; GetAllVisibleTransactionsAsync(ITransactionFilter transactionFilter, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionFilter</code> <a class="xref" href="Agora.Core.Interfaces.Filters.ITransactionFilter.html">ITransactionFilter</a></dt>
+    <dd><p>Filter criteria to apply on transactions.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the current user requesting transactions.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Agora.Core.Models.Transaction.html">Transaction</a>&gt;&gt;&gt;</dt>
+    <dd><p>A successful Result wrapping a list of visible <code>Transaction</code>, or failure if an error occurs.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService_GetVisibleTransactionByIdAsync_" data-uid="Agora.Core.BusinessServices.TransactionService.GetVisibleTransactionByIdAsync*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService_GetVisibleTransactionByIdAsync_System_Int64_Agora_Core_Common_UserContext_" data-uid="Agora.Core.BusinessServices.TransactionService.GetVisibleTransactionByIdAsync(System.Int64,Agora.Core.Common.UserContext)">
+  GetVisibleTransactionByIdAsync(long, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a single <code>Transaction</code> by its ID if visible to the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Result&lt;Transaction&gt;&gt; GetVisibleTransactionByIdAsync(long transactionId, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The ID of the <code>Transaction</code> to retrieve.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the current user requesting the <code>Transaction</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result-1.html">Result</a>&lt;<a class="xref" href="Agora.Core.Models.Transaction.html">Transaction</a>&gt;&gt;</dt>
+    <dd><p>Success wrapping the <code>Transaction</code> if found and authorized,
+failure with NotFound if missing,
+or failure with Unauthorized if the user cannot view it.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Core_BusinessServices_TransactionService_UpdateTransactionDetailsAsync_" data-uid="Agora.Core.BusinessServices.TransactionService.UpdateTransactionDetailsAsync*"></a>
+
+  <h3 id="Agora_Core_BusinessServices_TransactionService_UpdateTransactionDetailsAsync_System_Int64_Agora_Core_Models_Requests_TransactionDetailsUpdate_Agora_Core_Common_UserContext_" data-uid="Agora.Core.BusinessServices.TransactionService.UpdateTransactionDetailsAsync(System.Int64,Agora.Core.Models.Requests.TransactionDetailsUpdate,Agora.Core.Common.UserContext)">
+  UpdateTransactionDetailsAsync(long, TransactionDetailsUpdate, UserContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates specified details of an existing <code>Transaction</code> after validating authorization and business rules.
+Only non-null values in <code class="paramref">newDetails</code> are applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Result&gt; UpdateTransactionDetailsAsync(long transactionId, TransactionDetailsUpdate newDetails, UserContext userContext)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>ID of the <code>Transaction</code> to update.</p>
+</dd>
+    <dt><code>newDetails</code> <a class="xref" href="Agora.Core.Models.Requests.TransactionDetailsUpdate.html">TransactionDetailsUpdate</a></dt>
+    <dd><p>The details to update.</p>
+</dd>
+    <dt><code>userContext</code> <a class="xref" href="Agora.Core.Common.UserContext.html">UserContext</a></dt>
+    <dd><p>Context of the user performing the update.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Common.Result.html">Result</a>&gt;</dt>
+    <dd><p>Success if update and save are successful,
+or failure with appropriate error messages.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Core/BusinessServices/TransactionService.cs&amp;version=GB15-Transition-status-logic&amp;line=13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

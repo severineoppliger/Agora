@@ -1,0 +1,783 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Common.Result`1
+  commentId: T:Agora.Core.Common.Result`1
+  id: Result`1
+  parent: Agora.Core.Common
+  children:
+  - Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String)
+  - Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String,`0)
+  - Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail})
+  - Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail},`0)
+  - Agora.Core.Common.Result`1.Success(`0)
+  - Agora.Core.Common.Result`1.Value
+  langs:
+  - csharp
+  - vb
+  name: Result<T>
+  nameWithType: Result<T>
+  fullName: Agora.Core.Common.Result<T>
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Result
+    path: Agora.Core/Common/Result.cs
+    startLine: 23
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: 'public class Result<T> : Result where T : class'
+    typeParameters:
+    - id: T
+    content.vb: Public Class Result(Of T As Class) Inherits Result
+  inheritance:
+  - System.Object
+  - Agora.Core.Common.Result
+  inheritedMembers:
+  - Agora.Core.Common.Result.IsSuccess
+  - Agora.Core.Common.Result.Errors
+  - Agora.Core.Common.Result.IsFailure
+  - Agora.Core.Common.Result.Success
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: Result(Of T)
+  fullName.vb: Agora.Core.Common.Result(Of T)
+  name.vb: Result(Of T)
+- uid: Agora.Core.Common.Result`1.Value
+  commentId: P:Agora.Core.Common.Result`1.Value
+  id: Value
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: Result<T>.Value
+  fullName: Agora.Core.Common.Result<T>.Value
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Value
+    path: Agora.Core/Common/Result.cs
+    startLine: 25
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public T? Value { get; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public ReadOnly Property Value As T
+  overload: Agora.Core.Common.Result`1.Value*
+  nameWithType.vb: Result(Of T).Value
+  fullName.vb: Agora.Core.Common.Result(Of T).Value
+- uid: Agora.Core.Common.Result`1.Success(`0)
+  commentId: M:Agora.Core.Common.Result`1.Success(`0)
+  id: Success(`0)
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Success(T)
+  nameWithType: Result<T>.Success(T)
+  fullName: Agora.Core.Common.Result<T>.Success(T)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Success
+    path: Agora.Core/Common/Result.cs
+    startLine: 33
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public static Result<T> Success(T value)
+    parameters:
+    - id: value
+      type: '{T}'
+    return:
+      type: Agora.Core.Common.Result`1
+    content.vb: Public Shared Function Success(value As T) As Result(Of T)
+  overload: Agora.Core.Common.Result`1.Success*
+  nameWithType.vb: Result(Of T).Success(T)
+  fullName.vb: Agora.Core.Common.Result(Of T).Success(T)
+- uid: Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String,`0)
+  commentId: M:Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String,`0)
+  id: Failure(Agora.Core.Enums.ErrorType,System.String,`0)
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Failure(ErrorType, string, T?)
+  nameWithType: Result<T>.Failure(ErrorType, string, T?)
+  fullName: Agora.Core.Common.Result<T>.Failure(Agora.Core.Enums.ErrorType, string, T?)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Failure
+    path: Agora.Core/Common/Result.cs
+    startLine: 34
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public static Result<T> Failure(ErrorType errorType, string errorMsg, T? value)
+    parameters:
+    - id: errorType
+      type: Agora.Core.Enums.ErrorType
+    - id: errorMsg
+      type: System.String
+    - id: value
+      type: '{T}'
+    return:
+      type: Agora.Core.Common.Result`1
+    content.vb: Public Shared Function Failure(errorType As ErrorType, errorMsg As String, value As T) As Result(Of T)
+  overload: Agora.Core.Common.Result`1.Failure*
+  nameWithType.vb: Result(Of T).Failure(ErrorType, String, T)
+  fullName.vb: Agora.Core.Common.Result(Of T).Failure(Agora.Core.Enums.ErrorType, String, T)
+  name.vb: Failure(ErrorType, String, T)
+- uid: Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail},`0)
+  commentId: M:Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail},`0)
+  id: Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail},`0)
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Failure(List<ErrorDetail>, T?)
+  nameWithType: Result<T>.Failure(List<ErrorDetail>, T?)
+  fullName: Agora.Core.Common.Result<T>.Failure(System.Collections.Generic.List<Agora.Core.Common.ErrorDetail>, T?)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Failure
+    path: Agora.Core/Common/Result.cs
+    startLine: 36
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public static Result<T> Failure(List<ErrorDetail> errors, T? value)
+    parameters:
+    - id: errors
+      type: System.Collections.Generic.List{Agora.Core.Common.ErrorDetail}
+    - id: value
+      type: '{T}'
+    return:
+      type: Agora.Core.Common.Result`1
+    content.vb: Public Shared Function Failure(errors As List(Of ErrorDetail), value As T) As Result(Of T)
+  overload: Agora.Core.Common.Result`1.Failure*
+  nameWithType.vb: Result(Of T).Failure(List(Of ErrorDetail), T)
+  fullName.vb: Agora.Core.Common.Result(Of T).Failure(System.Collections.Generic.List(Of Agora.Core.Common.ErrorDetail), T)
+  name.vb: Failure(List(Of ErrorDetail), T)
+- uid: Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String)
+  commentId: M:Agora.Core.Common.Result`1.Failure(Agora.Core.Enums.ErrorType,System.String)
+  id: Failure(Agora.Core.Enums.ErrorType,System.String)
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Failure(ErrorType, string)
+  nameWithType: Result<T>.Failure(ErrorType, string)
+  fullName: Agora.Core.Common.Result<T>.Failure(Agora.Core.Enums.ErrorType, string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Failure
+    path: Agora.Core/Common/Result.cs
+    startLine: 37
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public static Result<T> Failure(ErrorType errorType, string errorMsg)
+    parameters:
+    - id: errorType
+      type: Agora.Core.Enums.ErrorType
+    - id: errorMsg
+      type: System.String
+    return:
+      type: Agora.Core.Common.Result`1
+    content.vb: Public Shared Function Failure(errorType As ErrorType, errorMsg As String) As Result(Of T)
+  overload: Agora.Core.Common.Result`1.Failure*
+  nameWithType.vb: Result(Of T).Failure(ErrorType, String)
+  fullName.vb: Agora.Core.Common.Result(Of T).Failure(Agora.Core.Enums.ErrorType, String)
+  name.vb: Failure(ErrorType, String)
+- uid: Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail})
+  commentId: M:Agora.Core.Common.Result`1.Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail})
+  id: Failure(System.Collections.Generic.List{Agora.Core.Common.ErrorDetail})
+  parent: Agora.Core.Common.Result`1
+  langs:
+  - csharp
+  - vb
+  name: Failure(List<ErrorDetail>)
+  nameWithType: Result<T>.Failure(List<ErrorDetail>)
+  fullName: Agora.Core.Common.Result<T>.Failure(System.Collections.Generic.List<Agora.Core.Common.ErrorDetail>)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Common/Result.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Failure
+    path: Agora.Core/Common/Result.cs
+    startLine: 38
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Common
+  syntax:
+    content: public static Result<T> Failure(List<ErrorDetail> errors)
+    parameters:
+    - id: errors
+      type: System.Collections.Generic.List{Agora.Core.Common.ErrorDetail}
+    return:
+      type: Agora.Core.Common.Result`1
+    content.vb: Public Shared Function Failure(errors As List(Of ErrorDetail)) As Result(Of T)
+  overload: Agora.Core.Common.Result`1.Failure*
+  nameWithType.vb: Result(Of T).Failure(List(Of ErrorDetail))
+  fullName.vb: Agora.Core.Common.Result(Of T).Failure(System.Collections.Generic.List(Of Agora.Core.Common.ErrorDetail))
+  name.vb: Failure(List(Of ErrorDetail))
+references:
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Agora.Core.Common.Result
+  commentId: T:Agora.Core.Common.Result
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result.html
+  name: Result
+  nameWithType: Result
+  fullName: Agora.Core.Common.Result
+- uid: Agora.Core.Common.Result.IsSuccess
+  commentId: P:Agora.Core.Common.Result.IsSuccess
+  parent: Agora.Core.Common.Result
+  href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_IsSuccess
+  name: IsSuccess
+  nameWithType: Result.IsSuccess
+  fullName: Agora.Core.Common.Result.IsSuccess
+- uid: Agora.Core.Common.Result.Errors
+  commentId: P:Agora.Core.Common.Result.Errors
+  parent: Agora.Core.Common.Result
+  href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_Errors
+  name: Errors
+  nameWithType: Result.Errors
+  fullName: Agora.Core.Common.Result.Errors
+- uid: Agora.Core.Common.Result.IsFailure
+  commentId: P:Agora.Core.Common.Result.IsFailure
+  parent: Agora.Core.Common.Result
+  href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_IsFailure
+  name: IsFailure
+  nameWithType: Result.IsFailure
+  fullName: Agora.Core.Common.Result.IsFailure
+- uid: Agora.Core.Common.Result.Success
+  commentId: M:Agora.Core.Common.Result.Success
+  parent: Agora.Core.Common.Result
+  href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_Success
+  name: Success()
+  nameWithType: Result.Success()
+  fullName: Agora.Core.Common.Result.Success()
+  spec.csharp:
+  - uid: Agora.Core.Common.Result.Success
+    name: Success
+    href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_Success
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.Common.Result.Success
+    name: Success
+    href: Agora.Core.Common.Result.html#Agora_Core_Common_Result_Success
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Common.Result`1.Value*
+  commentId: Overload:Agora.Core.Common.Result`1.Value
+  href: Agora.Core.Common.Result-1.html#Agora_Core_Common_Result_1_Value
+  name: Value
+  nameWithType: Result<T>.Value
+  fullName: Agora.Core.Common.Result<T>.Value
+  nameWithType.vb: Result(Of T).Value
+  fullName.vb: Agora.Core.Common.Result(Of T).Value
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Agora.Core.Common.Result`1.Success*
+  commentId: Overload:Agora.Core.Common.Result`1.Success
+  href: Agora.Core.Common.Result-1.html#Agora_Core_Common_Result_1_Success__0_
+  name: Success
+  nameWithType: Result<T>.Success
+  fullName: Agora.Core.Common.Result<T>.Success
+  nameWithType.vb: Result(Of T).Success
+  fullName.vb: Agora.Core.Common.Result(Of T).Success
+- uid: Agora.Core.Common.Result`1
+  commentId: T:Agora.Core.Common.Result`1
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result-1.html
+  name: Result<T>
+  nameWithType: Result<T>
+  fullName: Agora.Core.Common.Result<T>
+  nameWithType.vb: Result(Of T)
+  fullName.vb: Agora.Core.Common.Result(Of T)
+  name.vb: Result(Of T)
+  spec.csharp:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.Core.Common.Result`1.Failure*
+  commentId: Overload:Agora.Core.Common.Result`1.Failure
+  href: Agora.Core.Common.Result-1.html#Agora_Core_Common_Result_1_Failure_Agora_Core_Enums_ErrorType_System_String__0_
+  name: Failure
+  nameWithType: Result<T>.Failure
+  fullName: Agora.Core.Common.Result<T>.Failure
+  nameWithType.vb: Result(Of T).Failure
+  fullName.vb: Agora.Core.Common.Result(Of T).Failure
+- uid: Agora.Core.Enums.ErrorType
+  commentId: T:Agora.Core.Enums.ErrorType
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.ErrorType.html
+  name: ErrorType
+  nameWithType: ErrorType
+  fullName: Agora.Core.Enums.ErrorType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: System.Collections.Generic.List{Agora.Core.Common.ErrorDetail}
+  commentId: T:System.Collections.Generic.List{Agora.Core.Common.ErrorDetail}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ErrorDetail>
+  nameWithType: List<ErrorDetail>
+  fullName: System.Collections.Generic.List<Agora.Core.Common.ErrorDetail>
+  nameWithType.vb: List(Of ErrorDetail)
+  fullName.vb: System.Collections.Generic.List(Of Agora.Core.Common.ErrorDetail)
+  name.vb: List(Of ErrorDetail)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Agora.Core.Common.ErrorDetail
+    name: ErrorDetail
+    href: Agora.Core.Common.ErrorDetail.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.ErrorDetail
+    name: ErrorDetail
+    href: Agora.Core.Common.ErrorDetail.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

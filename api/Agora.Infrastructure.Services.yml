@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Infrastructure.Services
+  commentId: N:Agora.Infrastructure.Services
+  id: Agora.Infrastructure.Services
+  children:
+  - Agora.Infrastructure.Services.AuthService
+  - Agora.Infrastructure.Services.UserContextService
+  langs:
+  - csharp
+  - vb
+  name: Agora.Infrastructure.Services
+  nameWithType: Agora.Infrastructure.Services
+  fullName: Agora.Infrastructure.Services
+  type: Namespace
+  assemblies:
+  - Agora.Infrastructure
+references:
+- uid: Agora.Infrastructure.Services.AuthService
+  commentId: T:Agora.Infrastructure.Services.AuthService
+  href: Agora.Infrastructure.Services.AuthService.html
+  name: AuthService
+  nameWithType: AuthService
+  fullName: Agora.Infrastructure.Services.AuthService
+- uid: Agora.Infrastructure.Services.UserContextService
+  commentId: T:Agora.Infrastructure.Services.UserContextService
+  href: Agora.Infrastructure.Services.UserContextService.html
+  name: UserContextService
+  nameWithType: UserContextService
+  fullName: Agora.Infrastructure.Services.UserContextService

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Data;
 
-public class AgoraDbContextSeed()
+public static class AgoraDbContextSeed
 {
     // Static seeding, inserted at migration
     #region staticSeeding
@@ -33,41 +33,52 @@ public class AgoraDbContextSeed()
                 Id = 1, Name = "En attente",
                 Description =
                     "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
-                IsFinal = false, IsSuccess = false
+                IsFinal = false, 
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.Pending
             },
             new TransactionStatus
             {
                 Id = 2, Name = "Acceptée",
                 Description =
                     "La demande d'échange a été acceptée par l'autre utilisateur. La transaction peut avoir lieu.",
-                IsFinal = false, IsSuccess = false
+                IsFinal = false, 
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.Accepted
             },
             new TransactionStatus
             {
                 Id = 3, Name = "Refusée",
                 Description =
                     "La demande d'échange a été refusée par l'autre utilisateur. La transaction n'aura donc pas lieu.",
-                IsFinal = true, IsSuccess = false
+                IsFinal = true,
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.Refused
             },
             new TransactionStatus
             {
                 Id = 4, Name = "Annulée",
                 Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.", 
                 IsFinal = true,
-                IsSuccess = false
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.Cancelled
             },
             new TransactionStatus
             {
                 Id = 5, Name = "Échouée",
                 Description = "Le service n'a pas pu être réalisé, malgré la confirmation de la demande d'échange.",
-                IsFinal = true, IsSuccess = false
+                IsFinal = true, 
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.Failed
             },
             new TransactionStatus
             {
                 Id = 6, Name = "Partiellement validée",
                 Description =
                     "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
-                IsFinal = false, IsSuccess = false
+                IsFinal = false,
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.PartiallyValidated
             },
             new TransactionStatus
             {
@@ -76,25 +87,33 @@ public class AgoraDbContextSeed()
                     "Le service a été réalisé et la transaction a été validée soit par les deux parties," +
                     "soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé" +
                     "(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
-                IsFinal = true, IsSuccess = true
+                IsFinal = true, 
+                IsSuccess = true,
+                EnumValue = TransactionStatusEnum.Completed
             },
             new TransactionStatus
             {
                 Id = 8, Name = "En litige",
                 Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
-                IsFinal = false, IsSuccess = false
+                IsFinal = false, 
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.InDispute
             },
             new TransactionStatus
             {
                 Id = 9, Name = "Résolue et acceptée",
                 Description = "La résolution du litige s'est soldé par la validation de la transaction.",
-                IsFinal = true, IsSuccess = true
+                IsFinal = true,
+                IsSuccess = true,
+                EnumValue = TransactionStatusEnum.ResolvedAccepted
             },
             new TransactionStatus
             {
                 Id = 10, Name = "Résolue et annulée",
-                Description = "La résolution du litige s'est soldé par l'annulation de la transaction.", IsFinal = true,
-                IsSuccess = false
+                Description = "La résolution du litige s'est soldé par l'annulation de la transaction.", 
+                IsFinal = true,
+                IsSuccess = false,
+                EnumValue = TransactionStatusEnum.ResolvedCancelled
             }
         );
     }
@@ -116,7 +135,7 @@ public class AgoraDbContextSeed()
         }
     }
 
-    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<AppUser> userManager)
+    public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<User> userManager)
     {
         if (!context.Users.Any())
         {
@@ -132,13 +151,13 @@ public class AgoraDbContextSeed()
         }
     }
 
-    private static async Task SeedUsers(UserManager<AppUser> userManager)
+    private static async Task SeedUsers(UserManager<User> userManager)
     {
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
         {
             ("00000000-0000-0000-0000-000000000001", "admin", "admin@test.ch", "Admin1234$", 100, true),
-            ("00000000-0000-0000-0000-000000000002", "test1", "test1@test.ch", "Test1234!", 200, false),
-            ("00000000-0000-0000-0000-000000000003", "test2", "test2@test.ch", "Test2345!", 300, false),
+            ("00000000-0000-0000-0000-000000000002", "testmember1", "testmember1@test.ch", "Test1234!", 200, false),
+            ("00000000-0000-0000-0000-000000000003", "testmember2", "testmember2@test.ch", "Test2345!", 300, false),
         };
 
         foreach (var (id, userName, email, password, credit, isAdmin) in users)
@@ -152,7 +171,7 @@ public class AgoraDbContextSeed()
             if (await userManager.FindByIdAsync(id) != null)
                 continue;
 
-            var user = new AppUser
+            var user = new User
             {
                 Id = id,
                 UserName = userName,
@@ -188,10 +207,10 @@ public class AgoraDbContextSeed()
                     Description = "Offre pour un cours d'appui - Annonce avec transaction en cours",
                     Price = 10,
                     Type = PostType.Offer,
-                    Status = PostStatus.InTransactionActive,
+                    Status = PostStatus.Active,
                     PostCategoryId = 1,
                     OwnerUserId = "00000000-0000-0000-0000-000000000001",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 },
                 new Post
                 {
@@ -202,7 +221,7 @@ public class AgoraDbContextSeed()
                     Status = PostStatus.Inactive,
                     PostCategoryId = 2,
                     OwnerUserId = "00000000-0000-0000-0000-000000000002",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 },
                 new Post
                 {
@@ -213,7 +232,7 @@ public class AgoraDbContextSeed()
                     Status = PostStatus.Active,
                     PostCategoryId = 3,
                     OwnerUserId = "00000000-0000-0000-0000-000000000003",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 }
 
             ];
@@ -235,9 +254,12 @@ public class AgoraDbContextSeed()
                     Price = 10,
                     PostId = 1,
                     TransactionStatusId = 1,
+                    InitiatorId = "00000000-0000-0000-0000-000000000002",
                     BuyerId = "00000000-0000-0000-0000-000000000002",
+                    BuyerConfirmed = false,
                     SellerId = "00000000-0000-0000-0000-000000000001",
-                    CreatedAt = DateTime.Now
+                    SellerConfirmed = false,
+                    CreatedAt = DateTime.UtcNow
                 }
             ];
 

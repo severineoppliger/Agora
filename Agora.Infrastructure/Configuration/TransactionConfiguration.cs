@@ -34,6 +34,13 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
             .WithMany(t => t.Transactions)
             .HasForeignKey(t => t.TransactionStatusId);
 
+        builder.Property(t => t.InitiatorId)
+            .IsRequired();
+        
+        builder.HasOne(t => t.Initiator)
+            .WithMany()
+            .HasForeignKey(t => t.InitiatorId);
+        
         builder.HasOne(t => t.Buyer)
             .WithMany(u => u.TransactionsAsBuyer)
             .HasForeignKey(t => t.BuyerId);
@@ -42,9 +49,19 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
             .WithMany(u => u.TransactionsAsSeller)
             .HasForeignKey(t => t.SellerId);
         
+        builder.Property(t => t.BuyerConfirmed)
+            .IsRequired()
+            .HasDefaultValue(false);
+
+        builder.Property(t => t.SellerConfirmed)
+            .IsRequired()
+            .HasDefaultValue(false);
+        
         builder.Property(t => t.CreatedAt)
             .IsRequired()
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        
+        builder.Property(p => p.UpdatedAt);
         
         builder.Property(t => t.TransactionDate)
             .HasColumnType("date");

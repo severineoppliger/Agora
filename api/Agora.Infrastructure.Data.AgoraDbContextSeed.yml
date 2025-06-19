@@ -1,0 +1,601 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed
+  commentId: T:Agora.Infrastructure.Data.AgoraDbContextSeed
+  id: AgoraDbContextSeed
+  parent: Agora.Infrastructure.Data
+  children:
+  - Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext,Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User})
+  - Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})
+  langs:
+  - csharp
+  - vb
+  name: AgoraDbContextSeed
+  nameWithType: AgoraDbContextSeed
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed
+  type: Class
+  source:
+    remote:
+      path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: AgoraDbContextSeed
+    path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+    startLine: 9
+  assemblies:
+  - Agora.Infrastructure
+  namespace: Agora.Infrastructure.Data
+  syntax:
+    content: public static class AgoraDbContextSeed
+    content.vb: Public Module AgoraDbContextSeed
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})
+  commentId: M:Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})
+  id: SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})
+  parent: Agora.Infrastructure.Data.AgoraDbContextSeed
+  langs:
+  - csharp
+  - vb
+  name: SeedRolesAsync(RoleManager<IdentityRole>)
+  nameWithType: AgoraDbContextSeed.SeedRolesAsync(RoleManager<IdentityRole>)
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager<Microsoft.AspNetCore.Identity.IdentityRole>)
+  type: Method
+  source:
+    remote:
+      path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SeedRolesAsync
+    path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+    startLine: 125
+  assemblies:
+  - Agora.Infrastructure
+  namespace: Agora.Infrastructure.Data
+  syntax:
+    content: public static Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+    parameters:
+    - id: roleManager
+      type: Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Shared Function SeedRolesAsync(roleManager As RoleManager(Of IdentityRole)) As Task
+  overload: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync*
+  nameWithType.vb: AgoraDbContextSeed.SeedRolesAsync(RoleManager(Of IdentityRole))
+  fullName.vb: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync(Microsoft.AspNetCore.Identity.RoleManager(Of Microsoft.AspNetCore.Identity.IdentityRole))
+  name.vb: SeedRolesAsync(RoleManager(Of IdentityRole))
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext,Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User})
+  commentId: M:Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext,Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User})
+  id: SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext,Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User})
+  parent: Agora.Infrastructure.Data.AgoraDbContextSeed
+  langs:
+  - csharp
+  - vb
+  name: SeedDevelopmentDataAsync(AgoraDbContext, UserManager<User>)
+  nameWithType: AgoraDbContextSeed.SeedDevelopmentDataAsync(AgoraDbContext, UserManager<User>)
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext, Microsoft.AspNetCore.Identity.UserManager<Agora.Core.Models.User>)
+  type: Method
+  source:
+    remote:
+      path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SeedDevelopmentDataAsync
+    path: Agora.Infrastructure/Data/AgoraDbContextSeed.cs
+    startLine: 137
+  assemblies:
+  - Agora.Infrastructure
+  namespace: Agora.Infrastructure.Data
+  syntax:
+    content: public static Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<User> userManager)
+    parameters:
+    - id: context
+      type: Agora.Infrastructure.Data.AgoraDbContext
+    - id: userManager
+      type: Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Shared Function SeedDevelopmentDataAsync(context As AgoraDbContext, userManager As UserManager(Of User)) As Task
+  overload: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync*
+  nameWithType.vb: AgoraDbContextSeed.SeedDevelopmentDataAsync(AgoraDbContext, UserManager(Of User))
+  fullName.vb: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync(Agora.Infrastructure.Data.AgoraDbContext, Microsoft.AspNetCore.Identity.UserManager(Of Agora.Core.Models.User))
+  name.vb: SeedDevelopmentDataAsync(AgoraDbContext, UserManager(Of User))
+references:
+- uid: Agora.Infrastructure.Data
+  commentId: N:Agora.Infrastructure.Data
+  href: Agora.html
+  name: Agora.Infrastructure.Data
+  nameWithType: Agora.Infrastructure.Data
+  fullName: Agora.Infrastructure.Data
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Infrastructure
+    name: Infrastructure
+    href: Agora.Infrastructure.html
+  - name: .
+  - uid: Agora.Infrastructure.Data
+    name: Data
+    href: Agora.Infrastructure.Data.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Infrastructure
+    name: Infrastructure
+    href: Agora.Infrastructure.html
+  - name: .
+  - uid: Agora.Infrastructure.Data
+    name: Data
+    href: Agora.Infrastructure.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync*
+  commentId: Overload:Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync
+  href: Agora.Infrastructure.Data.AgoraDbContextSeed.html#Agora_Infrastructure_Data_AgoraDbContextSeed_SeedRolesAsync_Microsoft_AspNetCore_Identity_RoleManager_Microsoft_AspNetCore_Identity_IdentityRole__
+  name: SeedRolesAsync
+  nameWithType: AgoraDbContextSeed.SeedRolesAsync
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedRolesAsync
+- uid: Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole}
+  commentId: T:Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole}
+  parent: Microsoft.AspNetCore.Identity
+  definition: Microsoft.AspNetCore.Identity.RoleManager`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  name: RoleManager<IdentityRole>
+  nameWithType: RoleManager<IdentityRole>
+  fullName: Microsoft.AspNetCore.Identity.RoleManager<Microsoft.AspNetCore.Identity.IdentityRole>
+  nameWithType.vb: RoleManager(Of IdentityRole)
+  fullName.vb: Microsoft.AspNetCore.Identity.RoleManager(Of Microsoft.AspNetCore.Identity.IdentityRole)
+  name.vb: RoleManager(Of IdentityRole)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.RoleManager`1
+    name: RoleManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  - name: <
+  - uid: Microsoft.AspNetCore.Identity.IdentityRole
+    name: IdentityRole
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.identityrole
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.RoleManager`1
+    name: RoleManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.AspNetCore.Identity.IdentityRole
+    name: IdentityRole
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.identityrole
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Microsoft.AspNetCore.Identity.RoleManager`1
+  commentId: T:Microsoft.AspNetCore.Identity.RoleManager`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  name: RoleManager<TRole>
+  nameWithType: RoleManager<TRole>
+  fullName: Microsoft.AspNetCore.Identity.RoleManager<TRole>
+  nameWithType.vb: RoleManager(Of TRole)
+  fullName.vb: Microsoft.AspNetCore.Identity.RoleManager(Of TRole)
+  name.vb: RoleManager(Of TRole)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.RoleManager`1
+    name: RoleManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  - name: <
+  - name: TRole
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.RoleManager`1
+    name: RoleManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.rolemanager-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TRole
+  - name: )
+- uid: Microsoft.AspNetCore.Identity
+  commentId: N:Microsoft.AspNetCore.Identity
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Identity
+  nameWithType: Microsoft.AspNetCore.Identity
+  fullName: Microsoft.AspNetCore.Identity
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Identity
+    name: Identity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Identity
+    name: Identity
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync*
+  commentId: Overload:Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync
+  href: Agora.Infrastructure.Data.AgoraDbContextSeed.html#Agora_Infrastructure_Data_AgoraDbContextSeed_SeedDevelopmentDataAsync_Agora_Infrastructure_Data_AgoraDbContext_Microsoft_AspNetCore_Identity_UserManager_Agora_Core_Models_User__
+  name: SeedDevelopmentDataAsync
+  nameWithType: AgoraDbContextSeed.SeedDevelopmentDataAsync
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed.SeedDevelopmentDataAsync
+- uid: Agora.Infrastructure.Data.AgoraDbContext
+  commentId: T:Agora.Infrastructure.Data.AgoraDbContext
+  parent: Agora.Infrastructure.Data
+  href: Agora.Infrastructure.Data.AgoraDbContext.html
+  name: AgoraDbContext
+  nameWithType: AgoraDbContext
+  fullName: Agora.Infrastructure.Data.AgoraDbContext
+- uid: Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User}
+  commentId: T:Microsoft.AspNetCore.Identity.UserManager{Agora.Core.Models.User}
+  parent: Microsoft.AspNetCore.Identity
+  definition: Microsoft.AspNetCore.Identity.UserManager`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  name: UserManager<User>
+  nameWithType: UserManager<User>
+  fullName: Microsoft.AspNetCore.Identity.UserManager<Agora.Core.Models.User>
+  nameWithType.vb: UserManager(Of User)
+  fullName.vb: Microsoft.AspNetCore.Identity.UserManager(Of Agora.Core.Models.User)
+  name.vb: UserManager(Of User)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.UserManager`1
+    name: UserManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.UserManager`1
+    name: UserManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+  - name: )
+- uid: Microsoft.AspNetCore.Identity.UserManager`1
+  commentId: T:Microsoft.AspNetCore.Identity.UserManager`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  name: UserManager<TUser>
+  nameWithType: UserManager<TUser>
+  fullName: Microsoft.AspNetCore.Identity.UserManager<TUser>
+  nameWithType.vb: UserManager(Of TUser)
+  fullName.vb: Microsoft.AspNetCore.Identity.UserManager(Of TUser)
+  name.vb: UserManager(Of TUser)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Identity.UserManager`1
+    name: UserManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  - name: <
+  - name: TUser
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Identity.UserManager`1
+    name: UserManager
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.identity.usermanager-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TUser
+  - name: )

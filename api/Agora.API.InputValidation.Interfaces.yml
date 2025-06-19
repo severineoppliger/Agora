@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.InputValidation.Interfaces
+  commentId: N:Agora.API.InputValidation.Interfaces
+  id: Agora.API.InputValidation.Interfaces
+  children:
+  - Agora.API.InputValidation.Interfaces.IInputValidator
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.InputValidation.Interfaces
+  nameWithType: Agora.API.InputValidation.Interfaces
+  fullName: Agora.API.InputValidation.Interfaces
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.InputValidation.Interfaces.IInputValidator
+  commentId: T:Agora.API.InputValidation.Interfaces.IInputValidator
+  parent: Agora.API.InputValidation.Interfaces
+  href: Agora.API.InputValidation.Interfaces.IInputValidator.html
+  name: IInputValidator
+  nameWithType: IInputValidator
+  fullName: Agora.API.InputValidation.Interfaces.IInputValidator
+- uid: Agora.API.InputValidation.Interfaces
+  commentId: N:Agora.API.InputValidation.Interfaces
+  href: Agora.html
+  name: Agora.API.InputValidation.Interfaces
+  nameWithType: Agora.API.InputValidation.Interfaces
+  fullName: Agora.API.InputValidation.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+  - name: .
+  - uid: Agora.API.InputValidation.Interfaces
+    name: Interfaces
+    href: Agora.API.InputValidation.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.InputValidation
+    name: InputValidation
+    href: Agora.API.InputValidation.html
+  - name: .
+  - uid: Agora.API.InputValidation.Interfaces
+    name: Interfaces
+    href: Agora.API.InputValidation.Interfaces.html

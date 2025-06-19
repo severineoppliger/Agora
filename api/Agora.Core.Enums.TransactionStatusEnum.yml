@@ -1,0 +1,336 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums.TransactionStatusEnum
+  commentId: T:Agora.Core.Enums.TransactionStatusEnum
+  id: TransactionStatusEnum
+  parent: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.TransactionStatusEnum.Accepted
+  - Agora.Core.Enums.TransactionStatusEnum.Cancelled
+  - Agora.Core.Enums.TransactionStatusEnum.Completed
+  - Agora.Core.Enums.TransactionStatusEnum.Failed
+  - Agora.Core.Enums.TransactionStatusEnum.InDispute
+  - Agora.Core.Enums.TransactionStatusEnum.PartiallyValidated
+  - Agora.Core.Enums.TransactionStatusEnum.Pending
+  - Agora.Core.Enums.TransactionStatusEnum.Refused
+  - Agora.Core.Enums.TransactionStatusEnum.ResolvedAccepted
+  - Agora.Core.Enums.TransactionStatusEnum.ResolvedCancelled
+  langs:
+  - csharp
+  - vb
+  name: TransactionStatusEnum
+  nameWithType: TransactionStatusEnum
+  fullName: Agora.Core.Enums.TransactionStatusEnum
+  type: Enum
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionStatusEnum
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 2
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: public enum TransactionStatusEnum
+    content.vb: Public Enum TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Pending
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Pending
+  id: Pending
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Pending
+  nameWithType: TransactionStatusEnum.Pending
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Pending
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Pending
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Pending = 1
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Cancelled
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Cancelled
+  id: Cancelled
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: TransactionStatusEnum.Cancelled
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Cancelled
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Cancelled
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Cancelled = 2
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Accepted
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Accepted
+  id: Accepted
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Accepted
+  nameWithType: TransactionStatusEnum.Accepted
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Accepted
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Accepted
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Accepted = 3
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Refused
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Refused
+  id: Refused
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Refused
+  nameWithType: TransactionStatusEnum.Refused
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Refused
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Refused
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Refused = 4
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Failed
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Failed
+  id: Failed
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: TransactionStatusEnum.Failed
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Failed
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Failed
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Failed = 5
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.PartiallyValidated
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.PartiallyValidated
+  id: PartiallyValidated
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: PartiallyValidated
+  nameWithType: TransactionStatusEnum.PartiallyValidated
+  fullName: Agora.Core.Enums.TransactionStatusEnum.PartiallyValidated
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PartiallyValidated
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: PartiallyValidated = 6
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.Completed
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.Completed
+  id: Completed
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: TransactionStatusEnum.Completed
+  fullName: Agora.Core.Enums.TransactionStatusEnum.Completed
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Completed
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Completed = 7
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.InDispute
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.InDispute
+  id: InDispute
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: InDispute
+  nameWithType: TransactionStatusEnum.InDispute
+  fullName: Agora.Core.Enums.TransactionStatusEnum.InDispute
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: InDispute
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: InDispute = 8
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.ResolvedAccepted
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.ResolvedAccepted
+  id: ResolvedAccepted
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: ResolvedAccepted
+  nameWithType: TransactionStatusEnum.ResolvedAccepted
+  fullName: Agora.Core.Enums.TransactionStatusEnum.ResolvedAccepted
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ResolvedAccepted
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: ResolvedAccepted = 9
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums.TransactionStatusEnum.ResolvedCancelled
+  commentId: F:Agora.Core.Enums.TransactionStatusEnum.ResolvedCancelled
+  id: ResolvedCancelled
+  parent: Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: ResolvedCancelled
+  nameWithType: TransactionStatusEnum.ResolvedCancelled
+  fullName: Agora.Core.Enums.TransactionStatusEnum.ResolvedCancelled
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/TransactionStatusEnum.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ResolvedCancelled
+    path: Agora.Core/Enums/TransactionStatusEnum.cs
+    startLine: 13
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: ResolvedCancelled = 10
+    return:
+      type: Agora.Core.Enums.TransactionStatusEnum
+references:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Enums.TransactionStatusEnum
+  commentId: T:Agora.Core.Enums.TransactionStatusEnum
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.TransactionStatusEnum.html
+  name: TransactionStatusEnum
+  nameWithType: TransactionStatusEnum
+  fullName: Agora.Core.Enums.TransactionStatusEnum

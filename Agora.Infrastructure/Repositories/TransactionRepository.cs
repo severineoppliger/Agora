@@ -8,15 +8,9 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
-    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter, string? userId = null)
+    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter)
     {
         IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
-
-        // A not null userId means the user is not an admin and can only access its own transactions
-        if (!string.IsNullOrEmpty(userId))
-        {
-            transactions = transactions.Where(t => t.BuyerId == userId || t.SellerId == userId);
-        }
 
         if (filter.MinPrice.HasValue)
         {
@@ -59,6 +53,7 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             .Include(t => t.Post)
                 .ThenInclude(post => post!.PostCategory)
             .Include(t => t.TransactionStatus)
+            .Include(t=> t.Initiator)
             .Include(t => t.Buyer)
             .Include(t => t.Seller)
             .FirstOrDefaultAsync(t => t.Id == id);
@@ -67,11 +62,6 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
     public void AddTransaction(Transaction transaction)
     {
         context.Transactions.Add(transaction);
-    }
-
-    public void DeleteTransaction(Transaction transaction)
-    {
-        context.Transactions.Remove(transaction);
     }
 
     public async Task<bool> SaveChangesAsync()
@@ -96,5 +86,10 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
     public async Task<bool> IsPostInTransactionAsync(long postId)
     {
         return await context.Transactions.AnyAsync(t => t.PostId == postId);
+    }
+    
+    public async Task<bool> IsPostInOnGoingTransactionAsync(long postId)
+    {
+        return await context.Transactions.AnyAsync(t => t.PostId == postId && !t.TransactionStatus!.IsFinal);
     }
 }

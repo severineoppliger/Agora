@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.Settings
+  commentId: N:Agora.API.Settings
+  id: Agora.API.Settings
+  children:
+  - Agora.API.Settings.UserSettings
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.Settings
+  nameWithType: Agora.API.Settings
+  fullName: Agora.API.Settings
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.API.Settings.UserSettings
+  commentId: T:Agora.API.Settings.UserSettings
+  href: Agora.API.Settings.UserSettings.html
+  name: UserSettings
+  nameWithType: UserSettings
+  fullName: Agora.API.Settings.UserSettings

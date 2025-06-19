@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums.PostStatus
+  commentId: T:Agora.Core.Enums.PostStatus
+  id: PostStatus
+  parent: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.PostStatus.Active
+  - Agora.Core.Enums.PostStatus.Deleted
+  - Agora.Core.Enums.PostStatus.Inactive
+  langs:
+  - csharp
+  - vb
+  name: PostStatus
+  nameWithType: PostStatus
+  fullName: Agora.Core.Enums.PostStatus
+  type: Enum
+  source:
+    remote:
+      path: Agora.Core/Enums/PostStatus.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostStatus
+    path: Agora.Core/Enums/PostStatus.cs
+    startLine: 2
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: public enum PostStatus
+    content.vb: Public Enum PostStatus
+- uid: Agora.Core.Enums.PostStatus.Active
+  commentId: F:Agora.Core.Enums.PostStatus.Active
+  id: Active
+  parent: Agora.Core.Enums.PostStatus
+  langs:
+  - csharp
+  - vb
+  name: Active
+  nameWithType: PostStatus.Active
+  fullName: Agora.Core.Enums.PostStatus.Active
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostStatus.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Active
+    path: Agora.Core/Enums/PostStatus.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Active = 0
+    return:
+      type: Agora.Core.Enums.PostStatus
+- uid: Agora.Core.Enums.PostStatus.Inactive
+  commentId: F:Agora.Core.Enums.PostStatus.Inactive
+  id: Inactive
+  parent: Agora.Core.Enums.PostStatus
+  langs:
+  - csharp
+  - vb
+  name: Inactive
+  nameWithType: PostStatus.Inactive
+  fullName: Agora.Core.Enums.PostStatus.Inactive
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostStatus.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Inactive
+    path: Agora.Core/Enums/PostStatus.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Inactive = 1
+    return:
+      type: Agora.Core.Enums.PostStatus
+- uid: Agora.Core.Enums.PostStatus.Deleted
+  commentId: F:Agora.Core.Enums.PostStatus.Deleted
+  id: Deleted
+  parent: Agora.Core.Enums.PostStatus
+  langs:
+  - csharp
+  - vb
+  name: Deleted
+  nameWithType: PostStatus.Deleted
+  fullName: Agora.Core.Enums.PostStatus.Deleted
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/PostStatus.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Deleted
+    path: Agora.Core/Enums/PostStatus.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  syntax:
+    content: Deleted = 2
+    return:
+      type: Agora.Core.Enums.PostStatus
+references:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Enums.PostStatus
+  commentId: T:Agora.Core.Enums.PostStatus
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostStatus.html
+  name: PostStatus
+  nameWithType: PostStatus
+  fullName: Agora.Core.Enums.PostStatus

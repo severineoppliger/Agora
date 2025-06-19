@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessRules
+  commentId: N:Agora.Core.BusinessRules
+  id: Agora.Core.BusinessRules
+  children:
+  - Agora.Core.BusinessRules.AuthorizationBusinessRules
+  - Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.BusinessRules
+  nameWithType: Agora.Core.BusinessRules
+  fullName: Agora.Core.BusinessRules
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.BusinessRules.AuthorizationBusinessRules
+  commentId: T:Agora.Core.BusinessRules.AuthorizationBusinessRules
+  href: Agora.Core.BusinessRules.AuthorizationBusinessRules.html
+  name: AuthorizationBusinessRules
+  nameWithType: AuthorizationBusinessRules
+  fullName: Agora.Core.BusinessRules.AuthorizationBusinessRules
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator
+  commentId: T:Agora.Core.BusinessRules.BusinessRulesValidator
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html
+  name: BusinessRulesValidator
+  nameWithType: BusinessRulesValidator
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator

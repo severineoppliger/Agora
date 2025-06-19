@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+﻿using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Microsoft.AspNetCore.Identity;
@@ -7,16 +7,48 @@ using Microsoft.EntityFrameworkCore;
 namespace Agora.Infrastructure.Repositories;
 
 public class UserRepository(
-    UserManager<AppUser> userManager,
-    SignInManager<AppUser> signInManager
+    UserManager<User> userManager,
+    SignInManager<User> signInManager
     ) : IUserRepository
 {
-    public async Task<IReadOnlyList<AppUser>> GetAllUsersAsync()
+    public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter)
     {
-        return await userManager.Users.ToListAsync();
+        IQueryable<User> users = userManager.Users.AsQueryable();
+        
+        if (!string.IsNullOrWhiteSpace(filter.Username))
+        {
+            users = users.Where(u => u.UserName != null && u.UserName.Contains(filter.Username));
+        }
+        
+        if (!string.IsNullOrWhiteSpace(filter.Email))
+        {
+            users = users.Where(u => u.Email != null && u.Email.Contains(filter.Email));
+        }
+
+        if (filter.MinCredit.HasValue)
+        {
+            users = users.Where(u => u.Credit >= filter.MinCredit);
+        }
+        
+        if (filter.MaxCredit.HasValue)
+        {
+            users = users.Where(u => u.Credit <= filter.MaxCredit);
+        }
+        
+        if (filter.MinCreatedAt.HasValue)
+        {
+            users = users.Where(u => u.CreatedAt >= filter.MinCreatedAt);
+        }
+        
+        if (filter.MaxCreatedAt.HasValue)
+        {
+            users = users.Where(u => u.CreatedAt <= filter.MaxCreatedAt);
+        }
+        
+        return await ApplySorting(users, filter).ToListAsync();
     }
 
-    public async Task<AppUser?> GetUserByIdAsync(string id)
+    public async Task<User?> GetUserByIdAsync(string id)
     {
         return await userManager.Users
             .Include(u=> u.Posts)
@@ -36,23 +68,43 @@ public class UserRepository(
             .FirstOrDefaultAsync(u => u.Id == id);
     }
 
-    public async Task<AppUser?> GetUserByEmailAsync(string email)
+    public async Task<User?> GetUserByEmailAsync(string email)
     {
         return await userManager.FindByEmailAsync(email);
     }
-
-    public string? GetUserId(ClaimsPrincipal user)
+    
+    public async Task<User?> GetUserByUsernameAsync(string username)
     {
-        return userManager.GetUserId(user);   
+        return await userManager.FindByNameAsync(username);
     }
-
-    public async Task<IdentityResult> AddUserAsync(AppUser user, string password)
+    
+    public async Task<IdentityResult> AddUserAsync(User user, string password)
     {
         return await signInManager.UserManager.CreateAsync(user, password);
     }
 
-    public async Task<bool> UserExistsAsync(long id)
+    public async Task<IdentityResult> UpdateUserAsync(User user)
     {
-        throw new NotImplementedException();
+        return await userManager.UpdateAsync(user);
     }
+
+    public async Task<bool> UserExistsAsync(string id)
+    {
+        return await userManager.Users.AnyAsync(u => u.Id == id);
+    }
+    
+    private IQueryable<User> ApplySorting(IQueryable<User> query, IUserFilter filter)
+    {
+        query = filter.SortBy?.ToLower() switch
+        {
+            "id" => filter.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
+            "username" => filter.SortDesc ? query.OrderByDescending(u => u.UserName) : query.OrderBy(u => u.UserName),
+            "email" => filter.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
+            "credit" => filter.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
+            "createdat" => filter.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
+            _ => query.OrderBy(p => p.Id)
+        };
+        return query;
+    }
+
 }

@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.TransactionStatus
+  commentId: N:Agora.API.DTOs.TransactionStatus
+  id: Agora.API.DTOs.TransactionStatus
+  children:
+  - Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto
+  - Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto
+  - Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.DTOs.TransactionStatus
+  nameWithType: Agora.API.DTOs.TransactionStatus
+  fullName: Agora.API.DTOs.TransactionStatus
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto
+  commentId: T:Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto
+  href: Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto.html
+  name: TransactionStatusDetailsDto
+  nameWithType: TransactionStatusDetailsDto
+  fullName: Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto
+- uid: Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto
+  commentId: T:Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto
+  href: Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto.html
+  name: TransactionStatusSummaryDto
+  nameWithType: TransactionStatusSummaryDto
+  fullName: Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto
+- uid: Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto
+  commentId: T:Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto
+  parent: Agora.API.DTOs.TransactionStatus
+  href: Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto.html
+  name: UpdateTransactionStatusDetailsDto
+  nameWithType: UpdateTransactionStatusDetailsDto
+  fullName: Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto
+- uid: Agora.API.DTOs.TransactionStatus
+  commentId: N:Agora.API.DTOs.TransactionStatus
+  href: Agora.html
+  name: Agora.API.DTOs.TransactionStatus
+  nameWithType: Agora.API.DTOs.TransactionStatus
+  fullName: Agora.API.DTOs.TransactionStatus
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.TransactionStatus
+    name: TransactionStatus
+    href: Agora.API.DTOs.TransactionStatus.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.TransactionStatus
+    name: TransactionStatus
+    href: Agora.API.DTOs.TransactionStatus.html

@@ -1,0 +1,563 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.TransactionDetailsUpdate
+  id: TransactionDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  children:
+  - Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+  - Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+  - Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+  - Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+  langs:
+  - csharp
+  - vb
+  name: TransactionDetailsUpdate
+  nameWithType: TransactionDetailsUpdate
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionDetailsUpdate
+    path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+    startLine: 2
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Models.Requests
+  syntax:
+    content: public class TransactionDetailsUpdate
+    content.vb: Public Class TransactionDetailsUpdate
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+  commentId: P:Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+  id: Title
+  parent: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: TransactionDetailsUpdate.Title
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Title
+    path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Models.Requests
+  syntax:
+    content: public string? Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: Agora.Core.Models.Requests.TransactionDetailsUpdate.Title*
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+  commentId: P:Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+  id: Price
+  parent: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  langs:
+  - csharp
+  - vb
+  name: Price
+  nameWithType: TransactionDetailsUpdate.Price
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Price
+    path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Models.Requests
+  syntax:
+    content: public int? Price { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property Price As Integer?
+  overload: Agora.Core.Models.Requests.TransactionDetailsUpdate.Price*
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+  commentId: P:Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+  id: PostId
+  parent: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  langs:
+  - csharp
+  - vb
+  name: PostId
+  nameWithType: TransactionDetailsUpdate.PostId
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostId
+    path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Models.Requests
+  syntax:
+    content: public long? PostId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int64}
+    content.vb: Public Property PostId As Long?
+  overload: Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId*
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+  commentId: P:Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+  id: TransactionDate
+  parent: Agora.Core.Models.Requests.TransactionDetailsUpdate
+  langs:
+  - csharp
+  - vb
+  name: TransactionDate
+  nameWithType: TransactionDetailsUpdate.TransactionDate
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionDate
+    path: Agora.Core/Models/Requests/TransactionDetailsUpdate.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Models.Requests
+  syntax:
+    content: public DateOnly? TransactionDate { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateOnly}
+    content.vb: Public Property TransactionDate As DateOnly?
+  overload: Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate*
+references:
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  href: Agora.html
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.Title*
+  commentId: Overload:Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+  href: Agora.Core.Models.Requests.TransactionDetailsUpdate.html#Agora_Core_Models_Requests_TransactionDetailsUpdate_Title
+  name: Title
+  nameWithType: TransactionDetailsUpdate.Title
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.Price*
+  commentId: Overload:Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+  href: Agora.Core.Models.Requests.TransactionDetailsUpdate.html#Agora_Core_Models_Requests_TransactionDetailsUpdate_Price
+  name: Price
+  nameWithType: TransactionDetailsUpdate.Price
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.Price
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId*
+  commentId: Overload:Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+  href: Agora.Core.Models.Requests.TransactionDetailsUpdate.html#Agora_Core_Models_Requests_TransactionDetailsUpdate_PostId
+  name: PostId
+  nameWithType: TransactionDetailsUpdate.PostId
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.PostId
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate*
+  commentId: Overload:Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+  href: Agora.Core.Models.Requests.TransactionDetailsUpdate.html#Agora_Core_Models_Requests_TransactionDetailsUpdate_TransactionDate
+  name: TransactionDate
+  nameWithType: TransactionDetailsUpdate.TransactionDate
+  fullName: Agora.Core.Models.Requests.TransactionDetailsUpdate.TransactionDate
+- uid: System.Nullable{System.DateOnly}
+  commentId: T:System.Nullable{System.DateOnly}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly?
+  nameWithType: DateOnly?
+  fullName: System.DateOnly?
+  spec.csharp:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'
+  spec.vb:
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: '?'

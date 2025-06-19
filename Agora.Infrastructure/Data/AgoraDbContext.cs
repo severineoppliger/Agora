@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Data;
 
-public class AgoraDbContext(DbContextOptions options) : IdentityDbContext<AppUser>(options)
+public class AgoraDbContext(DbContextOptions options) : IdentityDbContext<User>(options)
 {
     public DbSet<Post> Posts { get; set; }
     public DbSet<PostCategory> PostCategories { get; set; }

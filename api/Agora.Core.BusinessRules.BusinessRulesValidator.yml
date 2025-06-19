@@ -1,0 +1,1648 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator
+  commentId: T:Agora.Core.BusinessRules.BusinessRulesValidator
+  id: BusinessRulesValidator
+  parent: Agora.Core.BusinessRules
+  children:
+  - Agora.Core.BusinessRules.BusinessRulesValidator.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.IPostCategoryRepository,Agora.Core.Interfaces.Repositories.ITransactionStatusRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  - Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  langs:
+  - csharp
+  - vb
+  name: BusinessRulesValidator
+  nameWithType: BusinessRulesValidator
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator
+  type: Class
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: BusinessRulesValidator
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  syntax:
+    content: 'public class BusinessRulesValidator : IBusinessRulesValidator'
+    content.vb: Public Class BusinessRulesValidator Implements IBusinessRulesValidator
+  inheritance:
+  - System.Object
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.IPostCategoryRepository,Agora.Core.Interfaces.Repositories.ITransactionStatusRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.IPostCategoryRepository,Agora.Core.Interfaces.Repositories.ITransactionStatusRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository)
+  id: '#ctor(Agora.Core.Interfaces.Repositories.IPostRepository,Agora.Core.Interfaces.Repositories.IPostCategoryRepository,Agora.Core.Interfaces.Repositories.ITransactionStatusRepository,Agora.Core.Interfaces.Repositories.ITransactionRepository)'
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: BusinessRulesValidator(IPostRepository, IPostCategoryRepository, ITransactionStatusRepository, ITransactionRepository)
+  nameWithType: BusinessRulesValidator.BusinessRulesValidator(IPostRepository, IPostCategoryRepository, ITransactionStatusRepository, ITransactionRepository)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.BusinessRulesValidator(Agora.Core.Interfaces.Repositories.IPostRepository, Agora.Core.Interfaces.Repositories.IPostCategoryRepository, Agora.Core.Interfaces.Repositories.ITransactionStatusRepository, Agora.Core.Interfaces.Repositories.ITransactionRepository)
+  type: Constructor
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: .ctor
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  syntax:
+    content: public BusinessRulesValidator(IPostRepository postRepo, IPostCategoryRepository postCategoryRepo, ITransactionStatusRepository transactionStatusRepo, ITransactionRepository transactionRepo)
+    parameters:
+    - id: postRepo
+      type: Agora.Core.Interfaces.Repositories.IPostRepository
+    - id: postCategoryRepo
+      type: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+    - id: transactionStatusRepo
+      type: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+    - id: transactionRepo
+      type: Agora.Core.Interfaces.Repositories.ITransactionRepository
+    content.vb: Public Sub New(postRepo As IPostRepository, postCategoryRepo As IPostCategoryRepository, transactionStatusRepo As ITransactionStatusRepository, transactionRepo As ITransactionRepository)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.#ctor*
+  nameWithType.vb: BusinessRulesValidator.New(IPostRepository, IPostCategoryRepository, ITransactionStatusRepository, ITransactionRepository)
+  fullName.vb: Agora.Core.BusinessRules.BusinessRulesValidator.New(Agora.Core.Interfaces.Repositories.IPostRepository, Agora.Core.Interfaces.Repositories.IPostCategoryRepository, Agora.Core.Interfaces.Repositories.ITransactionStatusRepository, Agora.Core.Interfaces.Repositories.ITransactionRepository)
+  name.vb: New(IPostRepository, IPostCategoryRepository, ITransactionStatusRepository, ITransactionRepository)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  id: ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateNewPostCategoryAsync(PostCategory)
+  nameWithType: BusinessRulesValidator.ValidateNewPostCategoryAsync(PostCategory)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateNewPostCategoryAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 18
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates the creation of a new post category by checking business rules,
+
+    such as ensuring the category name does not already exist.
+  example: []
+  syntax:
+    content: public Task<Result> ValidateNewPostCategoryAsync(PostCategory postCategory)
+    parameters:
+    - id: postCategory
+      type: Agora.Core.Models.PostCategory
+      description: The post category entity to validate.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the post category passes validation.
+
+        Returns a failure result if the name is already taken or violates other business rules.
+    content.vb: Public Function ValidateNewPostCategoryAsync(postCategory As PostCategory) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  id: ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidatePostCategoryUpdateAsync(PostCategory, string)
+  nameWithType: BusinessRulesValidator.ValidatePostCategoryUpdateAsync(PostCategory, string)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory, string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidatePostCategoryUpdateAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 28
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates the update of an existing post category by verifying business rules,
+
+    such as ensuring the new name is different from the current one and does not already exist.
+  example: []
+  syntax:
+    content: public Task<Result> ValidatePostCategoryUpdateAsync(PostCategory postCategory, string newName)
+    parameters:
+    - id: postCategory
+      type: Agora.Core.Models.PostCategory
+      description: The existing post category entity.
+    - id: newName
+      type: System.String
+      description: The new name proposed for the post category.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the update is valid.
+
+        Returns a failure result if the new name is identical to the current name or already exists.
+    content.vb: Public Function ValidatePostCategoryUpdateAsync(postCategory As PostCategory, newName As String) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  nameWithType.vb: BusinessRulesValidator.ValidatePostCategoryUpdateAsync(PostCategory, String)
+  fullName.vb: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory, String)
+  name.vb: ValidatePostCategoryUpdateAsync(PostCategory, String)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  id: ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidatePostCategoryDeletionAsync(PostCategory)
+  nameWithType: BusinessRulesValidator.ValidatePostCategoryDeletionAsync(PostCategory)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidatePostCategoryDeletionAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 43
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: Validates the deletion of an existing post category by verifying it is not used by any post.
+  example: []
+  syntax:
+    content: public Task<Result> ValidatePostCategoryDeletionAsync(PostCategory postCategory)
+    parameters:
+    - id: postCategory
+      type: Agora.Core.Models.PostCategory
+      description: The post category to delete.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the deletion is valid.
+
+        Returns a failure result if the category is used by one or several posts.
+    content.vb: Public Function ValidatePostCategoryDeletionAsync(postCategory As PostCategory) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateNewPostAsync(Post, UserContext)
+  nameWithType: BusinessRulesValidator.ValidateNewPostAsync(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateNewPostAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 53
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: Validates whether a new post can be created by the current user based on business rules.
+  remarks: >-
+    The validation checks that the user does not already have another post (active or inactive)
+
+    with the same title as the new post.
+  example: []
+  syntax:
+    content: public Task<Result> ValidateNewPostAsync(Post newPost, UserContext userContext)
+    parameters:
+    - id: newPost
+      type: Agora.Core.Models.Post
+      description: The new post to validate.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: The context of the user attempting to create the post.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating success if the post is valid, or failure if a rule is violated (e.g., duplicate title).
+    content.vb: Public Function ValidateNewPostAsync(newPost As Post, userContext As UserContext) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  id: ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidatePostUpdateAsync(Post, string?, UserContext)
+  nameWithType: BusinessRulesValidator.ValidatePostUpdateAsync(Post, string?, UserContext)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post, string?, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidatePostUpdateAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 71
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates the update of an existing post by verifying business rules,
+
+    such as ensuring the new title is not duplicate with a title of another post of the user.
+  example: []
+  syntax:
+    content: public Task<Result> ValidatePostUpdateAsync(Post oldPost, string? newTitle, UserContext userContext)
+    parameters:
+    - id: oldPost
+      type: Agora.Core.Models.Post
+      description: The existing post entity.
+    - id: newTitle
+      type: System.String
+      description: The new title proposed for the post.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: The context of the user attempting to update the post.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the update is valid.
+
+        Returns a failure result if the new name is identical to the current name or already exists.
+    content.vb: Public Function ValidatePostUpdateAsync(oldPost As Post, newTitle As String, userContext As UserContext) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  nameWithType.vb: BusinessRulesValidator.ValidatePostUpdateAsync(Post, String, UserContext)
+  fullName.vb: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post, String, Agora.Core.Common.UserContext)
+  name.vb: ValidatePostUpdateAsync(Post, String, UserContext)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  id: ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidatePostStatusChangeAsync(Post, PostStatus)
+  nameWithType: BusinessRulesValidator.ValidatePostStatusChangeAsync(Post, PostStatus)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post, Agora.Core.Enums.PostStatus)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidatePostStatusChangeAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 100
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates whether a post is allowed to transition from its current status to a new specified status,
+
+    based on business rules and the current state of the post.
+  example: []
+  syntax:
+    content: public Result ValidatePostStatusChangeAsync(Post oldPost, PostStatus newStatus)
+    parameters:
+    - id: oldPost
+      type: Agora.Core.Models.Post
+      description: The existing post with its current status and related data.
+    - id: newStatus
+      type: Agora.Core.Enums.PostStatus
+      description: The new status to which the post is intended to transition.
+    return:
+      type: Agora.Core.Common.Result
+      description: A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the status change is valid, including an error message if invalid.
+    content.vb: Public Function ValidatePostStatusChangeAsync(oldPost As Post, newStatus As PostStatus) As Result
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  id: ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidatePostDeletionAsync(Post, UserContext)
+  nameWithType: BusinessRulesValidator.ValidatePostDeletionAsync(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidatePostDeletionAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 108
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates whether a post can be deleted by a specific user, taking into account business rules
+
+    such as ownership, status, and active transactions.
+  example: []
+  syntax:
+    content: public Task<Result> ValidatePostDeletionAsync(Post post, UserContext userContext)
+    parameters:
+    - id: post
+      type: Agora.Core.Models.Post
+      description: The post that is requested to be deleted.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: The context of the user attempting to delete the post.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="System.Threading.Tasks.Task%601" data-throw-if-not-resolved="false"></xref> representing the asynchronous validation result. The result indicates
+
+        whether deletion is permitted and includes an error message if it is not.
+    content.vb: Public Function ValidatePostDeletionAsync(post As Post, userContext As UserContext) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  id: ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateTransactionStatusUpdateAsync(TransactionStatus, TransactionStatusDetailsUpdate)
+  nameWithType: BusinessRulesValidator.ValidateTransactionStatusUpdateAsync(TransactionStatus, TransactionStatusDetailsUpdate)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus, Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateTransactionStatusUpdateAsync
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 129
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates the update of an existing transaction status by verifying business rules,
+
+    such as ensuring the new name is not duplicate with a name of another transaction status.
+  example: []
+  syntax:
+    content: public Task<Result> ValidateTransactionStatusUpdateAsync(TransactionStatus oldTransactionStatus, TransactionStatusDetailsUpdate newDetails)
+    parameters:
+    - id: oldTransactionStatus
+      type: Agora.Core.Models.TransactionStatus
+      description: The existing transaction status entity.
+    - id: newDetails
+      type: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+      description: The new data proposed for the transaction status.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: >-
+        A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the update is valid.
+
+        Returns a failure result if the new name is identical to the current name or already exists.
+    content.vb: Public Function ValidateTransactionStatusUpdateAsync(oldTransactionStatus As TransactionStatus, newDetails As TransactionStatusDetailsUpdate) As Task(Of Result)
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  id: ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateTransactionStatusChange(Transaction, TransactionStatusEnum, TransactionStatusEnum, UserContext)
+  nameWithType: BusinessRulesValidator.ValidateTransactionStatusChange(Transaction, TransactionStatusEnum, TransactionStatusEnum, UserContext)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction, Agora.Core.Enums.TransactionStatusEnum, Agora.Core.Enums.TransactionStatusEnum, Agora.Core.Common.UserContext)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateTransactionStatusChange
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 151
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: >-
+    Validates whether a user is authorized to change a transaction's status from the specified old status to the new status,
+
+    based on business rules and the current user's context.
+  example: []
+  syntax:
+    content: public Result ValidateTransactionStatusChange(Transaction transaction, TransactionStatusEnum oldStatus, TransactionStatusEnum newStatus, UserContext userContext)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+      description: The transaction being updated.
+    - id: oldStatus
+      type: Agora.Core.Enums.TransactionStatusEnum
+      description: The current status of the transaction.
+    - id: newStatus
+      type: Agora.Core.Enums.TransactionStatusEnum
+      description: The desired new status for the transaction.
+    - id: userContext
+      type: Agora.Core.Common.UserContext
+      description: Information about the current user's identity and role.
+    return:
+      type: Agora.Core.Common.Result
+      description: A failure result if the transition is not permitted; otherwise, a success result.
+    content.vb: Public Function ValidateTransactionStatusChange(transaction As Transaction, oldStatus As TransactionStatusEnum, newStatus As TransactionStatusEnum, userContext As UserContext) As Result
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  commentId: M:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  id: ValidateTransaction(Agora.Core.Models.Transaction)
+  parent: Agora.Core.BusinessRules.BusinessRulesValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateTransaction(Transaction)
+  nameWithType: BusinessRulesValidator.ValidateTransaction(Transaction)
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ValidateTransaction
+    path: Agora.Core/BusinessRules/BusinessRulesValidator.cs
+    startLine: 206
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.BusinessRules
+  summary: Validates the internal consistency and business rules of a transaction (e.g., buyer/seller identity, ownership, credit).
+  example: []
+  syntax:
+    content: public Result ValidateTransaction(Transaction transaction)
+    parameters:
+    - id: transaction
+      type: Agora.Core.Models.Transaction
+      description: The transaction to validate.
+    return:
+      type: Agora.Core.Common.Result
+      description: A result indicating success if the transaction is valid; otherwise, a result containing the relevant validation errors.
+    content.vb: Public Function ValidateTransaction(transaction As Transaction) As Result
+  overload: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction*
+  implements:
+  - Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+references:
+- uid: Agora.Core.BusinessRules
+  commentId: N:Agora.Core.BusinessRules
+  href: Agora.html
+  name: Agora.Core.BusinessRules
+  nameWithType: Agora.Core.BusinessRules
+  fullName: Agora.Core.BusinessRules
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  commentId: T:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  parent: Agora.Core.BusinessRules.Interfaces
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html
+  name: IBusinessRulesValidator
+  nameWithType: IBusinessRulesValidator
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.BusinessRules.Interfaces
+  commentId: N:Agora.Core.BusinessRules.Interfaces
+  href: Agora.html
+  name: Agora.Core.BusinessRules.Interfaces
+  nameWithType: Agora.Core.BusinessRules.Interfaces
+  fullName: Agora.Core.BusinessRules.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.BusinessRules
+    name: BusinessRules
+    href: Agora.Core.BusinessRules.html
+  - name: .
+  - uid: Agora.Core.BusinessRules.Interfaces
+    name: Interfaces
+    href: Agora.Core.BusinessRules.Interfaces.html
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.#ctor*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.#ctor
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator__ctor_Agora_Core_Interfaces_Repositories_IPostRepository_Agora_Core_Interfaces_Repositories_IPostCategoryRepository_Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_Agora_Core_Interfaces_Repositories_ITransactionRepository_
+  name: BusinessRulesValidator
+  nameWithType: BusinessRulesValidator.BusinessRulesValidator
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.BusinessRulesValidator
+  nameWithType.vb: BusinessRulesValidator.New
+  fullName.vb: Agora.Core.BusinessRules.BusinessRulesValidator.New
+  name.vb: New
+- uid: Agora.Core.Interfaces.Repositories.IPostRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IPostRepository.html
+  name: IPostRepository
+  nameWithType: IPostRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostRepository
+- uid: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.IPostCategoryRepository.html
+  name: IPostCategoryRepository
+  nameWithType: IPostCategoryRepository
+  fullName: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html
+  name: ITransactionStatusRepository
+  nameWithType: ITransactionStatusRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionRepository
+  parent: Agora.Core.Interfaces.Repositories
+  href: Agora.Core.Interfaces.Repositories.ITransactionRepository.html
+  name: ITransactionRepository
+  nameWithType: ITransactionRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionRepository
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+- uid: Agora.Core.Common.Result
+  commentId: T:Agora.Core.Common.Result
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result.html
+  name: Result
+  nameWithType: Result
+  fullName: Agora.Core.Common.Result
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidateNewPostCategoryAsync_Agora_Core_Models_PostCategory_
+  name: ValidateNewPostCategoryAsync
+  nameWithType: BusinessRulesValidator.ValidateNewPostCategoryAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostCategoryAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostCategoryAsync_Agora_Core_Models_PostCategory_
+  name: ValidateNewPostCategoryAsync(PostCategory)
+  nameWithType: IBusinessRulesValidator.ValidateNewPostCategoryAsync(PostCategory)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+    name: ValidateNewPostCategoryAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostCategoryAsync_Agora_Core_Models_PostCategory_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostCategoryAsync(Agora.Core.Models.PostCategory)
+    name: ValidateNewPostCategoryAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostCategoryAsync_Agora_Core_Models_PostCategory_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+- uid: Agora.Core.Models.PostCategory
+  commentId: T:Agora.Core.Models.PostCategory
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.PostCategory.html
+  name: PostCategory
+  nameWithType: PostCategory
+  fullName: Agora.Core.Models.PostCategory
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result>
+  nameWithType: Task<Result>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result>
+  nameWithType.vb: Task(Of Result)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result)
+  name.vb: Task(Of Result)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: )
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidatePostCategoryUpdateAsync_Agora_Core_Models_PostCategory_System_String_
+  name: ValidatePostCategoryUpdateAsync
+  nameWithType: BusinessRulesValidator.ValidatePostCategoryUpdateAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryUpdateAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  isExternal: true
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryUpdateAsync_Agora_Core_Models_PostCategory_System_String_
+  name: ValidatePostCategoryUpdateAsync(PostCategory, string)
+  nameWithType: IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(PostCategory, string)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory, string)
+  nameWithType.vb: IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(PostCategory, String)
+  fullName.vb: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory, String)
+  name.vb: ValidatePostCategoryUpdateAsync(PostCategory, String)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+    name: ValidatePostCategoryUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryUpdateAsync_Agora_Core_Models_PostCategory_System_String_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryUpdateAsync(Agora.Core.Models.PostCategory,System.String)
+    name: ValidatePostCategoryUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryUpdateAsync_Agora_Core_Models_PostCategory_System_String_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidatePostCategoryDeletionAsync_Agora_Core_Models_PostCategory_
+  name: ValidatePostCategoryDeletionAsync
+  nameWithType: BusinessRulesValidator.ValidatePostCategoryDeletionAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostCategoryDeletionAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryDeletionAsync_Agora_Core_Models_PostCategory_
+  name: ValidatePostCategoryDeletionAsync(PostCategory)
+  nameWithType: IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(PostCategory)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+    name: ValidatePostCategoryDeletionAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryDeletionAsync_Agora_Core_Models_PostCategory_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostCategoryDeletionAsync(Agora.Core.Models.PostCategory)
+    name: ValidatePostCategoryDeletionAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostCategoryDeletionAsync_Agora_Core_Models_PostCategory_
+  - name: (
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    href: Agora.Core.Models.PostCategory.html
+  - name: )
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidateNewPostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: ValidateNewPostAsync
+  nameWithType: BusinessRulesValidator.ValidateNewPostAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateNewPostAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: ValidateNewPostAsync(Post, UserContext)
+  nameWithType: IBusinessRulesValidator.ValidateNewPostAsync(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: ValidateNewPostAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateNewPostAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: ValidateNewPostAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateNewPostAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Post
+  commentId: T:Agora.Core.Models.Post
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Post.html
+  name: Post
+  nameWithType: Post
+  fullName: Agora.Core.Models.Post
+- uid: Agora.Core.Common.UserContext
+  commentId: T:Agora.Core.Common.UserContext
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Agora.Core.Common.UserContext
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidatePostUpdateAsync_Agora_Core_Models_Post_System_String_Agora_Core_Common_UserContext_
+  name: ValidatePostUpdateAsync
+  nameWithType: BusinessRulesValidator.ValidatePostUpdateAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostUpdateAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  isExternal: true
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostUpdateAsync_Agora_Core_Models_Post_System_String_Agora_Core_Common_UserContext_
+  name: ValidatePostUpdateAsync(Post, string, UserContext)
+  nameWithType: IBusinessRulesValidator.ValidatePostUpdateAsync(Post, string, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post, string, Agora.Core.Common.UserContext)
+  nameWithType.vb: IBusinessRulesValidator.ValidatePostUpdateAsync(Post, String, UserContext)
+  fullName.vb: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post, String, Agora.Core.Common.UserContext)
+  name.vb: ValidatePostUpdateAsync(Post, String, UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+    name: ValidatePostUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostUpdateAsync_Agora_Core_Models_Post_System_String_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostUpdateAsync(Agora.Core.Models.Post,System.String,Agora.Core.Common.UserContext)
+    name: ValidatePostUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostUpdateAsync_Agora_Core_Models_Post_System_String_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidatePostStatusChangeAsync_Agora_Core_Models_Post_Agora_Core_Enums_PostStatus_
+  name: ValidatePostStatusChangeAsync
+  nameWithType: BusinessRulesValidator.ValidatePostStatusChangeAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostStatusChangeAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostStatusChangeAsync_Agora_Core_Models_Post_Agora_Core_Enums_PostStatus_
+  name: ValidatePostStatusChangeAsync(Post, PostStatus)
+  nameWithType: IBusinessRulesValidator.ValidatePostStatusChangeAsync(Post, PostStatus)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post, Agora.Core.Enums.PostStatus)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+    name: ValidatePostStatusChangeAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostStatusChangeAsync_Agora_Core_Models_Post_Agora_Core_Enums_PostStatus_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.PostStatus
+    name: PostStatus
+    href: Agora.Core.Enums.PostStatus.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostStatusChangeAsync(Agora.Core.Models.Post,Agora.Core.Enums.PostStatus)
+    name: ValidatePostStatusChangeAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostStatusChangeAsync_Agora_Core_Models_Post_Agora_Core_Enums_PostStatus_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.PostStatus
+    name: PostStatus
+    href: Agora.Core.Enums.PostStatus.html
+  - name: )
+- uid: Agora.Core.Enums.PostStatus
+  commentId: T:Agora.Core.Enums.PostStatus
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostStatus.html
+  name: PostStatus
+  nameWithType: PostStatus
+  fullName: Agora.Core.Enums.PostStatus
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidatePostDeletionAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: ValidatePostDeletionAsync
+  nameWithType: BusinessRulesValidator.ValidatePostDeletionAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidatePostDeletionAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostDeletionAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  name: ValidatePostDeletionAsync(Post, UserContext)
+  nameWithType: IBusinessRulesValidator.ValidatePostDeletionAsync(Post, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: ValidatePostDeletionAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostDeletionAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidatePostDeletionAsync(Agora.Core.Models.Post,Agora.Core.Common.UserContext)
+    name: ValidatePostDeletionAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidatePostDeletionAsync_Agora_Core_Models_Post_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Post
+    name: Post
+    href: Agora.Core.Models.Post.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidateTransactionStatusUpdateAsync_Agora_Core_Models_TransactionStatus_Agora_Core_Models_Requests_TransactionStatusDetailsUpdate_
+  name: ValidateTransactionStatusUpdateAsync
+  nameWithType: BusinessRulesValidator.ValidateTransactionStatusUpdateAsync
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusUpdateAsync
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusUpdateAsync_Agora_Core_Models_TransactionStatus_Agora_Core_Models_Requests_TransactionStatusDetailsUpdate_
+  name: ValidateTransactionStatusUpdateAsync(TransactionStatus, TransactionStatusDetailsUpdate)
+  nameWithType: IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(TransactionStatus, TransactionStatusDetailsUpdate)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus, Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+    name: ValidateTransactionStatusUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusUpdateAsync_Agora_Core_Models_TransactionStatus_Agora_Core_Models_Requests_TransactionStatusDetailsUpdate_
+  - name: (
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+    name: TransactionStatusDetailsUpdate
+    href: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusUpdateAsync(Agora.Core.Models.TransactionStatus,Agora.Core.Models.Requests.TransactionStatusDetailsUpdate)
+    name: ValidateTransactionStatusUpdateAsync
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusUpdateAsync_Agora_Core_Models_TransactionStatus_Agora_Core_Models_Requests_TransactionStatusDetailsUpdate_
+  - name: (
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+    name: TransactionStatusDetailsUpdate
+    href: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.html
+  - name: )
+- uid: Agora.Core.Models.TransactionStatus
+  commentId: T:Agora.Core.Models.TransactionStatus
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.TransactionStatus.html
+  name: TransactionStatus
+  nameWithType: TransactionStatus
+  fullName: Agora.Core.Models.TransactionStatus
+- uid: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+  commentId: T:Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.html
+  name: TransactionStatusDetailsUpdate
+  nameWithType: TransactionStatusDetailsUpdate
+  fullName: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  href: Agora.html
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidateTransactionStatusChange_Agora_Core_Models_Transaction_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Common_UserContext_
+  name: ValidateTransactionStatusChange
+  nameWithType: BusinessRulesValidator.ValidateTransactionStatusChange
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransactionStatusChange
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusChange_Agora_Core_Models_Transaction_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Common_UserContext_
+  name: ValidateTransactionStatusChange(Transaction, TransactionStatusEnum, TransactionStatusEnum, UserContext)
+  nameWithType: IBusinessRulesValidator.ValidateTransactionStatusChange(Transaction, TransactionStatusEnum, TransactionStatusEnum, UserContext)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction, Agora.Core.Enums.TransactionStatusEnum, Agora.Core.Enums.TransactionStatusEnum, Agora.Core.Common.UserContext)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+    name: ValidateTransactionStatusChange
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusChange_Agora_Core_Models_Transaction_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.TransactionStatusEnum
+    name: TransactionStatusEnum
+    href: Agora.Core.Enums.TransactionStatusEnum.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.TransactionStatusEnum
+    name: TransactionStatusEnum
+    href: Agora.Core.Enums.TransactionStatusEnum.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransactionStatusChange(Agora.Core.Models.Transaction,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Enums.TransactionStatusEnum,Agora.Core.Common.UserContext)
+    name: ValidateTransactionStatusChange
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransactionStatusChange_Agora_Core_Models_Transaction_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Enums_TransactionStatusEnum_Agora_Core_Common_UserContext_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.TransactionStatusEnum
+    name: TransactionStatusEnum
+    href: Agora.Core.Enums.TransactionStatusEnum.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Enums.TransactionStatusEnum
+    name: TransactionStatusEnum
+    href: Agora.Core.Enums.TransactionStatusEnum.html
+  - name: ','
+  - name: " "
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    href: Agora.Core.Common.UserContext.html
+  - name: )
+- uid: Agora.Core.Models.Transaction
+  commentId: T:Agora.Core.Models.Transaction
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.Transaction.html
+  name: Transaction
+  nameWithType: Transaction
+  fullName: Agora.Core.Models.Transaction
+- uid: Agora.Core.Enums.TransactionStatusEnum
+  commentId: T:Agora.Core.Enums.TransactionStatusEnum
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.TransactionStatusEnum.html
+  name: TransactionStatusEnum
+  nameWithType: TransactionStatusEnum
+  fullName: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction*
+  commentId: Overload:Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction
+  href: Agora.Core.BusinessRules.BusinessRulesValidator.html#Agora_Core_BusinessRules_BusinessRulesValidator_ValidateTransaction_Agora_Core_Models_Transaction_
+  name: ValidateTransaction
+  nameWithType: BusinessRulesValidator.ValidateTransaction
+  fullName: Agora.Core.BusinessRules.BusinessRulesValidator.ValidateTransaction
+- uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  commentId: M:Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  parent: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+  href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransaction_Agora_Core_Models_Transaction_
+  name: ValidateTransaction(Transaction)
+  nameWithType: IBusinessRulesValidator.ValidateTransaction(Transaction)
+  fullName: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+  spec.csharp:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+    name: ValidateTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransaction_Agora_Core_Models_Transaction_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: )
+  spec.vb:
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.ValidateTransaction(Agora.Core.Models.Transaction)
+    name: ValidateTransaction
+    href: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html#Agora_Core_BusinessRules_Interfaces_IBusinessRulesValidator_ValidateTransaction_Agora_Core_Models_Transaction_
+  - name: (
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    href: Agora.Core.Models.Transaction.html
+  - name: )

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Extensions
+  commentId: N:Agora.Core.Extensions
+  id: Agora.Core.Extensions
+  children:
+  - Agora.Core.Extensions.ModelStateExtensions
+  - Agora.Core.Extensions.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Extensions
+  nameWithType: Agora.Core.Extensions
+  fullName: Agora.Core.Extensions
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Extensions.ModelStateExtensions
+  commentId: T:Agora.Core.Extensions.ModelStateExtensions
+  href: Agora.Core.Extensions.ModelStateExtensions.html
+  name: ModelStateExtensions
+  nameWithType: ModelStateExtensions
+  fullName: Agora.Core.Extensions.ModelStateExtensions
+- uid: Agora.Core.Extensions.StringExtensions
+  commentId: T:Agora.Core.Extensions.StringExtensions
+  href: Agora.Core.Extensions.StringExtensions.html
+  name: StringExtensions
+  nameWithType: StringExtensions
+  fullName: Agora.Core.Extensions.StringExtensions

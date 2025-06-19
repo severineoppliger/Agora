@@ -13,9 +13,7 @@ public class PostCategoryProfile : Profile
         CreateMap<PostCategory, PostCategoryDetailsDto>()
             .ForMember(dest => dest.Posts, opt => opt.MapFrom(src => src.Posts));
         
-        CreateMap<CreatePostCategoryDto, PostCategory>();
-        
-        CreateMap<UpdatePostCategoryDto, PostCategory>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<CreatePostCategoryDto, PostCategory>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Trim()));
     }
 }

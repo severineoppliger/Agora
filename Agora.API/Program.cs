@@ -1,18 +1,19 @@
+using System.Text.Json.Serialization;
 using Agora.API.Filters;
 using Agora.API.InputValidation;
 using Agora.API.InputValidation.Interfaces;
-using Agora.API.Orchestrators;
-using Agora.API.Orchestrators.Interfaces;
-// using Agora.API.Settings;
+using Agora.API.Settings;
 using Agora.Core.BusinessRules;
 using Agora.Core.BusinessRules.Interfaces;
+using Agora.Core.BusinessServices;
+using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.BusinessServices;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Interfaces.Services;
 using Agora.Core.Models;
-using Agora.Core.Services;
 using Agora.Core.Validation;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
+using Agora.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,9 @@ try
     builder.Services.AddControllers(options =>
     {
         options.Filters.Add<LogActionFilter>();
+    }).AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
     
     // Inactivate automatic model validation when entering an action method of a controller
@@ -76,7 +80,7 @@ try
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     
     // Configuration settings
-   // builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
+    builder.Services.Configure<UserSettings>(builder.Configuration.GetSection("UserSettings"));
     
     /*  --------------
        | Repositories |
@@ -91,9 +95,18 @@ try
        | Data validation |
         ----------------- */
     builder.Services.AddScoped<IInputValidator, InputValidator>();
-    builder.Services.AddScoped<IBusinessRulesValidationOrchestrator, BusinessRulesValidationOrchestrator>();
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
+    builder.Services.AddScoped<IAuthorizationBusinessRules, AuthorizationBusinessRules>();
 
+    /*  -------------------
+       | Business services  |
+        -------------------- */
+    builder.Services.AddScoped<IUserService, UserService>();
+    builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
+    builder.Services.AddScoped<IPostService, PostService>();
+    builder.Services.AddScoped<ITransactionService, TransactionService>();
+    builder.Services.AddScoped<ITransactionStatusService, TransactionStatusService>();
+    
     /*  ---------------------------------
       | Authentication and authorization |
         --------------------------------- */
@@ -101,7 +114,7 @@ try
     builder.Services.AddAuthorization();
     
     // Identity system with roles and store
-    builder.Services.AddIdentityCore<AppUser>(options =>
+    builder.Services.AddIdentityCore<User>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -115,26 +128,24 @@ try
         .AddEntityFrameworkStores<AgoraDbContext>();
     
     // Expose Identity API endpoints (e.g. /login, /register, etc.)
-    builder.Services.AddIdentityApiEndpoints<AppUser>(); 
+    builder.Services.AddIdentityApiEndpoints<User>(); 
     
     // Identity management services
     builder.Services.AddScoped<RoleManager<IdentityRole>>();
-    builder.Services.AddScoped<UserManager<AppUser>>();
-    builder.Services.AddScoped<SignInManager<AppUser>>(); // For manual logins
-    builder.Services.AddScoped<IUserStore<AppUser>, UserStore<AppUser>>();
+    builder.Services.AddScoped<UserManager<User>>();
+    builder.Services.AddScoped<SignInManager<User>>(); // For manual logins
+    builder.Services.AddScoped<IUserStore<User>, UserStore<User>>();
     builder.Services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
+    
+    builder.Services.AddHttpContextAccessor();
+    builder.Services.AddScoped<IUserContextService, UserContextService>();
+    builder.Services.AddScoped<IAuthService, AuthService>();
+
     
     /* --------------------------------------
      | Cross-origin ressource sharing (CORS) |
        -------------------------------------- */
     builder.Services.AddCors();
-    
-    /*  ---------------
-    | Other services  |
-      --------------- */
-    builder.Services.AddScoped<IPostService, PostService>();
-    builder.Services.AddScoped<IVisibilityBusinessRules, VisibilityBusinessRules>();
-    
 
 /* ============================================================================================================ */
     var app = builder.Build();
@@ -168,7 +179,7 @@ try
             var context = services.GetRequiredService<AgoraDbContext>();
             await context.Database.MigrateAsync();
             
-            var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            var userManager = services.GetRequiredService<UserManager<User>>();
             
             await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
         }

@@ -1,4 +1,6 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Common;
+using Agora.Core.Enums;
+using Agora.Core.Interfaces.Filters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Infrastructure.Data;
@@ -36,27 +38,33 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
     {
         return await context.TransactionStatus
             .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Post)
+            .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Buyer)
+            .Include(ts => ts.Transactions)
+                .ThenInclude(t => t.Seller)
             .FirstOrDefaultAsync(ts => ts.Id == id);
     }
 
-    public void AddTransactionStatus(TransactionStatus transactionStatus)
+    public async Task<TransactionStatus?> GetTransactionStatusByEnumAsync(TransactionStatusEnum statusEnum)
     {
-        context.TransactionStatus.Add(transactionStatus);
+        return await context.TransactionStatus
+            .Include(ts =>ts.Transactions)
+            .FirstOrDefaultAsync(ts => ts.EnumValue == statusEnum);
     }
 
-    public void DeleteTransactionStatus(TransactionStatus transactionStatus)
+    public async Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum)
     {
-        context.TransactionStatus.Remove(transactionStatus);
+        TransactionStatus? transactionStatus = await context.TransactionStatus.FirstOrDefaultAsync(s =>
+            s.EnumValue == statusEnum);
+        if (transactionStatus is null)
+            throw new InvalidOperationException(ErrorMessages.NotFound("transactionStatus", statusEnum.ToString()));
+        return transactionStatus.Id;
     }
 
     public async Task<bool> SaveChangesAsync()
     {
         return await context.SaveChangesAsync() > 0;
-    }
-
-    public async Task<bool> TransactionStatusExistsAsync(long id)
-    {
-        return await context.TransactionStatus.AnyAsync(ts => ts.Id == id);
     }
 
     public Task<bool> NameExistsAsync(string name)

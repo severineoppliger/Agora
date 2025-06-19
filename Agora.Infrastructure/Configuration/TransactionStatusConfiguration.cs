@@ -29,6 +29,10 @@ public class TransactionStatusConfiguration : IEntityTypeConfiguration<Transacti
         builder.Property(t => t.IsSuccess)
             .IsRequired();
         
+        builder.Property(p => p.EnumValue)
+            .HasConversion<string>()
+            .IsRequired();
+        
         builder.HasMany(t => t.Transactions)
             .WithOne(t => t.TransactionStatus)
             .HasForeignKey(t => t.TransactionStatusId)
