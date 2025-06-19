@@ -3,6 +3,9 @@ using Agora.Core.Extensions;
 
 namespace Agora.Core.Shared;
 
+/// <summary>
+/// Provides common error message templates used throughout the application.
+/// </summary>
 public static class ErrorMessages
 {
     public const string EmptyDto = "At least one field must be provided.";
@@ -40,12 +43,17 @@ public static class ErrorMessages
     public static string UnknownErrorDuringAction(string entityName, string action) => 
         $"Unknown problem occured during {action} of the {entityName}.";
     
-    
+    /// <summary>
+    /// Contains error messages related to <c>PostCategory</c> entity.
+    /// </summary>
     public static class PostCategory
     {
         public const string InUse = "Cannot delete a post category that is used by one or more posts.";
     }
 
+    /// <summary>
+    /// Contains error messages related to <c>Post</c> entity.
+    /// </summary>
     public static class Post
     {
         public const string SameTitle = "User has already posted a post with same title.";
@@ -54,6 +62,9 @@ public static class ErrorMessages
         public static string SameStatus(PostStatus status) => $"Post is already {status}.";
     }
     
+    /// <summary>
+    /// Contains error messages related to <c>Transaction</c> entity.
+    /// </summary>
     public static class Transaction
     {
         public const string NotInvolved = "Current user is not involved in the transaction.";
@@ -73,7 +84,9 @@ public static class ErrorMessages
             $"The transaction status change from {oldStatus} to {newStatus} is invalid.";
     }
 
-    
+    /// <summary>
+    /// Contains error messages related to <c>User</c> entity.
+    /// </summary>
     public static class User
     {
         public static string InvalidIdFormat(string id) => $"Invalid user ID format: {id}. Must be a valid GUID.";

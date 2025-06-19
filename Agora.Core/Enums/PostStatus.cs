@@ -1,8 +1,22 @@
 ﻿namespace Agora.Core.Enums;
 
+/// <summary>
+/// Specifies the possible statuses of a post.
+/// </summary>
 public enum PostStatus
 {
-    Active,                     // Visible in post catalogue publicly
-    Inactive,                   // Not visible by other users except if user is involved in an ongoing transaction linked to the post
-    Deleted                     // For posts that have been deleted but still exist in the database, in case of existing attached transactions
+    /// <summary>
+    /// The post is publicly visible in the catalog.
+    /// </summary>
+    Active,
+
+    /// <summary>
+    /// The post is hidden from other users unless they are involved in an ongoing transaction related to it.
+    /// </summary>
+    Inactive,
+
+    /// <summary>
+    /// The post has been deleted but remains in the database due to existing related transactions.
+    /// </summary>
+    Deleted
 }
