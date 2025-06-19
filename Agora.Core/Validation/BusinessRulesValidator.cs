@@ -20,6 +20,7 @@ public class BusinessRulesValidator(
     ) : IBusinessRulesValidator
 {
     #region PostCategory
+    /// <inheritdoc />
     public async Task<Result> ValidateNewPostCategoryAsync(PostCategory postCategory)
     {
         if (await postCategoryRepo.NameExistsAsync(postCategory.Name))
@@ -30,6 +31,7 @@ public class BusinessRulesValidator(
         return Result.Success();
     }
 
+    /// <inheritdoc />
     public async Task<Result> ValidatePostCategoryUpdateAsync(PostCategory postCategory, string newName)
     {
         if (postCategory.Name == newName)
@@ -45,6 +47,7 @@ public class BusinessRulesValidator(
         return Result.Success();
     }
 
+    /// <inheritdoc />
     public async Task<Result> ValidatePostCategoryDeletionAsync(PostCategory postCategory)
     {
         return await postRepo.IsCategoryInUseAsync(postCategory.Id)
@@ -55,6 +58,7 @@ public class BusinessRulesValidator(
     #endregion
     
     #region Post
+    /// <inheritdoc />
     public async Task<Result> ValidateNewPostAsync(Post newPost, UserContext userContext)
     {
         PostQueryParameters postQueryParameters = new PostQueryParameters()
@@ -73,6 +77,7 @@ public class BusinessRulesValidator(
         return Result.Success();
     }
 
+    /// <inheritdoc />
     public async Task<Result> ValidatePostUpdateAsync(Post oldPost, string? newTitle, UserContext userContext)
     {
         if (newTitle is not null && newTitle != oldPost.Title)
@@ -102,6 +107,7 @@ public class BusinessRulesValidator(
         return Result.Success();
     }
 
+    /// <inheritdoc />
     public Result ValidatePostStatusChangeAsync(Post oldPost, PostStatus newStatus)
     {
         return oldPost.Status == newStatus
@@ -109,7 +115,7 @@ public class BusinessRulesValidator(
             : Result.Success();
     }
     
-    
+    /// <inheritdoc />
     public async Task<Result> ValidatePostDeletionAsync(Post post, UserContext userContext)
     {
         if (post.Status == PostStatus.Deleted)
@@ -131,6 +137,7 @@ public class BusinessRulesValidator(
     #endregion
     
     #region TransactionStatus
+    /// <inheritdoc />
     public async Task<Result> ValidateTransactionStatusUpdateAsync(TransactionStatus oldTransactionStatus, UpdateTransactionStatusDetailsCommand newDetails)
     {
         if (newDetails.Name != null)
@@ -153,6 +160,7 @@ public class BusinessRulesValidator(
     #endregion
 
     #region Transaction
+    /// <inheritdoc />
     public Result ValidateTransactionStatusChange(
         Transaction transaction,
         TransactionStatusEnum oldStatus, 
@@ -208,6 +216,7 @@ public class BusinessRulesValidator(
         return Result.Failure(ErrorType.Invalid, ErrorMessages.Transaction.InvalidTransactionStatusChange(oldStatus.ToString(), newStatus.ToString()));
     }
     
+    /// <inheritdoc />
      public Result ValidateNewTransaction(Transaction transaction)
     {
         (int price, Post? post, string buyerId, User? buyer, string sellerId) = transaction;
@@ -234,6 +243,7 @@ public class BusinessRulesValidator(
             : Result.Success();
     }
 
+    /// <inheritdoc />
     public Result ValidateTransactionUpdate(Transaction transaction)
     {
         (int price, Post? post, string buyerId, User? buyer, string sellerId) = transaction;
