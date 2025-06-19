@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -11,17 +12,17 @@ public class UserConfiguration: IEntityTypeConfiguration<User>
     {
         builder.Property(u => u.UserName)
             .IsRequired()
-            .HasMaxLength(ValidationRules.AppUser.UsernameMaxLength);
+            .HasMaxLength(ValidationConstants.AppUser.UsernameMaxLength);
         builder.HasIndex(u => u.UserName).IsUnique();
         
         builder.Property(u => u.Email)
             .IsRequired()
-            .HasMaxLength(ValidationRules.AppUser.EmailMaxLength);
+            .HasMaxLength(ValidationConstants.AppUser.EmailMaxLength);
         builder.HasIndex(u => u.Email).IsUnique();
         
         builder.Property(u => u.PasswordHash)
             .IsRequired()
-            .HasMaxLength(ValidationRules.AppUser.EmailMaxLength);
+            .HasMaxLength(ValidationConstants.AppUser.EmailMaxLength);
         builder.HasIndex(u => u.Email).IsUnique();
     }
 }

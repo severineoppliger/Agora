@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -15,18 +16,18 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         
         builder.Property(p => p.Title)
             .IsRequired()
-            .HasMaxLength(ValidationRules.Post.TitleMaxLength);
+            .HasMaxLength(ValidationConstants.Post.TitleMaxLength);
         
         builder.Property(p => p.Description)
             .IsRequired()
-            .HasMaxLength(ValidationRules.Post.DescriptionMaxLength);
+            .HasMaxLength(ValidationConstants.Post.DescriptionMaxLength);
         
         builder.Property(p => p.Price)
             .IsRequired();
         builder.ToTable( t =>
         {
             t.HasCheckConstraint("CK_Post_Price_Range",
-                $"Price >= {ValidationRules.Post.PriceMin} AND Price <= {ValidationRules.Post.PriceMax}");
+                $"Price >= {ValidationConstants.Post.PriceMin} AND Price <= {ValidationConstants.Post.PriceMax}");
         });
         
         builder.Property(p => p.Type)

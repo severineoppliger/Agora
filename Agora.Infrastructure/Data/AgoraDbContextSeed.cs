@@ -2,6 +2,7 @@
 using Agora.Core.Enums;
 using Agora.Core.Extensions;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

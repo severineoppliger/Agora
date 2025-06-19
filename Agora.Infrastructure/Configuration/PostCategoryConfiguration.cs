@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -15,7 +16,7 @@ public class PostCategoryConfiguration : IEntityTypeConfiguration<PostCategory>
         
         builder.Property(p => p.Name)
             .IsRequired()
-            .HasMaxLength(ValidationRules.PostCategory.NameMaxLength);
+            .HasMaxLength(ValidationConstants.PostCategory.NameMaxLength);
         builder.HasIndex(p => p.Name)
             .IsUnique();
         

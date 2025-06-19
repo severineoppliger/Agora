@@ -1,4 +1,5 @@
 ﻿using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

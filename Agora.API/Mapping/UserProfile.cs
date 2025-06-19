@@ -1,6 +1,7 @@
 ﻿using Agora.API.DTOs.User;
+using Agora.Core.Commands;
 using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
@@ -9,11 +10,11 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<RegisterDto, UserRegistrationInfo>()
+        CreateMap<RegisterUserDto, RegisterUserCommand>()
             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName.Trim()))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email.Trim()));
 
-        CreateMap<SignInDto, UserSignInInfo>()
+        CreateMap<SignInUserDto, SignInUserCommand>()
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email.Trim()));
         
         CreateMap<User, UserDetailsDto>()

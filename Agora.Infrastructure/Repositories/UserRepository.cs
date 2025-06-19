@@ -1,6 +1,7 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,41 +12,41 @@ public class UserRepository(
     SignInManager<User> signInManager
     ) : IUserRepository
 {
-    public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter)
+    public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserQueryParameters queryParameters)
     {
         IQueryable<User> users = userManager.Users.AsQueryable();
         
-        if (!string.IsNullOrWhiteSpace(filter.Username))
+        if (!string.IsNullOrWhiteSpace(queryParameters.Username))
         {
-            users = users.Where(u => u.UserName != null && u.UserName.Contains(filter.Username));
+            users = users.Where(u => u.UserName != null && u.UserName.Contains(queryParameters.Username));
         }
         
-        if (!string.IsNullOrWhiteSpace(filter.Email))
+        if (!string.IsNullOrWhiteSpace(queryParameters.Email))
         {
-            users = users.Where(u => u.Email != null && u.Email.Contains(filter.Email));
+            users = users.Where(u => u.Email != null && u.Email.Contains(queryParameters.Email));
         }
 
-        if (filter.MinCredit.HasValue)
+        if (queryParameters.MinCredit.HasValue)
         {
-            users = users.Where(u => u.Credit >= filter.MinCredit);
+            users = users.Where(u => u.Credit >= queryParameters.MinCredit);
         }
         
-        if (filter.MaxCredit.HasValue)
+        if (queryParameters.MaxCredit.HasValue)
         {
-            users = users.Where(u => u.Credit <= filter.MaxCredit);
+            users = users.Where(u => u.Credit <= queryParameters.MaxCredit);
         }
         
-        if (filter.MinCreatedAt.HasValue)
+        if (queryParameters.MinCreatedAt.HasValue)
         {
-            users = users.Where(u => u.CreatedAt >= filter.MinCreatedAt);
+            users = users.Where(u => u.CreatedAt >= queryParameters.MinCreatedAt);
         }
         
-        if (filter.MaxCreatedAt.HasValue)
+        if (queryParameters.MaxCreatedAt.HasValue)
         {
-            users = users.Where(u => u.CreatedAt <= filter.MaxCreatedAt);
+            users = users.Where(u => u.CreatedAt <= queryParameters.MaxCreatedAt);
         }
         
-        return await ApplySorting(users, filter).ToListAsync();
+        return await ApplySorting(users, queryParameters).ToListAsync();
     }
 
     public async Task<User?> GetUserByIdAsync(string id)
@@ -93,15 +94,15 @@ public class UserRepository(
         return await userManager.Users.AnyAsync(u => u.Id == id);
     }
     
-    private IQueryable<User> ApplySorting(IQueryable<User> query, IUserFilter filter)
+    private IQueryable<User> ApplySorting(IQueryable<User> query, IUserQueryParameters queryParameters)
     {
-        query = filter.SortBy?.ToLower() switch
+        query = queryParameters.SortBy?.ToLower() switch
         {
-            "id" => filter.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
-            "username" => filter.SortDesc ? query.OrderByDescending(u => u.UserName) : query.OrderBy(u => u.UserName),
-            "email" => filter.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
-            "credit" => filter.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
-            "createdat" => filter.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
+            "id" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
+            "username" => queryParameters.SortDesc ? query.OrderByDescending(u => u.UserName) : query.OrderBy(u => u.UserName),
+            "email" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
+            "credit" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
+            "createdat" => queryParameters.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
             _ => query.OrderBy(p => p.Id)
         };
         return query;

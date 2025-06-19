@@ -1,4 +1,4 @@
-﻿namespace Agora.API.Settings;
+﻿namespace Agora.Core.Settings;
 
 public class UserSettings
 {

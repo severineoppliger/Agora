@@ -1,10 +1,10 @@
 ﻿using Agora.API.DTOs.Post;
-using Agora.API.QueryParams;
+using Agora.Core.Commands;
 using Agora.Core.Enums;
 using Agora.Core.Models;
-using Agora.Core.Models.Filters;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
 using AutoMapper;
+using PostQueryParameters = Agora.Core.Models.DomainQueryParameters.PostQueryParameters;
 
 namespace Agora.API.Mapping;
 
@@ -30,9 +30,9 @@ public class PostProfile : Profile
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.Parse<PostType>(src.Type)))
             .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
         
-        CreateMap<PostQueryParameters, PostFilter>();
+        CreateMap<ApiQueryParameters.PostQueryParameters, PostQueryParameters>();
         
-        CreateMap<UpdatePostDetailsDto, PostDetailsUpdate>()
+        CreateMap<UpdatePostDetailsDto, UpdatePostDetailsCommand>()
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title != null ? src.Title.Trim() : null))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description != null ? src.Description.Trim() : null))
             .ForAllMembers(opts => opts.Condition((_, _, srcMember) => srcMember != null));

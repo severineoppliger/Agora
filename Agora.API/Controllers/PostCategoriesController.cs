@@ -1,10 +1,11 @@
-﻿using Agora.API.DTOs.PostCategory;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.PostCategory;
 using Agora.API.Extensions;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
 using Agora.Core.Constants;
-using Agora.Core.Interfaces.BusinessServices;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

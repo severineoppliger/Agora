@@ -1,6 +1,7 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,36 +9,36 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
-    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter)
+    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionQueryParameters queryParameters)
     {
         IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
 
-        if (filter.MinPrice.HasValue)
+        if (queryParameters.MinPrice.HasValue)
         {
-            transactions = transactions.Where(t => t.Price >= filter.MinPrice);
+            transactions = transactions.Where(t => t.Price >= queryParameters.MinPrice);
         }
 
-        if (filter.MaxPrice.HasValue)
+        if (queryParameters.MaxPrice.HasValue)
         {
-            transactions = transactions.Where(t => t.Price <= filter.MaxPrice);
+            transactions = transactions.Where(t => t.Price <= queryParameters.MaxPrice);
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.PostTitle))
+        if (!string.IsNullOrWhiteSpace(queryParameters.PostTitle))
         {
-            transactions = transactions.Where(t => t.Post != null && t.Post.Title.Contains(filter.PostTitle));
+            transactions = transactions.Where(t => t.Post != null && t.Post.Title.Contains(queryParameters.PostTitle));
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.TransactionStatusName))
+        if (!string.IsNullOrWhiteSpace(queryParameters.TransactionStatusName))
         {
-            transactions = transactions.Where(t => t.TransactionStatus != null && t.TransactionStatus.Name.Contains(filter.TransactionStatusName));
+            transactions = transactions.Where(t => t.TransactionStatus != null && t.TransactionStatus.Name.Contains(queryParameters.TransactionStatusName));
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.UsersInvolvedUsername))
+        if (!string.IsNullOrWhiteSpace(queryParameters.UsersInvolvedUsername))
         {
-            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.UserName!.Contains(filter.UsersInvolvedUsername) || t.Seller != null && t.Seller.UserName!.Contains(filter.UsersInvolvedUsername));
+            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.UserName!.Contains(queryParameters.UsersInvolvedUsername) || t.Seller != null && t.Seller.UserName!.Contains(queryParameters.UsersInvolvedUsername));
         }
         
-        transactions = ApplySorting(transactions, filter);
+        transactions = ApplySorting(transactions, queryParameters);
         
         return await transactions
             .Include(t => t.Post)
@@ -69,7 +70,7 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         return await context.SaveChangesAsync() > 0;
     }
 
-    public IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionFilter queryParams)
+    public IQueryable<Transaction> ApplySorting(IQueryable<Transaction> query, ITransactionQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

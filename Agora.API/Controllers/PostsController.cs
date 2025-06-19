@@ -1,20 +1,20 @@
 ﻿using System.Security.Authentication;
 using Agora.API.DTOs.Post;
 using Agora.API.Extensions;
-using Agora.API.InputValidation;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
 using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces;
-using Agora.Core.Interfaces.BusinessServices;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
-using Agora.Core.Models.Filters;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PostQueryParameters = Agora.Core.Models.DomainQueryParameters.PostQueryParameters;
 
 namespace Agora.API.Controllers;
 
@@ -39,14 +39,14 @@ public class PostsController(
     /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, etc.</param>
     /// <returns>Returns <c>200 OK</c> with a list of summarized post information available to all users.</returns>
     [HttpGet("catalog")]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalogue([FromQuery] PostQueryParameters queryParameters)
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalogue([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
     {
         // Delegate business logic
-        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+        PostQueryParameters internalPostQueryParameters = mapper.Map<PostQueryParameters>(queryParameters);
 
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.CatalogOnly,
-            internalPostFilter, 
+            internalPostQueryParameters, 
             null);
         IReadOnlyList<Post> posts = result.Value!;
         
@@ -64,7 +64,7 @@ public class PostsController(
     /// </returns>
     [Authorize]
     [HttpGet("me")]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetCurrentUserPosts([FromQuery] PostQueryParameters queryParameters)
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetCurrentUserPosts([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
     {
         // Extract current user's context from claims
         UserContext userContext;
@@ -78,11 +78,11 @@ public class PostsController(
         }
         
         // Delegate business logic
-        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+        PostQueryParameters internalPostQueryParameters = mapper.Map<PostQueryParameters>(queryParameters);
 
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.UserOwnPosts,
-            internalPostFilter, 
+            internalPostQueryParameters, 
             userContext);
         IReadOnlyList<Post> posts = result.Value!;
         
@@ -101,7 +101,7 @@ public class PostsController(
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpGet("all")]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] PostQueryParameters queryParameters)
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
     {
         // Extract current user's context from claims
         UserContext userContext;
@@ -115,11 +115,11 @@ public class PostsController(
         }
         
         // Delegate business logic
-        PostFilter internalPostFilter = mapper.Map<PostFilter>(queryParameters);
+        PostQueryParameters internalPostQueryParameters = mapper.Map<PostQueryParameters>(queryParameters);
 
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
             PostVisibilityMode.AdminView,
-            internalPostFilter, 
+            internalPostQueryParameters, 
             userContext);
         IReadOnlyList<Post> posts = result.Value!;
         
@@ -254,7 +254,7 @@ public class PostsController(
         }
         
         // Delegate business logic (business rules + database changes)
-        PostDetailsUpdate newDetails = mapper.Map<PostDetailsUpdate>(dto);
+        UpdatePostDetailsCommand newDetails = mapper.Map<UpdatePostDetailsCommand>(dto);
         Result result = await postService.UpdatePostDetailsAsync(id, newDetails, userContext);
 
         return result.IsFailure 

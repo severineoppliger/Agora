@@ -1,16 +1,17 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 
 namespace Agora.Core.Interfaces.Repositories;
 
 public interface IPostCategoryRepository
 {
     /// <summary>
-    /// Retrieves all post categories, optionally filtered by the provided filter.
+    /// Retrieves all post categories, optionally filtered by the provided queryParameters.
     /// </summary>
-    /// <param name="filter">An optional filter to apply to the post category query.</param>
-    /// <returns>A list of <see cref="PostCategory"/> objects matching the filter.</returns>
-    Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryFilter filter);
+    /// <param name="queryParameters">An optional queryParameters to apply to the post category query.</param>
+    /// <returns>A list of <see cref="PostCategory"/> objects matching the queryParameters.</returns>
+    Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a post category by its unique identifier.

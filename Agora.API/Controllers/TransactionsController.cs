@@ -1,14 +1,15 @@
 ﻿using System.Security.Authentication;
+using Agora.API.ApiQueryParameters;
 using Agora.API.DTOs.Transaction;
 using Agora.API.Extensions;
-using Agora.API.InputValidation;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
 using Agora.Core.Interfaces;
-using Agora.Core.Interfaces.BusinessServices;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -179,7 +180,7 @@ public class TransactionsController(
         }
         
         // Delegate business logic (business rules + database changes)
-        TransactionDetailsUpdate newDetails = mapper.Map<TransactionDetailsUpdate>(dto);
+        UpdateTransactionDetailsCommand newDetails = mapper.Map<UpdateTransactionDetailsCommand>(dto);
         Result result = await transactionService.UpdateTransactionDetailsAsync(id, newDetails, userContext);
 
         return result.IsFailure 

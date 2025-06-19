@@ -1,5 +1,6 @@
 ﻿using Agora.API.DTOs.PostCategory;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using AutoMapper;
 
 namespace Agora.API.Mapping;

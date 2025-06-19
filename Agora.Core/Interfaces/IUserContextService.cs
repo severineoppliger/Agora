@@ -1,4 +1,4 @@
-﻿using Agora.Core.Common;
+﻿using Agora.Core.Models;
 
 namespace Agora.Core.Interfaces;
 

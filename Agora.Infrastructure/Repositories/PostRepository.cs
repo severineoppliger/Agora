@@ -1,8 +1,9 @@
 ﻿using Agora.Core.Enums;
-using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
-using Agora.Core.Models.Filters;
+using Agora.Core.Models.DomainQueryParameters;
+using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,34 +11,34 @@ namespace Agora.Infrastructure.Repositories;
 
 public class PostRepository(AgoraDbContext context) : IPostRepository
 {
-    public async Task<IReadOnlyList<Post>> GetAllPostsAsync(PostFilter filter)
+    public async Task<IReadOnlyList<Post>> GetAllPostsAsync(PostQueryParameters queryParameters)
     {
         IQueryable<Post> posts = context.Posts.AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(filter.TitleOrDescription))
+        if (!string.IsNullOrWhiteSpace(queryParameters.TitleOrDescription))
         {
-            posts = posts.Where(p => p.Title.Contains(filter.TitleOrDescription) || p.Description.Contains(filter.TitleOrDescription));
+            posts = posts.Where(p => p.Title.Contains(queryParameters.TitleOrDescription) || p.Description.Contains(queryParameters.TitleOrDescription));
         }
 
-        if (filter.MinPrice.HasValue)
+        if (queryParameters.MinPrice.HasValue)
         {
-            posts = posts.Where(p => p.Price >= filter.MinPrice);
+            posts = posts.Where(p => p.Price >= queryParameters.MinPrice);
         }
 
-        if (filter.MaxPrice.HasValue)
+        if (queryParameters.MaxPrice.HasValue)
         {
-            posts = posts.Where(p => p.Price <= filter.MaxPrice);
+            posts = posts.Where(p => p.Price <= queryParameters.MaxPrice);
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.TypeName) &&
-            Enum.TryParse<PostType>(filter.TypeName, true, out var filterType))
+        if (!string.IsNullOrWhiteSpace(queryParameters.TypeName) &&
+            Enum.TryParse<PostType>(queryParameters.TypeName, true, out var filterType))
         {
             posts = posts.Where(p => p.Type == filterType);
         }
 
-        if (filter.StatusNames.Any(s => !string.IsNullOrWhiteSpace(s)))
+        if (queryParameters.StatusNames.Any(s => !string.IsNullOrWhiteSpace(s)))
         {
-            List<PostStatus> parsedStatuses = filter.StatusNames
+            List<PostStatus> parsedStatuses = queryParameters.StatusNames
                 .Select(s => Enum.TryParse<PostStatus>(s, true, out var status) ? (PostStatus?) status : null)
                 .Where(e => e.HasValue)
                 .Select(e => e!.Value)
@@ -46,22 +47,22 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             posts = posts.Where(p => parsedStatuses.Contains(p.Status));
         }
         
-        if (!string.IsNullOrWhiteSpace(filter.PostCategoryName))
+        if (!string.IsNullOrWhiteSpace(queryParameters.PostCategoryName))
         {
-            posts = posts.Where(p => p.PostCategory.Name.Contains(filter.PostCategoryName));
+            posts = posts.Where(p => p.PostCategory.Name.Contains(queryParameters.PostCategoryName));
         }
 
-        if (!string.IsNullOrWhiteSpace(filter.UserName))
+        if (!string.IsNullOrWhiteSpace(queryParameters.UserName))
         {
-            posts = posts.Where(p => p.Owner.UserName!.Contains(filter.UserName));
+            posts = posts.Where(p => p.Owner.UserName!.Contains(queryParameters.UserName));
         }
         
-        if (!string.IsNullOrWhiteSpace(filter.UserId))
+        if (!string.IsNullOrWhiteSpace(queryParameters.UserId))
         {
-            posts = posts.Where(p => p.OwnerUserId == filter.UserId);
+            posts = posts.Where(p => p.OwnerUserId == queryParameters.UserId);
         }
         
-        posts = ApplySorting(posts, filter);
+        posts = ApplySorting(posts, queryParameters);
         
         return await posts
             .Include(p => p.Owner)
@@ -103,7 +104,7 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         return await context.Posts.AnyAsync(p => p.Id == id);
     }
 
-    public IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostFilter queryParams)
+    public IQueryable<Post> ApplySorting(IQueryable<Post> query, IPostQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

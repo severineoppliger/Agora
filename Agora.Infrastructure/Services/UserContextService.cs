@@ -1,8 +1,9 @@
 ﻿using System.Security.Authentication;
 using System.Security.Claims;
-using Agora.Core.Common;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces;
+using Agora.Core.Models;
+using Agora.Core.Shared;
 using Microsoft.AspNetCore.Http;
 
 

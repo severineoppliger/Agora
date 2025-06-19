@@ -1,10 +1,11 @@
-﻿using Agora.API.Settings;
-using Agora.Core.Common;
+﻿using Agora.Core.Commands;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
+using Agora.Core.Settings;
+using Agora.Core.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
@@ -21,25 +22,25 @@ public class AuthService(
     private const string EntityName = "user";
 
     /// <inheritdoc />
-    public async Task<Result<User>> RegisterAsync(UserRegistrationInfo registrationInfo)
+    public async Task<Result<User>> RegisterAsync(RegisterUserCommand command)
     {
 
         User user = new User()
         {
-            UserName = registrationInfo.UserName,
-            Email = registrationInfo.Email,
+            UserName = command.UserName,
+            Email = command.Email,
             Credit = userSettings.Value.InitialCredit,
             CreatedAt = DateTime.UtcNow
         };
 
         // Registration
-        IdentityResult registrationResult = await userRepo.AddUserAsync(user, registrationInfo.Password);
+        IdentityResult registrationResult = await userRepo.AddUserAsync(user, command.Password);
         if (!registrationResult.Succeeded)
         {
             return Result<User>.Failure(ErrorType.Persistence, ErrorMessages.ErrorWhenSavingToDb(EntityName));
         }
 
-        User? createdUser = await userRepo.GetUserByEmailAsync(registrationInfo.Email);
+        User? createdUser = await userRepo.GetUserByEmailAsync(command.Email);
         if (createdUser == null)
         {
             return Result<User>.Failure(ErrorType.Persistence, ErrorMessages.SavedButNotRetrieved(EntityName));
@@ -47,9 +48,9 @@ public class AuthService(
 
         // Login
         Result loginResult =
-            await LoginAsync(new UserSignInInfo(){
-                Email = registrationInfo.Email, 
-                Password = registrationInfo.Password
+            await LoginAsync(new SignInUserCommand(){
+                Email = command.Email, 
+                Password = command.Password
             });
         return loginResult.IsFailure
                 ? Result<User>.Failure(loginResult.Errors!)
@@ -57,17 +58,17 @@ public class AuthService(
     }
 
     /// <inheritdoc />
-    public async Task<Result> LoginAsync(UserSignInInfo signInInfo)
+    public async Task<Result> LoginAsync(SignInUserCommand command)
     {
         // Retrieve user
-        User? user = await userRepo.GetUserByEmailAsync(signInInfo.Email);
+        User? user = await userRepo.GetUserByEmailAsync(command.Email);
         if (user == null)
         {
             return Result.Failure(ErrorType.Unauthorized, ErrorMessages.User.InvalidCredentials);
         }
         
         // SignIn with ASP.NET Core Identity
-        SignInResult signInResult = await signInManager.PasswordSignInAsync(user, signInInfo.Password, false, false);
+        SignInResult signInResult = await signInManager.PasswordSignInAsync(user, command.Password, false, false);
         if (!signInResult.Succeeded)
         {
             return Result.Failure(ErrorType.Unauthorized, ErrorMessages.User.InvalidCredentials);

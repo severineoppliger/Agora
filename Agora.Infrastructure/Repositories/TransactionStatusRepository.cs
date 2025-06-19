@@ -1,8 +1,9 @@
-﻿using Agora.Core.Common;
-using Agora.Core.Enums;
-using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Enums;
+using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,26 +11,26 @@ namespace Agora.Infrastructure.Repositories;
 
 public class TransactionStatusRepository(AgoraDbContext context): ITransactionStatusRepository
 {
-    public async Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusFilter filter)
+    public async Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters queryParameters)
     {
         IQueryable<TransactionStatus> transactionStatus = context.TransactionStatus;
 
-        if (!string.IsNullOrWhiteSpace(filter.NameOrDescription))
+        if (!string.IsNullOrWhiteSpace(queryParameters.NameOrDescription))
         {
-            transactionStatus = transactionStatus.Where(ts => ts.Name.Contains(filter.NameOrDescription) || ts.Description.Contains(filter.NameOrDescription));
+            transactionStatus = transactionStatus.Where(ts => ts.Name.Contains(queryParameters.NameOrDescription) || ts.Description.Contains(queryParameters.NameOrDescription));
         }
 
-        if (filter.IsFinal.HasValue)
+        if (queryParameters.IsFinal.HasValue)
         {
-            transactionStatus = transactionStatus.Where(ts => ts.IsFinal == filter.IsFinal);
+            transactionStatus = transactionStatus.Where(ts => ts.IsFinal == queryParameters.IsFinal);
         }
 
-        if (filter.IsSuccess.HasValue)
+        if (queryParameters.IsSuccess.HasValue)
         {
-            transactionStatus = transactionStatus.Where(ts => ts.IsSuccess == filter.IsSuccess);
+            transactionStatus = transactionStatus.Where(ts => ts.IsSuccess == queryParameters.IsSuccess);
         }
         
-        transactionStatus = ApplySorting(transactionStatus, filter);
+        transactionStatus = ApplySorting(transactionStatus, queryParameters);
         
         return await transactionStatus.ToListAsync();
     }
@@ -72,7 +73,7 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
         return context.TransactionStatus.AnyAsync(ts => ts.Name == name);
     }
 
-    public IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusFilter queryParams)
+    public IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

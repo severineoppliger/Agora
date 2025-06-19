@@ -1,6 +1,7 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,16 +9,16 @@ namespace Agora.Infrastructure.Repositories;
 
 public class PostCategoryRepository(AgoraDbContext context): IPostCategoryRepository
 {
-    public async Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryFilter filter)
+    public async Task<IReadOnlyList<PostCategory>> GetAllPostCategoriesAsync(IPostCategoryQueryParameters queryParameters)
     {
         IQueryable<PostCategory> postCategories = context.PostCategories.AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(filter.Name))
+        if (!string.IsNullOrWhiteSpace(queryParameters.Name))
         {
-            postCategories = postCategories.Where(pc => pc.Name.Contains(filter.Name));
+            postCategories = postCategories.Where(pc => pc.Name.Contains(queryParameters.Name));
         }
         
-        postCategories = ApplySorting(postCategories, filter);
+        postCategories = ApplySorting(postCategories, queryParameters);
         
         return await postCategories.ToListAsync();
     }
@@ -55,7 +56,7 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
         return await context.PostCategories.AnyAsync(pc => pc.Name == name);
     }
 
-    public IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryFilter queryParams)
+    public IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

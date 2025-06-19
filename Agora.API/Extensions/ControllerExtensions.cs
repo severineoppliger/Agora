@@ -1,5 +1,5 @@
-﻿using Agora.Core.Common;
-using Agora.Core.Enums;
+﻿using Agora.Core.Enums;
+using Agora.Core.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Extensions;
