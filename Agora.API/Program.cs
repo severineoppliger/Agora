@@ -2,16 +2,14 @@ using System.Text.Json.Serialization;
 using Agora.API.Filters;
 using Agora.API.Validation;
 using Agora.API.Validation.Interfaces;
-using Agora.Core.BusinessRules;
-using Agora.Core.BusinessRules.Interfaces;
 using Agora.Core.DomainServices;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Settings;
 using Agora.Core.Validation;
+using Agora.Core.Validation.Interfaces;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
 using Agora.Infrastructure.Services;
@@ -121,7 +119,7 @@ try
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequiredLength = ValidationConstants.AppUser.PasswordMinLength;
+                options.Password.RequiredLength = ValidationConstants.User.PasswordMinLength;
                 options.Password.RequiredUniqueChars = 1;
             }
         )

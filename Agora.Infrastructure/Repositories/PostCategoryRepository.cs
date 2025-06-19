@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
-/// <inheritdoc/>
+/// <summary>
+/// Default implementation of <see cref="IPostCategoryRepository"/>.
+/// </summary>
 public class PostCategoryRepository(AgoraDbContext context): IPostCategoryRepository
 {
     /// <inheritdoc/>

@@ -3,7 +3,6 @@ using Agora.API.DTOs.PostCategory;
 using Agora.API.Extensions;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces.DomainServices;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 using AutoMapper;
@@ -108,7 +107,7 @@ public class PostCategoriesController(
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpPatch("{id:long}")]
-    public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDto dto)
+    public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDetailsDto dto)
     {
         // Cleaning
         dto.Name = dto.Name.Trim();

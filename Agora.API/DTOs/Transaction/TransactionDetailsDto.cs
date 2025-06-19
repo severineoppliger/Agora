@@ -83,7 +83,7 @@ public class TransactionDetailsDto
     {
         return $"Id: {Id}, " +
                $"Price: {Price}, " +
-               $"Related post id: {Post.Id}, " +
+               $"Related post id: {(Post is null ? "none" : Post.Id.ToString())}, " +
                $"Transaction status: {TransactionStatusName}, " +
                $"Buyer username: {BuyerUsername}, " +
                $"Buyer has confirmed: {BuyerConfirmed}, "+

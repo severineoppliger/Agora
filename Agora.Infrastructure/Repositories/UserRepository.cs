@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
+/// <summary>
+/// Default implementation of <see cref="IUserRepository"/>.
+/// </summary>
 public class UserRepository(
     UserManager<User> userManager,
     SignInManager<User> signInManager

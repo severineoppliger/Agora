@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Repositories;
 
-/// <inheritdoc/>
+/// <summary>
+/// Default implementation of <see cref="ITransactionRepository"/>.
+/// </summary>
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
     /// <inheritdoc/>

@@ -2,7 +2,6 @@
 using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Settings;
 using Agora.Core.Shared;
@@ -11,7 +10,9 @@ using Microsoft.Extensions.Options;
 
 namespace Agora.Infrastructure.Services;
 
-/// <inheritdoc />
+/// <summary>
+/// Default implementation of <see cref="IAuthService"/>.
+/// </summary>
 public class AuthService(
     SignInManager<User> signInManager,
     UserManager<User> userManager,

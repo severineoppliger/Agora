@@ -1,5 +1,4 @@
-﻿using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.Commands;
+﻿using Agora.Core.Commands;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.Repositories;
@@ -7,10 +6,13 @@ using Agora.Core.Models;
 using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
+using Agora.Core.Validation.Interfaces;
 
 namespace Agora.Core.DomainServices;
 
-/// <inheritdoc />
+/// <summary>
+/// Default implementation of <see cref="IPostService"/>.
+/// </summary>
 public class PostService(
     IPostRepository postRepo, 
     ITransactionRepository transactionRepo,
