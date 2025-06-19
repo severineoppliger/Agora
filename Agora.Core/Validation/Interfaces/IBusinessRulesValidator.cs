@@ -4,8 +4,11 @@ using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 
-namespace Agora.Core.BusinessRules.Interfaces;
+namespace Agora.Core.Validation.Interfaces;
 
+/// <summary>
+/// Interface defining methods to validate business rules on domain entities.
+/// </summary>
 public interface IBusinessRulesValidator
 {
     /// <summary>

@@ -1,14 +1,17 @@
-﻿using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.Commands;
+﻿using Agora.Core.Commands;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
 using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
+using Agora.Core.Validation.Interfaces;
 
 namespace Agora.Core.Validation;
 
+/// <summary>
+/// Default implementation of <see cref="IBusinessRulesValidator"/>.
+/// </summary>
 public class BusinessRulesValidator(
     IPostRepository postRepo,
     IPostCategoryRepository postCategoryRepo,

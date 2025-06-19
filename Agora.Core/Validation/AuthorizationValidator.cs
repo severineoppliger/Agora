@@ -1,12 +1,12 @@
-﻿using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.Enums;
+﻿using Agora.Core.Enums;
 using Agora.Core.Models;
 using Agora.Core.Models.Entities;
+using Agora.Core.Validation.Interfaces;
 
 namespace Agora.Core.Validation;
 
 /// <summary>
-/// Determine if a certain user can see, create, modify or delete some entity.
+/// Default implementation of <see cref="IAuthorizationValidator"/>.
 /// </summary>
 public class AuthorizationValidator : IAuthorizationValidator
 {

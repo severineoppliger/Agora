@@ -5,6 +5,11 @@ using Agora.API.DTOs.User;
 
 namespace Agora.API.Validation.Interfaces;
 
+/// <summary>
+/// Interface defining methods to validate user input data before processing.
+/// Ensures input DTOs respect expected formats, required constraints, 
+/// and references to existing entities.
+/// </summary>
 public interface IInputValidator
 {
     /// <summary>

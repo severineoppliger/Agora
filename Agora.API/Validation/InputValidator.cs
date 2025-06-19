@@ -10,6 +10,11 @@ using Agora.Core.Shared;
 
 namespace Agora.API.Validation;
 
+/// <summary>
+/// Default implementation of <see cref="IInputValidator"/>.
+/// Performs validation of user input for user registration, post management,
+/// and transaction-related operations.
+/// </summary>
 public class InputValidator(
     IUserRepository userRepo,
     IPostCategoryRepository postCategoryRepo,
@@ -17,6 +22,7 @@ public class InputValidator(
 {
     #region Users
 
+    /// <inheritdoc />
     public async Task<InputValidationResult> ValidateRegisterDtoAsync(RegisterUserDto userDto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -39,6 +45,7 @@ public class InputValidator(
         return result;
     }
     
+    /// <inheritdoc />
     public InputValidationResult ValidateUserId(string id)
     {
         InputValidationResult result = new InputValidationResult();
@@ -56,7 +63,7 @@ public class InputValidator(
     
     #region Posts
 
-
+    /// <inheritdoc />
     public async Task<InputValidationResult> ValidateCreatePostDtoAsync(CreatePostDto dto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -75,6 +82,7 @@ public class InputValidator(
         return result;
     }
 
+    /// <inheritdoc />
     public async Task<InputValidationResult> ValidateUpdatePostDtoAsync(UpdatePostDetailsDto dto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -100,6 +108,7 @@ public class InputValidator(
 
     #endregion
 
+    /// <inheritdoc />
     public InputValidationResult ValidateUpdateTransactionStatusDtoAsync(UpdateTransactionStatusDetailsDto dto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -113,10 +122,7 @@ public class InputValidator(
     }
     
     #region Transaction
-    /// <summary>
-    /// Validates the input for a new transaction request.
-    /// Ensures that the involved users and the optional linked post exist in database
-    /// </summary>
+    /// <inheritdoc />
     public async Task<InputValidationResult> ValidateCreateTransactionDtoAsync(CreateTransactionDto dto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -139,6 +145,7 @@ public class InputValidator(
         return result;
     }
 
+    /// <inheritdoc />
     public async Task<InputValidationResult> ValidateUpdateTransactionDetailsDtoAsync(UpdateTransactionDetailsDto dto)
     {
         InputValidationResult result = new InputValidationResult();
@@ -156,10 +163,7 @@ public class InputValidator(
         return result;
     }
 
-    /// <summary>
-    /// Validates the input for a transaction status change request.
-    /// Ensures that the provided transaction status exists within the TransactionStatusEnum.
-    /// </summary>
+    /// <inheritdoc />
     public InputValidationResult ValidateChangeTransactionStatusDto(ChangeTransactionStatusDto dto)
     {
         InputValidationResult result = new InputValidationResult();
