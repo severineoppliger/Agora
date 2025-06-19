@@ -1,7 +1,6 @@
 ﻿using Agora.Core.Enums;
 using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 using Agora.Infrastructure.Data;
@@ -80,6 +79,7 @@ public class TransactionStatusRepository(AgoraDbContext context): ITransactionSt
             "id" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.Id) : query.OrderBy(ts => ts.Id),
             "name" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.Name) : query.OrderBy(ts => ts.Name),
             "isfinal" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.IsFinal) : query.OrderBy(ts => ts.IsFinal),
+            "issuccess" => queryParams.SortDesc ? query.OrderByDescending(ts => ts.IsSuccess) : query.OrderBy(ts => ts.IsSuccess),
             _ => query.OrderBy(u => u.Id)
         };
         return query;

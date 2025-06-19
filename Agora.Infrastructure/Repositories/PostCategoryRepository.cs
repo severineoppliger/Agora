@@ -1,6 +1,5 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +55,7 @@ public class PostCategoryRepository(AgoraDbContext context): IPostCategoryReposi
         return await context.PostCategories.AnyAsync(pc => pc.Name == name);
     }
 
-    public IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryQueryParameters queryParams)
+    private IQueryable<PostCategory> ApplySorting(IQueryable<PostCategory> query, IPostCategoryQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
         {

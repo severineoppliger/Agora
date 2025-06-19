@@ -1,6 +1,5 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -75,11 +74,13 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
         query = queryParams.SortBy?.ToLower() switch
         {
             "id" => queryParams.SortDesc ? query.OrderByDescending(t => t.Id) : query.OrderBy(t => t.Id),
+            "title" => queryParams.SortDesc ? query.OrderByDescending(t => t.Title) : query.OrderBy(t => t.Title),
             "price" => queryParams.SortDesc ? query.OrderByDescending(t => t.Price) : query.OrderBy(t => t.Price),
             "transactionstatus" => queryParams.SortDesc ? query.OrderByDescending(t => t.TransactionStatusId) : query.OrderBy(t => t.TransactionStatusId),
             "buyer" => queryParams.SortDesc ? query.OrderByDescending(t => t.Buyer!.UserName) : query.OrderBy(t => t.Buyer!.UserName),
             "seller" => queryParams.SortDesc ? query.OrderByDescending(t => t.Seller!.UserName) : query.OrderBy(t => t.Seller!.UserName),
-            _ => query.OrderBy(t => t.Id)
+            "createdat" => queryParams.SortDesc ? query.OrderByDescending(p => p.CreatedAt) : query.OrderBy(p => p.CreatedAt),
+            _ => query.OrderBy(t => t.TransactionStatusId)
         };
         return query;
     }

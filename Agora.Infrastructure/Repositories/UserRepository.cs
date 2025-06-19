@@ -1,6 +1,5 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -103,6 +102,7 @@ public class UserRepository(
             "email" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Email) : query.OrderBy(u => u.Email),
             "credit" => queryParameters.SortDesc ? query.OrderByDescending(u => u.Credit) : query.OrderBy(u => u.Credit),
             "createdat" => queryParameters.SortDesc ? query.OrderByDescending(u => u.CreatedAt) : query.OrderBy(u => u.CreatedAt),
+            "lastloginat" => queryParameters.SortDesc ? query.OrderByDescending(u => u.LastLoginAt) : query.OrderBy(u => u.LastLoginAt),
             _ => query.OrderBy(p => p.Id)
         };
         return query;
