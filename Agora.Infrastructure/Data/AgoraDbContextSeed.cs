@@ -1,17 +1,24 @@
 ﻿using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Extensions;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Agora.Infrastructure.Data;
 
+/// <summary>
+/// Provides static methods to seed initial and development data into the Agora database context.
+/// Includes methods for seeding post categories, transaction statuses, roles, users, posts, and transactions.
+/// </summary>
 public static class AgoraDbContextSeed
 {
-    // Static seeding, inserted at migration
-    #region staticSeeding
+    #region Static Seeding
+    
+    /// <summary>
+    /// Seeds predefined post categories into the model builder for migrations.
+    /// </summary>
+    /// <param name="modelBuilder">The model builder to configure entity data.</param>
     internal static void SeedPostCategories(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<PostCategory>().HasData(
@@ -26,6 +33,10 @@ public static class AgoraDbContextSeed
         );
     }
 
+    /// <summary>
+    /// Seeds predefined transaction statuses into the model builder for migrations.
+    /// </summary>
+    /// <param name="modelBuilder">The model builder to configure entity data.</param>
     internal static void SeedTransactionStatus(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TransactionStatus>().HasData(
@@ -123,7 +134,13 @@ public static class AgoraDbContextSeed
     // Dynamic seeding - Done at program execution
     //      For Roles: in any environnement
     //      For Users, Posts and Transactions: only in development environment
-    #region DynamicSeeding
+    #region Dynamic Seeding
+    
+    /// <summary>
+    /// Seeds roles asynchronously, ensuring required roles exist (e.g., Admin).
+    /// </summary>
+    /// <param name="roleManager">The role manager to manage identity roles.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
     {
         if (!await roleManager.RoleExistsAsync(Roles.Admin))
@@ -136,6 +153,13 @@ public static class AgoraDbContextSeed
         }
     }
 
+    /// <summary>
+    /// Seeds development data including users, posts, and transactions if the database is empty.
+    /// Intended for development environment only.
+    /// </summary>
+    /// <param name="context">The Agora database context.</param>
+    /// <param name="userManager">The user manager to create users.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public static async Task SeedDevelopmentDataAsync(AgoraDbContext context, UserManager<User> userManager)
     {
         if (!context.Users.Any())
@@ -152,6 +176,12 @@ public static class AgoraDbContextSeed
         }
     }
 
+    /// <summary>
+    /// Seeds predefined users asynchronously, including an admin and test members.
+    /// Throws exceptions on invalid IDs or creation failures.
+    /// </summary>
+    /// <param name="userManager">The user manager to create and manage users.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     private static async Task SeedUsers(UserManager<User> userManager)
     {
         var users = new List<(string Id, string UserName, string Email, string Password, int Credit, bool IsAdmin)>
@@ -195,7 +225,11 @@ public static class AgoraDbContextSeed
         }
     }
 
-
+    /// <summary>
+    /// Seeds predefined posts asynchronously if none exist in the database.
+    /// </summary>
+    /// <param name="context">The Agora database context.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     private static async Task SeedPosts(AgoraDbContext context)
     {
         if (!context.Posts.Any())
@@ -243,6 +277,11 @@ public static class AgoraDbContextSeed
         }
     }
 
+    /// <summary>
+    /// Seeds predefined transactions asynchronously if none exist in the database.
+    /// </summary>
+    /// <param name="context">The Agora database context.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     private static async Task SeedTransactions(AgoraDbContext context)
     {
         if (!context.Transactions.Any())

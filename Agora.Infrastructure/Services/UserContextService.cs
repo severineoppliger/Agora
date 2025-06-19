@@ -9,8 +9,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace Agora.Infrastructure.Services;
 
+/// <inheritdoc />
 public class UserContextService(IHttpContextAccessor httpContextAccessor): IUserContextService
 {
+    /// <inheritdoc />
     public UserContext GetCurrentUserContext()
     {
         HttpContext? httpContext = httpContextAccessor.HttpContext;
@@ -31,6 +33,7 @@ public class UserContextService(IHttpContextAccessor httpContextAccessor): IUser
         };
     }
 
+    /// <inheritdoc />
     public bool IsAuthenticated()
     {
         return httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated == true;
