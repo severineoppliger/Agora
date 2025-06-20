@@ -1,7 +1,7 @@
 ﻿using Agora.Core.Commands;
 using Agora.Core.Enums;
-using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models;
+using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 
@@ -14,13 +14,17 @@ namespace Agora.Core.Interfaces.DomainServices;
 public interface ITransactionService
 {
     /// <summary>
-    /// Retrieves all <c>Transaction</c> visible to the user based on authorization rules.
+    /// Retrieves all <c>Transaction</c> visible to the user based on authorization rules and visibility mode.
     /// </summary>
-    /// <param name="queryParams">Filter criteria to apply on transactions.</param>
-    /// <param name="userContext">Context of the current user requesting transactions.</param>
-    /// <returns>A successful Result wrapping a list of visible <c>Transaction</c>, or failure if an error occurs.</returns>
-    public Task<Result<IReadOnlyList<Transaction>>> GetAllVisibleTransactionsAsync(
-        ITransactionQueryParameters queryParams,
+    /// <param name="transactionVisibilityMode">Specifies the scope of transactions to retrieve
+    /// (e.g., current user's transactions or admin view).</param>
+    /// <param name="queryParams">Filter criteria to apply when querying transactions.</param>
+    /// <param name="userContext">Context of the current user making the request.</param>
+    /// <returns>A successful Result wrapping a list of <c>Transaction</c> visible to user,
+    /// or failure if an error occurs.</returns>
+    public Task<Result<IReadOnlyList<Transaction>>> GetAllTransactionsAsync(
+        TransactionVisibilityMode transactionVisibilityMode,
+        TransactionQueryParameters queryParams,
         UserContext userContext
     );
     
@@ -34,7 +38,7 @@ public interface ITransactionService
     /// failure with NotFound if missing,
     /// or failure with Unauthorized if the user cannot view it.
     /// </returns>
-    public Task<Result<Transaction>> GetVisibleTransactionByIdAsync(long transactionId, UserContext userContext);
+    public Task<Result<Transaction>> GetTransactionByIdAsync(long transactionId, UserContext userContext);
     
     /// <summary>
     /// Creates a new <c>Transaction</c> after validating authorization and business rules.

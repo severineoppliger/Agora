@@ -13,7 +13,7 @@ public enum PostVisibilityMode
     /// <summary>
     /// Shows active and inactive posts belonging to the current user.
     /// </summary>
-    UserOwnPosts,
+    CurrentUserPosts,
 
     /// <summary>
     /// Shows all posts regardless of status, intended for administrators.

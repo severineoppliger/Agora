@@ -60,7 +60,7 @@ public class PostsController(
     }
     
     /// <summary>
-    /// Retrieves all posts created by the currently authenticated user.
+    /// Retrieves all posts created by the currently authenticated user, optionally filtered by query parameters..
     /// Includes posts with status "Active" or "Inactive", but not "Deleted".
     /// </summary>
     /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, etc.</param>
@@ -87,7 +87,7 @@ public class PostsController(
         PostQueryParameters internalPostQueryParameters = mapper.Map<PostQueryParameters>(queryParameters);
 
         Result<IReadOnlyList<Post>> result = await postService.GetAllPostsAsync(
-            PostVisibilityMode.UserOwnPosts,
+            PostVisibilityMode.CurrentUserPosts,
             internalPostQueryParameters, 
             userContext);
         
@@ -102,7 +102,7 @@ public class PostsController(
     }
     
     /// <summary>
-    /// Retrieves all posts from all users, regardless of their status.
+    /// Retrieves all posts from all users, regardless of their status, optionally filtered and sorted by query parameters..
     /// This action is restricted to administrators only.
     /// </summary>
     /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, user, etc.</param>
@@ -113,7 +113,8 @@ public class PostsController(
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpGet("all")]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetAllPosts(
+        [FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
     {
         // Extract current user's context from claims
         UserContext userContext;

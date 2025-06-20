@@ -16,9 +16,9 @@ public interface IPostService
     /// <summary>
     /// Retrieves all <c>Post</c> visible to the user according to authorization rules and visibility mode.
     /// </summary>
+    /// <param name="postVisibilityMode">Specifies the scope of posts to retrieve (e.g., catalog only, user-owned, admin view).</param>
     /// <param name="queryParams">Filter criteria to apply when querying posts.</param>
     /// <param name="userContext">Context of the current user making the request.</param>
-    /// <param name="postVisibilityMode">Specifies the scope of posts to retrieve (e.g., catalog only, user-owned, admin view).</param>
     /// <returns>A successful Result wrapping a list of posts visible to user, or failure if an error occurs.</returns>
     Task<Result<IReadOnlyList<Post>>> GetAllPostsAsync(
         PostVisibilityMode postVisibilityMode,
