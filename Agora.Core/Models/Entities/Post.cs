@@ -42,7 +42,7 @@ public class Post : BaseEntity
     /// <summary>
     /// Navigation property that refers to the <c>PostCategory</c> of this post.
     /// </summary>
-    public PostCategory PostCategory { get; set; }
+    public PostCategory? PostCategory { get; set; }
     
     /// <summary>
     /// Foreign key referencing the associated <c>User</c> as the owner of the post.
@@ -53,7 +53,7 @@ public class Post : BaseEntity
     /// <summary>
     /// Navigation property to the user who owns the post.
     /// </summary>
-    public User Owner { get; set; }
+    public User? Owner { get; set; }
 
     /// <summary>
     /// List of transactions related to this post.
