@@ -58,6 +58,30 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Failed all users retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users?sortby=abc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "abc"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -527,6 +551,30 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Failed post categories retrieval - Invalid SortBy value",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -919,6 +967,31 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Failed catalog retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog?sortBy=xyz",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									],
+									"query": [
+										{
+											"key": "sortBy",
+											"value": "xyz"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1026,6 +1099,31 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Failed all posts retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all?sortby=somevalue",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "somevalue"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1033,7 +1131,7 @@
 					"name": "Get current user posts (authenticated)",
 					"item": [
 						{
-							"name": "Simple current user's post retrieval",
+							"name": "Simple current user's posts retrieval",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -1103,6 +1201,31 @@
 										{
 											"key": "SortDesc",
 											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed current user's post retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/me?SortBy=info",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"me"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "info"
 										}
 									]
 								}
@@ -1454,6 +1577,34 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Failed post update - Already a Post with same title (TestMember2)",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Annonce 2 de l'utilisateur 2 - Covoiturage\",\r\n    \"type\": \"Request\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1572,6 +1723,30 @@
 										{
 											"key": "SortDesc",
 											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactionstatus?sortby=test",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactionstatus"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "test"
 										}
 									]
 								}
@@ -1774,7 +1949,110 @@
 			"name": "Transactions controller",
 			"item": [
 				{
-					"name": "Get all transactions (Authenticated)",
+					"name": "Get current user's transactions (Authenticated)",
+					"item": [
+						{
+							"name": "Simple current user's transactions retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's transactions retrieval with UsersInvolvedUsername filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?UsersInvolvedUsername=testmember2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "UsersInvolvedUsername",
+											"value": "testmember2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's transactions retrieval sorted by Price DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?sortby=price&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "price"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed current user's transactions retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all transactions (Admin)",
 					"item": [
 						{
 							"name": "Simple transactions retrieval",
@@ -1782,13 +2060,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/api/transactions",
+									"raw": "{{base_url}}/api/transactions/all",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"api",
-										"transactions"
+										"transactions",
+										"all"
 									]
 								}
 							},
@@ -1800,13 +2079,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/api/transactions?UsersInvolvedUsername=test",
+									"raw": "{{base_url}}/api/transactions/all?UsersInvolvedUsername=test",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"api",
-										"transactions"
+										"transactions",
+										"all"
 									],
 									"query": [
 										{
@@ -1824,13 +2104,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/api/transactions?SortBy=Price&SortDesc=true",
+									"raw": "{{base_url}}/api/transactions/all?SortBy=Price&SortDesc=true",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"api",
-										"transactions"
+										"transactions",
+										"all"
 									],
 									"query": [
 										{
@@ -1840,6 +2121,31 @@
 										{
 											"key": "SortDesc",
 											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transactions retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/all?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"all"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
 										}
 									]
 								}
@@ -1901,7 +2207,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"New transaction between users 2 and 3\",\r\n    \"price\": 65,\r\n    \"postid\": 3,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000001\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
+									"raw": "{\r\n    \"title\": \"New transaction between users 2 and 3\",\r\n    \"price\": 65,\r\n    \"postid\": 3,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000002\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
