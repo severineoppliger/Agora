@@ -38,6 +38,6 @@ public class UserContextService(IHttpContextAccessor httpContextAccessor): IUser
     /// <inheritdoc />
     public bool IsAuthenticated()
     {
-        return httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated == true;
+        return httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated == true;
     }
 }

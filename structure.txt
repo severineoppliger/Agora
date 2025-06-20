@@ -1,0 +1,233 @@
+﻿.
+├── Agora API.postman_collection.json
+├── Agora.API
+│   ├── Agora.API.csproj
+│   ├── ApiQueryParameters
+│   │   ├── PostCategoryQueryParameters.cs
+│   │   ├── PostQueryParameters.cs
+│   │   ├── TransactionQueryParameters.cs
+│   │   ├── TransactionStatusQueryParameters.cs
+│   │   └── UserQueryParameters.cs
+│   ├── Controllers
+│   │   ├── PostCategoriesController.cs
+│   │   ├── PostsController.cs
+│   │   ├── TransactionStatusController.cs
+│   │   ├── TransactionsController.cs
+│   │   └── UsersController.cs
+│   ├── DTOs
+│   │   ├── Post
+│   │   │   ├── CreatePostDto.cs
+│   │   │   ├── PostDetailsDto.cs
+│   │   │   ├── PostSummaryDto.cs
+│   │   │   └── UpdatePostDetailsDto.cs
+│   │   ├── PostCategory
+│   │   │   ├── CreatePostCategoryDto.cs
+│   │   │   ├── PostCategoryDetailsDto.cs
+│   │   │   ├── PostCategorySummaryDto.cs
+│   │   │   └── UpdatePostCategoryDetailsDto.cs
+│   │   ├── Transaction
+│   │   │   ├── ChangeTransactionStatusDto.cs
+│   │   │   ├── CreateTransactionDto.cs
+│   │   │   ├── TransactionDetailsDto.cs
+│   │   │   ├── TransactionSummaryDto.cs
+│   │   │   └── UpdateTransactionDetailsDto.cs
+│   │   ├── TransactionStatus
+│   │   │   ├── TransactionStatusDetailsDto.cs
+│   │   │   ├── TransactionStatusSummaryDto.cs
+│   │   │   └── UpdateTransactionStatusDetailsDto.cs
+│   │   └── User
+│   │       ├── RegisterUserDto.cs
+│   │       ├── SignInUserDto.cs
+│   │       ├── UserDetailsDto.cs
+│   │       ├── UserEmailDto.cs
+│   │       └── UserSummaryDto.cs
+│   ├── Extensions
+│   │   └── ControllerExtensions.cs
+│   ├── Filters
+│   │   ├── DisallowAuthenticatedAttribute.cs
+│   │   └── LogActionFilter.cs
+│   ├── Mapping
+│   │   ├── PostCategoryProfile.cs
+│   │   ├── PostProfile.cs
+│   │   ├── TransactionProfile.cs
+│   │   ├── TransactionStatusProfile.cs
+│   │   └── UserProfile.cs
+│   ├── Program.cs
+│   ├── Properties
+│   │   └── launchSettings.json
+│   ├── Validation
+│   │   ├── InputValidationResult.cs
+│   │   ├── InputValidator.cs
+│   │   ├── Interfaces
+│   │   │   └── IInputValidator.cs
+│   │   └── NotEmptyOrWhitespaceAttribute.cs
+│   ├── appsettings.Development.json
+│   └── appsettings.json
+├── Agora.Core
+│   ├── Agora.Core.csproj
+│   ├── Commands
+│   │   ├── RegisterUserCommand.cs
+│   │   ├── SignInUserCommand.cs
+│   │   ├── UpdatePostCategoryDetailsCommand.cs
+│   │   ├── UpdatePostDetailsCommand.cs
+│   │   ├── UpdateTransactionDetailsCommand.cs
+│   │   └── UpdateTransactionStatusDetailsCommand.cs
+│   ├── Constants
+│   │   ├── Roles.cs
+│   │   └── SortByOptions.cs
+│   ├── DomainServices
+│   │   ├── PostCategoryService.cs
+│   │   ├── PostService.cs
+│   │   ├── TransactionService.cs
+│   │   ├── TransactionStatusService.cs
+│   │   └── UserService.cs
+│   ├── Enums
+│   │   ├── ErrorType.cs
+│   │   ├── PostStatus.cs
+│   │   ├── PostType.cs
+│   │   ├── PostVisibilityMode.cs
+│   │   ├── TransactionStatusEnum.cs
+│   │   └── TransactionVisibilityMode.cs
+│   ├── Extensions
+│   │   ├── ModelStateExtensions.cs
+│   │   └── StringExtensions.cs
+│   ├── Interfaces
+│   │   ├── DomainServices
+│   │   │   ├── IPostCategoryService.cs
+│   │   │   ├── IPostService.cs
+│   │   │   ├── ITransactionService.cs
+│   │   │   ├── ITransactionStatusService.cs
+│   │   │   └── IUserService.cs
+│   │   ├── IAuthService.cs
+│   │   ├── IUserContextService.cs
+│   │   ├── QueryParameters
+│   │   │   ├── IPostCategoryQueryParameters.cs
+│   │   │   ├── IPostQueryParameters.cs
+│   │   │   ├── ITransactionQueryParameters.cs
+│   │   │   ├── ITransactionStatusQueryParameters.cs
+│   │   │   └── IUserQueryParameters.cs
+│   │   └── Repositories
+│   │       ├── IPostCategoryRepository.cs
+│   │       ├── IPostRepository.cs
+│   │       ├── ITransactionRepository.cs
+│   │       ├── ITransactionStatusRepository.cs
+│   │       └── IUserRepository.cs
+│   ├── Models
+│   │   ├── DomainQueryParameters
+│   │   │   ├── PostQueryParameters.cs
+│   │   │   └── TransactionQueryParameters.cs
+│   │   ├── Entities
+│   │   │   ├── BaseEntity.cs
+│   │   │   ├── Post.cs
+│   │   │   ├── PostCategory.cs
+│   │   │   ├── Transaction.cs
+│   │   │   ├── TransactionStatus.cs
+│   │   │   └── User.cs
+│   │   └── UserContext.cs
+│   ├── Settings
+│   │   └── UserSettings.cs
+│   ├── Shared
+│   │   ├── ErrorDetail.cs
+│   │   ├── ErrorMessages.cs
+│   │   └── Result.cs
+│   └── Validation
+│       ├── AuthorizationValidator.cs
+│       ├── BusinessRulesValidator.cs
+│       ├── Interfaces
+│       │   ├── IAuthorizationValidator.cs
+│       │   └── IBusinessRulesValidator.cs
+│       └── ValidationConstants.cs
+├── Agora.Infrastructure
+│   ├── Agora.Infrastructure.csproj
+│   ├── Configuration
+│   │   ├── PostCategoryConfiguration.cs
+│   │   ├── PostConfiguration.cs
+│   │   ├── TransactionConfiguration.cs
+│   │   └── TransactionStatusConfiguration.cs
+│   ├── Data
+│   │   ├── AgoraDbContext.cs
+│   │   └── AgoraDbContextSeed.cs
+│   ├── Migrations
+│   │   ├── 20250606080627_InitialCreate.Designer.cs
+│   │   ├── 20250606080627_InitialCreate.cs
+│   │   ├── 20250606132933_AddTransactionDate.Designer.cs
+│   │   ├── 20250606132933_AddTransactionDate.cs
+│   │   ├── 20250606142239_RenameUserToOwnerInPost.Designer.cs
+│   │   ├── 20250606142239_RenameUserToOwnerInPost.cs
+│   │   ├── 20250610133742_AddTitleToTransaction.Designer.cs
+│   │   ├── 20250610133742_AddTitleToTransaction.cs
+│   │   ├── 20250613111631_RestrictPostCategoryDeletion.Designer.cs
+│   │   ├── 20250613111631_RestrictPostCategoryDeletion.cs
+│   │   ├── 20250613165206_AddEnumValueToTransactionStatus.Designer.cs
+│   │   ├── 20250613165206_AddEnumValueToTransactionStatus.cs
+│   │   ├── 20250613165420_AddEnumValueToTransactionStatusStringValue.Designer.cs
+│   │   ├── 20250613165420_AddEnumValueToTransactionStatusStringValue.cs
+│   │   ├── 20250613172104_AddInfoForTransactionStatusChangesToTransactionEntity.Designer.cs
+│   │   ├── 20250613172104_AddInfoForTransactionStatusChangesToTransactionEntity.cs
+│   │   ├── 20250616193033_AddUpdatedAtToTransactionEntityAndRenameAppUserToUser.Designer.cs
+│   │   ├── 20250616193033_AddUpdatedAtToTransactionEntityAndRenameAppUserToUser.cs
+│   │   ├── 20250618082334_AddInitiatorNavigationPropertyToTransaction.Designer.cs
+│   │   ├── 20250618082334_AddInitiatorNavigationPropertyToTransaction.cs
+│   │   └── AgoraDbContextModelSnapshot.cs
+│   ├── Repositories
+│   │   ├── PostCategoryRepository.cs
+│   │   ├── PostRepository.cs
+│   │   ├── TransactionRepository.cs
+│   │   ├── TransactionStatusRepository.cs
+│   │   └── UserRepository.cs
+│   └── Services
+│       ├── AuthService.cs
+│       └── UserContextService.cs
+├── Agora.sln
+├── Agora.sln.DotSettings
+├── Agora.sln.DotSettings.user
+├── LICENSE.txt
+├── README.md
+├── client
+│   ├── README.md
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   └── images
+│   ├── src
+│   │   ├── app
+│   │   │   ├── app.config.ts
+│   │   │   ├── app.html
+│   │   │   ├── app.routes.ts
+│   │   │   ├── app.scss
+│   │   │   ├── app.spec.ts
+│   │   │   ├── app.ts
+│   │   │   ├── core
+│   │   │   ├── features
+│   │   │   ├── layout
+│   │   │   │   └── header
+│   │   │   └── shared
+│   │   │       └── models
+│   │   ├── assets
+│   │   │   └── fonts
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   ├── styles
+│   │   └── styles.scss
+│   ├── ssl
+│   │   ├── localhost-key.pem
+│   │   └── localhost.pem
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+├── docfx.json
+├── docs
+│   ├── getting-started.md
+│   ├── introduction.md
+│   └── toc.yml
+├── index.md
+├── infra
+│   ├── backend.Dockerfile
+│   ├── db-init.sql
+│   └── docker-compose.yaml
+├── structure.txt
+└── toc.yml
+
+55 directories, 175 files
