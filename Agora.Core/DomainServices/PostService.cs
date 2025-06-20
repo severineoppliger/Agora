@@ -36,7 +36,6 @@ public class PostService(
             return Result<IReadOnlyList<Post>>.Failure(businessRulesValidationResult.Errors!);
         }
         
-        // Retrieve in database
         // Enhance queryParameters according to business rules
         switch (postVisibilityMode)
         {
@@ -44,7 +43,7 @@ public class PostService(
                 queryParams.StatusNames = [PostStatus.Active.ToString()];
                 break;
 
-            case PostVisibilityMode.UserOwnPosts:
+            case PostVisibilityMode.CurrentUserPosts:
                 if (userContext is null)
                 {
                     return Result<IReadOnlyList<Post>>.Failure(ErrorType.Unauthorized,
@@ -68,9 +67,12 @@ public class PostService(
                 }
 
                 break;
+            default:
+                return Result<IReadOnlyList<Post>>.Failure(ErrorType.Invalid,
+                    ErrorMessages.IsInvalid("post visibility mode", postVisibilityMode.ToString()));
         }
 
-        // Get filtered posts
+        // Get filtered posts from database
         IReadOnlyList<Post> posts = await postRepo.GetAllPostsAsync(queryParams);
         
         return Result<IReadOnlyList<Post>>.Success(posts);

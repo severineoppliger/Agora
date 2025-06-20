@@ -2,9 +2,9 @@
 using Agora.Core.Constants;
 using Agora.Core.Enums;
 using Agora.Core.Interfaces.DomainServices;
-using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
 using Agora.Core.Models;
+using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Core.Shared;
 using Agora.Core.Validation.Interfaces;
@@ -27,8 +27,9 @@ public class TransactionService(
     private const string EntityName = "transaction";
     
     /// <inheritdoc />
-    public async Task<Result<IReadOnlyList<Transaction>>> GetAllVisibleTransactionsAsync(
-        ITransactionQueryParameters queryParams,
+    public async Task<Result<IReadOnlyList<Transaction>>> GetAllTransactionsAsync(
+        TransactionVisibilityMode transactionVisibilityMode,
+        TransactionQueryParameters queryParams,
         UserContext userContext
     )
     {
@@ -39,16 +40,33 @@ public class TransactionService(
             return Result<IReadOnlyList<Transaction>>.Failure(businessRulesValidationResult.Errors!);
         }
         
-        // Retrieve in database
+        // Enhance queryParameters according to business rules
+        switch (transactionVisibilityMode)
+        {
+            case TransactionVisibilityMode.CurrentUserTransactions:
+                queryParams.UserInvolvedId = userContext.UserId;
+                break;
+            case TransactionVisibilityMode.AdminView:
+                if (!userContext.IsAdmin)
+                {
+                    return Result<IReadOnlyList<Transaction>>.Failure(ErrorType.Unauthorized,
+                        ErrorMessages.User.NotAuthorized);
+                }
+
+                break;
+            default:
+                return Result<IReadOnlyList<Transaction>>.Failure(ErrorType.Invalid,
+                    ErrorMessages.IsInvalid("transaction visibility mode", transactionVisibilityMode.ToString()));
+        }
+        
+        // Get filtered transactions from database
         IReadOnlyList<Transaction> transactions = await transactionRepo.GetAllTransactionsAsync(queryParams);
         
-        transactions = transactions.Where(t => authorizationValidator.CanViewTransaction(t, userContext)).ToList();
-
         return Result<IReadOnlyList<Transaction>>.Success(transactions);
     }
-    
+
     /// <inheritdoc />
-    public async Task<Result<Transaction>> GetVisibleTransactionByIdAsync(long transactionId, UserContext userContext)
+    public async Task<Result<Transaction>> GetTransactionByIdAsync(long transactionId, UserContext userContext)
     {
         Transaction? transaction = await transactionRepo.GetTransactionByIdAsync(transactionId);
         if (transaction is null)

@@ -1,5 +1,6 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models;
+using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 
 namespace Agora.Core.Interfaces.Repositories;
@@ -11,7 +12,7 @@ public interface ITransactionRepository
     /// </summary>
     /// <param name="queryParameters">An optional queryParameters to apply to the transaction query.</param>
     /// <returns>A list of <see cref="Transaction"/> objects matching the queryParameters.</returns>
-    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionQueryParameters queryParameters);
+    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(TransactionQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a transaction by its unique identifier.

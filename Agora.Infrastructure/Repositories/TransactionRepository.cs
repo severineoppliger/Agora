@@ -1,5 +1,6 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Interfaces.Repositories;
+using Agora.Core.Models.DomainQueryParameters;
 using Agora.Core.Models.Entities;
 using Agora.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Agora.Infrastructure.Repositories;
 public class TransactionRepository(AgoraDbContext context) : ITransactionRepository
 {
     /// <inheritdoc/>
-    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionQueryParameters queryParameters)
+    public async Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(TransactionQueryParameters queryParameters)
     {
         IQueryable<Transaction> transactions = context.Transactions.AsQueryable();
 
@@ -36,9 +37,14 @@ public class TransactionRepository(AgoraDbContext context) : ITransactionReposit
             transactions = transactions.Where(t => t.TransactionStatus != null && t.TransactionStatus.Name.Contains(queryParameters.TransactionStatusName));
         }
 
-        if (!string.IsNullOrWhiteSpace(queryParameters.UsersInvolvedUsername))
+        if (!string.IsNullOrWhiteSpace(queryParameters.UserInvolvedUsername))
         {
-            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.UserName!.Contains(queryParameters.UsersInvolvedUsername) || t.Seller != null && t.Seller.UserName!.Contains(queryParameters.UsersInvolvedUsername));
+            transactions = transactions.Where(t => t.Buyer != null && t.Buyer.UserName!.Contains(queryParameters.UserInvolvedUsername) || t.Seller != null && t.Seller.UserName!.Contains(queryParameters.UserInvolvedUsername));
+        }
+        
+        if (!string.IsNullOrWhiteSpace(queryParameters.UserInvolvedId))
+        {
+            transactions = transactions.Where(t => queryParameters.UserInvolvedId == t.BuyerId || queryParameters.UserInvolvedId == t.SellerId);
         }
         
         transactions = ApplySorting(transactions, queryParameters);

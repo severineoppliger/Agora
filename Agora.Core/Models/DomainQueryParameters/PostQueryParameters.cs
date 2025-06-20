@@ -3,7 +3,7 @@
 namespace Agora.Core.Models.DomainQueryParameters;
 
 /// <summary>
-/// Query parameters for filtering and sorting posts a list of <c>Post</c> from the domain layer.
+/// Query parameters for filtering and sorting a list of <c>Post</c> from the domain layer.
 /// </summary>
 public class PostQueryParameters : IPostQueryParameters
 {
@@ -31,18 +31,13 @@ public class PostQueryParameters : IPostQueryParameters
     public string? UserName { get; set; }
     
     /// <summary>
-    /// Filter posts where the author (owner) ID matches the given user identifier.
+    /// Filters posts where the author (owner) ID matches the given user identifier.
     /// </summary>
     public string? UserId { get; set; }
     
-    /// <summary>
-    /// Property name to sort the results by.
-    /// Allowed values are given in class <c>SortByOptions.Post</c>.
-    /// </summary>
+    /// <inheritdoc />
     public string? SortBy { get; set; }
     
-    /// <summary>
-    /// Indicates whether the sorting should be in descending order. Default is false (ascending).
-    /// </summary>
+    /// <inheritdoc />
     public bool SortDesc { get; set; }
 }

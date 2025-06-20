@@ -1,9 +1,9 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
 
-namespace Agora.API.ApiQueryParameters;
+namespace Agora.Core.Models.DomainQueryParameters;
 
 /// <summary>
-/// Query parameters for filtering and sorting a list of <c>Transaction</c> in API endpoints.
+/// Query parameters for filtering and sorting posts a list of <c>Transaction</c> from the domain layer.
 /// </summary>
 public class TransactionQueryParameters : ITransactionQueryParameters
 {
@@ -21,6 +21,11 @@ public class TransactionQueryParameters : ITransactionQueryParameters
     
     /// <inheritdoc />
     public string? UserInvolvedUsername { get; set; }
+    
+    /// <summary>
+    /// Filters transactions where the given user id matches buyer or seller <c>User</c> unique identifier.
+    /// </summary>
+    public string? UserInvolvedId { get; set; }
     
     /// <inheritdoc />
     public string? SortBy { get; set; }

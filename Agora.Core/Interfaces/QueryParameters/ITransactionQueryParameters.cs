@@ -29,7 +29,7 @@ public interface ITransactionQueryParameters
     /// <summary>
     /// Filters transactions involving a specific username using substring search.
     /// </summary>
-    public string? UsersInvolvedUsername { get; set; }
+    public string? UserInvolvedUsername { get; set; }
     
     /// <summary>
     /// Property name to sort the results by.

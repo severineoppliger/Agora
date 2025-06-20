@@ -5,6 +5,8 @@ using Agora.API.Extensions;
 using Agora.API.Validation;
 using Agora.API.Validation.Interfaces;
 using Agora.Core.Commands;
+using Agora.Core.Constants;
+using Agora.Core.Enums;
 using Agora.Core.Interfaces;
 using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
@@ -31,12 +33,57 @@ public class TransactionsController(
     private const string EntityName = "transaction";
 
     /// <summary>
-    /// Retrieves all transactions visible to the current user, optionally filtered by query parameters.
+    /// Retrieves all transactions in which the currently authenticated user is involved as buyer or seller.
+    /// </summary>
+    /// <param name="queryParameters">Optional filtering parameters such as title, price range, etc.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with a list of summarized transaction information owned by the current user.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// </returns>
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<ActionResult<IReadOnlyList<TransactionSummaryDto>>> GetCurrentUserTransactions(
+        [FromQuery] TransactionQueryParameters queryParameters)
+    {
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
+        
+        // Delegate business logic
+        Core.Models.DomainQueryParameters.TransactionQueryParameters internalTransactionQueryParameters = 
+            mapper.Map<Core.Models.DomainQueryParameters.TransactionQueryParameters>(queryParameters);
+
+        Result<IReadOnlyList<Transaction>> result = await transactionService.GetAllTransactionsAsync(
+            TransactionVisibilityMode.CurrentUserTransactions,
+            internalTransactionQueryParameters, 
+            userContext);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<Transaction> transactions = result.Value!;
+        
+        return Ok(mapper.Map<IReadOnlyList<TransactionSummaryDto>>(transactions));
+    }
+    
+    
+    /// <summary>
+    /// Retrieves all transactions from all users, optionally filtered by query parameters.
+    /// This action is restricted to administrators only.
     /// </summary>
     /// <param name="queryParameters">Optional filters to apply to the transaction list.</param>
     /// <returns>Returns <c>200 OK</c> with a list of transaction summaries visible to the user.</returns>
-    [Authorize]
-    [HttpGet]
+    [Authorize(Roles = Roles.Admin)]
+    [HttpGet("all")]
     public async Task<ActionResult<IReadOnlyList<TransactionSummaryDto>>> GetAllTransactions(
         [FromQuery] TransactionQueryParameters queryParameters)
     {
@@ -52,7 +99,12 @@ public class TransactionsController(
         }
         
         // Delegate business logic
-        Result<IReadOnlyList<Transaction>> result = await transactionService.GetAllVisibleTransactionsAsync(queryParameters, userContext);
+        Core.Models.DomainQueryParameters.TransactionQueryParameters internalTransactionQueryParameters = 
+            mapper.Map<Core.Models.DomainQueryParameters.TransactionQueryParameters>(queryParameters);
+        Result<IReadOnlyList<Transaction>> result = await transactionService.GetAllTransactionsAsync(
+            TransactionVisibilityMode.AdminView,
+            internalTransactionQueryParameters,
+            userContext);
         
         if (result.IsFailure)
         {
@@ -89,7 +141,7 @@ public class TransactionsController(
         }
 
         // Delegate business logic
-        Result<Transaction> result = await transactionService.GetVisibleTransactionByIdAsync(id, userContext);
+        Result<Transaction> result = await transactionService.GetTransactionByIdAsync(id, userContext);
         
         if (result.IsFailure)
         {
