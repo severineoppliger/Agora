@@ -3,28 +3,20 @@
 namespace Agora.Core.Models.DomainQueryParameters;
 
 /// <summary>
-/// Represents query parameters for filtering and sorting posts in the domain layer.
+/// Query parameters for filtering and sorting posts a list of <c>Post</c> from the domain layer.
 /// </summary>
 public class PostQueryParameters : IPostQueryParameters
 {
-    /// <summary>
-    /// Search term for filtering posts by title or description using substring matching.
-    /// </summary>
+    /// <inheritdoc />
     public string? TitleOrDescription { get; set; }
     
-    /// <summary>
-    /// Filter posts with <c>Price</c> property at least <c>MinPrice</c>.
-    /// </summary>
+    /// <inheritdoc />
     public int? MinPrice { get; set; }
     
-    /// <summary>
-    /// Filter posts with <c>Price</c> property at most <c>MaxPrice</c>.
-    /// </summary>
+    /// <inheritdoc />
     public int? MaxPrice { get; set; }
     
-    /// <summary>
-    /// Filter posts by type name. Allowed values: "offer" or "request"
-    /// </summary>
+    /// <inheritdoc />
     public string? TypeName { get; set; }
     
     /// <summary>
@@ -32,14 +24,10 @@ public class PostQueryParameters : IPostQueryParameters
     /// </summary>
     public List<string> StatusNames { get; set; } = [];
     
-    /// <summary>
-    /// Filter posts by the name of the post category using substring search.
-    /// </summary>
+    /// <inheritdoc />
     public string? PostCategoryName { get; set; }
     
-    /// <summary>
-    /// Filter posts where the author (owner) username contains the given substring.
-    /// </summary>
+    /// <inheritdoc />
     public string? UserName { get; set; }
     
     /// <summary>
@@ -49,9 +37,7 @@ public class PostQueryParameters : IPostQueryParameters
     
     /// <summary>
     /// Property name to sort the results by.
-    /// Allowed values: "id", "title", "price", "type", "status" (active or inactive),
-    ///                 "postcategoryid", "postcategoryname", "username",
-    ///                 "createdat" (default in desc) or "updatedat"
+    /// Allowed values are given in class <c>SortByOptions.Post</c>.
     /// </summary>
     public string? SortBy { get; set; }
     
