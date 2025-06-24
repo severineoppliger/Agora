@@ -52,12 +52,12 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
         
         if (!string.IsNullOrWhiteSpace(queryParameters.PostCategoryName))
         {
-            posts = posts.Where(p => p.PostCategory.Name.Contains(queryParameters.PostCategoryName));
+            posts = posts.Where(p => p.PostCategory!.Name.Contains(queryParameters.PostCategoryName));
         }
 
         if (!string.IsNullOrWhiteSpace(queryParameters.UserName))
         {
-            posts = posts.Where(p => p.Owner.UserName!.Contains(queryParameters.UserName));
+            posts = posts.Where(p => p.Owner!.UserName!.Contains(queryParameters.UserName));
         }
         
         if (!string.IsNullOrWhiteSpace(queryParameters.UserId))
@@ -128,8 +128,8 @@ public class PostRepository(AgoraDbContext context) : IPostRepository
             "type" => queryParams.SortDesc ? query.OrderByDescending(p => p.Type) : query.OrderBy(p => p.Type),
             "status" => queryParams.SortDesc ? query.OrderByDescending(p => p.Status) : query.OrderBy(p => p.Status),
             "postcategoryid" => queryParams.SortDesc ? query.OrderByDescending(p => p.PostCategoryId) : query.OrderBy(p => p.PostCategoryId),
-            "postcategoryname" => queryParams.SortDesc ? query.OrderByDescending(p => p.PostCategory.Name) : query.OrderBy(p => p.PostCategory.Name),
-            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.Owner.UserName) : query.OrderBy(p => p.Owner.UserName),
+            "postcategoryname" => queryParams.SortDesc ? query.OrderByDescending(p => p.PostCategory!.Name) : query.OrderBy(p => p.PostCategory!.Name),
+            "user" => queryParams.SortDesc ? query.OrderByDescending(p => p.Owner!.UserName) : query.OrderBy(p => p.Owner!.UserName),
             "createdat" => queryParams.SortDesc ? query.OrderByDescending(p => p.CreatedAt) : query.OrderBy(p => p.CreatedAt),
             "updatedat" => queryParams.SortDesc ? query.OrderByDescending(p => p.UpdatedAt) : query.OrderBy(p => p.UpdatedAt),
             _ => query.OrderByDescending(p => p.CreatedAt)

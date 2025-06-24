@@ -19,7 +19,7 @@ public class UserContextService(IHttpContextAccessor httpContextAccessor): IUser
     {
         HttpContext? httpContext = httpContextAccessor.HttpContext;
     
-        if (httpContext?.User?.Identity?.IsAuthenticated != true)
+        if (httpContext?.User.Identity?.IsAuthenticated != true)
         {
             throw new AuthenticationException(ErrorMessages.User.NotAuthenticated);
         }

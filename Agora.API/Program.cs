@@ -97,9 +97,9 @@ try
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
     builder.Services.AddScoped<IAuthorizationValidator, AuthorizationValidator>();
 
-    /*  -------------------
-       | Business services  |
-        -------------------- */
+    /*  ------------------
+       | Domain services  |
+        ------------------ */
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
     builder.Services.AddScoped<IPostService, PostService>();
