@@ -53,7 +53,7 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.HasMany(p => p.Transactions)
             .WithOne(t => t.Post)
             .HasForeignKey(t => t.PostId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
         
         builder.Property(p => p.CreatedAt)
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
