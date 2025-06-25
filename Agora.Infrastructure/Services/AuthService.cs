@@ -14,8 +14,6 @@ namespace Agora.Infrastructure.Services;
 /// Default implementation of <see cref="IAuthService"/>.
 /// </summary>
 public class AuthService(
-    SignInManager<User> signInManager,
-    UserManager<User> userManager,
     IUserRepository userRepo,
     IOptions<UserSettings> userSettings
     ) : IAuthService
@@ -69,7 +67,7 @@ public class AuthService(
         }
         
         // SignIn with ASP.NET Core Identity
-        SignInResult signInResult = await signInManager.PasswordSignInAsync(user, command.Password, false, false);
+        SignInResult signInResult = await userRepo.SignInAsync(user, command.Password);
         if (!signInResult.Succeeded)
         {
             return Result.Failure(ErrorType.Unauthorized, ErrorMessages.User.InvalidCredentials);
@@ -77,7 +75,7 @@ public class AuthService(
         
         // Update LastLoginAt property
         user.LastLoginAt = DateTime.UtcNow;
-        IdentityResult identityResult = await userManager.UpdateAsync(user);
+        IdentityResult identityResult = await userRepo.UpdateUserAsync(user);
         return identityResult.Succeeded
             ? Result.Success()
             : Result.Failure(ErrorType.Invalid, identityResult.Errors.ToString()!);
@@ -86,6 +84,6 @@ public class AuthService(
     /// <inheritdoc />
     public async Task LogoutAsync()
     {
-        await signInManager.SignOutAsync();
+        await userRepo.SignOutAsync();
     }
 }

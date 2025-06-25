@@ -1,5 +1,4 @@
 ﻿using Agora.Core.Interfaces.QueryParameters;
-using Agora.Core.Models;
 using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 
@@ -64,4 +63,18 @@ public interface IUserRepository
     /// <c>true</c> if the user exists; otherwise, <c>false</c>.
     /// </returns>
     Task<bool> UserExistsAsync(string id);
+    
+    /// <summary>
+    /// Attempts to sign in the specified user with the provided password.
+    /// </summary>
+    /// <param name="user">The user attempting to sign in.</param>
+    /// <param name="password">The user's password.</param>
+    /// <returns>A <see cref="SignInResult"/> indicating the outcome of the sign-in attempt.</returns>
+    Task<SignInResult> SignInAsync(User user, string password);
+    
+    /// <summary>
+    /// Signs out the currently authenticated user.
+    /// </summary>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    Task SignOutAsync();
 }

@@ -14,6 +14,7 @@ public class UserRepository(
     SignInManager<User> signInManager
     ) : IUserRepository
 {
+    /// <inheritdoc/>
     public async Task<IReadOnlyList<User>> GetAllUsersAsync(IUserQueryParameters queryParameters)
     {
         IQueryable<User> users = userManager.Users.AsQueryable();
@@ -51,6 +52,7 @@ public class UserRepository(
         return await ApplySorting(users, queryParameters).ToListAsync();
     }
 
+    /// <inheritdoc/>
     public async Task<User?> GetUserByIdAsync(string id)
     {
         return await userManager.Users
@@ -71,37 +73,54 @@ public class UserRepository(
             .FirstOrDefaultAsync(u => u.Id == id);
     }
 
+    /// <inheritdoc/>
     public async Task<User?> GetUserByEmailAsync(string email)
     {
         return await userManager.FindByEmailAsync(email);
     }
     
+    /// <inheritdoc/>
     public async Task<User?> GetUserByUsernameAsync(string username)
     {
         return await userManager.FindByNameAsync(username);
     }
     
+    /// <inheritdoc/>
     public async Task<IdentityResult> AddUserAsync(User user, string password)
     {
         return await signInManager.UserManager.CreateAsync(user, password);
     }
 
+    /// <inheritdoc/>
     public async Task<IdentityResult> UpdateUserAsync(User user)
     {
         return await userManager.UpdateAsync(user);
     }
 
+    /// <inheritdoc/>
     public async Task<bool> UserExistsAsync(string id)
     {
         return await userManager.Users.AnyAsync(u => u.Id == id);
     }
-    
-        /// <summary>
-        /// Applies sorting to the given <see cref="IQueryable{User}"/> based on the specified query parameters.
-        /// </summary>
-        /// <param name="query">The queryable collection of <see cref="User"/> to sort.</param>
-        /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
-        /// <returns>The sorted <see cref="IQueryable{User}"/>.</returns>
+
+    /// <inheritdoc/>
+    public async Task<SignInResult> SignInAsync(User user, string password)
+    {
+        return await signInManager.PasswordSignInAsync(user, password, false, false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SignOutAsync()
+    {
+        await signInManager.SignOutAsync();
+    }
+
+    /// <summary>
+    /// Applies sorting to the given <see cref="IQueryable{User}"/> based on the specified query parameters.
+    /// </summary>
+    /// <param name="query">The queryable collection of <see cref="User"/> to sort.</param>
+    /// <param name="queryParams">The sorting parameters specifying the property and order (ascending/descending).</param>
+    /// <returns>The sorted <see cref="IQueryable{User}"/>.</returns>
     private IQueryable<User> ApplySorting(IQueryable<User> query, IUserQueryParameters queryParams)
     {
         query = queryParams.SortBy?.ToLower() switch
