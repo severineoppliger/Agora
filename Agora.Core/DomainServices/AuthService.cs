@@ -8,7 +8,7 @@ using Agora.Core.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
-namespace Agora.Infrastructure.Services;
+namespace Agora.Core.DomainServices;
 
 /// <summary>
 /// Default implementation of <see cref="IAuthService"/>.
