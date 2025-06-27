@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Agora.API.Validation;
 using Agora.Core.Validation;
 
 namespace Agora.API.DTOs.PostCategory;
@@ -13,7 +14,7 @@ public class CreatePostCategoryDto
     /// </summary>
     [Required]
     [NotEmptyOrWhitespace]
-    [MinLength(ValidationRules.PostCategory.NameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.PostCategory.NameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.PostCategory.NameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.PostCategory.NameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string Name { get; set; } = String.Empty;
 }

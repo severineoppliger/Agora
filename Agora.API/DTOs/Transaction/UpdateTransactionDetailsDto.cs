@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Agora.Core.Enums;
 using Agora.Core.Validation;
 
 namespace Agora.API.DTOs.Transaction;
@@ -12,14 +11,14 @@ public class UpdateTransactionDetailsDto
     /// <summary>
     /// New title of the transaction.
     /// </summary>
-    [MinLength(ValidationRules.Transaction.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.Transaction.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.Transaction.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.Transaction.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Title { get; set; }
 
     /// <summary>
     /// New price of the transaction in Kairos credits.
     /// </summary>
-    [Range(ValidationRules.Transaction.PriceMin, ValidationRules.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
+    [Range(ValidationConstants.Transaction.PriceMin, ValidationConstants.Transaction.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int? Price { get; set; }
     
     /// <summary>

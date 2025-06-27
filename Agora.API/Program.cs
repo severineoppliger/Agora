@@ -1,16 +1,15 @@
 using System.Text.Json.Serialization;
 using Agora.API.Filters;
-using Agora.API.InputValidation;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.Settings;
-using Agora.Core.BusinessRules;
-using Agora.Core.BusinessRules.Interfaces;
-using Agora.Core.BusinessServices;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.DomainServices;
 using Agora.Core.Interfaces;
-using Agora.Core.Interfaces.BusinessServices;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Interfaces.Repositories;
-using Agora.Core.Models;
+using Agora.Core.Models.Entities;
+using Agora.Core.Settings;
 using Agora.Core.Validation;
+using Agora.Core.Validation.Interfaces;
 using Agora.Infrastructure.Data;
 using Agora.Infrastructure.Repositories;
 using Agora.Infrastructure.Services;
@@ -96,11 +95,11 @@ try
         ----------------- */
     builder.Services.AddScoped<IInputValidator, InputValidator>();
     builder.Services.AddScoped<IBusinessRulesValidator, BusinessRulesValidator>();
-    builder.Services.AddScoped<IAuthorizationBusinessRules, AuthorizationBusinessRules>();
+    builder.Services.AddScoped<IAuthorizationValidator, AuthorizationValidator>();
 
-    /*  -------------------
-       | Business services  |
-        -------------------- */
+    /*  ------------------
+       | Domain services  |
+        ------------------ */
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IPostCategoryService, PostCategoryService>();
     builder.Services.AddScoped<IPostService, PostService>();
@@ -120,7 +119,7 @@ try
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequiredLength = ValidationRules.AppUser.PasswordMinLength;
+                options.Password.RequiredLength = ValidationConstants.User.PasswordMinLength;
                 options.Password.RequiredUniqueChars = 1;
             }
         )

@@ -1,10 +1,15 @@
-﻿using Agora.API.DTOs.Transaction;
-using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.Transaction;
+using Agora.Core.Commands;
+using Agora.Core.Models.Entities;
 using AutoMapper;
 
 namespace Agora.API.Mapping;
 
+/// <summary>
+/// AutoMapper profile that defines mappings between the <see cref="Transaction"/> domain model,
+/// API DTOs, and command objects used for creating, updating, and projecting transactions.
+/// </summary>
 public class TransactionProfile : Profile
 {
     public TransactionProfile()
@@ -28,7 +33,9 @@ public class TransactionProfile : Profile
                 src.TransactionDate.HasValue ? DateOnly.FromDateTime(src.TransactionDate.Value) : (DateOnly?)null))
             .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
         
-        CreateMap<UpdateTransactionDetailsDto, TransactionDetailsUpdate>()
+        CreateMap<TransactionQueryParameters, Core.Models.DomainQueryParameters.TransactionQueryParameters>();
+
+        CreateMap<UpdateTransactionDetailsDto, UpdateTransactionDetailsCommand>()
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title != null ? src.Title.Trim() : null))
             .ForMember(dest => dest.TransactionDate, opt => opt.MapFrom(src => 
                 src.TransactionDate.HasValue ? DateOnly.FromDateTime(src.TransactionDate.Value) : (DateOnly?)null))

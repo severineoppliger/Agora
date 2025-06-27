@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Agora.API.Validation;
 using Agora.Core.Validation;
 
 namespace Agora.API.DTOs.Post;
@@ -13,8 +14,8 @@ public class CreatePostDto
     /// </summary>
     [Required]
     [NotEmptyOrWhitespace]
-    [MinLength(ValidationRules.Post.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.Post.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.Post.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.Post.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string Title { get; set; } = String.Empty;
     
     /// <summary>
@@ -22,15 +23,15 @@ public class CreatePostDto
     /// </summary>
     [Required]
     [NotEmptyOrWhitespace]
-    [MinLength(ValidationRules.Post.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.Post.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.Post.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.Post.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string Description { get; set; } = String.Empty;
     
     /// <summary>
     /// Price of the item or service in credits (Kairos).
     /// </summary>
     [Required]
-    [Range(ValidationRules.Post.PriceMin, ValidationRules.Post.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
+    [Range(ValidationConstants.Post.PriceMin, ValidationConstants.Post.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int Price { get; set; }
     
     /// <summary>

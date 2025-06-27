@@ -22,7 +22,7 @@ namespace Agora.Infrastructure.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,7 +78,7 @@ namespace Agora.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.PostCategory", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.PostCategory", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace Agora.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Transaction", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Transaction", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,7 +217,7 @@ namespace Agora.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.TransactionStatus", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -345,7 +345,7 @@ namespace Agora.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.User", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -550,15 +550,15 @@ namespace Agora.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", "Owner")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Owner")
                         .WithMany("Posts")
                         .HasForeignKey("OwnerUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.PostCategory", "PostCategory")
+                    b.HasOne("Agora.Core.Models.Entities.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -569,32 +569,32 @@ namespace Agora.Infrastructure.Migrations
                     b.Navigation("PostCategory");
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Transaction", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Transaction", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", "Buyer")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Buyer")
                         .WithMany("TransactionsAsBuyer")
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.User", "Initiator")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Initiator")
                         .WithMany()
                         .HasForeignKey("InitiatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.Post", "Post")
+                    b.HasOne("Agora.Core.Models.Entities.Post", "Post")
                         .WithMany("Transactions")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Agora.Core.Models.User", "Seller")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Seller")
                         .WithMany("TransactionsAsSeller")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.TransactionStatus", "TransactionStatus")
+                    b.HasOne("Agora.Core.Models.Entities.TransactionStatus", "TransactionStatus")
                         .WithMany("Transactions")
                         .HasForeignKey("TransactionStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -622,7 +622,7 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -631,7 +631,7 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -646,7 +646,7 @@ namespace Agora.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.User", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -655,29 +655,29 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.User", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.PostCategory", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.PostCategory", b =>
                 {
                     b.Navigation("Posts");
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.TransactionStatus", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.User", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.User", b =>
                 {
                     b.Navigation("Posts");
 

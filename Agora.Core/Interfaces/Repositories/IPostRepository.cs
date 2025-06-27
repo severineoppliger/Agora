@@ -1,17 +1,17 @@
-﻿using Agora.Core.Interfaces.Filters;
-using Agora.Core.Models;
-using Agora.Core.Models.Filters;
+﻿using Agora.Core.Models;
+using Agora.Core.Models.DomainQueryParameters;
+using Agora.Core.Models.Entities;
 
 namespace Agora.Core.Interfaces.Repositories;
 
 public interface IPostRepository
 {
     /// <summary>
-    /// Retrieves all posts, optionally filtered by the provided filter.
+    /// Retrieves all posts, optionally filtered by the provided queryParameters.
     /// </summary>
-    /// <param name="filter">An optional filter to apply to the post query.</param>
-    /// <returns>A list of <see cref="Post"/> objects matching the filter.</returns>
-    Task<IReadOnlyList<Post>> GetAllPostsAsync(PostFilter filter);
+    /// <param name="queryParameters">An optional queryParameters to apply to the post query.</param>
+    /// <returns>A list of <see cref="Post"/> objects matching the queryParameters.</returns>
+    Task<IReadOnlyList<Post>> GetAllPostsAsync(PostQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a post by its unique identifier.

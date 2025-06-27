@@ -1,16 +1,18 @@
-﻿using Agora.Core.Interfaces.Filters;
+﻿using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models;
+using Agora.Core.Models.DomainQueryParameters;
+using Agora.Core.Models.Entities;
 
 namespace Agora.Core.Interfaces.Repositories;
 
 public interface ITransactionRepository
 {
     /// <summary>
-    /// Retrieves all transactions, optionally filtered by the provided filter.
+    /// Retrieves all transactions, optionally filtered by the provided queryParameters.
     /// </summary>
-    /// <param name="filter">An optional filter to apply to the transaction query.</param>
-    /// <returns>A list of <see cref="Transaction"/> objects matching the filter.</returns>
-    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(ITransactionFilter filter);
+    /// <param name="queryParameters">An optional queryParameters to apply to the transaction query.</param>
+    /// <returns>A list of <see cref="Transaction"/> objects matching the queryParameters.</returns>
+    Task<IReadOnlyList<Transaction>> GetAllTransactionsAsync(TransactionQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a transaction by its unique identifier.

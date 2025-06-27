@@ -11,15 +11,15 @@ public class UpdateTransactionStatusDetailsDto
     /// <summary>
     /// New name of the transaction status (in French).
     /// </summary>
-    [MinLength(ValidationRules.TransactionStatus.NameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.TransactionStatus.NameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.TransactionStatus.NameMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.TransactionStatus.NameMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Name { get; set; }
     
     /// <summary>
     /// New description of the transaction status.
     /// </summary>
-    [MinLength(ValidationRules.TransactionStatus.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.TransactionStatus.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.TransactionStatus.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.TransactionStatus.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Description { get; set; }
     
     /// <summary>

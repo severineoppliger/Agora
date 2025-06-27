@@ -11,21 +11,21 @@ public class UpdatePostDetailsDto
     /// <summary>
     /// New title of the post.
     /// </summary>
-    [MinLength(ValidationRules.Post.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.Post.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.Post.TitleMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.Post.TitleMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Title { get; set; }
     
     /// <summary>
     /// New description of the post.
     /// </summary>
-    [MinLength(ValidationRules.Post.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
-    [MaxLength(ValidationRules.Post.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
+    [MinLength(ValidationConstants.Post.DescriptionMinLength, ErrorMessage = "{0} must be at least {1} characters.")]
+    [MaxLength(ValidationConstants.Post.DescriptionMaxLength, ErrorMessage = "{0} must be less than {1} characters.")]
     public string? Description { get; set; }
     
     /// <summary>
     /// New price of the item or service in credits (Kairos).
     /// </summary>
-    [Range(ValidationRules.Post.PriceMin, ValidationRules.Post.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
+    [Range(ValidationConstants.Post.PriceMin, ValidationConstants.Post.PriceMax, ErrorMessage = "{0} must be between {1} and {2}.")]
     public int? Price { get; set; }
     
     /// <summary>

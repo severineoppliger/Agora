@@ -1,5 +1,5 @@
-﻿using Agora.Core.Interfaces.Filters;
-using Agora.Core.Models;
+﻿using Agora.Core.Interfaces.QueryParameters;
+using Agora.Core.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace Agora.Core.Interfaces.Repositories;
@@ -7,11 +7,11 @@ namespace Agora.Core.Interfaces.Repositories;
 public interface IUserRepository
 {
     /// <summary>
-    /// Retrieves all users, optionally filtered by the provided filter.
+    /// Retrieves all users, optionally filtered by the provided queryParameters.
     /// </summary>
-    /// <param name="filter">An optional filter to apply to the user query.</param>
-    /// <returns>A list of <see cref="User"/> objects matching the filter.</returns>
-    Task<IReadOnlyList<User>> GetAllUsersAsync(IUserFilter filter);
+    /// <param name="queryParameters">An optional queryParameters to apply to the user query.</param>
+    /// <returns>A list of <see cref="User"/> objects matching the queryParameters.</returns>
+    Task<IReadOnlyList<User>> GetAllUsersAsync(IUserQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a user by its unique identifier.
@@ -63,4 +63,18 @@ public interface IUserRepository
     /// <c>true</c> if the user exists; otherwise, <c>false</c>.
     /// </returns>
     Task<bool> UserExistsAsync(string id);
+    
+    /// <summary>
+    /// Attempts to sign in the specified user with the provided password.
+    /// </summary>
+    /// <param name="user">The user attempting to sign in.</param>
+    /// <param name="password">The user's password.</param>
+    /// <returns>A <see cref="SignInResult"/> indicating the outcome of the sign-in attempt.</returns>
+    Task<SignInResult> SignInAsync(User user, string password);
+    
+    /// <summary>
+    /// Signs out the currently authenticated user.
+    /// </summary>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    Task SignOutAsync();
 }

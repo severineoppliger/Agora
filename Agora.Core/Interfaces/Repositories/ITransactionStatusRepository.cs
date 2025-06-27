@@ -1,17 +1,18 @@
 ﻿using Agora.Core.Enums;
-using Agora.Core.Interfaces.Filters;
+using Agora.Core.Interfaces.QueryParameters;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
 
 namespace Agora.Core.Interfaces.Repositories;
 
 public interface ITransactionStatusRepository
 {
     /// <summary>
-    /// Retrieves all transaction status, optionally filtered by the provided filter.
+    /// Retrieves all transaction status, optionally filtered by the provided queryParameters.
     /// </summary>
-    /// <param name="filter">An optional filter to apply to the transaction status query.</param>
-    /// <returns>A list of <see cref="TransactionStatus"/> objects matching the filter.</returns>
-    Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusFilter filter);
+    /// <param name="queryParameters">An optional queryParameters to apply to the transaction status query.</param>
+    /// <returns>A list of <see cref="TransactionStatus"/> objects matching the queryParameters.</returns>
+    Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusQueryParameters queryParameters);
     
     /// <summary>
     /// Retrieves a transaction status by its unique identifier.

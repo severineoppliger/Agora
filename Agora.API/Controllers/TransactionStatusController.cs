@@ -1,13 +1,13 @@
-﻿using Agora.API.DTOs.TransactionStatus;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.TransactionStatus;
 using Agora.API.Extensions;
-using Agora.API.InputValidation;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
 using Agora.Core.Constants;
-using Agora.Core.Interfaces.BusinessServices;
-using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+using Agora.Core.Interfaces.DomainServices;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +35,14 @@ public class TransactionStatusController(
     {
         // Delegate business logic
         Result<IReadOnlyList<TransactionStatus>> result = await transactionStatusService.GetAllTransactionStatusAsync(queryParameters);
-        IReadOnlyList<TransactionStatus> transactions = result.Value!;
         
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<TransactionStatus> transactions = result.Value!;
+
         return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactions));
     }
 
@@ -87,7 +93,7 @@ public class TransactionStatusController(
             return BadRequest(inputValidationResult.Errors);
         }
         // Delegate business logic (business rules + database changes)
-        TransactionStatusDetailsUpdate newDetails = mapper.Map<TransactionStatusDetailsUpdate>(dto);
+        UpdateTransactionStatusDetailsCommand newDetails = mapper.Map<UpdateTransactionStatusDetailsCommand>(dto);
         Result result = await transactionStatusService.UpdateTransactionStatusDetailsAsync(id, newDetails);
 
         return result.IsFailure 

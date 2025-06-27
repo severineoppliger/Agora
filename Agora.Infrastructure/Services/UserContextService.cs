@@ -1,20 +1,25 @@
 ﻿using System.Security.Authentication;
 using System.Security.Claims;
-using Agora.Core.Common;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces;
+using Agora.Core.Models;
+using Agora.Core.Shared;
 using Microsoft.AspNetCore.Http;
 
 
 namespace Agora.Infrastructure.Services;
 
+/// <summary>
+/// Default implementation of <see cref="IUserContextService"/>.
+/// </summary>
 public class UserContextService(IHttpContextAccessor httpContextAccessor): IUserContextService
 {
+    /// <inheritdoc />
     public UserContext GetCurrentUserContext()
     {
         HttpContext? httpContext = httpContextAccessor.HttpContext;
     
-        if (httpContext?.User?.Identity?.IsAuthenticated != true)
+        if (httpContext?.User.Identity?.IsAuthenticated != true)
         {
             throw new AuthenticationException(ErrorMessages.User.NotAuthenticated);
         }
@@ -30,8 +35,9 @@ public class UserContextService(IHttpContextAccessor httpContextAccessor): IUser
         };
     }
 
+    /// <inheritdoc />
     public bool IsAuthenticated()
     {
-        return httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated == true;
+        return httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated == true;
     }
 }

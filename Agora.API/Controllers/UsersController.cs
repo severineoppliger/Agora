@@ -1,16 +1,17 @@
 ﻿using System.Security.Authentication;
+using Agora.API.ApiQueryParameters;
 using Agora.API.DTOs.User;
 using Agora.API.Extensions;
 using Agora.API.Filters;
-using Agora.API.InputValidation;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
 using Agora.Core.Constants;
 using Agora.Core.Interfaces;
-using Agora.Core.Interfaces.BusinessServices;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
-using Agora.Core.Models.Requests;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,12 @@ public class UsersController(
     {
         // Delegate business logic
         Result<IReadOnlyList<User>> result = await userService.GetAllUsersAsync(queryParameters);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
         IReadOnlyList<User> users = result.Value!;
         
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));
@@ -145,7 +152,7 @@ public class UsersController(
     /// <summary>
     /// Registers a new <c>User</c> in the system.
     /// </summary>
-    /// <param name="dto">The registration data including username, email, and password.</param>
+    /// <param name="userDto">The registration data including username, email, and password.</param>
     /// <returns>
     /// Returns <c>200 OK</c> with the new user's details, if the user was successfully registered.
     /// Returns <c>400 BadRequest</c> if input validation fails or the user already exists.
@@ -153,18 +160,18 @@ public class UsersController(
     /// </returns>
     [HttpPost("register")]
     [DisallowAuthenticated]
-    public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterDto dto)
+    public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterUserDto userDto)
     {
         // Validate input DTO
-        InputValidationResult inputValidationResult = await inputValidator.ValidateRegisterDtoAsync(dto);
+        InputValidationResult inputValidationResult = await inputValidator.ValidateRegisterDtoAsync(userDto);
         if (!inputValidationResult.IsValid)
         {
             return BadRequest(inputValidationResult.Errors);
         }
 
         // Delegate business logic (business rules + database changes)
-        UserRegistrationInfo userRegistrationInfo = mapper.Map<UserRegistrationInfo>(dto);
-        Result<User> result = await authService.RegisterAsync(userRegistrationInfo);
+        RegisterUserCommand registerUserCommand = mapper.Map<RegisterUserCommand>(userDto);
+        Result<User> result = await authService.RegisterAsync(registerUserCommand);
 
         return result.IsFailure
             ? this.MapErrorResult(result)
@@ -174,16 +181,16 @@ public class UsersController(
     /// <summary>
     /// Authenticates a user and starts a session.
     /// </summary>
-    /// <param name="dto">The login credentials: email and password.</param>
+    /// <param name="userDto">The login credentials: email and password.</param>
     /// <returns>
     /// Returns <c>204 No Content</c> on successful login.
     /// Returns <c>401 Unauthorized</c> if the credentials are invalid.
     /// </returns>
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] SignInDto dto)
+    public async Task<ActionResult> Login([FromBody] SignInUserDto userDto)
     {
-        UserSignInInfo signInInfo = mapper.Map<UserSignInInfo>(dto);
-        Result result = await authService.LoginAsync(signInInfo);
+        SignInUserCommand command = mapper.Map<SignInUserCommand>(userDto);
+        Result result = await authService.LoginAsync(command);
         return result.IsFailure 
             ? this.MapErrorResult(result)
             : NoContent();

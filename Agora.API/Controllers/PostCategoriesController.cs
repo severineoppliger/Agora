@@ -1,10 +1,11 @@
-﻿using Agora.API.DTOs.PostCategory;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.PostCategory;
 using Agora.API.Extensions;
-using Agora.API.QueryParams;
-using Agora.Core.Common;
+using Agora.Core.Commands;
 using Agora.Core.Constants;
-using Agora.Core.Interfaces.BusinessServices;
-using Agora.Core.Models;
+using Agora.Core.Interfaces.DomainServices;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -32,8 +33,14 @@ public class PostCategoriesController(
     {
         // Delegate business logic
         Result<IReadOnlyList<PostCategory>> result = await postCategoryService.GetAllPostCategoriesAsync(queryParameters);
-        IReadOnlyList<PostCategory> postCategories = result.Value!;
         
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<PostCategory> postCategories = result.Value!;
+
         return Ok(mapper.Map<IReadOnlyList<PostCategorySummaryDto>>(postCategories));
     }
 
@@ -107,13 +114,14 @@ public class PostCategoriesController(
     /// </returns>
     [Authorize(Roles = Roles.Admin)]
     [HttpPatch("{id:long}")]
-    public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDto dto)
+    public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDetailsDto dto)
     {
         // Cleaning
         dto.Name = dto.Name.Trim();
         
         // Delegate business logic (business rules + database changes)
-        Result result = await postCategoryService.UpdatePostCategoryNameAsync(id, dto.Name);
+        UpdatePostCategoryDetailsCommand newDetails = mapper.Map<UpdatePostCategoryDetailsCommand>(dto);
+        Result result = await postCategoryService.UpdatePostCategoryDetailsAsync(id, newDetails);
 
         return result.IsFailure 
             ? this.MapErrorResult(result)

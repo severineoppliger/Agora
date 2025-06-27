@@ -1,10 +1,15 @@
-﻿using Agora.Core.Models;
+﻿using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Agora.Infrastructure.Configuration;
 
+/// <summary>
+/// Configuration for the <see cref="Transaction"/> entity for the <b>Transactions</b> DB table,
+/// including table mapping, primary key, property constraints,
+/// check constraints, foreign keys, and navigation properties.
+/// </summary>
 public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 {
     public void Configure(EntityTypeBuilder<Transaction> builder)
@@ -15,14 +20,14 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         
         builder.Property(p => p.Title)
             .IsRequired()
-            .HasMaxLength(ValidationRules.Transaction.TitleMaxLength);
+            .HasMaxLength(ValidationConstants.Transaction.TitleMaxLength);
 
         builder.Property(t => t.Price)
             .IsRequired();
         builder.ToTable( t =>
         {
             t.HasCheckConstraint("CK_Transaction_Price_Range",
-                $"Price >= {ValidationRules.Transaction.PriceMin} AND Price <= {ValidationRules.Transaction.PriceMax}");
+                $"Price >= {ValidationConstants.Transaction.PriceMin} AND Price <= {ValidationConstants.Transaction.PriceMax}");
         });
 
         builder.HasOne(t => t.Post)
