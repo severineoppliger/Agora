@@ -1314,7 +1314,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"Offer\",\r\n    \"status\": \"Active\"\r\n    }",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"postCategoryId\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1335,13 +1335,13 @@
 							"response": []
 						},
 						{
-							"name": "Failed post creation - Invalid type",
+							"name": "Failed post creation - Invalid type + unknown category id",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"UnknownType\",\r\n    \"postCategoryId\": 1\r\n}",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"abc\",\r\n    \"postCategoryId\": 100\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2574,7 +2574,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "https://localhost:5001",
+			"value": "http://localhost:5000",
 			"type": "string"
 		}
 	]
