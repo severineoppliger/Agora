@@ -1,24 +1,41 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+**Agora** is a community web platform designed for the university environment, enabling students, staff, and alumni 
+to exchange services. Users offer their time and skills in return for a virtual currency called Kairos. 
+Kairos is strictly based on the time invested by users, regardless of the type of service provided,
+ensuring fairness across the platform. Upon registration, each user receives an initial allocation of Kairos 
+to start trading.
+
+The backend is built with **ASP.NET Core 9**, follows a clean and layered architecture, and provides a fully documented
+**REST API** secured with cookie authentication. It communicates with a MariaDB database containerized in Docker.
+It uses **Entity Framework Core** as ORM and **ASP.NET Core Identity** as account management system.
+
+# Architecture
+The backend of `Agora` solution is structured in three projects in a clean-like architecture as follows:
+* `Agora.Core`: Microsoft.NET.Sdk project, a class library, which contains all the business logic: 
+Entities, domain services, business validation, interfaces, enum, constants, etc.
+* `Agora.Infrastructure`: Microsoft.NET.Sdk project, a class library,
+responsible for the access to external ressources like the DB.
+It contains the entity configurations, the DbContext and repositories.
+  * It has`Agora.Core` as project reference.
+* `Agora.API`: Microsoft.NET.Sdk.Web project, an executable which is a RESTful API.
+It contains the controllers, input validation class, DTOs and their map profiles to entities (and vice-versa)
+using AutoMapper, ApiQueryParameters, etc.
+  * It has`Agora.Infrastructure` as project reference.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Prerequisites
+Install:
+- [Docker Desktop](https://docs.docker.com/desktop/)
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download) to be able to run the application locally, without Docker
+- An IDE to run C# code like [Rider](https://www.jetbrains.com/rider/download) or [Visual Studio Code](https://code.visualstudio.com/download) with an appropriate plugin.
+- [Postman](https://www.postman.com/) to test the API.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+No MariaDB installation is needed since the DB is automatically created and stored in the Docker container.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
-
+## Setup
+1. Clone the repository: `git clone https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora`
+2. Navigate to the solution: `cd Agora`
+3. 
 
 # Frontend
 Angular version 20.0.x
@@ -27,3 +44,10 @@ Angular version 20.0.x
 3. Run the client: From Agora solution
    * `cd client`
    * `ng serve`
+
+# Test 
+You can test the API REST using the Postman collection [Agora API.postman_collection.json](./Agora API.postman_collection.json).
+Upload it in the Postman UI.
+
+# License
+Please refer to the file [LICENSE.txt](./LICENSE.txt).

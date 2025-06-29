@@ -39,7 +39,7 @@ public class PostsController(
     /// <param name="queryParameters">Optional filtering parameters such as title, price range, category, etc.</param>
     /// <returns>Returns <c>200 OK</c> with a list of summarized post information available to all users.</returns>
     [HttpGet("catalog")]
-    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalogue([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
+    public async Task<ActionResult<IReadOnlyList<PostSummaryDto>>> GetPostsCatalog([FromQuery] ApiQueryParameters.PostQueryParameters queryParameters)
     {
         // Delegate business logic
         PostQueryParameters internalPostQueryParameters = mapper.Map<PostQueryParameters>(queryParameters);

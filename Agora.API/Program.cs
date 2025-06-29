@@ -66,7 +66,10 @@ try
     {
         opt.UseMySql(
             builder.Configuration.GetConnectionString("DefaultConnection"),
-            new MySqlServerVersion(new Version(10, 11)));
+            new MySqlServerVersion(new Version(10, 11)),
+            mySqlOptions => {
+                mySqlOptions.EnableRetryOnFailure();
+            });
         IHostEnvironment env = serviceProvider.GetRequiredService<IHostEnvironment>();
         if (env.IsDevelopment())
         {
@@ -153,41 +156,40 @@ try
        | Middleware pipeline  |
         ====================== */
     
-    // Seed the user roles
+
     using (var scope = app.Services.CreateScope())
     {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<AgoraDbContext>();
+        
+        // Apply migrations and seed the user roles
+        await context.Database.MigrateAsync();
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         await AgoraDbContextSeed.SeedRolesAsync(roleManager);
-    }
-    
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-        
-        // Enable Swagger UI and Scalar API for DEV inspection
-        app.MapOpenApi();
-        app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "Agora API v1"); });
-        app.MapScalarApiReference();
 
-        // Seed the development database
-        using var scope = app.Services.CreateScope();
-        var services = scope.ServiceProvider;
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
 
-        try
-        {
-            var context = services.GetRequiredService<AgoraDbContext>();
-            await context.Database.MigrateAsync();
-            
-            var userManager = services.GetRequiredService<UserManager<User>>();
-            
-            await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
-        }
-        catch (Exception ex)
-        {
-            var logger = services.GetRequiredService<ILogger<Program>>();
-            logger.LogError(ex, "Error while populating the database in development environment.");
+            // Enable Swagger UI and Scalar API for DEV inspection
+            app.MapOpenApi();
+            app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "Agora API v1"); });
+            app.MapScalarApiReference();
+
+            // Seed the development database
+            try
+            {
+                var userManager = services.GetRequiredService<UserManager<User>>();
+                await AgoraDbContextSeed.SeedDevelopmentDataAsync(context, userManager);
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "Error while populating the database in development environment.");
+            }
         }
     }
+
 
     // Log each HTTP request
     app.UseSerilogRequestLogging(); 
