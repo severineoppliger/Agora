@@ -1,0 +1,55 @@
+﻿@use 'variables' as *;
+$agora-red: #990404;
+$agora-green: #648269;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  background-color: $color-background;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &__section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &__left {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  &__center {
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;           // avoid interferences when absolutely centered
+  }
+
+  &__logo {
+    height: $header-logo-height;
+  }
+
+  &__right {
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__home-icon {
+    color: $color-primary;
+    vertical-align: middle;
+  }
+
+  .login-btn {
+    color: $agora-green;
+  }
+  
+  .register-btn {
+    background-color: $agora-red;
+  }
+}

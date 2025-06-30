@@ -1,0 +1,17 @@
+﻿@use '@angular/material' as mat;
+
+
+$customTheme: mat.define-theme();
+
+@include mat.core();
+
+.custom-theme {
+  @include mat.all-component-themes($customTheme);
+
+  // override the button styles
+  .mdc-button, .mdc-raised-button, .mdc-stroked-button, .mdc-flat-button {
+    border-radius: 0.375rem;
+  }
+}
+
+
