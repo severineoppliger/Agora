@@ -1,123 +1,104 @@
-﻿using Agora.API.DTOs.TransactionStatus;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Interfaces;
-using Agora.Core.Models;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.TransactionStatus;
+using Agora.API.Extensions;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
+using Agora.Core.Constants;
+using Agora.Core.Interfaces.DomainServices;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Handles operations related to transaction status management,
+/// such as updating status definitions or retrieving status information.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class TransactionStatusController(
-    ITransactionStatusRepository repo, 
     IMapper mapper,
+    ITransactionStatusService transactionStatusService,
     IInputValidator inputValidator) : ControllerBase
 {
-    private const string TransactionStatusNotFoundMessage = "Transaction status not found.";
-
+    /// <summary>
+    /// Retrieves all transaction status, optionally filtered and sorted by query parameters.
+    /// </summary>
+    /// <param name="queryParameters">Optional filters to apply to the transaction status list.</param>
+    /// <returns>Returns <c>200 OK</c> with a list of transaction status.</returns>
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TransactionStatusSummaryDto>>> GetAllTransactionStatus([FromQuery] TransactionStatusQueryParameters queryParameters)
     {
-        IReadOnlyList <TransactionStatus> transactionStatusList = await repo.GetAllTransactionStatusAsync(queryParameters);
-        return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactionStatusList));
+        // Delegate business logic
+        Result<IReadOnlyList<TransactionStatus>> result = await transactionStatusService.GetAllTransactionStatusAsync(queryParameters);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<TransactionStatus> transactions = result.Value!;
+
+        return Ok(mapper.Map<IReadOnlyList<TransactionStatusSummaryDto>>(transactions));
     }
 
+    /// <summary>
+    /// Retrieves detailed information of a specific transaction status by its identifier, like all related transactions.
+    /// </summary>
+    /// <param name="id">The identifier of the transaction status to retrieve.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the transaction status details if found and authorized.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user is not allowed to view the transaction status (not admin).
+    /// Returns <c>404 Not Found</c> if the transaction status does not exist.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("{id:long}")]
     public async Task<ActionResult<TransactionStatusDetailsDto>> GetTransactionStatus([FromRoute] long id)
     {
-        TransactionStatus? transactionStatus = await repo.GetTransactionStatusByIdAsync(id);
+        // Delegate business logic
+        Result<TransactionStatus> result = await transactionStatusService.GetTransactionStatusByIdAsync(id);
         
-        return transactionStatus == null 
-            ? NotFound(TransactionStatusNotFoundMessage)
-            : Ok(mapper.Map<TransactionStatusDetailsDto>(transactionStatus));
+        return result.IsFailure
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<TransactionStatusDetailsDto>(result.Value));
     }
-
-    [Authorize(Roles = "Admin")]
-    [HttpPost]
-    public async Task<ActionResult<TransactionStatusDetailsDto>> CreateTransactionStatus([FromBody] CreateTransactionStatusDto transactionStatusDto)
-    {
-        // Cleaning
-        transactionStatusDto.Name = transactionStatusDto.Name.Trim();
-        transactionStatusDto.Description = transactionStatusDto.Description.Trim();
-        
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputTransactionStatusDtoAsync(transactionStatusDto);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
-
-        // Transform to the full entity (no business rule associated with transaction status)
-        TransactionStatus transactionStatus = mapper.Map<TransactionStatus>(transactionStatusDto);
-        
-        // Add to database
-        repo.AddTransactionStatus(transactionStatus);
-
-        if (await repo.SaveChangesAsync())
-        {
-            TransactionStatus? createdTransactionStatus = await repo.GetTransactionStatusByIdAsync(transactionStatus.Id);
-
-            if (createdTransactionStatus == null)
-            {
-                return StatusCode(500, "Transaction status was saved but could not be retrieved.");
-            }
-
-            TransactionStatusDetailsDto createdTransactionStatusDetailsDto = mapper.Map<TransactionStatusDetailsDto>(createdTransactionStatus);
-            
-            return CreatedAtAction(nameof(GetTransactionStatus), new { id = createdTransactionStatus.Id }, createdTransactionStatusDetailsDto);
-        }
-
-        return BadRequest("Problem creating the transaction status.");
-    } 
     
-    [Authorize(Roles = "Admin")]
-    [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdateTransactionStatus([FromRoute] long id, [FromBody] UpdateTransactionStatusDto transactionStatusDto)
+    
+    /// <summary>
+    /// Updates details of an existing transaction status partially (name and/or description).
+    /// Only allowed if the current user is an admin.
+    /// </summary>
+    /// <param name="id">The identifier of the transaction status to update.</param>
+    /// <param name="dto">Partial transaction status data to update.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful update.
+    /// Returns <c>400 Bad Request</c> if input validation fails.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user has not the modification rights.
+    /// Returns <c>404 Not Found</c> if the transaction status or a related object does not exist.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
+    [HttpPatch("{id:long}")]
+    public async Task<ActionResult> UpdateTransactionStatusDetails([FromRoute] long id, [FromBody] UpdateTransactionStatusDetailsDto dto)
     {
-        // Cleaning
-        transactionStatusDto.Name = transactionStatusDto.Name.Trim();
-        transactionStatusDto.Description = transactionStatusDto.Description.Trim();
-        
-        // Retrieve the existing transaction status
-        TransactionStatus? existingTransactionStatus = await repo.GetTransactionStatusByIdAsync(id);
-        if (existingTransactionStatus == null)
+        // Validate input DTO
+        InputValidationResult inputValidationResult = inputValidator.ValidateUpdateTransactionStatusDtoAsync(dto);
+        if (!inputValidationResult.IsValid)
         {
-            return NotFound(TransactionStatusNotFoundMessage);
+            return BadRequest(inputValidationResult.Errors);
         }
-        
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputTransactionStatusDtoAsync(transactionStatusDto, existingTransactionStatus.Name);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
-        
-        // Apply the updated fields exposed in the DTO to the existing transaction status
-        mapper.Map(transactionStatusDto, existingTransactionStatus);
-        
-        return await repo.SaveChangesAsync()
-            ? NoContent()
-            : BadRequest("Problem updating the transaction status.");
-    }
+        // Delegate business logic (business rules + database changes)
+        UpdateTransactionStatusDetailsCommand newDetails = mapper.Map<UpdateTransactionStatusDetailsCommand>(dto);
+        Result result = await transactionStatusService.UpdateTransactionStatusDetailsAsync(id, newDetails);
 
-    [Authorize(Roles = "Admin")]
-    [HttpDelete("{id:long}")]
-    public async Task<ActionResult> DeleteTransactionStatus([FromRoute] long id)
-    {
-        TransactionStatus? transactionStatus = await repo.GetTransactionStatusByIdAsync(id);
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
 
-        if (transactionStatus == null)
-        {
-            return NotFound(TransactionStatusNotFoundMessage);
-        }
-
-        repo.DeleteTransactionStatus(transactionStatus);
-
-        return await repo.SaveChangesAsync()
-            ? NoContent()
-            : BadRequest("Problem deleting the transaction status.");
     }
 }

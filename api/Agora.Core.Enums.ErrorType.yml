@@ -1,0 +1,242 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums.ErrorType
+  commentId: T:Agora.Core.Enums.ErrorType
+  id: ErrorType
+  parent: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.ErrorType.Forbidden
+  - Agora.Core.Enums.ErrorType.Invalid
+  - Agora.Core.Enums.ErrorType.NotFound
+  - Agora.Core.Enums.ErrorType.Persistence
+  - Agora.Core.Enums.ErrorType.Unauthorized
+  - Agora.Core.Enums.ErrorType.Unknown
+  langs:
+  - csharp
+  - vb
+  name: ErrorType
+  nameWithType: ErrorType
+  fullName: Agora.Core.Enums.ErrorType
+  type: Enum
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ErrorType
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: Represents the category of an error for more precise handling and messaging.
+  example: []
+  syntax:
+    content: public enum ErrorType
+    content.vb: Public Enum ErrorType
+- uid: Agora.Core.Enums.ErrorType.Unknown
+  commentId: F:Agora.Core.Enums.ErrorType.Unknown
+  id: Unknown
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: ErrorType.Unknown
+  fullName: Agora.Core.Enums.ErrorType.Unknown
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Unknown
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: A generic or unknown error occurred.
+  example: []
+  syntax:
+    content: Unknown = 0
+    return:
+      type: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.ErrorType.NotFound
+  commentId: F:Agora.Core.Enums.ErrorType.NotFound
+  id: NotFound
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: NotFound
+  nameWithType: ErrorType.NotFound
+  fullName: Agora.Core.Enums.ErrorType.NotFound
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: NotFound
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 16
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: The requested entity was not found in the database or source.
+  example: []
+  syntax:
+    content: NotFound = 1
+    return:
+      type: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.ErrorType.Unauthorized
+  commentId: F:Agora.Core.Enums.ErrorType.Unauthorized
+  id: Unauthorized
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: Unauthorized
+  nameWithType: ErrorType.Unauthorized
+  fullName: Agora.Core.Enums.ErrorType.Unauthorized
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Unauthorized
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 21
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: The current user is not authenticated, but the requested action requires authentication.
+  example: []
+  syntax:
+    content: Unauthorized = 2
+    return:
+      type: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.ErrorType.Forbidden
+  commentId: F:Agora.Core.Enums.ErrorType.Forbidden
+  id: Forbidden
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: Forbidden
+  nameWithType: ErrorType.Forbidden
+  fullName: Agora.Core.Enums.ErrorType.Forbidden
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Forbidden
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 26
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: The current user is authenticated but does not have permission to perform the requested action.
+  example: []
+  syntax:
+    content: Forbidden = 3
+    return:
+      type: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.ErrorType.Invalid
+  commentId: F:Agora.Core.Enums.ErrorType.Invalid
+  id: Invalid
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: Invalid
+  nameWithType: ErrorType.Invalid
+  fullName: Agora.Core.Enums.ErrorType.Invalid
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Invalid
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 29
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: The request was invalid due to data validation or business rule violations.
+  example: []
+  syntax:
+    content: Invalid = 4
+    return:
+      type: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.ErrorType.Persistence
+  commentId: F:Agora.Core.Enums.ErrorType.Persistence
+  id: Persistence
+  parent: Agora.Core.Enums.ErrorType
+  langs:
+  - csharp
+  - vb
+  name: Persistence
+  nameWithType: ErrorType.Persistence
+  fullName: Agora.Core.Enums.ErrorType.Persistence
+  type: Field
+  source:
+    remote:
+      path: Agora.Core/Enums/ErrorType.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Persistence
+    path: Agora.Core/Enums/ErrorType.cs
+    startLine: 34
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Enums
+  summary: A database or persistence-related error occurred.
+  example: []
+  syntax:
+    content: Persistence = 5
+    return:
+      type: Agora.Core.Enums.ErrorType
+references:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Enums.ErrorType
+  commentId: T:Agora.Core.Enums.ErrorType
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.ErrorType.html
+  name: ErrorType
+  nameWithType: ErrorType
+  fullName: Agora.Core.Enums.ErrorType

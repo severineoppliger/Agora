@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.DTOs.User
+  commentId: N:Agora.API.DTOs.User
+  id: Agora.API.DTOs.User
+  children:
+  - Agora.API.DTOs.User.RegisterDto
+  - Agora.API.DTOs.User.SignInDto
+  - Agora.API.DTOs.User.UserDetailsDto
+  - Agora.API.DTOs.User.UserSummaryDto
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.DTOs.User
+  nameWithType: Agora.API.DTOs.User
+  fullName: Agora.API.DTOs.User
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.DTOs.User.RegisterDto
+  commentId: T:Agora.API.DTOs.User.RegisterDto
+  parent: Agora.API.DTOs.User
+  href: Agora.API.DTOs.User.RegisterDto.html
+  name: RegisterDto
+  nameWithType: RegisterDto
+  fullName: Agora.API.DTOs.User.RegisterDto
+- uid: Agora.API.DTOs.User.SignInDto
+  commentId: T:Agora.API.DTOs.User.SignInDto
+  parent: Agora.API.DTOs.User
+  href: Agora.API.DTOs.User.SignInDto.html
+  name: SignInDto
+  nameWithType: SignInDto
+  fullName: Agora.API.DTOs.User.SignInDto
+- uid: Agora.API.DTOs.User.UserDetailsDto
+  commentId: T:Agora.API.DTOs.User.UserDetailsDto
+  href: Agora.API.DTOs.User.UserDetailsDto.html
+  name: UserDetailsDto
+  nameWithType: UserDetailsDto
+  fullName: Agora.API.DTOs.User.UserDetailsDto
+- uid: Agora.API.DTOs.User.UserSummaryDto
+  commentId: T:Agora.API.DTOs.User.UserSummaryDto
+  href: Agora.API.DTOs.User.UserSummaryDto.html
+  name: UserSummaryDto
+  nameWithType: UserSummaryDto
+  fullName: Agora.API.DTOs.User.UserSummaryDto
+- uid: Agora.API.DTOs.User
+  commentId: N:Agora.API.DTOs.User
+  href: Agora.html
+  name: Agora.API.DTOs.User
+  nameWithType: Agora.API.DTOs.User
+  fullName: Agora.API.DTOs.User
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.DTOs
+    name: DTOs
+    href: Agora.API.DTOs.html
+  - name: .
+  - uid: Agora.API.DTOs.User
+    name: User
+    href: Agora.API.DTOs.User.html

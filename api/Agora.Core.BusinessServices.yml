@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.BusinessServices
+  commentId: N:Agora.Core.BusinessServices
+  id: Agora.Core.BusinessServices
+  children:
+  - Agora.Core.BusinessServices.PostCategoryService
+  - Agora.Core.BusinessServices.PostService
+  - Agora.Core.BusinessServices.TransactionService
+  - Agora.Core.BusinessServices.TransactionStatusService
+  - Agora.Core.BusinessServices.UserService
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.BusinessServices
+  nameWithType: Agora.Core.BusinessServices
+  fullName: Agora.Core.BusinessServices
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.BusinessServices.PostCategoryService
+  commentId: T:Agora.Core.BusinessServices.PostCategoryService
+  href: Agora.Core.BusinessServices.PostCategoryService.html
+  name: PostCategoryService
+  nameWithType: PostCategoryService
+  fullName: Agora.Core.BusinessServices.PostCategoryService
+- uid: Agora.Core.BusinessServices.PostService
+  commentId: T:Agora.Core.BusinessServices.PostService
+  href: Agora.Core.BusinessServices.PostService.html
+  name: PostService
+  nameWithType: PostService
+  fullName: Agora.Core.BusinessServices.PostService
+- uid: Agora.Core.BusinessServices.TransactionService
+  commentId: T:Agora.Core.BusinessServices.TransactionService
+  href: Agora.Core.BusinessServices.TransactionService.html
+  name: TransactionService
+  nameWithType: TransactionService
+  fullName: Agora.Core.BusinessServices.TransactionService
+- uid: Agora.Core.BusinessServices.TransactionStatusService
+  commentId: T:Agora.Core.BusinessServices.TransactionStatusService
+  href: Agora.Core.BusinessServices.TransactionStatusService.html
+  name: TransactionStatusService
+  nameWithType: TransactionStatusService
+  fullName: Agora.Core.BusinessServices.TransactionStatusService
+- uid: Agora.Core.BusinessServices.UserService
+  commentId: T:Agora.Core.BusinessServices.UserService
+  href: Agora.Core.BusinessServices.UserService.html
+  name: UserService
+  nameWithType: UserService
+  fullName: Agora.Core.BusinessServices.UserService

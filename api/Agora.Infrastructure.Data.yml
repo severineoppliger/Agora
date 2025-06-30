@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Infrastructure.Data
+  commentId: N:Agora.Infrastructure.Data
+  id: Agora.Infrastructure.Data
+  children:
+  - Agora.Infrastructure.Data.AgoraDbContext
+  - Agora.Infrastructure.Data.AgoraDbContextSeed
+  langs:
+  - csharp
+  - vb
+  name: Agora.Infrastructure.Data
+  nameWithType: Agora.Infrastructure.Data
+  fullName: Agora.Infrastructure.Data
+  type: Namespace
+  assemblies:
+  - Agora.Infrastructure
+references:
+- uid: Agora.Infrastructure.Data.AgoraDbContext
+  commentId: T:Agora.Infrastructure.Data.AgoraDbContext
+  parent: Agora.Infrastructure.Data
+  href: Agora.Infrastructure.Data.AgoraDbContext.html
+  name: AgoraDbContext
+  nameWithType: AgoraDbContext
+  fullName: Agora.Infrastructure.Data.AgoraDbContext
+- uid: Agora.Infrastructure.Data.AgoraDbContextSeed
+  commentId: T:Agora.Infrastructure.Data.AgoraDbContextSeed
+  href: Agora.Infrastructure.Data.AgoraDbContextSeed.html
+  name: AgoraDbContextSeed
+  nameWithType: AgoraDbContextSeed
+  fullName: Agora.Infrastructure.Data.AgoraDbContextSeed
+- uid: Agora.Infrastructure.Data
+  commentId: N:Agora.Infrastructure.Data
+  href: Agora.html
+  name: Agora.Infrastructure.Data
+  nameWithType: Agora.Infrastructure.Data
+  fullName: Agora.Infrastructure.Data
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Infrastructure
+    name: Infrastructure
+    href: Agora.Infrastructure.html
+  - name: .
+  - uid: Agora.Infrastructure.Data
+    name: Data
+    href: Agora.Infrastructure.Data.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Infrastructure
+    name: Infrastructure
+    href: Agora.Infrastructure.html
+  - name: .
+  - uid: Agora.Infrastructure.Data
+    name: Data
+    href: Agora.Infrastructure.Data.html

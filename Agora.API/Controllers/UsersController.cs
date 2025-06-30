@@ -1,127 +1,213 @@
-﻿using Agora.API.DTOs.User;
-using Agora.API.InputValidation.Interfaces;
-using Agora.Core.Extensions;
+﻿using System.Security.Authentication;
+using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.User;
+using Agora.API.Extensions;
+using Agora.API.Filters;
+using Agora.API.Validation;
+using Agora.API.Validation.Interfaces;
+using Agora.Core.Commands;
+using Agora.Core.Constants;
+using Agora.Core.Interfaces;
+using Agora.Core.Interfaces.DomainServices;
 using Agora.Core.Models;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Handles operations related to user management such as registration, login, logout,
+/// and retrieval of user information.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController(
-    SignInManager<AppUser> signInManager,
-    UserManager<AppUser> userManager,
+    IAuthService authService,
     IMapper mapper,
-    IInputValidator inputValidator) : ControllerBase
+    IUserService userService,
+    IInputValidator inputValidator,
+    IUserContextService userContextService) : ControllerBase
 
 {
-    private const string UserNotFoundMessage = "User not found.";
 
-    [HttpGet("admin")]
-    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers()
+    /// <summary>
+    /// Retrieves a list of all users in the system, optionally filtered and sorted using query parameters.
+    /// </summary>
+    /// <param name="queryParameters">Optional filtering and sorting parameters.</param>
+    /// <returns>Returns <c>200 OK</c> with a list of summarized user information.
+    /// Returns <c>403 Forbidden</c> if the user does not have admin privileges.</returns>
+    [Authorize(Roles = Roles.Admin)]
+    [HttpGet]
+    public async Task<ActionResult<IReadOnlyList<UserSummaryDto>>> GetAllUsers([FromQuery] UserQueryParameters queryParameters)
     {
-        IReadOnlyList<AppUser> users = await userManager.Users.ToListAsync();
+        // Delegate business logic
+        Result<IReadOnlyList<User>> result = await userService.GetAllUsersAsync(queryParameters);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<User> users = result.Value!;
+        
         return Ok(mapper.Map<IReadOnlyList<UserSummaryDto>>(users));
     }
     
-    [Authorize(Roles = "Admin")]
-    [HttpGet("admin/{id}", Name = "GetUserById")]
-    public async Task<ActionResult<UserDetailsDto>> GetUserByIdAsync([FromRoute] string id)
+    /// <summary>
+    /// Retrieves detailed information about a specific user by their ID.
+    /// </summary>
+    /// <param name="id">The unique identifier (GUID) of the user.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the user's details.
+    /// Returns <c>400 BadRequest</c> if the ID format is invalid.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user does not have admin privileges.
+    /// Returns <c>404 Not Found</c> if the user cannot be retrieved.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
+    [HttpGet("{id}")]
+    public async Task<ActionResult<UserDetailsDto>> GetUser([FromRoute] string id)
     {
-        if (!id.IsGuid())
+        // Validate input id
+        InputValidationResult inputValidationResult = inputValidator.ValidateUserId(id);
+        if (!inputValidationResult.IsValid)
         {
-            return BadRequest($"Invalid user ID format: {id}. Must be a valid GUID.");
+            return BadRequest(inputValidationResult.Errors);
+        }
+
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
         }
         
-        AppUser? user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+        // Delegate business logic
+        Result<User> result = await userService.GetUserByIdAsync(id, userContext);
 
-        return user == null
-            ? NotFound(UserNotFoundMessage)
-                : Ok(mapper.Map<UserDetailsDto>(user));
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<UserDetailsDto>(result.Value));
     }
     
+    /// <summary>
+    /// Retrieves Email address of a specific user, knowing its username.
+    /// </summary>
+    /// <param name="userName">The userName of the user to retrieve.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the user's email.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>404 Not Found</c> if the user cannot be retrieved.
+    /// </returns>
+    [Authorize]
+    [HttpGet("{userName}/email")]
+    public async Task<ActionResult<UserEmailDto>> GetUserEmail([FromRoute] string userName)
+    {
+        // Delegate business logic
+        Result<User> result = await userService.GetUserEmailByUsernameAsync(userName);
+
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<UserEmailDto>(result.Value));
+    }
+    
+    /// <summary>
+    /// Retrieves the currently authenticated user's details.
+    /// </summary>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the authenticated user's details.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>404 Not Found</c> if the user cannot be retrieved.
+    /// </returns>
     [Authorize]
     [HttpGet("me")]
     public async Task<ActionResult<UserDetailsDto>> GetCurrentUserAsync()
     {
-        AppUser? user = await userManager.GetUserAsync(User);
+        // Extract current user's context from claims
+        UserContext userContext;
+        try
+        {
+            userContext = userContextService.GetCurrentUserContext();
+        }
+        catch (AuthenticationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
         
-        return Ok(mapper.Map<UserDetailsDto>(user));
+        // Delegate business logic
+        Result<User> result = await userService.GetUserByIdAsync(userContext.UserId, userContext);
+
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<UserDetailsDto>(result.Value));
     }
 
+    /// <summary>
+    /// Registers a new <c>User</c> in the system.
+    /// </summary>
+    /// <param name="userDto">The registration data including username, email, and password.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the new user's details, if the user was successfully registered.
+    /// Returns <c>400 BadRequest</c> if input validation fails or the user already exists.
+    /// Returns <c>500 Internal Server Error</c> if the user was saved but could not be retrieved afterwards.
+    /// </returns>
     [HttpPost("register")]
-    public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterDto registerDto)
+    [DisallowAuthenticated]
+    public async Task<ActionResult<UserDetailsDto>> Register([FromBody] RegisterUserDto userDto)
     {
-        // Cleaning
-        registerDto.UserName = registerDto.UserName.Trim();
-        registerDto.Email = registerDto.Email.Trim();
-        registerDto.Password = registerDto.Password.Trim();
-
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputRegisterDtoAsync(registerDto);
-        if (inputErrors.Count != 0)
+        // Validate input DTO
+        InputValidationResult inputValidationResult = await inputValidator.ValidateRegisterDtoAsync(userDto);
+        if (!inputValidationResult.IsValid)
         {
-            return BadRequest(new { Errors = inputErrors });
+            return BadRequest(inputValidationResult.Errors);
         }
 
-        // Transform to the full entity (no business rule associated with user)
-        AppUser user = mapper.Map<AppUser>(registerDto);
+        // Delegate business logic (business rules + database changes)
+        RegisterUserCommand registerUserCommand = mapper.Map<RegisterUserCommand>(userDto);
+        Result<User> result = await authService.RegisterAsync(registerUserCommand);
 
-        user.CreatedAt = DateTime.UtcNow;
-        user.Credit = 0; // TODO initialize the credit to some configurable amount.
-        var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
-
-        if (!result.Succeeded)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(error.Code, error.Description);
-            }
-
-            return ValidationProblem();
-        }
-
-        AppUser? createdUser = await userManager.FindByEmailAsync(registerDto.Email);
-
-        if (createdUser == null)
-        {
-            return StatusCode(500, "User was saved but could not be retrieved.");
-        }
-
-        UserDetailsDto createdUserDetailsDto = mapper.Map<UserDetailsDto>(createdUser);
-
-        return CreatedAtRoute(nameof(GetUserByIdAsync), new { id = createdUserDetailsDto.Id }, createdUserDetailsDto);
-    }
-
-    [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] SignInDto signInDto)
-    {
-        AppUser? user = await userManager.FindByEmailAsync(signInDto.Email);
-        if (user == null)
-        {
-            return Unauthorized("Invalid email or password.");
-        }
-
-        var result =
-            await signInManager.PasswordSignInAsync(user, signInDto.Password, isPersistent: false,
-                lockoutOnFailure: false);
-
-        if (!result.Succeeded)
-        {
-            return Unauthorized("Invalid email or password.");
-        }
-        return NoContent();
+        return result.IsFailure
+            ? this.MapErrorResult(result)
+            : Ok(mapper.Map<UserDetailsDto>(result.Value));
     }
     
+    /// <summary>
+    /// Authenticates a user and starts a session.
+    /// </summary>
+    /// <param name="userDto">The login credentials: email and password.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful login.
+    /// Returns <c>401 Unauthorized</c> if the credentials are invalid.
+    /// </returns>
+    [HttpPost("login")]
+    public async Task<ActionResult> Login([FromBody] SignInUserDto userDto)
+    {
+        SignInUserCommand command = mapper.Map<SignInUserCommand>(userDto);
+        Result result = await authService.LoginAsync(command);
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
+    }
+    
+    /// <summary>
+    /// Logs out the currently authenticated user.
+    /// </summary>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful logout.
+    /// Returns <c>401 Unauthorized</c> if the user was not authenticated.
+    /// </returns>
     [Authorize]
     [HttpPost("logout")]
     public async Task<ActionResult> Logout()
     {
-        await signInManager.SignOutAsync(); // Remove the cookie as well
+        await authService.LogoutAsync();
         return NoContent();
     }
 }

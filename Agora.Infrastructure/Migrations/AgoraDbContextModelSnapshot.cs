@@ -22,7 +22,330 @@ namespace Agora.Infrastructure.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Agora.Core.Models.AppUser", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<string>("OwnerUserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<long>("PostCategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerUserId");
+
+                    b.HasIndex("PostCategoryId");
+
+                    b.ToTable("Posts", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Post_Price_Range", "Price >= 0 AND Price <= 100000");
+                        });
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.PostCategory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("PostCategories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Cours d'appui"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "Covoiturage"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Informatique"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Name = "Arts et culture"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Name = "Démarches administratives"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Name = "Déménagement"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Name = "Services du quotidien"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Name = "Autres"
+                        });
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.Transaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("BuyerConfirmed")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("BuyerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("InitiatorId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<long?>("PostId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SellerConfirmed")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("SellerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<DateOnly?>("TransactionDate")
+                        .HasColumnType("date");
+
+                    b.Property<long>("TransactionStatusId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuyerId");
+
+                    b.HasIndex("InitiatorId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("SellerId");
+
+                    b.HasIndex("TransactionStatusId");
+
+                    b.ToTable("Transactions", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Transaction_Price_Range", "Price >= 0 AND Price <= 100000");
+                        });
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.TransactionStatus", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<string>("EnumValue")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsFinal")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSuccess")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("TransactionsStatus", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Description = "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
+                            EnumValue = "Pending",
+                            IsFinal = false,
+                            IsSuccess = false,
+                            Name = "En attente"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Description = "La demande d'échange a été acceptée par l'autre utilisateur. La transaction peut avoir lieu.",
+                            EnumValue = "Accepted",
+                            IsFinal = false,
+                            IsSuccess = false,
+                            Name = "Acceptée"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Description = "La demande d'échange a été refusée par l'autre utilisateur. La transaction n'aura donc pas lieu.",
+                            EnumValue = "Refused",
+                            IsFinal = true,
+                            IsSuccess = false,
+                            Name = "Refusée"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.",
+                            EnumValue = "Cancelled",
+                            IsFinal = true,
+                            IsSuccess = false,
+                            Name = "Annulée"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Description = "Le service n'a pas pu être réalisé, malgré la confirmation de la demande d'échange.",
+                            EnumValue = "Failed",
+                            IsFinal = true,
+                            IsSuccess = false,
+                            Name = "Échouée"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Description = "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
+                            EnumValue = "PartiallyValidated",
+                            IsFinal = false,
+                            IsSuccess = false,
+                            Name = "Partiellement validée"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Description = "Le service a été réalisé et la transaction a été validée soit par les deux parties,soit uniquement par l'une d'entre elles si un délai de validation automatique s'est écoulé(par exemple X jours) sans objection de l'autre partie. Les points sont transférés de l'acheteur au vendeur.",
+                            EnumValue = "Completed",
+                            IsFinal = true,
+                            IsSuccess = true,
+                            Name = "Terminée"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
+                            EnumValue = "InDispute",
+                            IsFinal = false,
+                            IsSuccess = false,
+                            Name = "En litige"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Description = "La résolution du litige s'est soldé par la validation de la transaction.",
+                            EnumValue = "ResolvedAccepted",
+                            IsFinal = true,
+                            IsSuccess = true,
+                            Name = "Résolue et acceptée"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            Description = "La résolution du litige s'est soldé par l'annulation de la transaction.",
+                            EnumValue = "ResolvedCancelled",
+                            IsFinal = true,
+                            IsSuccess = false,
+                            Name = "Résolue et annulée"
+                        });
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -93,290 +416,6 @@ namespace Agora.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
-
-                    b.Property<long>("PostCategoryId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostCategoryId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Posts", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_Post_Price_Range", "Price >= 0 AND Price <= 100000");
-                        });
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.PostCategory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("PostCategories", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Name = "Cours d'appui"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Name = "Covoiturage"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Name = "Informatique"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Name = "Arts et culture"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Name = "Démarches administratives"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Name = "Déménagement"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Name = "Services du quotidien"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Name = "Autres"
-                        });
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.Transaction", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("BuyerId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<long?>("PostId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SellerId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<long>("TransactionStatusId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BuyerId");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("SellerId");
-
-                    b.HasIndex("TransactionStatusId");
-
-                    b.ToTable("Transactions", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_Transaction_Price_Range", "Price >= 0 AND Price <= 100000");
-                        });
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<bool>("IsFinal")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsSuccess")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("TransactionsStatus", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Description = "Une demande d'échange a été initiée par un des deux utilisateurs mais n'est pas encore acceptée par l'autre utilisateur.",
-                            IsFinal = false,
-                            IsSuccess = false,
-                            Name = "En attente"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            Description = "La demande d'échange a été acceptée par l'autre utilisateur. La transaction peut avoir lieu.",
-                            IsFinal = false,
-                            IsSuccess = false,
-                            Name = "Acceptée"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            Description = "La demande d'échange a été refusée par l'autre utilisateur. La transaction n'aura donc pas lieu.",
-                            IsFinal = true,
-                            IsSuccess = false,
-                            Name = "Refusée"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            Description = "La demande d'échange a été annulée par l’initiateur avant acceptation de l'autre partie.",
-                            IsFinal = true,
-                            IsSuccess = false,
-                            Name = "Annulée"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            Description = "Le service n'a pas pu être réalisé, malgré la confirmation de la demande d'échange.",
-                            IsFinal = true,
-                            IsSuccess = false,
-                            Name = "Échouée"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            Description = "Le service a été réalisé et validé par un seul utilisateur, en attente de confirmation de l'autre.",
-                            IsFinal = false,
-                            IsSuccess = false,
-                            Name = "Partiellement validée"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            Description = "Le service a été effectué et validé par les deux partis. Les points sont transférés de l'acheteur au vendeur.",
-                            IsFinal = true,
-                            IsSuccess = true,
-                            Name = "Terminée"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            Description = "Un désaccord a été signalé par l'une des parties concernant le déroulement de la transaction après qu'un accord initial ait été confirmé par les deux participants.",
-                            IsFinal = false,
-                            IsSuccess = false,
-                            Name = "En litige"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            Description = "La résolution du litige s'est soldé par la validation de la transaction.",
-                            IsFinal = true,
-                            IsSuccess = true,
-                            Name = "Résolue et acceptée"
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            Description = "La résolution du litige s'est soldé par l'annulation de la transaction.",
-                            IsFinal = true,
-                            IsSuccess = false,
-                            Name = "Résolue et annulée"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -511,51 +550,59 @@ namespace Agora.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
                 {
-                    b.HasOne("Agora.Core.Models.PostCategory", "PostCategory")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Owner")
+                        .WithMany("Posts")
+                        .HasForeignKey("OwnerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Agora.Core.Models.Entities.PostCategory", "PostCategory")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.AppUser", "User")
-                        .WithMany("Posts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Owner");
 
                     b.Navigation("PostCategory");
-
-                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.Transaction", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Transaction", b =>
                 {
-                    b.HasOne("Agora.Core.Models.AppUser", "Buyer")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Buyer")
                         .WithMany("TransactionsAsBuyer")
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.Post", "Post")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Initiator")
+                        .WithMany()
+                        .HasForeignKey("InitiatorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Agora.Core.Models.Entities.Post", "Post")
                         .WithMany("Transactions")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Agora.Core.Models.AppUser", "Seller")
+                    b.HasOne("Agora.Core.Models.Entities.User", "Seller")
                         .WithMany("TransactionsAsSeller")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.TransactionStatus", "TransactionStatus")
+                    b.HasOne("Agora.Core.Models.Entities.TransactionStatus", "TransactionStatus")
                         .WithMany("Transactions")
                         .HasForeignKey("TransactionStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Buyer");
+
+                    b.Navigation("Initiator");
 
                     b.Navigation("Post");
 
@@ -575,7 +622,7 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.AppUser", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -584,7 +631,7 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.AppUser", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -599,7 +646,7 @@ namespace Agora.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Agora.Core.Models.AppUser", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -608,35 +655,35 @@ namespace Agora.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Agora.Core.Models.AppUser", null)
+                    b.HasOne("Agora.Core.Models.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Agora.Core.Models.AppUser", b =>
+            modelBuilder.Entity("Agora.Core.Models.Entities.Post", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.PostCategory", b =>
+                {
+                    b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.TransactionStatus", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("Agora.Core.Models.Entities.User", b =>
                 {
                     b.Navigation("Posts");
 
                     b.Navigation("TransactionsAsBuyer");
 
                     b.Navigation("TransactionsAsSeller");
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.Post", b =>
-                {
-                    b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.PostCategory", b =>
-                {
-                    b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("Agora.Core.Models.TransactionStatus", b =>
-                {
-                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

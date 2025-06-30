@@ -13,6 +13,26 @@ services:
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
+        
+  agora-api:
+    build:
+      context: ..                     # solution root
+      dockerfile: infra/backend.Dockerfile
+    container_name: agora-api
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__DefaultConnection=server=mariadb;port=3306;database=${MARIADB_DATABASE};user=${MARIADB_USER};password=${MARIADB_PASSWORD}
+        
+  docfx:
+    build:
+      context: ..
+      dockerfile: infra/docfx.Dockerfile
+    ports:
+      - "8080:8080"
 
 volumes:
   mariadb_data:

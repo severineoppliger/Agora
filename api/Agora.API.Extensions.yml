@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.Extensions
+  commentId: N:Agora.API.Extensions
+  id: Agora.API.Extensions
+  children:
+  - Agora.API.Extensions.ControllerExtensions
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.Extensions
+  nameWithType: Agora.API.Extensions
+  fullName: Agora.API.Extensions
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.Extensions.ControllerExtensions
+  commentId: T:Agora.API.Extensions.ControllerExtensions
+  parent: Agora.API.Extensions
+  href: Agora.API.Extensions.ControllerExtensions.html
+  name: ControllerExtensions
+  nameWithType: ControllerExtensions
+  fullName: Agora.API.Extensions.ControllerExtensions
+- uid: Agora.API.Extensions
+  commentId: N:Agora.API.Extensions
+  href: Agora.html
+  name: Agora.API.Extensions
+  nameWithType: Agora.API.Extensions
+  fullName: Agora.API.Extensions
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.Extensions
+    name: Extensions
+    href: Agora.API.Extensions.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.Extensions
+    name: Extensions
+    href: Agora.API.Extensions.html

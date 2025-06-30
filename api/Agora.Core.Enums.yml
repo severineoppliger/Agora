@@ -1,0 +1,86 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  id: Agora.Core.Enums
+  children:
+  - Agora.Core.Enums.ErrorType
+  - Agora.Core.Enums.PostStatus
+  - Agora.Core.Enums.PostType
+  - Agora.Core.Enums.PostVisibilityMode
+  - Agora.Core.Enums.TransactionStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Enums.ErrorType
+  commentId: T:Agora.Core.Enums.ErrorType
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.ErrorType.html
+  name: ErrorType
+  nameWithType: ErrorType
+  fullName: Agora.Core.Enums.ErrorType
+- uid: Agora.Core.Enums.PostStatus
+  commentId: T:Agora.Core.Enums.PostStatus
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostStatus.html
+  name: PostStatus
+  nameWithType: PostStatus
+  fullName: Agora.Core.Enums.PostStatus
+- uid: Agora.Core.Enums.PostType
+  commentId: T:Agora.Core.Enums.PostType
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostType.html
+  name: PostType
+  nameWithType: PostType
+  fullName: Agora.Core.Enums.PostType
+- uid: Agora.Core.Enums.PostVisibilityMode
+  commentId: T:Agora.Core.Enums.PostVisibilityMode
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.PostVisibilityMode.html
+  name: PostVisibilityMode
+  nameWithType: PostVisibilityMode
+  fullName: Agora.Core.Enums.PostVisibilityMode
+- uid: Agora.Core.Enums.TransactionStatusEnum
+  commentId: T:Agora.Core.Enums.TransactionStatusEnum
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.TransactionStatusEnum.html
+  name: TransactionStatusEnum
+  nameWithType: TransactionStatusEnum
+  fullName: Agora.Core.Enums.TransactionStatusEnum
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html

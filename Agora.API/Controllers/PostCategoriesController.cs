@@ -1,122 +1,151 @@
-﻿using Agora.API.DTOs.PostCategory;
-using Agora.API.InputValidation.Interfaces;
-using Agora.API.QueryParams;
-using Agora.Core.Interfaces;
-using Agora.Core.Models;
+﻿using Agora.API.ApiQueryParameters;
+using Agora.API.DTOs.PostCategory;
+using Agora.API.Extensions;
+using Agora.Core.Commands;
+using Agora.Core.Constants;
+using Agora.Core.Interfaces.DomainServices;
+using Agora.Core.Models.Entities;
+using Agora.Core.Shared;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agora.API.Controllers;
 
+/// <summary>
+/// Manages operations for post categories, including listing and retrieving post category data.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class PostCategoriesController(
-    IPostCategoryRepository repo, 
-    IMapper mapper,
-    IInputValidator inputValidator) : ControllerBase
+    IPostCategoryService postCategoryService,
+    IMapper mapper) : ControllerBase
 {
-    private const string PostCategoryNotFoundMessage = "Post category not found.";
+    private const string EntityName = "post category";
     
+    /// <summary>
+    /// Retrieves all post categories, optionally filtered and sorted by query parameters.
+    /// </summary>
+    /// <param name="queryParameters">Optional filters to apply to the post categories list.</param>
+    /// <returns>Returns <c>200 OK</c> with a list of post categories.</returns>
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<PostCategorySummaryDto>>> GetAllPostCategories([FromQuery] PostCategoryQueryParameters queryParameters)
     {
-        IReadOnlyList<PostCategory> postsCategories = await repo.GetAllPostCategoriesAsync(queryParameters);
-        return Ok(mapper.Map<IReadOnlyList<PostCategorySummaryDto>>(postsCategories));
+        // Delegate business logic
+        Result<IReadOnlyList<PostCategory>> result = await postCategoryService.GetAllPostCategoriesAsync(queryParameters);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
+        
+        IReadOnlyList<PostCategory> postCategories = result.Value!;
+
+        return Ok(mapper.Map<IReadOnlyList<PostCategorySummaryDto>>(postCategories));
     }
 
+    /// <summary>
+    /// Retrieves detailed information of a specific post category by its identifier, like all related posts.
+    /// </summary>
+    /// <param name="id">The identifier of the post category to retrieve.</param>
+    /// <returns>
+    /// Returns <c>200 OK</c> with the post category details if found and authorized.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user is not allowed to view the post category (not admin).
+    /// Returns <c>404 Not Found</c> if the post category does not exist.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("{id:long}")]
     public async Task<ActionResult<PostCategoryDetailsDto>> GetPostCategory([FromRoute] long id)
     {
-        PostCategory? postCategory = await repo.GetPostCategoryByIdAsync(id);
+        // Delegate business logic
+        Result<PostCategory> result = await postCategoryService.GetPostCategoryByIdAsync(id);
+        
+        if (result.IsFailure)
+        {
+            return this.MapErrorResult(result);
+        }
 
+        // Return post category if no error
+        PostCategory? postCategory = result.Value;
         return postCategory == null 
-            ? NotFound(PostCategoryNotFoundMessage) 
+            ? NotFound(ErrorMessages.NotFound(EntityName, id.ToString()))
             : Ok(mapper.Map<PostCategoryDetailsDto>(postCategory));
     }
 
-    [Authorize(Roles = "Admin")]
+    /// <summary>
+    /// Creates a new post category.
+    /// </summary>
+    /// <param name="dto">The post category data transfer object containing creation details.</param>
+    /// <returns>
+    /// Returns <c>201 Created</c> with the newly created post category details.
+    /// Returns <c>400 Bad Request</c> if input or business rules validation fails.
+    /// Returns <c>401 Unauthorized</c> if the user is not authenticated.
+    /// Returns <c>403 Forbidden</c> if the user is not allowed to manage the post category (not admin).
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
     [HttpPost]
-    public async Task<ActionResult<PostCategoryDetailsDto>> CreatePostCategory([FromBody] CreatePostCategoryDto postCategoryDto)
+    public async Task<ActionResult<PostCategoryDetailsDto>> CreatePostCategory([FromBody] CreatePostCategoryDto dto)
     {
-        // Cleaning
-        postCategoryDto.Name = postCategoryDto.Name.Trim();
-        
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
+        // Map the DTO to the full entity and delegate business logic (business rules + database changes)
+        PostCategory postCategory = mapper.Map<PostCategory>(dto);
 
-        // Transform to the full entity (no business rule associated with post category)
-        PostCategory postCategory = mapper.Map<PostCategory>(postCategoryDto);
-        
-        // Add to database
-        repo.AddPostCategory(postCategory);
-        
-        if (await repo.SaveChangesAsync())
+        Result<PostCategory> result = await postCategoryService.CreatePostCategoryAsync(postCategory);
+        if (result.IsFailure)
         {
-            PostCategory? createdPostCategory = await repo.GetPostCategoryByIdAsync(postCategory.Id);
-            
-            if (createdPostCategory == null)
-            {
-                return StatusCode(500, "Post category was saved but could not be retrieved.");
-            }
-            
-            PostCategoryDetailsDto createdPostCategoryDetailsDto =
-                mapper.Map<PostCategoryDetailsDto>(createdPostCategory);
-            
-            return CreatedAtAction(nameof(GetPostCategory), new { id = createdPostCategory.Id }, createdPostCategoryDetailsDto);
+            return this.MapErrorResult(result);
         }
-
-        return BadRequest("Problem creating the post category.");
+        
+        // Treat success case
+        PostCategoryDetailsDto createdPostCategoryDetailsDto = mapper.Map<PostCategoryDetailsDto>(result.Value);
+        return CreatedAtAction(nameof(GetPostCategory), new { id = result.Value!.Id },
+            createdPostCategoryDetailsDto);
     }
 
-    [Authorize(Roles = "Admin")]
-    [HttpPut("{id:long}")]
-    public async Task<ActionResult> UpdatePostCategory([FromRoute] long id, [FromBody] UpdatePostCategoryDto postCategoryDto)
+    /// <summary>
+    /// Updates name of an existing post category.
+    /// </summary>
+    /// <param name="id">The identifier of the post category to update.</param>
+    /// <param name="dto">Dto containing the new name to apply to the post category.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful update.
+    /// Returns <c>400 Bad Request</c> if input validation fails.
+    /// Returns <c>404 Not Found</c> if the post category or a related object does not exist.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
+    [HttpPatch("{id:long}")]
+    public async Task<ActionResult> UpdatePostCategoryName([FromRoute] long id, [FromBody] UpdatePostCategoryDetailsDto dto)
     {
         // Cleaning
-        postCategoryDto.Name = postCategoryDto.Name.Trim();
+        dto.Name = dto.Name.Trim();
         
-        // Retrieve the existing post category
-        PostCategory? existingPostCategory = await repo.GetPostCategoryByIdAsync(id);
-        if (existingPostCategory == null)
-        {
-            return NotFound(PostCategoryNotFoundMessage);
-        }
+        // Delegate business logic (business rules + database changes)
+        UpdatePostCategoryDetailsCommand newDetails = mapper.Map<UpdatePostCategoryDetailsCommand>(dto);
+        Result result = await postCategoryService.UpdatePostCategoryDetailsAsync(id, newDetails);
 
-        // Input validation
-        List<string> inputErrors = await inputValidator.ValidateInputPostCategoryDtoAsync(postCategoryDto, existingPostCategory.Name);
-        if (inputErrors.Count != 0)
-        {
-            return BadRequest(new { Errors = inputErrors });
-        }
-
-        // Apply the updated fields exposed in the DTO to the existing post category
-        mapper.Map(postCategoryDto, existingPostCategory);
-
-        return await repo.SaveChangesAsync()
-            ? NoContent()
-            : BadRequest("Problem updating the post category.");
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
     }
 
-    [Authorize(Roles = "Admin")]
+    /// <summary>
+    /// Deletes a post category.
+    /// </summary>
+    /// <param name="id">The identifier of the post category to delete.</param>
+    /// <returns>
+    /// Returns <c>204 No Content</c> on successful deletion.
+    /// Returns <c>400 Bad Request</c> if input validation fails.
+    /// Returns <c>404 Not Found</c> if the post category or a related object does not exist.
+    /// </returns>
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{id:long}")]
-    public async Task<ActionResult> DeletePost([FromRoute] long id)
+    public async Task<ActionResult> DeletePostCategory([FromRoute] long id)
     {
-        PostCategory? postCategory = await repo.GetPostCategoryByIdAsync(id);
+        // Delegate business logic (business rules + database changes)
+        Result result = await postCategoryService.DeletePostCategoryAsync(id);
 
-        if (postCategory == null)
-        {
-            return NotFound(PostCategoryNotFoundMessage);
-        }
-
-        repo.DeletePostCategory(postCategory);
-
-        return await repo.SaveChangesAsync()
-            ? NoContent()
-            : BadRequest("Problem deleting the post category");
+        return result.IsFailure 
+            ? this.MapErrorResult(result)
+            : NoContent();
     }
 }

@@ -1,0 +1,794 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.QueryParams.PostQueryParameters
+  commentId: T:Agora.API.QueryParams.PostQueryParameters
+  id: PostQueryParameters
+  parent: Agora.API.QueryParams
+  children:
+  - Agora.API.QueryParams.PostQueryParameters.MaxPrice
+  - Agora.API.QueryParams.PostQueryParameters.MinPrice
+  - Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+  - Agora.API.QueryParams.PostQueryParameters.SortBy
+  - Agora.API.QueryParams.PostQueryParameters.SortDesc
+  - Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+  - Agora.API.QueryParams.PostQueryParameters.TypeName
+  - Agora.API.QueryParams.PostQueryParameters.UserName
+  langs:
+  - csharp
+  - vb
+  name: PostQueryParameters
+  nameWithType: PostQueryParameters
+  fullName: Agora.API.QueryParams.PostQueryParameters
+  type: Class
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostQueryParameters
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 4
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  syntax:
+    content: 'public class PostQueryParameters : IPostFilter'
+    content.vb: Public Class PostQueryParameters Implements IPostFilter
+  inheritance:
+  - System.Object
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+  id: TitleOrDescription
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: TitleOrDescription
+  nameWithType: PostQueryParameters.TitleOrDescription
+  fullName: Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TitleOrDescription
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 6
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public string? TitleOrDescription { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TitleOrDescription As String
+  overload: Agora.API.QueryParams.PostQueryParameters.TitleOrDescription*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.TitleOrDescription
+- uid: Agora.API.QueryParams.PostQueryParameters.MinPrice
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.MinPrice
+  id: MinPrice
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: MinPrice
+  nameWithType: PostQueryParameters.MinPrice
+  fullName: Agora.API.QueryParams.PostQueryParameters.MinPrice
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MinPrice
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 7
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public int? MinPrice { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property MinPrice As Integer?
+  overload: Agora.API.QueryParams.PostQueryParameters.MinPrice*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.MinPrice
+- uid: Agora.API.QueryParams.PostQueryParameters.MaxPrice
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.MaxPrice
+  id: MaxPrice
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: MaxPrice
+  nameWithType: PostQueryParameters.MaxPrice
+  fullName: Agora.API.QueryParams.PostQueryParameters.MaxPrice
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MaxPrice
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 8
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public int? MaxPrice { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property MaxPrice As Integer?
+  overload: Agora.API.QueryParams.PostQueryParameters.MaxPrice*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.MaxPrice
+- uid: Agora.API.QueryParams.PostQueryParameters.TypeName
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.TypeName
+  id: TypeName
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: TypeName
+  nameWithType: PostQueryParameters.TypeName
+  fullName: Agora.API.QueryParams.PostQueryParameters.TypeName
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TypeName
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 9
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public string? TypeName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TypeName As String
+  overload: Agora.API.QueryParams.PostQueryParameters.TypeName*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.TypeName
+- uid: Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+  id: PostCategoryName
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: PostCategoryName
+  nameWithType: PostQueryParameters.PostCategoryName
+  fullName: Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: PostCategoryName
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 10
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public string? PostCategoryName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PostCategoryName As String
+  overload: Agora.API.QueryParams.PostQueryParameters.PostCategoryName*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.PostCategoryName
+- uid: Agora.API.QueryParams.PostQueryParameters.UserName
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.UserName
+  id: UserName
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: PostQueryParameters.UserName
+  fullName: Agora.API.QueryParams.PostQueryParameters.UserName
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: UserName
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 11
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public string? UserName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserName As String
+  overload: Agora.API.QueryParams.PostQueryParameters.UserName*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.UserName
+- uid: Agora.API.QueryParams.PostQueryParameters.SortBy
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.SortBy
+  id: SortBy
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: SortBy
+  nameWithType: PostQueryParameters.SortBy
+  fullName: Agora.API.QueryParams.PostQueryParameters.SortBy
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SortBy
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 12
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public string? SortBy { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SortBy As String
+  overload: Agora.API.QueryParams.PostQueryParameters.SortBy*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.SortBy
+- uid: Agora.API.QueryParams.PostQueryParameters.SortDesc
+  commentId: P:Agora.API.QueryParams.PostQueryParameters.SortDesc
+  id: SortDesc
+  parent: Agora.API.QueryParams.PostQueryParameters
+  langs:
+  - csharp
+  - vb
+  name: SortDesc
+  nameWithType: PostQueryParameters.SortDesc
+  fullName: Agora.API.QueryParams.PostQueryParameters.SortDesc
+  type: Property
+  source:
+    remote:
+      path: Agora.API/QueryParams/PostQueryParameters.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SortDesc
+    path: Agora.API/QueryParams/PostQueryParameters.cs
+    startLine: 13
+  assemblies:
+  - Agora.API
+  namespace: Agora.API.QueryParams
+  example: []
+  syntax:
+    content: public bool SortDesc { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SortDesc As Boolean
+  overload: Agora.API.QueryParams.PostQueryParameters.SortDesc*
+  implements:
+  - Agora.Core.Interfaces.Filters.IPostFilter.SortDesc
+references:
+- uid: Agora.API.QueryParams
+  commentId: N:Agora.API.QueryParams
+  href: Agora.html
+  name: Agora.API.QueryParams
+  nameWithType: Agora.API.QueryParams
+  fullName: Agora.API.QueryParams
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.QueryParams
+    name: QueryParams
+    href: Agora.API.QueryParams.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.API
+    name: API
+    href: Agora.API.html
+  - name: .
+  - uid: Agora.API.QueryParams
+    name: QueryParams
+    href: Agora.API.QueryParams.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Agora.Core.Interfaces.Filters.IPostFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IPostFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html
+  name: IPostFilter
+  nameWithType: IPostFilter
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: Agora.API.QueryParams.PostQueryParameters.TitleOrDescription*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_TitleOrDescription
+  name: TitleOrDescription
+  nameWithType: PostQueryParameters.TitleOrDescription
+  fullName: Agora.API.QueryParams.PostQueryParameters.TitleOrDescription
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.TitleOrDescription
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.TitleOrDescription
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_TitleOrDescription
+  name: TitleOrDescription
+  nameWithType: IPostFilter.TitleOrDescription
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.TitleOrDescription
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.API.QueryParams.PostQueryParameters.MinPrice*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.MinPrice
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_MinPrice
+  name: MinPrice
+  nameWithType: PostQueryParameters.MinPrice
+  fullName: Agora.API.QueryParams.PostQueryParameters.MinPrice
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.MinPrice
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.MinPrice
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_MinPrice
+  name: MinPrice
+  nameWithType: IPostFilter.MinPrice
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.MinPrice
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.API.QueryParams.PostQueryParameters.MaxPrice*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.MaxPrice
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_MaxPrice
+  name: MaxPrice
+  nameWithType: PostQueryParameters.MaxPrice
+  fullName: Agora.API.QueryParams.PostQueryParameters.MaxPrice
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.MaxPrice
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.MaxPrice
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_MaxPrice
+  name: MaxPrice
+  nameWithType: IPostFilter.MaxPrice
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.MaxPrice
+- uid: Agora.API.QueryParams.PostQueryParameters.TypeName*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.TypeName
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_TypeName
+  name: TypeName
+  nameWithType: PostQueryParameters.TypeName
+  fullName: Agora.API.QueryParams.PostQueryParameters.TypeName
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.TypeName
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.TypeName
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_TypeName
+  name: TypeName
+  nameWithType: IPostFilter.TypeName
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.TypeName
+- uid: Agora.API.QueryParams.PostQueryParameters.PostCategoryName*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_PostCategoryName
+  name: PostCategoryName
+  nameWithType: PostQueryParameters.PostCategoryName
+  fullName: Agora.API.QueryParams.PostQueryParameters.PostCategoryName
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.PostCategoryName
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.PostCategoryName
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_PostCategoryName
+  name: PostCategoryName
+  nameWithType: IPostFilter.PostCategoryName
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.PostCategoryName
+- uid: Agora.API.QueryParams.PostQueryParameters.UserName*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.UserName
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_UserName
+  name: UserName
+  nameWithType: PostQueryParameters.UserName
+  fullName: Agora.API.QueryParams.PostQueryParameters.UserName
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.UserName
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.UserName
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_UserName
+  name: UserName
+  nameWithType: IPostFilter.UserName
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.UserName
+- uid: Agora.API.QueryParams.PostQueryParameters.SortBy*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.SortBy
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_SortBy
+  name: SortBy
+  nameWithType: PostQueryParameters.SortBy
+  fullName: Agora.API.QueryParams.PostQueryParameters.SortBy
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.SortBy
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.SortBy
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_SortBy
+  name: SortBy
+  nameWithType: IPostFilter.SortBy
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.SortBy
+- uid: Agora.API.QueryParams.PostQueryParameters.SortDesc*
+  commentId: Overload:Agora.API.QueryParams.PostQueryParameters.SortDesc
+  href: Agora.API.QueryParams.PostQueryParameters.html#Agora_API_QueryParams_PostQueryParameters_SortDesc
+  name: SortDesc
+  nameWithType: PostQueryParameters.SortDesc
+  fullName: Agora.API.QueryParams.PostQueryParameters.SortDesc
+- uid: Agora.Core.Interfaces.Filters.IPostFilter.SortDesc
+  commentId: P:Agora.Core.Interfaces.Filters.IPostFilter.SortDesc
+  parent: Agora.Core.Interfaces.Filters.IPostFilter
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html#Agora_Core_Interfaces_Filters_IPostFilter_SortDesc
+  name: SortDesc
+  nameWithType: IPostFilter.SortDesc
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter.SortDesc
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

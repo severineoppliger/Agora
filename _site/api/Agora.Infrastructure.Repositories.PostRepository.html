@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class PostRepository | Agora </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PostRepository | Agora ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Agora">
+            Agora
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Agora.Infrastructure.Repositories.PostRepository">
+
+
+
+  <h1 id="Agora_Infrastructure_Repositories_PostRepository" data-uid="Agora.Infrastructure.Repositories.PostRepository" class="text-break">
+Class PostRepository  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Agora.html">Agora</a>.<a class="xref" href="Agora.Infrastructure.html">Infrastructure</a>.<a class="xref" href="Agora.Infrastructure.Repositories.html">Repositories</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Agora.Infrastructure.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PostRepository : IPostRepository</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PostRepository</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Agora.Core.Interfaces.Repositories.IPostRepository.html">IPostRepository</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository__ctor_" data-uid="Agora.Infrastructure.Repositories.PostRepository.#ctor*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository__ctor_Agora_Infrastructure_Data_AgoraDbContext_" data-uid="Agora.Infrastructure.Repositories.PostRepository.#ctor(Agora.Infrastructure.Data.AgoraDbContext)">
+  PostRepository(AgoraDbContext)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PostRepository(AgoraDbContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="Agora.Infrastructure.Data.AgoraDbContext.html">AgoraDbContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_AddPost_" data-uid="Agora.Infrastructure.Repositories.PostRepository.AddPost*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_AddPost_Agora_Core_Models_Post_" data-uid="Agora.Infrastructure.Repositories.PostRepository.AddPost(Agora.Core.Models.Post)">
+  AddPost(Post)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddPost(Post post)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>post</code> <a class="xref" href="Agora.Core.Models.Post.html">Post</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_ApplySorting_" data-uid="Agora.Infrastructure.Repositories.PostRepository.ApplySorting*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_ApplySorting_System_Linq_IQueryable_Agora_Core_Models_Post__Agora_Core_Interfaces_Filters_IPostFilter_" data-uid="Agora.Infrastructure.Repositories.PostRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.Post},Agora.Core.Interfaces.Filters.IPostFilter)">
+  ApplySorting(IQueryable&lt;Post&gt;, IPostFilter)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;Post&gt; ApplySorting(IQueryable&lt;Post&gt; query, IPostFilter queryParams)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>queryParams</code> <a class="xref" href="Agora.Core.Interfaces.Filters.IPostFilter.html">IPostFilter</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1">IQueryable</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_DeletePost_" data-uid="Agora.Infrastructure.Repositories.PostRepository.DeletePost*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_DeletePost_Agora_Core_Models_Post_" data-uid="Agora.Infrastructure.Repositories.PostRepository.DeletePost(Agora.Core.Models.Post)">
+  DeletePost(Post)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeletePost(Post post)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>post</code> <a class="xref" href="Agora.Core.Models.Post.html">Post</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_GetAllPostsAsync_" data-uid="Agora.Infrastructure.Repositories.PostRepository.GetAllPostsAsync*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_GetAllPostsAsync_Agora_Core_Models_Filters_PostFilter_" data-uid="Agora.Infrastructure.Repositories.PostRepository.GetAllPostsAsync(Agora.Core.Models.Filters.PostFilter)">
+  GetAllPostsAsync(PostFilter)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyList&lt;Post&gt;&gt; GetAllPostsAsync(PostFilter filter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>filter</code> <a class="xref" href="Agora.Core.Models.Filters.PostFilter.html">PostFilter</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_GetPostByIdAsync_" data-uid="Agora.Infrastructure.Repositories.PostRepository.GetPostByIdAsync*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_GetPostByIdAsync_System_Int64_" data-uid="Agora.Infrastructure.Repositories.PostRepository.GetPostByIdAsync(System.Int64)">
+  GetPostByIdAsync(long)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Post?&gt; GetPostByIdAsync(long id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Agora.Core.Models.Post.html">Post</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_IsCategoryInUseAsync_" data-uid="Agora.Infrastructure.Repositories.PostRepository.IsCategoryInUseAsync*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_IsCategoryInUseAsync_System_Int64_" data-uid="Agora.Infrastructure.Repositories.PostRepository.IsCategoryInUseAsync(System.Int64)">
+  IsCategoryInUseAsync(long)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsCategoryInUseAsync(long postCategoryId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>postCategoryId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_PostExistsAsync_" data-uid="Agora.Infrastructure.Repositories.PostRepository.PostExistsAsync*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_PostExistsAsync_System_Int64_" data-uid="Agora.Infrastructure.Repositories.PostRepository.PostExistsAsync(System.Int64)">
+  PostExistsAsync(long)
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; PostExistsAsync(long id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Agora_Infrastructure_Repositories_PostRepository_SaveChangesAsync_" data-uid="Agora.Infrastructure.Repositories.PostRepository.SaveChangesAsync*"></a>
+
+  <h3 id="Agora_Infrastructure_Repositories_PostRepository_SaveChangesAsync" data-uid="Agora.Infrastructure.Repositories.PostRepository.SaveChangesAsync">
+  SaveChangesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; SaveChangesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://dev.azure.com/severineoppliger/Agora/_git/Agora?path=Agora.Infrastructure/Repositories/PostRepository.cs&amp;version=GB15-Transition-status-logic&amp;line=11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

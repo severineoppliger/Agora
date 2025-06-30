@@ -1,0 +1,758 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  commentId: T:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  id: ITransactionStatusRepository
+  parent: Agora.Core.Interfaces.Repositories
+  children:
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.TransactionStatus},Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync(Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync(Agora.Core.Enums.TransactionStatusEnum)
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync(System.Int64)
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync(System.String)
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync
+  - Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync(System.Int64)
+  langs:
+  - csharp
+  - vb
+  name: ITransactionStatusRepository
+  nameWithType: ITransactionStatusRepository
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ITransactionStatusRepository
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: public interface ITransactionStatusRepository
+    content.vb: Public Interface ITransactionStatusRepository
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync(Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync(Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  id: GetAllTransactionStatusAsync(Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllTransactionStatusAsync(ITransactionStatusFilter)
+  nameWithType: ITransactionStatusRepository.GetAllTransactionStatusAsync(ITransactionStatusFilter)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync(Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetAllTransactionStatusAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<IReadOnlyList<TransactionStatus>> GetAllTransactionStatusAsync(ITransactionStatusFilter filter)
+    parameters:
+    - id: filter
+      type: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.TransactionStatus}}
+    content.vb: Function GetAllTransactionStatusAsync(filter As ITransactionStatusFilter) As Task(Of IReadOnlyList(Of TransactionStatus))
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync*
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync(System.Int64)
+  id: GetTransactionStatusByIdAsync(System.Int64)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: GetTransactionStatusByIdAsync(long)
+  nameWithType: ITransactionStatusRepository.GetTransactionStatusByIdAsync(long)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetTransactionStatusByIdAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<TransactionStatus?> GetTransactionStatusByIdAsync(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Models.TransactionStatus}
+    content.vb: Function GetTransactionStatusByIdAsync(id As Long) As Task(Of TransactionStatus)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync*
+  nameWithType.vb: ITransactionStatusRepository.GetTransactionStatusByIdAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync(Long)
+  name.vb: GetTransactionStatusByIdAsync(Long)
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync(Agora.Core.Enums.TransactionStatusEnum)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync(Agora.Core.Enums.TransactionStatusEnum)
+  id: GetIdByEnumAsync(Agora.Core.Enums.TransactionStatusEnum)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: GetIdByEnumAsync(TransactionStatusEnum)
+  nameWithType: ITransactionStatusRepository.GetIdByEnumAsync(TransactionStatusEnum)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync(Agora.Core.Enums.TransactionStatusEnum)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: GetIdByEnumAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<long> GetIdByEnumAsync(TransactionStatusEnum statusEnum)
+    parameters:
+    - id: statusEnum
+      type: Agora.Core.Enums.TransactionStatusEnum
+    return:
+      type: System.Threading.Tasks.Task{System.Int64}
+    content.vb: Function GetIdByEnumAsync(statusEnum As TransactionStatusEnum) As Task(Of Long)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync*
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync
+  id: SaveChangesAsync
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: SaveChangesAsync()
+  nameWithType: ITransactionStatusRepository.SaveChangesAsync()
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync()
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SaveChangesAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> SaveChangesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function SaveChangesAsync() As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync*
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync(System.Int64)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync(System.Int64)
+  id: TransactionStatusExistsAsync(System.Int64)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: TransactionStatusExistsAsync(long)
+  nameWithType: ITransactionStatusRepository.TransactionStatusExistsAsync(long)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync(long)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: TransactionStatusExistsAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 12
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> TransactionStatusExistsAsync(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function TransactionStatusExistsAsync(id As Long) As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync*
+  nameWithType.vb: ITransactionStatusRepository.TransactionStatusExistsAsync(Long)
+  fullName.vb: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync(Long)
+  name.vb: TransactionStatusExistsAsync(Long)
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync(System.String)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync(System.String)
+  id: NameExistsAsync(System.String)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: NameExistsAsync(string)
+  nameWithType: ITransactionStatusRepository.NameExistsAsync(string)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync(string)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: NameExistsAsync
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 13
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: Task<bool> NameExistsAsync(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function NameExistsAsync(name As String) As Task(Of Boolean)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync*
+  nameWithType.vb: ITransactionStatusRepository.NameExistsAsync(String)
+  fullName.vb: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync(String)
+  name.vb: NameExistsAsync(String)
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.TransactionStatus},Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  commentId: M:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting(System.Linq.IQueryable{Agora.Core.Models.TransactionStatus},Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  id: ApplySorting(System.Linq.IQueryable{Agora.Core.Models.TransactionStatus},Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  parent: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+  langs:
+  - csharp
+  - vb
+  name: ApplySorting(IQueryable<TransactionStatus>, ITransactionStatusFilter)
+  nameWithType: ITransactionStatusRepository.ApplySorting(IQueryable<TransactionStatus>, ITransactionStatusFilter)
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting(System.Linq.IQueryable<Agora.Core.Models.TransactionStatus>, Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: ApplySorting
+    path: Agora.Core/Interfaces/Repositories/ITransactionStatusRepository.cs
+    startLine: 14
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Repositories
+  syntax:
+    content: IQueryable<TransactionStatus> ApplySorting(IQueryable<TransactionStatus> query, ITransactionStatusFilter queryParams)
+    parameters:
+    - id: query
+      type: System.Linq.IQueryable{Agora.Core.Models.TransactionStatus}
+    - id: queryParams
+      type: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+    return:
+      type: System.Linq.IQueryable{Agora.Core.Models.TransactionStatus}
+    content.vb: Function ApplySorting(query As IQueryable(Of TransactionStatus), queryParams As ITransactionStatusFilter) As IQueryable(Of TransactionStatus)
+  overload: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting*
+  nameWithType.vb: ITransactionStatusRepository.ApplySorting(IQueryable(Of TransactionStatus), ITransactionStatusFilter)
+  fullName.vb: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting(System.Linq.IQueryable(Of Agora.Core.Models.TransactionStatus), Agora.Core.Interfaces.Filters.ITransactionStatusFilter)
+  name.vb: ApplySorting(IQueryable(Of TransactionStatus), ITransactionStatusFilter)
+references:
+- uid: Agora.Core.Interfaces.Repositories
+  commentId: N:Agora.Core.Interfaces.Repositories
+  href: Agora.html
+  name: Agora.Core.Interfaces.Repositories
+  nameWithType: Agora.Core.Interfaces.Repositories
+  fullName: Agora.Core.Interfaces.Repositories
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Repositories
+    name: Repositories
+    href: Agora.Core.Interfaces.Repositories.html
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_GetAllTransactionStatusAsync_Agora_Core_Interfaces_Filters_ITransactionStatusFilter_
+  name: GetAllTransactionStatusAsync
+  nameWithType: ITransactionStatusRepository.GetAllTransactionStatusAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetAllTransactionStatusAsync
+- uid: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+  commentId: T:Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.ITransactionStatusFilter.html
+  name: ITransactionStatusFilter
+  nameWithType: ITransactionStatusFilter
+  fullName: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.TransactionStatus}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyList{Agora.Core.Models.TransactionStatus}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyList<TransactionStatus>>
+  nameWithType: Task<IReadOnlyList<TransactionStatus>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Agora.Core.Models.TransactionStatus>>
+  nameWithType.vb: Task(Of IReadOnlyList(Of TransactionStatus))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyList(Of Agora.Core.Models.TransactionStatus))
+  name.vb: Task(Of IReadOnlyList(Of TransactionStatus))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: )
+  - name: )
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_GetTransactionStatusByIdAsync_System_Int64_
+  name: GetTransactionStatusByIdAsync
+  nameWithType: ITransactionStatusRepository.GetTransactionStatusByIdAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetTransactionStatusByIdAsync
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Threading.Tasks.Task{Agora.Core.Models.TransactionStatus}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Models.TransactionStatus}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TransactionStatus>
+  nameWithType: Task<TransactionStatus>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Models.TransactionStatus>
+  nameWithType.vb: Task(Of TransactionStatus)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Models.TransactionStatus)
+  name.vb: Task(Of TransactionStatus)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_GetIdByEnumAsync_Agora_Core_Enums_TransactionStatusEnum_
+  name: GetIdByEnumAsync
+  nameWithType: ITransactionStatusRepository.GetIdByEnumAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.GetIdByEnumAsync
+- uid: Agora.Core.Enums.TransactionStatusEnum
+  commentId: T:Agora.Core.Enums.TransactionStatusEnum
+  parent: Agora.Core.Enums
+  href: Agora.Core.Enums.TransactionStatusEnum.html
+  name: TransactionStatusEnum
+  nameWithType: TransactionStatusEnum
+  fullName: Agora.Core.Enums.TransactionStatusEnum
+- uid: System.Threading.Tasks.Task{System.Int64}
+  commentId: T:System.Threading.Tasks.Task{System.Int64}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<long>
+  nameWithType: Task<long>
+  fullName: System.Threading.Tasks.Task<long>
+  nameWithType.vb: Task(Of Long)
+  fullName.vb: System.Threading.Tasks.Task(Of Long)
+  name.vb: Task(Of Long)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Agora.Core.Enums
+  commentId: N:Agora.Core.Enums
+  href: Agora.html
+  name: Agora.Core.Enums
+  nameWithType: Agora.Core.Enums
+  fullName: Agora.Core.Enums
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Enums
+    name: Enums
+    href: Agora.Core.Enums.html
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_SaveChangesAsync
+  name: SaveChangesAsync
+  nameWithType: ITransactionStatusRepository.SaveChangesAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.SaveChangesAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_TransactionStatusExistsAsync_System_Int64_
+  name: TransactionStatusExistsAsync
+  nameWithType: ITransactionStatusRepository.TransactionStatusExistsAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.TransactionStatusExistsAsync
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_NameExistsAsync_System_String_
+  name: NameExistsAsync
+  nameWithType: ITransactionStatusRepository.NameExistsAsync
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.NameExistsAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting*
+  commentId: Overload:Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting
+  href: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html#Agora_Core_Interfaces_Repositories_ITransactionStatusRepository_ApplySorting_System_Linq_IQueryable_Agora_Core_Models_TransactionStatus__Agora_Core_Interfaces_Filters_ITransactionStatusFilter_
+  name: ApplySorting
+  nameWithType: ITransactionStatusRepository.ApplySorting
+  fullName: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.ApplySorting
+- uid: System.Linq.IQueryable{Agora.Core.Models.TransactionStatus}
+  commentId: T:System.Linq.IQueryable{Agora.Core.Models.TransactionStatus}
+  parent: System.Linq
+  definition: System.Linq.IQueryable`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<TransactionStatus>
+  nameWithType: IQueryable<TransactionStatus>
+  fullName: System.Linq.IQueryable<Agora.Core.Models.TransactionStatus>
+  nameWithType.vb: IQueryable(Of TransactionStatus)
+  fullName.vb: System.Linq.IQueryable(Of Agora.Core.Models.TransactionStatus)
+  name.vb: IQueryable(Of TransactionStatus)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    href: Agora.Core.Models.TransactionStatus.html
+  - name: )
+- uid: System.Linq.IQueryable`1
+  commentId: T:System.Linq.IQueryable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  name: IQueryable<T>
+  nameWithType: IQueryable<T>
+  fullName: System.Linq.IQueryable<T>
+  nameWithType.vb: IQueryable(Of T)
+  fullName.vb: System.Linq.IQueryable(Of T)
+  name.vb: IQueryable(Of T)
+  spec.csharp:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Linq
+  commentId: N:System.Linq
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq
+  nameWithType: System.Linq
+  fullName: System.Linq
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq

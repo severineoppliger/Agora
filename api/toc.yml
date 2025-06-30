@@ -1,0 +1,513 @@
+### YamlMime:TableOfContent
+items:
+- uid: Agora.API.Controllers
+  name: Agora.API.Controllers
+  type: Namespace
+  items:
+  - uid: Agora.API.Controllers.PostCategoriesController
+    name: PostCategoriesController
+    type: Class
+  - uid: Agora.API.Controllers.PostsController
+    name: PostsController
+    type: Class
+  - uid: Agora.API.Controllers.TransactionStatusController
+    name: TransactionStatusController
+    type: Class
+  - uid: Agora.API.Controllers.TransactionsController
+    name: TransactionsController
+    type: Class
+  - uid: Agora.API.Controllers.UsersController
+    name: UsersController
+    type: Class
+- uid: Agora.API.DTOs.Post
+  name: Agora.API.DTOs.Post
+  type: Namespace
+  items:
+  - uid: Agora.API.DTOs.Post.CreatePostDto
+    name: CreatePostDto
+    type: Class
+  - uid: Agora.API.DTOs.Post.PostDetailsDto
+    name: PostDetailsDto
+    type: Class
+  - uid: Agora.API.DTOs.Post.PostSummaryDto
+    name: PostSummaryDto
+    type: Class
+  - uid: Agora.API.DTOs.Post.UpdatePostDetailsDto
+    name: UpdatePostDetailsDto
+    type: Class
+- uid: Agora.API.DTOs.PostCategory
+  name: Agora.API.DTOs.PostCategory
+  type: Namespace
+  items:
+  - uid: Agora.API.DTOs.PostCategory.CreatePostCategoryDto
+    name: CreatePostCategoryDto
+    type: Class
+  - uid: Agora.API.DTOs.PostCategory.PostCategoryDetailsDto
+    name: PostCategoryDetailsDto
+    type: Class
+  - uid: Agora.API.DTOs.PostCategory.PostCategorySummaryDto
+    name: PostCategorySummaryDto
+    type: Class
+  - uid: Agora.API.DTOs.PostCategory.UpdatePostCategoryDto
+    name: UpdatePostCategoryDto
+    type: Class
+- uid: Agora.API.DTOs.Transaction
+  name: Agora.API.DTOs.Transaction
+  type: Namespace
+  items:
+  - uid: Agora.API.DTOs.Transaction.ChangeTransactionStatusDto
+    name: ChangeTransactionStatusDto
+    type: Class
+  - uid: Agora.API.DTOs.Transaction.CreateTransactionDto
+    name: CreateTransactionDto
+    type: Class
+  - uid: Agora.API.DTOs.Transaction.TransactionDetailsDto
+    name: TransactionDetailsDto
+    type: Class
+  - uid: Agora.API.DTOs.Transaction.TransactionSummaryDto
+    name: TransactionSummaryDto
+    type: Class
+  - uid: Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto
+    name: UpdateTransactionDetailsDto
+    type: Class
+- uid: Agora.API.DTOs.TransactionStatus
+  name: Agora.API.DTOs.TransactionStatus
+  type: Namespace
+  items:
+  - uid: Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto
+    name: TransactionStatusDetailsDto
+    type: Class
+  - uid: Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto
+    name: TransactionStatusSummaryDto
+    type: Class
+  - uid: Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto
+    name: UpdateTransactionStatusDetailsDto
+    type: Class
+- uid: Agora.API.DTOs.User
+  name: Agora.API.DTOs.User
+  type: Namespace
+  items:
+  - uid: Agora.API.DTOs.User.RegisterDto
+    name: RegisterDto
+    type: Class
+  - uid: Agora.API.DTOs.User.SignInDto
+    name: SignInDto
+    type: Class
+  - uid: Agora.API.DTOs.User.UserDetailsDto
+    name: UserDetailsDto
+    type: Class
+  - uid: Agora.API.DTOs.User.UserSummaryDto
+    name: UserSummaryDto
+    type: Class
+- uid: Agora.API.Extensions
+  name: Agora.API.Extensions
+  type: Namespace
+  items:
+  - uid: Agora.API.Extensions.ControllerExtensions
+    name: ControllerExtensions
+    type: Class
+- uid: Agora.API.Filters
+  name: Agora.API.Filters
+  type: Namespace
+  items:
+  - uid: Agora.API.Filters.LogActionFilter
+    name: LogActionFilter
+    type: Class
+- uid: Agora.API.InputValidation
+  name: Agora.API.InputValidation
+  type: Namespace
+  items:
+  - uid: Agora.API.InputValidation.InputValidationResult
+    name: InputValidationResult
+    type: Class
+  - uid: Agora.API.InputValidation.InputValidator
+    name: InputValidator
+    type: Class
+- uid: Agora.API.InputValidation.Interfaces
+  name: Agora.API.InputValidation.Interfaces
+  type: Namespace
+  items:
+  - uid: Agora.API.InputValidation.Interfaces.IInputValidator
+    name: IInputValidator
+    type: Interface
+- uid: Agora.API.Mapping
+  name: Agora.API.Mapping
+  type: Namespace
+  items:
+  - uid: Agora.API.Mapping.PostCategoryProfile
+    name: PostCategoryProfile
+    type: Class
+  - uid: Agora.API.Mapping.PostProfile
+    name: PostProfile
+    type: Class
+  - uid: Agora.API.Mapping.TransactionProfile
+    name: TransactionProfile
+    type: Class
+  - uid: Agora.API.Mapping.TransactionStatusProfile
+    name: TransactionStatusProfile
+    type: Class
+  - uid: Agora.API.Mapping.UserProfile
+    name: UserProfile
+    type: Class
+- uid: Agora.API.QueryParams
+  name: Agora.API.QueryParams
+  type: Namespace
+  items:
+  - uid: Agora.API.QueryParams.PostCategoryQueryParameters
+    name: PostCategoryQueryParameters
+    type: Class
+  - uid: Agora.API.QueryParams.PostQueryParameters
+    name: PostQueryParameters
+    type: Class
+  - uid: Agora.API.QueryParams.TransactionQueryParameters
+    name: TransactionQueryParameters
+    type: Class
+  - uid: Agora.API.QueryParams.TransactionStatusQueryParameters
+    name: TransactionStatusQueryParameters
+    type: Class
+  - uid: Agora.API.QueryParams.UserQueryParameters
+    name: UserQueryParameters
+    type: Class
+- uid: Agora.API.Settings
+  name: Agora.API.Settings
+  type: Namespace
+  items:
+  - uid: Agora.API.Settings.UserSettings
+    name: UserSettings
+    type: Class
+- uid: Agora.Core.BusinessRules
+  name: Agora.Core.BusinessRules
+  type: Namespace
+  items:
+  - uid: Agora.Core.BusinessRules.AuthorizationBusinessRules
+    name: AuthorizationBusinessRules
+    type: Class
+  - uid: Agora.Core.BusinessRules.BusinessRulesValidator
+    name: BusinessRulesValidator
+    type: Class
+- uid: Agora.Core.BusinessRules.Interfaces
+  name: Agora.Core.BusinessRules.Interfaces
+  type: Namespace
+  items:
+  - uid: Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules
+    name: IAuthorizationBusinessRules
+    type: Interface
+  - uid: Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator
+    name: IBusinessRulesValidator
+    type: Interface
+- uid: Agora.Core.BusinessServices
+  name: Agora.Core.BusinessServices
+  type: Namespace
+  items:
+  - uid: Agora.Core.BusinessServices.PostCategoryService
+    name: PostCategoryService
+    type: Class
+  - uid: Agora.Core.BusinessServices.PostService
+    name: PostService
+    type: Class
+  - uid: Agora.Core.BusinessServices.TransactionService
+    name: TransactionService
+    type: Class
+  - uid: Agora.Core.BusinessServices.TransactionStatusService
+    name: TransactionStatusService
+    type: Class
+  - uid: Agora.Core.BusinessServices.UserService
+    name: UserService
+    type: Class
+- uid: Agora.Core.Common
+  name: Agora.Core.Common
+  type: Namespace
+  items:
+  - uid: Agora.Core.Common.ErrorDetail
+    name: ErrorDetail
+    type: Class
+  - uid: Agora.Core.Common.ErrorMessages
+    name: ErrorMessages
+    type: Class
+  - uid: Agora.Core.Common.ErrorMessages.Post
+    name: ErrorMessages.Post
+    type: Class
+  - uid: Agora.Core.Common.ErrorMessages.PostCategory
+    name: ErrorMessages.PostCategory
+    type: Class
+  - uid: Agora.Core.Common.ErrorMessages.Transaction
+    name: ErrorMessages.Transaction
+    type: Class
+  - uid: Agora.Core.Common.ErrorMessages.User
+    name: ErrorMessages.User
+    type: Class
+  - uid: Agora.Core.Common.Result
+    name: Result
+    type: Class
+  - uid: Agora.Core.Common.Result`1
+    name: Result<T>
+    type: Class
+  - uid: Agora.Core.Common.UserContext
+    name: UserContext
+    type: Class
+- uid: Agora.Core.Constants
+  name: Agora.Core.Constants
+  type: Namespace
+  items:
+  - uid: Agora.Core.Constants.Roles
+    name: Roles
+    type: Class
+- uid: Agora.Core.Enums
+  name: Agora.Core.Enums
+  type: Namespace
+  items:
+  - uid: Agora.Core.Enums.ErrorType
+    name: ErrorType
+    type: Enum
+  - uid: Agora.Core.Enums.PostStatus
+    name: PostStatus
+    type: Enum
+  - uid: Agora.Core.Enums.PostType
+    name: PostType
+    type: Enum
+  - uid: Agora.Core.Enums.PostVisibilityMode
+    name: PostVisibilityMode
+    type: Enum
+  - uid: Agora.Core.Enums.TransactionStatusEnum
+    name: TransactionStatusEnum
+    type: Enum
+- uid: Agora.Core.Extensions
+  name: Agora.Core.Extensions
+  type: Namespace
+  items:
+  - uid: Agora.Core.Extensions.ModelStateExtensions
+    name: ModelStateExtensions
+    type: Class
+  - uid: Agora.Core.Extensions.StringExtensions
+    name: StringExtensions
+    type: Class
+- uid: Agora.Core.Interfaces
+  name: Agora.Core.Interfaces
+  type: Namespace
+  items:
+  - uid: Agora.Core.Interfaces.IAuthService
+    name: IAuthService
+    type: Interface
+  - uid: Agora.Core.Interfaces.IUserContextService
+    name: IUserContextService
+    type: Interface
+- uid: Agora.Core.Interfaces.BusinessServices
+  name: Agora.Core.Interfaces.BusinessServices
+  type: Namespace
+  items:
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+    name: IPostCategoryService
+    type: Interface
+  - uid: Agora.Core.Interfaces.BusinessServices.IPostService
+    name: IPostService
+    type: Interface
+  - uid: Agora.Core.Interfaces.BusinessServices.ITransactionService
+    name: ITransactionService
+    type: Interface
+  - uid: Agora.Core.Interfaces.BusinessServices.ITransactionStatusService
+    name: ITransactionStatusService
+    type: Interface
+  - uid: Agora.Core.Interfaces.BusinessServices.IUserService
+    name: IUserService
+    type: Interface
+- uid: Agora.Core.Interfaces.Filters
+  name: Agora.Core.Interfaces.Filters
+  type: Namespace
+  items:
+  - uid: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+    name: IPostCategoryFilter
+    type: Interface
+  - uid: Agora.Core.Interfaces.Filters.IPostFilter
+    name: IPostFilter
+    type: Interface
+  - uid: Agora.Core.Interfaces.Filters.ITransactionFilter
+    name: ITransactionFilter
+    type: Interface
+  - uid: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+    name: ITransactionStatusFilter
+    type: Interface
+  - uid: Agora.Core.Interfaces.Filters.IUserFilter
+    name: IUserFilter
+    type: Interface
+- uid: Agora.Core.Interfaces.Repositories
+  name: Agora.Core.Interfaces.Repositories
+  type: Namespace
+  items:
+  - uid: Agora.Core.Interfaces.Repositories.IPostCategoryRepository
+    name: IPostCategoryRepository
+    type: Interface
+  - uid: Agora.Core.Interfaces.Repositories.IPostRepository
+    name: IPostRepository
+    type: Interface
+  - uid: Agora.Core.Interfaces.Repositories.ITransactionRepository
+    name: ITransactionRepository
+    type: Interface
+  - uid: Agora.Core.Interfaces.Repositories.ITransactionStatusRepository
+    name: ITransactionStatusRepository
+    type: Interface
+  - uid: Agora.Core.Interfaces.Repositories.IUserRepository
+    name: IUserRepository
+    type: Interface
+- uid: Agora.Core.Models
+  name: Agora.Core.Models
+  type: Namespace
+  items:
+  - uid: Agora.Core.Models.BaseEntity
+    name: BaseEntity
+    type: Class
+  - uid: Agora.Core.Models.Post
+    name: Post
+    type: Class
+  - uid: Agora.Core.Models.PostCategory
+    name: PostCategory
+    type: Class
+  - uid: Agora.Core.Models.Transaction
+    name: Transaction
+    type: Class
+  - uid: Agora.Core.Models.TransactionStatus
+    name: TransactionStatus
+    type: Class
+  - uid: Agora.Core.Models.User
+    name: User
+    type: Class
+- uid: Agora.Core.Models.Filters
+  name: Agora.Core.Models.Filters
+  type: Namespace
+  items:
+  - uid: Agora.Core.Models.Filters.PostFilter
+    name: PostFilter
+    type: Class
+- uid: Agora.Core.Models.Requests
+  name: Agora.Core.Models.Requests
+  type: Namespace
+  items:
+  - uid: Agora.Core.Models.Requests.PostDetailsUpdate
+    name: PostDetailsUpdate
+    type: Class
+  - uid: Agora.Core.Models.Requests.TransactionDetailsUpdate
+    name: TransactionDetailsUpdate
+    type: Class
+  - uid: Agora.Core.Models.Requests.TransactionStatusDetailsUpdate
+    name: TransactionStatusDetailsUpdate
+    type: Class
+  - uid: Agora.Core.Models.Requests.UserRegistrationInfo
+    name: UserRegistrationInfo
+    type: Class
+  - uid: Agora.Core.Models.Requests.UserSignInInfo
+    name: UserSignInInfo
+    type: Class
+- uid: Agora.Core.Validation
+  name: Agora.Core.Validation
+  type: Namespace
+  items:
+  - uid: Agora.Core.Validation.NotEmptyOrWhitespaceAttribute
+    name: NotEmptyOrWhitespaceAttribute
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules
+    name: ValidationRules
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules.AppUser
+    name: ValidationRules.AppUser
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules.Post
+    name: ValidationRules.Post
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules.PostCategory
+    name: ValidationRules.PostCategory
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules.Transaction
+    name: ValidationRules.Transaction
+    type: Class
+  - uid: Agora.Core.Validation.ValidationRules.TransactionStatus
+    name: ValidationRules.TransactionStatus
+    type: Class
+- uid: Agora.Infrastructure.Configuration
+  name: Agora.Infrastructure.Configuration
+  type: Namespace
+  items:
+  - uid: Agora.Infrastructure.Configuration.PostCategoryConfiguration
+    name: PostCategoryConfiguration
+    type: Class
+  - uid: Agora.Infrastructure.Configuration.PostConfiguration
+    name: PostConfiguration
+    type: Class
+  - uid: Agora.Infrastructure.Configuration.TransactionConfiguration
+    name: TransactionConfiguration
+    type: Class
+  - uid: Agora.Infrastructure.Configuration.TransactionStatusConfiguration
+    name: TransactionStatusConfiguration
+    type: Class
+  - uid: Agora.Infrastructure.Configuration.UserConfiguration
+    name: UserConfiguration
+    type: Class
+- uid: Agora.Infrastructure.Data
+  name: Agora.Infrastructure.Data
+  type: Namespace
+  items:
+  - uid: Agora.Infrastructure.Data.AgoraDbContext
+    name: AgoraDbContext
+    type: Class
+  - uid: Agora.Infrastructure.Data.AgoraDbContextSeed
+    name: AgoraDbContextSeed
+    type: Class
+- uid: Agora.Infrastructure.Migrations
+  name: Agora.Infrastructure.Migrations
+  type: Namespace
+  items:
+  - uid: Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatus
+    name: AddEnumValueToTransactionStatus
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatusStringValue
+    name: AddEnumValueToTransactionStatusStringValue
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.AddInfoForTransactionStatusChangesToTransactionEntity
+    name: AddInfoForTransactionStatusChangesToTransactionEntity
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.AddTitleToTransaction
+    name: AddTitleToTransaction
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.AddTransactionDate
+    name: AddTransactionDate
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.AddUpdatedAtToTransactionEntityAndRenameAppUserToUser
+    name: AddUpdatedAtToTransactionEntityAndRenameAppUserToUser
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.InitialCreate
+    name: InitialCreate
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.RenameUserToOwnerInPost
+    name: RenameUserToOwnerInPost
+    type: Class
+  - uid: Agora.Infrastructure.Migrations.RestrictPostCategoryDeletion
+    name: RestrictPostCategoryDeletion
+    type: Class
+- uid: Agora.Infrastructure.Repositories
+  name: Agora.Infrastructure.Repositories
+  type: Namespace
+  items:
+  - uid: Agora.Infrastructure.Repositories.PostCategoryRepository
+    name: PostCategoryRepository
+    type: Class
+  - uid: Agora.Infrastructure.Repositories.PostRepository
+    name: PostRepository
+    type: Class
+  - uid: Agora.Infrastructure.Repositories.TransactionRepository
+    name: TransactionRepository
+    type: Class
+  - uid: Agora.Infrastructure.Repositories.TransactionStatusRepository
+    name: TransactionStatusRepository
+    type: Class
+  - uid: Agora.Infrastructure.Repositories.UserRepository
+    name: UserRepository
+    type: Class
+- uid: Agora.Infrastructure.Services
+  name: Agora.Infrastructure.Services
+  type: Namespace
+  items:
+  - uid: Agora.Infrastructure.Services.AuthService
+    name: AuthService
+    type: Class
+  - uid: Agora.Infrastructure.Services.UserContextService
+    name: UserContextService
+    type: Class
+memberLayout: SamePage

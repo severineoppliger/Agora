@@ -1,0 +1,485 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.IAuthService
+  commentId: T:Agora.Core.Interfaces.IAuthService
+  id: IAuthService
+  parent: Agora.Core.Interfaces
+  children:
+  - Agora.Core.Interfaces.IAuthService.LoginAsync(Agora.Core.Models.Requests.UserSignInInfo)
+  - Agora.Core.Interfaces.IAuthService.LogoutAsync
+  - Agora.Core.Interfaces.IAuthService.RegisterAsync(Agora.Core.Models.Requests.UserRegistrationInfo)
+  langs:
+  - csharp
+  - vb
+  name: IAuthService
+  nameWithType: IAuthService
+  fullName: Agora.Core.Interfaces.IAuthService
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IAuthService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IAuthService
+    path: Agora.Core/Interfaces/IAuthService.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  summary: Defines authentication-related operations such as user registration, login, and logout.
+  example: []
+  syntax:
+    content: public interface IAuthService
+    content.vb: Public Interface IAuthService
+- uid: Agora.Core.Interfaces.IAuthService.RegisterAsync(Agora.Core.Models.Requests.UserRegistrationInfo)
+  commentId: M:Agora.Core.Interfaces.IAuthService.RegisterAsync(Agora.Core.Models.Requests.UserRegistrationInfo)
+  id: RegisterAsync(Agora.Core.Models.Requests.UserRegistrationInfo)
+  parent: Agora.Core.Interfaces.IAuthService
+  langs:
+  - csharp
+  - vb
+  name: RegisterAsync(UserRegistrationInfo)
+  nameWithType: IAuthService.RegisterAsync(UserRegistrationInfo)
+  fullName: Agora.Core.Interfaces.IAuthService.RegisterAsync(Agora.Core.Models.Requests.UserRegistrationInfo)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IAuthService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: RegisterAsync
+    path: Agora.Core/Interfaces/IAuthService.cs
+    startLine: 16
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  summary: Registers a new user with the specified registration information.
+  example: []
+  syntax:
+    content: Task<Result<User>> RegisterAsync(UserRegistrationInfo registrationInfo)
+    parameters:
+    - id: registrationInfo
+      type: Agora.Core.Models.Requests.UserRegistrationInfo
+      description: The user's registration data including email, username, and password.
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+      description: A <xref href="Agora.Core.Common.Result%601" data-throw-if-not-resolved="false"></xref> containing the created <xref href="Agora.Core.Models.User" data-throw-if-not-resolved="false"></xref> on success, or an error on failure.
+    content.vb: Function RegisterAsync(registrationInfo As UserRegistrationInfo) As Task(Of Result(Of User))
+  overload: Agora.Core.Interfaces.IAuthService.RegisterAsync*
+- uid: Agora.Core.Interfaces.IAuthService.LoginAsync(Agora.Core.Models.Requests.UserSignInInfo)
+  commentId: M:Agora.Core.Interfaces.IAuthService.LoginAsync(Agora.Core.Models.Requests.UserSignInInfo)
+  id: LoginAsync(Agora.Core.Models.Requests.UserSignInInfo)
+  parent: Agora.Core.Interfaces.IAuthService
+  langs:
+  - csharp
+  - vb
+  name: LoginAsync(UserSignInInfo)
+  nameWithType: IAuthService.LoginAsync(UserSignInInfo)
+  fullName: Agora.Core.Interfaces.IAuthService.LoginAsync(Agora.Core.Models.Requests.UserSignInInfo)
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IAuthService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: LoginAsync
+    path: Agora.Core/Interfaces/IAuthService.cs
+    startLine: 23
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  summary: Attempts to log in a user with the provided credentials.
+  example: []
+  syntax:
+    content: Task<Result> LoginAsync(UserSignInInfo signInInfo)
+    parameters:
+    - id: signInInfo
+      type: Agora.Core.Models.Requests.UserSignInInfo
+      description: The user's credentials (email address and password).
+    return:
+      type: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+      description: A <xref href="Agora.Core.Common.Result" data-throw-if-not-resolved="false"></xref> indicating whether the login was successful or not.
+    content.vb: Function LoginAsync(signInInfo As UserSignInInfo) As Task(Of Result)
+  overload: Agora.Core.Interfaces.IAuthService.LoginAsync*
+- uid: Agora.Core.Interfaces.IAuthService.LogoutAsync
+  commentId: M:Agora.Core.Interfaces.IAuthService.LogoutAsync
+  id: LogoutAsync
+  parent: Agora.Core.Interfaces.IAuthService
+  langs:
+  - csharp
+  - vb
+  name: LogoutAsync()
+  nameWithType: IAuthService.LogoutAsync()
+  fullName: Agora.Core.Interfaces.IAuthService.LogoutAsync()
+  type: Method
+  source:
+    remote:
+      path: Agora.Core/Interfaces/IAuthService.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: LogoutAsync
+    path: Agora.Core/Interfaces/IAuthService.cs
+    startLine: 28
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces
+  summary: Logs out the currently authenticated user.
+  example: []
+  syntax:
+    content: Task LogoutAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function LogoutAsync() As Task
+  overload: Agora.Core.Interfaces.IAuthService.LogoutAsync*
+references:
+- uid: Agora.Core.Interfaces
+  commentId: N:Agora.Core.Interfaces
+  href: Agora.html
+  name: Agora.Core.Interfaces
+  nameWithType: Agora.Core.Interfaces
+  fullName: Agora.Core.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+- uid: Agora.Core.Common.Result`1
+  commentId: T:Agora.Core.Common.Result`1
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result-1.html
+  name: Result<T>
+  nameWithType: Result<T>
+  fullName: Agora.Core.Common.Result<T>
+  nameWithType.vb: Result(Of T)
+  fullName.vb: Agora.Core.Common.Result(Of T)
+  name.vb: Result(Of T)
+  spec.csharp:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.Core.Models.User
+  commentId: T:Agora.Core.Models.User
+  parent: Agora.Core.Models
+  href: Agora.Core.Models.User.html
+  name: User
+  nameWithType: User
+  fullName: Agora.Core.Models.User
+- uid: Agora.Core.Interfaces.IAuthService.RegisterAsync*
+  commentId: Overload:Agora.Core.Interfaces.IAuthService.RegisterAsync
+  href: Agora.Core.Interfaces.IAuthService.html#Agora_Core_Interfaces_IAuthService_RegisterAsync_Agora_Core_Models_Requests_UserRegistrationInfo_
+  name: RegisterAsync
+  nameWithType: IAuthService.RegisterAsync
+  fullName: Agora.Core.Interfaces.IAuthService.RegisterAsync
+- uid: Agora.Core.Models.Requests.UserRegistrationInfo
+  commentId: T:Agora.Core.Models.Requests.UserRegistrationInfo
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.UserRegistrationInfo.html
+  name: UserRegistrationInfo
+  nameWithType: UserRegistrationInfo
+  fullName: Agora.Core.Models.Requests.UserRegistrationInfo
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result{Agora.Core.Models.User}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result<User>>
+  nameWithType: Task<Result<User>>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result<Agora.Core.Models.User>>
+  nameWithType.vb: Task(Of Result(Of User))
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result(Of Agora.Core.Models.User))
+  name.vb: Task(Of Result(Of User))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: <
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result`1
+    name: Result
+    href: Agora.Core.Common.Result-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Models.User
+    name: User
+    href: Agora.Core.Models.User.html
+  - name: )
+  - name: )
+- uid: Agora.Core.Common
+  commentId: N:Agora.Core.Common
+  href: Agora.html
+  name: Agora.Core.Common
+  nameWithType: Agora.Core.Common
+  fullName: Agora.Core.Common
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Common
+    name: Common
+    href: Agora.Core.Common.html
+- uid: Agora.Core.Models
+  commentId: N:Agora.Core.Models
+  href: Agora.html
+  name: Agora.Core.Models
+  nameWithType: Agora.Core.Models
+  fullName: Agora.Core.Models
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+- uid: Agora.Core.Models.Requests
+  commentId: N:Agora.Core.Models.Requests
+  href: Agora.html
+  name: Agora.Core.Models.Requests
+  nameWithType: Agora.Core.Models.Requests
+  fullName: Agora.Core.Models.Requests
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Models
+    name: Models
+    href: Agora.Core.Models.html
+  - name: .
+  - uid: Agora.Core.Models.Requests
+    name: Requests
+    href: Agora.Core.Models.Requests.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Agora.Core.Common.Result
+  commentId: T:Agora.Core.Common.Result
+  parent: Agora.Core.Common
+  href: Agora.Core.Common.Result.html
+  name: Result
+  nameWithType: Result
+  fullName: Agora.Core.Common.Result
+- uid: Agora.Core.Interfaces.IAuthService.LoginAsync*
+  commentId: Overload:Agora.Core.Interfaces.IAuthService.LoginAsync
+  href: Agora.Core.Interfaces.IAuthService.html#Agora_Core_Interfaces_IAuthService_LoginAsync_Agora_Core_Models_Requests_UserSignInInfo_
+  name: LoginAsync
+  nameWithType: IAuthService.LoginAsync
+  fullName: Agora.Core.Interfaces.IAuthService.LoginAsync
+- uid: Agora.Core.Models.Requests.UserSignInInfo
+  commentId: T:Agora.Core.Models.Requests.UserSignInInfo
+  parent: Agora.Core.Models.Requests
+  href: Agora.Core.Models.Requests.UserSignInInfo.html
+  name: UserSignInInfo
+  nameWithType: UserSignInInfo
+  fullName: Agora.Core.Models.Requests.UserSignInInfo
+- uid: System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  commentId: T:System.Threading.Tasks.Task{Agora.Core.Common.Result}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Result>
+  nameWithType: Task<Result>
+  fullName: System.Threading.Tasks.Task<Agora.Core.Common.Result>
+  nameWithType.vb: Task(Of Result)
+  fullName.vb: System.Threading.Tasks.Task(Of Agora.Core.Common.Result)
+  name.vb: Task(Of Result)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Agora.Core.Common.Result
+    name: Result
+    href: Agora.Core.Common.Result.html
+  - name: )
+- uid: Agora.Core.Interfaces.IAuthService.LogoutAsync*
+  commentId: Overload:Agora.Core.Interfaces.IAuthService.LogoutAsync
+  href: Agora.Core.Interfaces.IAuthService.html#Agora_Core_Interfaces_IAuthService_LogoutAsync
+  name: LogoutAsync
+  nameWithType: IAuthService.LogoutAsync
+  fullName: Agora.Core.Interfaces.IAuthService.LogoutAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task

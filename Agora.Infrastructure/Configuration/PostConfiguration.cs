@@ -1,10 +1,15 @@
-﻿using Agora.Core.Models;
+﻿using Agora.Core.Models.Entities;
 using Agora.Core.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Agora.Infrastructure.Configuration;
 
+/// <summary>
+/// Configuration for the <see cref="Post"/> entity for the <b>Posts</b> DB table,
+/// defining table mapping, primary key, property constraints, check constraints,
+/// enum conversions to string representation, and relationships with related entities.
+/// </summary>
 public class PostConfiguration : IEntityTypeConfiguration<Post>
 {
     public void Configure(EntityTypeBuilder<Post> builder)
@@ -15,18 +20,18 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         
         builder.Property(p => p.Title)
             .IsRequired()
-            .HasMaxLength(ValidationRules.Post.TitleMaxLength);
+            .HasMaxLength(ValidationConstants.Post.TitleMaxLength);
         
         builder.Property(p => p.Description)
             .IsRequired()
-            .HasMaxLength(ValidationRules.Post.DescriptionMaxLength);
+            .HasMaxLength(ValidationConstants.Post.DescriptionMaxLength);
         
         builder.Property(p => p.Price)
             .IsRequired();
         builder.ToTable( t =>
         {
             t.HasCheckConstraint("CK_Post_Price_Range",
-                $"Price >= {ValidationRules.Post.PriceMin} AND Price <= {ValidationRules.Post.PriceMax}");
+                $"Price >= {ValidationConstants.Post.PriceMin} AND Price <= {ValidationConstants.Post.PriceMax}");
         });
         
         builder.Property(p => p.Type)
@@ -41,19 +46,18 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .WithMany(p => p.Posts)
             .HasForeignKey(p => p.PostCategoryId);
         
-        builder.HasOne(p => p.User)
+        builder.HasOne(p => p.Owner)
             .WithMany(u => u.Posts)
-            .HasForeignKey(p=> p.UserId);
+            .HasForeignKey(p=> p.OwnerUserId);
 
         builder.HasMany(p => p.Transactions)
             .WithOne(t => t.Post)
             .HasForeignKey(t => t.PostId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
         
         builder.Property(p => p.CreatedAt)
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
         
-        builder.Property(p => p.UpdatedAt)
-            .HasDefaultValueSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
+        builder.Property(p => p.UpdatedAt);
     }
 }

@@ -1,0 +1,458 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Filters.IUserFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IUserFilter
+  id: IUserFilter
+  parent: Agora.Core.Interfaces.Filters
+  children:
+  - Agora.Core.Interfaces.Filters.IUserFilter.Email
+  - Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+  - Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+  - Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+  - Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+  - Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+  - Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+  - Agora.Core.Interfaces.Filters.IUserFilter.Username
+  langs:
+  - csharp
+  - vb
+  name: IUserFilter
+  nameWithType: IUserFilter
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter
+  type: Interface
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: IUserFilter
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 2
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: public interface IUserFilter
+    content.vb: Public Interface IUserFilter
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.Username
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.Username
+  id: Username
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: Username
+  nameWithType: IUserFilter.Username
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.Username
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Username
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 4
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: string? Username { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Username As String
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.Username*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.Email
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.Email
+  id: Email
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: IUserFilter.Email
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.Email
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: Email
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 5
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: string? Email { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Email As String
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.Email*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+  id: MinCredit
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: MinCredit
+  nameWithType: IUserFilter.MinCredit
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MinCredit
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 6
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: int? MinCredit { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Property MinCredit As Integer?
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.MinCredit*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+  id: MaxCredit
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: MaxCredit
+  nameWithType: IUserFilter.MaxCredit
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MaxCredit
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 7
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: int? MaxCredit { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Property MaxCredit As Integer?
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+  id: MinCreatedAt
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: MinCreatedAt
+  nameWithType: IUserFilter.MinCreatedAt
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MinCreatedAt
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 8
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: DateTime? MinCreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Property MinCreatedAt As Date?
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+  id: MaxCreatedAt
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: MaxCreatedAt
+  nameWithType: IUserFilter.MaxCreatedAt
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: MaxCreatedAt
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 9
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: DateTime? MaxCreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Property MaxCreatedAt As Date?
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+  id: SortBy
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: SortBy
+  nameWithType: IUserFilter.SortBy
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SortBy
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 10
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: string? SortBy { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property SortBy As String
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.SortBy*
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+  commentId: P:Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+  id: SortDesc
+  parent: Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: SortDesc
+  nameWithType: IUserFilter.SortDesc
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+  type: Property
+  source:
+    remote:
+      path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+      branch: 15-Transition-status-logic
+      repo: https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora
+    id: SortDesc
+    path: Agora.Core/Interfaces/Filters/IUserFilter.cs
+    startLine: 11
+  assemblies:
+  - Agora.Core
+  namespace: Agora.Core.Interfaces.Filters
+  syntax:
+    content: bool SortDesc { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property SortDesc As Boolean
+  overload: Agora.Core.Interfaces.Filters.IUserFilter.SortDesc*
+references:
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.Username*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.Username
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_Username
+  name: Username
+  nameWithType: IUserFilter.Username
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.Username
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.Email*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.Email
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_Email
+  name: Email
+  nameWithType: IUserFilter.Email
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.Email
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MinCredit*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_MinCredit
+  name: MinCredit
+  nameWithType: IUserFilter.MinCredit
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MinCredit
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_MaxCredit
+  name: MaxCredit
+  nameWithType: IUserFilter.MaxCredit
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MaxCredit
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_MinCreatedAt
+  name: MinCreatedAt
+  nameWithType: IUserFilter.MinCreatedAt
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MinCreatedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_MaxCreatedAt
+  name: MaxCreatedAt
+  nameWithType: IUserFilter.MaxCreatedAt
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.MaxCreatedAt
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.SortBy*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_SortBy
+  name: SortBy
+  nameWithType: IUserFilter.SortBy
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.SortBy
+- uid: Agora.Core.Interfaces.Filters.IUserFilter.SortDesc*
+  commentId: Overload:Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html#Agora_Core_Interfaces_Filters_IUserFilter_SortDesc
+  name: SortDesc
+  nameWithType: IUserFilter.SortDesc
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter.SortDesc
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

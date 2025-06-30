@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  id: Agora.Core.Interfaces.Filters
+  children:
+  - Agora.Core.Interfaces.Filters.IPostCategoryFilter
+  - Agora.Core.Interfaces.Filters.IPostFilter
+  - Agora.Core.Interfaces.Filters.ITransactionFilter
+  - Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+  - Agora.Core.Interfaces.Filters.IUserFilter
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IPostCategoryFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IPostCategoryFilter.html
+  name: IPostCategoryFilter
+  nameWithType: IPostCategoryFilter
+  fullName: Agora.Core.Interfaces.Filters.IPostCategoryFilter
+- uid: Agora.Core.Interfaces.Filters.IPostFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IPostFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IPostFilter.html
+  name: IPostFilter
+  nameWithType: IPostFilter
+  fullName: Agora.Core.Interfaces.Filters.IPostFilter
+- uid: Agora.Core.Interfaces.Filters.ITransactionFilter
+  commentId: T:Agora.Core.Interfaces.Filters.ITransactionFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.ITransactionFilter.html
+  name: ITransactionFilter
+  nameWithType: ITransactionFilter
+  fullName: Agora.Core.Interfaces.Filters.ITransactionFilter
+- uid: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+  commentId: T:Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.ITransactionStatusFilter.html
+  name: ITransactionStatusFilter
+  nameWithType: ITransactionStatusFilter
+  fullName: Agora.Core.Interfaces.Filters.ITransactionStatusFilter
+- uid: Agora.Core.Interfaces.Filters.IUserFilter
+  commentId: T:Agora.Core.Interfaces.Filters.IUserFilter
+  parent: Agora.Core.Interfaces.Filters
+  href: Agora.Core.Interfaces.Filters.IUserFilter.html
+  name: IUserFilter
+  nameWithType: IUserFilter
+  fullName: Agora.Core.Interfaces.Filters.IUserFilter
+- uid: Agora.Core.Interfaces.Filters
+  commentId: N:Agora.Core.Interfaces.Filters
+  href: Agora.html
+  name: Agora.Core.Interfaces.Filters
+  nameWithType: Agora.Core.Interfaces.Filters
+  fullName: Agora.Core.Interfaces.Filters
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.Filters
+    name: Filters
+    href: Agora.Core.Interfaces.Filters.html

@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces.BusinessServices
+  commentId: N:Agora.Core.Interfaces.BusinessServices
+  id: Agora.Core.Interfaces.BusinessServices
+  children:
+  - Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  - Agora.Core.Interfaces.BusinessServices.IPostService
+  - Agora.Core.Interfaces.BusinessServices.ITransactionService
+  - Agora.Core.Interfaces.BusinessServices.ITransactionStatusService
+  - Agora.Core.Interfaces.BusinessServices.IUserService
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Interfaces.BusinessServices
+  nameWithType: Agora.Core.Interfaces.BusinessServices
+  fullName: Agora.Core.Interfaces.BusinessServices
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html
+  name: IPostCategoryService
+  nameWithType: IPostCategoryService
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostCategoryService
+- uid: Agora.Core.Interfaces.BusinessServices.IPostService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IPostService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.IPostService.html
+  name: IPostService
+  nameWithType: IPostService
+  fullName: Agora.Core.Interfaces.BusinessServices.IPostService
+- uid: Agora.Core.Interfaces.BusinessServices.ITransactionService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.ITransactionService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.ITransactionService.html
+  name: ITransactionService
+  nameWithType: ITransactionService
+  fullName: Agora.Core.Interfaces.BusinessServices.ITransactionService
+- uid: Agora.Core.Interfaces.BusinessServices.ITransactionStatusService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.ITransactionStatusService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.ITransactionStatusService.html
+  name: ITransactionStatusService
+  nameWithType: ITransactionStatusService
+  fullName: Agora.Core.Interfaces.BusinessServices.ITransactionStatusService
+- uid: Agora.Core.Interfaces.BusinessServices.IUserService
+  commentId: T:Agora.Core.Interfaces.BusinessServices.IUserService
+  parent: Agora.Core.Interfaces.BusinessServices
+  href: Agora.Core.Interfaces.BusinessServices.IUserService.html
+  name: IUserService
+  nameWithType: IUserService
+  fullName: Agora.Core.Interfaces.BusinessServices.IUserService
+- uid: Agora.Core.Interfaces.BusinessServices
+  commentId: N:Agora.Core.Interfaces.BusinessServices
+  href: Agora.html
+  name: Agora.Core.Interfaces.BusinessServices
+  nameWithType: Agora.Core.Interfaces.BusinessServices
+  fullName: Agora.Core.Interfaces.BusinessServices
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  - name: .
+  - uid: Agora.Core.Interfaces.BusinessServices
+    name: BusinessServices
+    href: Agora.Core.Interfaces.BusinessServices.html

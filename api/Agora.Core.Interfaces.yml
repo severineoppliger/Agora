@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.Core.Interfaces
+  commentId: N:Agora.Core.Interfaces
+  id: Agora.Core.Interfaces
+  children:
+  - Agora.Core.Interfaces.IAuthService
+  - Agora.Core.Interfaces.IUserContextService
+  langs:
+  - csharp
+  - vb
+  name: Agora.Core.Interfaces
+  nameWithType: Agora.Core.Interfaces
+  fullName: Agora.Core.Interfaces
+  type: Namespace
+  assemblies:
+  - Agora.Core
+references:
+- uid: Agora.Core.Interfaces.IAuthService
+  commentId: T:Agora.Core.Interfaces.IAuthService
+  parent: Agora.Core.Interfaces
+  href: Agora.Core.Interfaces.IAuthService.html
+  name: IAuthService
+  nameWithType: IAuthService
+  fullName: Agora.Core.Interfaces.IAuthService
+- uid: Agora.Core.Interfaces.IUserContextService
+  commentId: T:Agora.Core.Interfaces.IUserContextService
+  parent: Agora.Core.Interfaces
+  href: Agora.Core.Interfaces.IUserContextService.html
+  name: IUserContextService
+  nameWithType: IUserContextService
+  fullName: Agora.Core.Interfaces.IUserContextService
+- uid: Agora.Core.Interfaces
+  commentId: N:Agora.Core.Interfaces
+  href: Agora.html
+  name: Agora.Core.Interfaces
+  nameWithType: Agora.Core.Interfaces
+  fullName: Agora.Core.Interfaces
+  spec.csharp:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html
+  spec.vb:
+  - uid: Agora
+    name: Agora
+    href: Agora.html
+  - name: .
+  - uid: Agora.Core
+    name: Core
+    href: Agora.Core.html
+  - name: .
+  - uid: Agora.Core.Interfaces
+    name: Interfaces
+    href: Agora.Core.Interfaces.html

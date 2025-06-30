@@ -1,0 +1,2581 @@
+{
+	"info": {
+		"_postman_id": "a0819349-16d1-4dbb-abb8-924f33eeb6b8",
+		"name": "Agora API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43075022",
+		"_collection_link": "https://grey-crater-844668.postman.co/workspace/Team-Workspace~f6bb4a74-9fb3-4c55-8791-706c192dfff0/collection/43075022-a0819349-16d1-4dbb-abb8-924f33eeb6b8?action=share&source=collection_link&creator=43075022"
+	},
+	"item": [
+		{
+			"name": "Users controller",
+			"item": [
+				{
+					"name": "Get all users (Admin)",
+					"item": [
+						{
+							"name": "Simple all users retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users with MaxCredit filter + sorted by UserName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users?MaxCredit=150&SortBy=UserName",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "MaxCredit",
+											"value": "150"
+										},
+										{
+											"key": "SortBy",
+											"value": "UserName"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed all users retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users?sortby=abc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "abc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user by id (Admin)",
+					"item": [
+						{
+							"name": "Successful single user retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/00000000-0000-0000-0000-000000000002",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"00000000-0000-0000-0000-000000000002"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed single user retrieval - Nonexistent Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/00000000-0000-0000-0000-110000000002",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"00000000-0000-0000-0000-110000000002"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed single user retrieval - Invalid Id format",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/000000000002",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"000000000002"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get current user profile (Authenticated)",
+					"item": [
+						{
+							"name": "Successful current user profile retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user email using by username (Authenticated)",
+					"item": [
+						{
+							"name": "Successful user email retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/admin/email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fail user email retrieval - Nonexistent username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/abc/email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"abc",
+										"email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register user (Not authenticated)",
+					"item": [
+						{
+							"name": "Successful user registration",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\": \"{{$randomUserName}}\",\r\n    \"Email\": \"{{$randomEmail}}\",\r\n    \"Password\": \"P@ssw0rd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed user registration - Already existing username",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\": \"admin\",\r\n    \"Email\": \"{{$randomEmail}}\",\r\n    \"Password\": \"P@ssw0rd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed user registration - Missing one required property",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\": \"{{$randomUserName}}\",\r\n    \"Email\": \"{{$randomEmail}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"item": [
+						{
+							"name": "Successful login - Admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\": \"admin@test.ch\",\r\n    \"Password\": \"Admin1234$\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful login - Test member 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\": \"testmember1@test.ch\",\r\n    \"Password\": \"Test1234!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Successful login - Test member 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\": \"testmember2@test.ch\",\r\n    \"Password\": \"Test2345!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed login - Invalid format for email",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\": \"admin\",\r\n    \"Password\": \"Admin1234$\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed login - Invalid credentials",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\": \"admin@test.ch\",\r\n    \"Password\": \"1215135\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "Successful logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/users/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PostCategories controller",
+			"item": [
+				{
+					"name": "Get all post categories",
+					"item": [
+						{
+							"name": "Simple post categories retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post categories with Name filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories?Name=co",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories"
+									],
+									"query": [
+										{
+											"key": "Name",
+											"value": "co"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post categories sorted by Name DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories?SortBy=Name&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "Name"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post categories retrieval - Invalid SortBy value",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get post category by Id (Admin)",
+					"item": [
+						{
+							"name": "Successful post category retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category retrieval - Nonexistent Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/postcategories/91324",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"postcategories",
+										"91324"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create post category (Admin)",
+					"item": [
+						{
+							"name": "Successful post category creation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{$randomDepartment}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category creation - Too small name",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"A\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update post category name (Admin)",
+					"item": [
+						{
+							"name": "Successful post category update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"{{$randomDepartment}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category update - No modification",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category update - Too small name",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"A\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category update - Nonexistant Id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"{{$randomDepartment}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/999",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"999"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete post category (Admin)",
+					"item": [
+						{
+							"name": "Successful deletion",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post category deletion - Nonexistent Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/PostCategories/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"PostCategories",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts controller",
+			"item": [
+				{
+					"name": "Get posts catalog",
+					"item": [
+						{
+							"name": "Simple catalog retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Catalog with TitleOrDescription filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog?TitleOrDescription=Info",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									],
+									"query": [
+										{
+											"key": "TitleOrDescription",
+											"value": "Info"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Catalog with UserName filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog?UserName=test",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									],
+									"query": [
+										{
+											"key": "UserName",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Catalog with Price filter and sorted by PostCategoryName DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog?MinPrice=20&SortBy=PostCategoryName&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									],
+									"query": [
+										{
+											"key": "MinPrice",
+											"value": "20"
+										},
+										{
+											"key": "SortBy",
+											"value": "PostCategoryName"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed catalog retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/catalog?sortBy=xyz",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"catalog"
+									],
+									"query": [
+										{
+											"key": "sortBy",
+											"value": "xyz"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all posts with any status (admin)",
+					"item": [
+						{
+							"name": "Simple all posts retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All posts with TitleOrDescription filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all?TitleOrDescription=Info",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									],
+									"query": [
+										{
+											"key": "TitleOrDescription",
+											"value": "Info"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All posts with UserName filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all?UserName=test",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									],
+									"query": [
+										{
+											"key": "UserName",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All posts with Price filter and sorted by PostCategoryName DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all?MinPrice=20&SortBy=PostCategoryName&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									],
+									"query": [
+										{
+											"key": "MinPrice",
+											"value": "20"
+										},
+										{
+											"key": "SortBy",
+											"value": "PostCategoryName"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed all posts retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/all?sortby=somevalue",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "somevalue"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get current user posts (authenticated)",
+					"item": [
+						{
+							"name": "Simple current user's posts retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's posts with filter TitleOrDescription",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/me?TitleOrDescription=the",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"me"
+									],
+									"query": [
+										{
+											"key": "TitleOrDescription",
+											"value": "the"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's posts with filter Price and sorting PostCategoryName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/me?MinPrice=20&SortBy=PostCategoryName&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"me"
+									],
+									"query": [
+										{
+											"key": "MinPrice",
+											"value": "20"
+										},
+										{
+											"key": "SortBy",
+											"value": "PostCategoryName"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed current user's post retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/me?SortBy=info",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"me"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "info"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get post by Id",
+					"item": [
+						{
+							"name": "Successful single post retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed single post retrieval - Nonexistent Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/4320",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4320"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create post (authenticated)",
+					"item": [
+						{
+							"name": "Successful post creation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"Offer\",\r\n    \"postCategoryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post creation - Incomplete body",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"postCategoryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post creation - Invalid type + unknown category id",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"{{$randomLoremParagraph}}\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"abc\",\r\n    \"postCategoryId\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post creation - Not long enough description",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"description\": \"abc\",\r\n    \"price\": {{$randomInt}},\r\n    \"type\": \"Offer\",\r\n    \"postCategoryId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Activate/Inactivate a post (authenticated)",
+					"item": [
+						{
+							"name": "Activate a post",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/1/activate",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"1",
+										"activate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate a post",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/1/deactivate",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"1",
+										"deactivate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update post details (authenticated)",
+					"item": [
+						{
+							"name": "Successful post update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"MyNewTitle\",\r\n    \"type\": \"Request\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post update - Too small description",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"ABC\",\r\n    \"type\": \"Request\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post update - Invalid type & post category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"A new title\",\r\n    \"postCategoryId\": 100,\r\n    \"type\": \"ABC\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post update - Nonexistent Id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"{{$randomPhrase}}\",\r\n    \"type\": \"Offer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/44367",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"44367"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post update - No modification",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post update - Already a Post with same title (TestMember2)",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Annonce 2 de l'utilisateur 2 - Covoiturage\",\r\n    \"type\": \"Request\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete post (authenticated)",
+					"item": [
+						{
+							"name": "Successful post deletion",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed post deletion - Nonexistent Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/posts/1234",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"1234"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction Status controller",
+			"item": [
+				{
+					"name": "Get all transaction status",
+					"item": [
+						{
+							"name": "Simple transaction status retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactionstatus",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactionstatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All transaction status with IsFinal filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactionstatus?IsFinal=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactionstatus"
+									],
+									"query": [
+										{
+											"key": "IsFinal",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All transaction status sorted by Name DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactionstatus?SortBy=Name&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactionstatus"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "Name"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactionstatus?sortby=test",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactionstatus"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get transaction status by Id (Admin)",
+					"item": [
+						{
+							"name": "Successful transaction status retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status retrieval - Nonexistent Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/50",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"50"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update transaction status details (Admin)",
+					"item": [
+						{
+							"name": "Successful transaction status update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"En attente (modifié)\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status update - Too small Description",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\" : \"ABC\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status update - Nonexistent Id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"En attente (modifié)\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/20",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status update - Already existing Name",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Annulée\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status update - No modification",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/TransactionStatus/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"TransactionStatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transactions controller",
+			"item": [
+				{
+					"name": "Get current user's transactions (Authenticated)",
+					"item": [
+						{
+							"name": "Simple current user's transactions retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's transactions retrieval with UsersInvolvedUsername filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?UsersInvolvedUsername=testmember2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "UsersInvolvedUsername",
+											"value": "testmember2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Current user's transactions retrieval sorted by Price DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?sortby=price&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "price"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed current user's transactions retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/me?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"me"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all transactions (Admin)",
+					"item": [
+						{
+							"name": "Simple transactions retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All transactions with UsersInvolvedUsername filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/all?UsersInvolvedUsername=test",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"all"
+									],
+									"query": [
+										{
+											"key": "UsersInvolvedUsername",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All transactions sorted by Price DESC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/all?SortBy=Price&SortDesc=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"all"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "Price"
+										},
+										{
+											"key": "SortDesc",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transactions retrieval - Invalid SortBy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/transactions/all?SortBy=ABC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"all"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "ABC"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get transaction by Id (Authenticated)",
+					"item": [
+						{
+							"name": "Successful transaction retrieval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/Transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction retrieval - Nonexistent Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/Transactions/1124",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions",
+										"1124"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create transaction (Authenticated)",
+					"item": [
+						{
+							"name": "Successful transaction creation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"New transaction between users 2 and 3\",\r\n    \"price\": 65,\r\n    \"postid\": 3,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000002\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction creation - Omit required Title field",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 40,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000002\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction creation - Not post owner",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Transaction between users 2 and 3 linked to a post of user 1\",\r\n    \"price\": 65,\r\n    \"postid\": 1,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000003\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction creation - Buyer equals seller",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Transaction between users 2 and himself\",\r\n    \"price\": 65,\r\n    \"transactiondate\": \"2025-11-25\",\r\n    \"buyerId\": \"00000000-0000-0000-0000-000000000002\",\r\n    \"sellerId\": \"00000000-0000-0000-0000-000000000002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update transaction details (Authenticated)",
+					"item": [
+						{
+							"name": "Successful transaction details update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"New title for transaction between users 2 and 3\",\r\n    \"price\": 65\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction details update - Nonexistent Id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"New title for transaction between users 2 and 3\",\r\n    \"price\": 65\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2346",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2346"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction details update - No modification",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction details update - Too small title",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"A\",\r\n    \"price\": 65\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction details update - Related Post doesn't exist",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\": 1234\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction details update - Buyer has not enough credit",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 6500\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Change transaction status (Authenticated)",
+					"item": [
+						{
+							"name": "Change transaction status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"accepted\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2/status",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Failed transaction status change - Nonexistent Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"accepted\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/transactions/2153/status",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"2153",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Agora.API.Controllers
+  commentId: N:Agora.API.Controllers
+  id: Agora.API.Controllers
+  children:
+  - Agora.API.Controllers.PostCategoriesController
+  - Agora.API.Controllers.PostsController
+  - Agora.API.Controllers.TransactionStatusController
+  - Agora.API.Controllers.TransactionsController
+  - Agora.API.Controllers.UsersController
+  langs:
+  - csharp
+  - vb
+  name: Agora.API.Controllers
+  nameWithType: Agora.API.Controllers
+  fullName: Agora.API.Controllers
+  type: Namespace
+  assemblies:
+  - Agora.API
+references:
+- uid: Agora.API.Controllers.PostCategoriesController
+  commentId: T:Agora.API.Controllers.PostCategoriesController
+  href: Agora.API.Controllers.PostCategoriesController.html
+  name: PostCategoriesController
+  nameWithType: PostCategoriesController
+  fullName: Agora.API.Controllers.PostCategoriesController
+- uid: Agora.API.Controllers.PostsController
+  commentId: T:Agora.API.Controllers.PostsController
+  href: Agora.API.Controllers.PostsController.html
+  name: PostsController
+  nameWithType: PostsController
+  fullName: Agora.API.Controllers.PostsController
+- uid: Agora.API.Controllers.TransactionsController
+  commentId: T:Agora.API.Controllers.TransactionsController
+  href: Agora.API.Controllers.TransactionsController.html
+  name: TransactionsController
+  nameWithType: TransactionsController
+  fullName: Agora.API.Controllers.TransactionsController
+- uid: Agora.API.Controllers.TransactionStatusController
+  commentId: T:Agora.API.Controllers.TransactionStatusController
+  href: Agora.API.Controllers.TransactionStatusController.html
+  name: TransactionStatusController
+  nameWithType: TransactionStatusController
+  fullName: Agora.API.Controllers.TransactionStatusController
+- uid: Agora.API.Controllers.UsersController
+  commentId: T:Agora.API.Controllers.UsersController
+  href: Agora.API.Controllers.UsersController.html
+  name: UsersController
+  nameWithType: UsersController
+  fullName: Agora.API.Controllers.UsersController

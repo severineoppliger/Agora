@@ -1,0 +1,2334 @@
+{
+  "source_base_path": "C:/Users/Séverine Oppliger/OneDrive - Université de Fribourg/Bachelor d'informatique/Travail de Bachelor/Agora",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.PostCategoriesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.PostCategoriesController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers.PostCategoriesController",
+      "Summary": "<p sourcefile=\"api/Agora.API.Controllers.PostCategoriesController.yml\" sourcestartlinenumber=\"1\">Manages operations for post categories, including listing and retrieving post category data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.PostsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.PostsController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers.PostsController",
+      "Summary": "<p sourcefile=\"api/Agora.API.Controllers.PostsController.yml\" sourcestartlinenumber=\"1\">Handles creation, updating, deletion, and retrieval of posts offered or requested by users.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.TransactionStatusController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.TransactionStatusController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers.TransactionStatusController",
+      "Summary": "<p sourcefile=\"api/Agora.API.Controllers.TransactionStatusController.yml\" sourcestartlinenumber=\"1\">Handles operations related to transaction status management,\nsuch as updating status definitions or retrieving status information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.TransactionsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.TransactionsController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers.TransactionsController",
+      "Summary": "<p sourcefile=\"api/Agora.API.Controllers.TransactionsController.yml\" sourcestartlinenumber=\"1\">Manages transactions between users, including creation, updates, and status changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.UsersController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.UsersController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers.UsersController",
+      "Summary": "<p sourcefile=\"api/Agora.API.Controllers.UsersController.yml\" sourcestartlinenumber=\"1\">Handles operations related to user management such as registration, login, logout,\nand retrieval of user information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Controllers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Controllers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Post.CreatePostDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Post.CreatePostDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Post.CreatePostDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Post.PostDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Post.PostDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Post.PostDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Post.PostSummaryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Post.PostSummaryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Post.PostSummaryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Post.UpdatePostDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Post.UpdatePostDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Post.UpdatePostDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Post.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Post.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Post",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.PostCategory.CreatePostCategoryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.PostCategory.CreatePostCategoryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.PostCategory.CreatePostCategoryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.PostCategory.PostCategoryDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.PostCategory.PostCategoryDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.PostCategory.PostCategoryDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.PostCategory.PostCategorySummaryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.PostCategory.PostCategorySummaryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.PostCategory.PostCategorySummaryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.PostCategory.UpdatePostCategoryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.PostCategory.UpdatePostCategoryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.PostCategory.UpdatePostCategoryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.PostCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.PostCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.PostCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.ChangeTransactionStatusDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.ChangeTransactionStatusDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction.ChangeTransactionStatusDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.CreateTransactionDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.CreateTransactionDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction.CreateTransactionDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.TransactionDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.TransactionDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction.TransactionDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.TransactionSummaryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.TransactionSummaryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction.TransactionSummaryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction.UpdateTransactionDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.Transaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.Transaction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.TransactionStatus.TransactionStatusDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.TransactionStatus.TransactionStatusSummaryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.TransactionStatus.UpdateTransactionStatusDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.TransactionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.TransactionStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.TransactionStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.User.RegisterDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.User.RegisterDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.User.RegisterDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.User.SignInDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.User.SignInDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.User.SignInDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.User.UserDetailsDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.User.UserDetailsDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.User.UserDetailsDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.User.UserSummaryDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.User.UserSummaryDto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.User.UserSummaryDto",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.DTOs.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.DTOs.User.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.DTOs.User",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Extensions.ControllerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Extensions.ControllerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Extensions.ControllerExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Filters.LogActionFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Filters.LogActionFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Filters.LogActionFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Filters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Filters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Filters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.InputValidation.InputValidationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.InputValidation.InputValidationResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.InputValidation.InputValidationResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.InputValidation.InputValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.InputValidation.InputValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.InputValidation.InputValidator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.InputValidation.Interfaces.IInputValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.InputValidation.Interfaces.IInputValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.InputValidation.Interfaces.IInputValidator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.InputValidation.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.InputValidation.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.InputValidation.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.InputValidation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.InputValidation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.InputValidation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.PostCategoryProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.PostCategoryProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping.PostCategoryProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.PostProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.PostProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping.PostProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.TransactionProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.TransactionProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping.TransactionProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.TransactionStatusProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.TransactionStatusProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping.TransactionStatusProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.UserProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.UserProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping.UserProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Mapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Mapping.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Mapping",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.PostCategoryQueryParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.PostCategoryQueryParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams.PostCategoryQueryParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.PostQueryParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.PostQueryParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams.PostQueryParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.TransactionQueryParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.TransactionQueryParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams.TransactionQueryParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.TransactionStatusQueryParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.TransactionStatusQueryParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams.TransactionStatusQueryParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.UserQueryParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.UserQueryParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams.UserQueryParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.QueryParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.QueryParams.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.QueryParams",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Settings.UserSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Settings.UserSettings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Settings.UserSettings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.API.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.API.Settings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.API.Settings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.AuthorizationBusinessRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.AuthorizationBusinessRules.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules.AuthorizationBusinessRules",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessRules.AuthorizationBusinessRules.yml\" sourcestartlinenumber=\"1\">Determine if a certain user can see, create, modify or delete some entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.BusinessRulesValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.BusinessRulesValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules.BusinessRulesValidator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessRules.Interfaces.IAuthorizationBusinessRules.yml\" sourcestartlinenumber=\"1\">Determine if a certain user can see, create, modify or delete some entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules.Interfaces.IBusinessRulesValidator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessRules.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessRules",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.PostCategoryService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.PostCategoryService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices.PostCategoryService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessServices.PostCategoryService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.PostService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.PostService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices.PostService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessServices.PostService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.TransactionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.TransactionService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices.TransactionService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessServices.TransactionService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.TransactionStatusService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.TransactionStatusService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices.TransactionStatusService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessServices.TransactionStatusService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.UserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.UserService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices.UserService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.BusinessServices.UserService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.BusinessServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.BusinessServices.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.BusinessServices",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorDetail.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorDetail",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorMessages.Post.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorMessages.Post.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorMessages.Post",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorMessages.PostCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorMessages.PostCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorMessages.PostCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorMessages.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorMessages.Transaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorMessages.Transaction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorMessages.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorMessages.User.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorMessages.User",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.ErrorMessages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.ErrorMessages.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.ErrorMessages",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.Result-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.Result-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.Result<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.Result.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.Result.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.Result",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.UserContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.UserContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common.UserContext",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Common.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Common",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Constants.Roles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Constants.Roles.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Constants.Roles",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Constants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Constants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.ErrorType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.ErrorType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums.ErrorType",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Enums.ErrorType.yml\" sourcestartlinenumber=\"1\">Represents the category of an error for more precise handling and messaging.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.PostStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.PostStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums.PostStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.PostType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.PostType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums.PostType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.PostVisibilityMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.PostVisibilityMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums.PostVisibilityMode",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Enums.PostVisibilityMode.yml\" sourcestartlinenumber=\"1\">Specifies the visibility mode for retrieving posts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.TransactionStatusEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.TransactionStatusEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums.TransactionStatusEnum",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Enums.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Enums",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Extensions.ModelStateExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Extensions.ModelStateExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Extensions.ModelStateExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Extensions.StringExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Extensions.StringExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.IPostCategoryService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.IPostCategoryService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices.IPostCategoryService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.BusinessServices.IPostCategoryService.yml\" sourcestartlinenumber=\"1\">Defines business operations related to post categories,\nincluding retrieval and management of post category details.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.IPostService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.IPostService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices.IPostService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.BusinessServices.IPostService.yml\" sourcestartlinenumber=\"1\">Defines business logic for managing user posts,\nincluding creation, updates, filtering, and status changes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.ITransactionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.ITransactionService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices.ITransactionService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.BusinessServices.ITransactionService.yml\" sourcestartlinenumber=\"1\">Encapsulates business rules for handling transactions between users,\nincluding creation, updates, and validation of transaction flows.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.ITransactionStatusService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.ITransactionStatusService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices.ITransactionStatusService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.BusinessServices.ITransactionStatusService.yml\" sourcestartlinenumber=\"1\">Defines operations for managing transaction statuses,\nincluding creation, updates, and validation of status rules.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.IUserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.IUserService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices.IUserService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.BusinessServices.IUserService.yml\" sourcestartlinenumber=\"1\">Provides business logic related to user management,\nincluding access control and profile retrieval.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.BusinessServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.BusinessServices.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.BusinessServices",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.IPostCategoryFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.IPostCategoryFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters.IPostCategoryFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.IPostFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.IPostFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters.IPostFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.ITransactionFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.ITransactionFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters.ITransactionFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.ITransactionStatusFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.ITransactionStatusFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters.ITransactionStatusFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.IUserFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.IUserFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters.IUserFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Filters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Filters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Filters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.IAuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.IAuthService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.IAuthService",
+      "Summary": "<p sourcefile=\"api/Agora.Core.Interfaces.IAuthService.yml\" sourcestartlinenumber=\"1\">Defines authentication-related operations such as user registration, login, and logout.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.IUserContextService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.IUserContextService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.IUserContextService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.IPostCategoryRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.IPostCategoryRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories.IPostCategoryRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.IPostRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.IPostRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories.IPostRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.ITransactionRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.ITransactionRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories.ITransactionRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.ITransactionStatusRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories.ITransactionStatusRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.IUserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.IUserRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories.IUserRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.Repositories.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces.Repositories",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.BaseEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.BaseEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.BaseEntity",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Filters.PostFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Filters.PostFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Filters.PostFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Filters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Filters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Filters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Post.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Post.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Post",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.PostCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.PostCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.PostCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.PostDetailsUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.PostDetailsUpdate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests.PostDetailsUpdate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.TransactionDetailsUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.TransactionDetailsUpdate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests.TransactionDetailsUpdate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.TransactionStatusDetailsUpdate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests.TransactionStatusDetailsUpdate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.UserRegistrationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.UserRegistrationInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests.UserRegistrationInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.UserSignInInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.UserSignInInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests.UserSignInInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Requests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Requests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Requests",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.Transaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.Transaction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.TransactionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.TransactionStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.TransactionStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.User.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models.User",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.NotEmptyOrWhitespaceAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.NotEmptyOrWhitespaceAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.AppUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.AppUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules.AppUser",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.Post.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.Post.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules.Post",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.PostCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.PostCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules.PostCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.Transaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules.Transaction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.TransactionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.TransactionStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules.TransactionStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.ValidationRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.ValidationRules.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation.ValidationRules",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Core.Validation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Core.Validation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Core.Validation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.PostCategoryConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.PostCategoryConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration.PostCategoryConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.PostConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.PostConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration.PostConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.TransactionConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.TransactionConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration.TransactionConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.TransactionStatusConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.TransactionStatusConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration.TransactionStatusConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.UserConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.UserConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration.UserConfiguration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Configuration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Configuration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Data.AgoraDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Data.AgoraDbContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Data.AgoraDbContext",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Data.AgoraDbContextSeed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Data.AgoraDbContextSeed.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Data.AgoraDbContextSeed",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatus",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatus.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatusStringValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatusStringValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatusStringValue",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddEnumValueToTransactionStatusStringValue.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddInfoForTransactionStatusChangesToTransactionEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddInfoForTransactionStatusChangesToTransactionEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddInfoForTransactionStatusChangesToTransactionEntity",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddInfoForTransactionStatusChangesToTransactionEntity.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddTitleToTransaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddTitleToTransaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddTitleToTransaction",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddTitleToTransaction.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddTransactionDate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddTransactionDate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddTransactionDate",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddTransactionDate.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.AddUpdatedAtToTransactionEntityAndRenameAppUserToUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.AddUpdatedAtToTransactionEntityAndRenameAppUserToUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.AddUpdatedAtToTransactionEntityAndRenameAppUserToUser",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.AddUpdatedAtToTransactionEntityAndRenameAppUserToUser.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.InitialCreate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.InitialCreate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.InitialCreate",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.InitialCreate.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.RenameUserToOwnerInPost.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.RenameUserToOwnerInPost.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.RenameUserToOwnerInPost",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.RenameUserToOwnerInPost.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.RestrictPostCategoryDeletion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.RestrictPostCategoryDeletion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations.RestrictPostCategoryDeletion",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Migrations.RestrictPostCategoryDeletion.yml\" sourcestartlinenumber=\"1\">A base class inherited by each EF Core migration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Migrations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Migrations",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.PostCategoryRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.PostCategoryRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories.PostCategoryRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.PostRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.PostRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories.PostRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.TransactionRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.TransactionRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories.TransactionRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.TransactionStatusRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.TransactionStatusRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories.TransactionStatusRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.UserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.UserRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories.UserRepository",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Repositories.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Repositories",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Services.AuthService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Services.AuthService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Services.AuthService",
+      "Summary": "<p sourcefile=\"api/Agora.Infrastructure.Services.AuthService.yml\" sourcestartlinenumber=\"1\">Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Services.UserContextService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Services.UserContextService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Services.UserContextService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Agora.Infrastructure.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Agora.Infrastructure.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Agora.Infrastructure.Services",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "client/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "client/README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
