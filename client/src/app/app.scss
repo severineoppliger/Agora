@@ -1,0 +1,308 @@
+// Variables
+$agpra-red: #990404;
+$agora-light-red: #fc9898;
+$agora-dark-red: #3d0202;
+$agora-green: #648269;
+$agora-light-green: #cfdad1;
+$agora-dark-green: #28342a;
+$primary-color: #648269;
+$success-color: #10b981;
+$warning-color: #f59e0b;
+$danger-color: #ef4444;
+$info-color: #06b6d4;
+$purple-color: #8b5cf6;
+$pink-color: #ec4899;
+$orange-color: #f97316;
+
+$border-radius: 12px;
+$shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+
+  .loader {
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #6b7280;
+    font-size: 1rem;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
+  .error-card {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: $border-radius;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+
+    h3 {
+      color: $danger-color;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #7f1d1d;
+      margin-bottom: 1.5rem;
+    }
+
+    .retry-btn {
+      background: $danger-color;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: #dc2626;
+      }
+    }
+  }
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.post-card {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e5e7eb;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-hover;
+  }
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+
+  .post-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .post-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+}
+
+.post-content {
+  margin-bottom: 1rem;
+
+  .price-section {
+    margin-bottom: 1rem;
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: $agora-dark-green;
+      background: $agora-light-green;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+    }
+  }
+}
+
+.post-footer {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+
+    .author-icon {
+      font-size: 1.1rem;
+    }
+
+    .author-name {
+      font-weight: 500;
+    }
+  }
+}
+
+// Badges styles
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Status badges
+.status-active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-inactive {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-deleted {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-default {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+// Type badges
+.type-offer {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.type-request {
+  background: #f5ebc9;
+  color:#755c01;
+}
+
+.type-default {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+// Category badges
+.category-blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.category-green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.category-purple {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.category-orange {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.category-pink {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.category-teal {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #6b7280;
+    margin: 0;
+  }
+}

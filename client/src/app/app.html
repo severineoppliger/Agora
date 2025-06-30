@@ -1,10 +1,71 @@
 <app-header></app-header>
 
-<div class="">
-    <h1>Welcome to {{ title }} !</h1>
-    <ul>
-        @for (post of posts; track post.id) {
-            <li>{{post.title}}</li>
+<div class="main-container">
+    <div class="hero-section">
+        <h1>Bienvenue sur {{ title }}</h1>
+        <p class="subtitle">Découvrez les dernières offres et demandes des étudiants de l'Université de Fribourg</p>
+    </div>
+
+    <!-- Loading indicator -->
+    @if (loading) {
+        <div class="loading-container">
+            <div class="loader"></div>
+            <p>Chargement des posts...</p>
+        </div>
+    }
+
+    <!-- Display errors -->
+    @if (error) {
+        <div class="error-container">
+            <div class="error-card">
+                <h3>⚠️ Erreur de chargement</h3>
+                <p>{{ error }}</p>
+            </div>
+        </div>
+    }
+
+    <!-- Posts catalog -->
+    @if (!loading && !error) {
+        @if (posts.length > 0) {
+            <div class="posts-grid">
+                @for (post of posts; track post.id) {
+                    <div class="post-card">
+                        <div class="post-header">
+                            <h3 class="post-title">{{ post.title }}</h3>
+                            <div class="post-badges">
+                                <span class="badge type-badge" [ngClass]="getTypeClass(post.typeName)">
+                                    {{ post.typeName === 'Offer' ? 'Offre' : (post.typeName === 'Request' ? 'Demande' : post.typeName) }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="post-content">
+                            <div class="price-section">
+                                <span class="price">{{ post.price }} Kairos</span>
+                            </div>
+
+                            <div class="post-meta">
+                                <span class="badge category-badge" [ngClass]="getCategoryClass(post.postCategoryName)">
+                                    📂 {{ post.postCategoryName }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="post-footer">
+                            <div class="author">
+                                <span class="author-icon">👤</span>
+                                <span class="author-name">{{ post.userName }}</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        } @else {
+            <div class="empty-state">
+                <div class="empty-icon">📭</div>
+                <h3>Aucune annonce disponible</h3>
+                <p>Il n'y a actuellement aucune annonce à afficher.</p>
+            </div>
         }
-    </ul>
+    }
 </div>
