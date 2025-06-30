@@ -33,7 +33,7 @@ Install:
 No MariaDB installation is needed since the DB is automatically created and stored in the Docker container.
 
 ## Setup
-1. Clone the repository: `git clone https://severineoppliger@dev.azure.com/severineoppliger/Agora/_git/Agora`
+1. Clone the repository: `git clone https://github.com/severineoppliger/Agora.git`
 2. Navigate to the folder containing Docker files: `cd Agora/infra`
 3. Create here a `.env`file and define following variables (change the password):
     ```
@@ -45,14 +45,6 @@ No MariaDB installation is needed since the DB is automatically created and stor
 4. Build the Docker container: `docker-compose up --build`
    * This operation can take several minutes
    * Without change of the code, you can remove the `--build` tag in the following executions
-
-# Frontend
-Angular version 20.0.x
-1. Install Node.js version 22.16.0 using NVM or from http://nodejs.org/
-2. Install Angular CLI using npm (Node.js package manager): `npm install -g @angular/cli`
-3. Run the client: From Agora solution
-   * `cd client`
-   * `ng serve`
 
 # Test 
 You can test the API REST using the Postman collection [Agora_API.postman_collection.json](./Agora_API.postman_collection.json).
