@@ -38,9 +38,9 @@ No MariaDB installation is needed since the DB is automatically created and stor
 3. Create here a `.env`file and define following variables (change the password):
     ```
     MARIADB_ROOT_PASSWORD=rootpass
-    2 MARIADB_DATABASE=agora_db
-    3 MARIADB_USER=agora_user
-    4 MARIADB_PASSWORD=aSuperStrongPassword
+    MARIADB_DATABASE=agora_db
+    MARIADB_USER=local
+    MARIADB_PASSWORD=Admin1234$
     ```
 4. Build the Docker container: `docker-compose up --build`
    * This operation can take several minutes
