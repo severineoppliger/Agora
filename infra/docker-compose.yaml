@@ -33,6 +33,15 @@ services:
       dockerfile: infra/docfx.Dockerfile
     ports:
       - "8080:8080"
+        
+  agora-frontend:
+    build:
+      context: ..
+      dockerfile: infra/frontend.Dockerfile
+    container_name: agora-frontend
+    restart: always
+    ports:
+      - "4200:80" 
 
 volumes:
   mariadb_data:
